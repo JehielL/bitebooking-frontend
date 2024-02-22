@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-md navbar-light bg-body-tertiary">
+    <div class="container-fluid">
+    <a routerLink="/home">
+        <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">       
+    </a>
+    <button
+    class="navbar-toggler"
+    type="button"
+    aria-controls="navbarContent"
+    [attr.aria-expanded]="!collapsed"
+    aria-label="Toggle navigation"
+    (click)="collapsed = !collapsed"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+    <ul class="navbar-nav ms-auto">
+    <li class="nav-item" ngbDropdown>
+    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" > Reservas. </a>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+    <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()"><i class="bi bi-calendar-check-fill"></i> Reservar.</a>
+    <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Another action</a>
+    <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Something else here</a>
+    </div>
+    </li>
+    
+    <li class="nav-item" ngbDropdown>
+    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Static right </a>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+    <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Action</a>
+    <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Another action</a>
+    <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Something else here</a>
+    </div>
+    </li>
+    
+    <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+    <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"> Dynamic </a>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+    <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Action</a>
+    <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Another action</a>
+    <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Something else here</a>
+    </div>
+    </li>
+    </ul>
+    </div>
+    </div>
+    </nav>

@@ -1,78 +1,9 @@
-<h1>{{title}}</h1>
+<app-navbar></app-navbar>
 
-<ul>
-    @for (booking of bookings; track booking.id) {
-        <li>{{booking.id}} {{booking.title}} {{booking.menu.title}} {{booking.totalPrice}}</li>
-    }
-</ul>
+<main style="min-height: 500px;">
+    <router-outlet></router-outlet>
+</main>
 
-<ul>
-    @for (menu of menus; track menu) {
-        <li>{{menu}}</li>
-    } @empty {
-        <li>No se ha encontrado el Menú</li>
-    }    
-    
-</ul>
 
-<table class="table table-dark table-striped-columns">
-    <thead>
-      <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Title</th>
-        <th scope="col">Numero de usuarios</th>
-        <th scope="col">Observation</th>
-        <th scope="col">% Descuento</th>
-        <th scope="col">Terraza</th>
-        <th scope="col">Numero de mesas</th>
-        <th scope="col">Id Restaurant</th>
-        <th scope="col">Menu Escogido</th>
-        <th scope="col">Descripción</th>
-        <th scope="col">Confirmación</th>
-        <th scope="col">Alergias</th>
-        <th scope="col">Vegan</th>
 
-        
-    </tr>
-    </thead>
-    <tbody>
-        @for (booking of bookings; track booking) {
-            <tr>
-                <th scope="row">{{booking.id}}</th>
-                <td>{{booking.publishDate | date:"dd/MM/yy"}}</td>
-                <td>{{booking.title}}</td>
-                <td>{{booking.numUsers}}</td>
-                <td>{{booking.observations}}</td>
-                <td>{{booking.discount}}</td>
-                <td>{{booking.interior}}</td>
-                <td>{{booking.numTable}}</td>
-                <td>{{booking.menu.id}}</td>
-                <td>{{booking.menu.title}}</td>
-                <td>{{booking.menu.description}}</td>
-                <td>
-                    @if (booking.menu.isAvailable) {
-                        <span class="badge text-bg-success">Si</span>
-                    } @else {
-                        <span class="badge text-bg-danger">No</span>
-                    }
-                </td>
-                <td>
-                    @if (booking.menu.allergic) {
-                        <span class="badge text-bg-success">Si</span>
-                    } @else {
-                        <span class="badge text-bg-danger">No</span>
-                    }
-                </td>
-                <td>
-                    @if (booking.menu.isVegan) {
-                        <span class="badge text-bg-success">Si</span>
-                    } @else {
-                        <span class="badge text-bg-danger">No</span>
-                    }
-                </td>
-              </tr>
-
-        }
-    </tbody>
-  </table>
+<app-footer></app-footer>
