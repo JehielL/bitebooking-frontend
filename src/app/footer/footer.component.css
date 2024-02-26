@@ -1,0 +1,23 @@
+
+  
+  .content {
+    min-height: calc(100% - 10px); 
+    padding-bottom: 10px; 
+    position: relative;
+  }
+  
+  .footer-custom {
+    background-color: #b6b6b6; 
+    color: #212529; 
+    width: 100%;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0; 
+    margin-left: 0;  
+  }
+  
