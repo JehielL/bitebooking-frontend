@@ -5,11 +5,12 @@ import { RouterOutlet } from '@angular/router';
 import { Menu } from "./Interfaces/menu.model";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent,NotFoundComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
