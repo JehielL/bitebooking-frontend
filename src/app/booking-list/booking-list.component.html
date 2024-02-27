@@ -1,1 +1,137 @@
-<p>booking-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+        @if (booking) {
+            <div class="container">
+                <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                    <div class="col">
+                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                              <small>Moraleja</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar"></use></svg>
+                              <small>3d</small>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="col">
+                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/zuma-restaurante-madrid-elle-2-1639729041.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Zuma</h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                              <small>Paseo Colón.</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                              <small>4d</small>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="col">
+                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-8a-db-8adb2b01-1720-4a25-9e6e-97b927ed5810-_d1a9203juanlafita.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Amazonico</h3>
+                          <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                            </li>
+                            <li class="d-flex align-items-center me-3">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                              <small>La castellana</small>
+                            </li>
+                            <li class="d-flex align-items-center">
+                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                              <small>5d</small>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://fotografias.lasexta.com/clipping/cmsimages01/2022/09/23/E03D41A4-2F86-46EE-A8CE-023DDF433CBB/robuchon-madrid_69.jpg?crop=1707,960,x49,y0&width=1280&height=720&optimize=low&format=jpg');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Robuchon</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>Moraleja</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>5d</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://images.hola.com/imagenes/cocina/noticiaslibros/20230816237291/mejores-restaurantes-de-madrid-en-verano/1-292-703/portada-agosto-m.jpg');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Sky Rooftop</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>California</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>5d</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.menudegustacion.net/wp-content/uploads/2019/07/menu-degustacion-diverxo-con-cerdos-voladores.jpg');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Diverxo</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <i class="bi bi-calendar-heart fs-1"></i>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>California</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>5d</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+            </div>
+        } @else {
+            
+            
+        } 
+        </div>
+    </div>
+</div>
