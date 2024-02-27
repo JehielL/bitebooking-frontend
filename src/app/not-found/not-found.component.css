@@ -9,14 +9,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
-    
+    min-height: 100vh; 
   }
-  
   .not-found {
     animation: fadeIn 2s ease-out;
   }
-  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -27,7 +24,7 @@
       transform: translateY(0);
     }
   }
-  
+    
   h1 {
     font-size: 6em;
     color: #7ef5e7;
