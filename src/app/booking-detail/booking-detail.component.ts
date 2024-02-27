@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Booking } from '../Interfaces/booking.model';
 
+
 @Component({
-  selector: 'app-booking-list',
+  selector: 'app-booking-detail',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './booking-list.component.html',
-  styleUrl: './booking-list.component.css'
+  templateUrl: './booking-detail.component.html',
+  styleUrl: './booking-detail.component.css' , 
 })
-export class BookingListComponent implements OnInit {
+export class BookingDetailComponent implements OnInit {
 
   booking: Booking | undefined;
 
@@ -48,5 +49,3 @@ export class BookingListComponent implements OnInit {
 
 }
 }
-
-

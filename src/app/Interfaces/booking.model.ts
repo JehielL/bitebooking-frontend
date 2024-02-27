@@ -1,4 +1,3 @@
-import {Menu} from "./menu.model"
 
 export interface Booking {
     id: number;
@@ -16,5 +15,5 @@ export interface Booking {
     //Many to one
     //restaurant: Restaurant;
     //Many to one
-    menu: Menu;
+    //menu: Menu;cl
     }

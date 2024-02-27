@@ -1,15 +1,7 @@
- /* .content {
-    min-height: calc(100% - 10px); 
-    padding-bottom: 10px; 
-    position: relative;
-  }
-  */
  .footer-custom {
     background-color: #1e1e1e;
     color:  #aaaaaa !important; 
-    width: 100%;
-    bottom: 0;
-    left: 0;
+   
 }
   .container-fluid {
     padding-right: 0;
@@ -19,4 +11,19 @@
   }
   .footer-custom .nav li a {
     color: #ffffff; 
+}
+.nav-item{
+
+  color: #ffffff !important; 
+}
+
+.footer-custom a {
+  background-color: #1e1e1e;
+  color:  #aaaaaa !important; 
+ 
+}
+.footer-custom a:hover {
+  background-color: #1e1e1e;
+  color:  #ffffff !important; 
+ 
 }
