@@ -9,9 +9,12 @@ export interface Booking {
     discount: number;
     interior: boolean;
     numTable: number;
+    totalPrice: number;
+    imageUrl: string;
+   // available: false;
     //Many to One
     //user: User;
-    totalPrice: number;
+    
     //Many to one
     //restaurant: Restaurant;
     //Many to one
