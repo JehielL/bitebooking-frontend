@@ -35,6 +35,7 @@ export class BookingListComponent implements OnInit {
     interior: true,
     numTable: 4,
     totalPrice: 300,
+    imageUrl: "",
     //Many to one
     //restaurant: Restaurant;
     //Many to one
