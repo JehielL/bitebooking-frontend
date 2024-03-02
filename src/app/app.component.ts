@@ -6,13 +6,16 @@ import { Menu } from "./Interfaces/menu.model";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
+import { CarruselComponent } from './carrusel/carrusel.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent,NotFoundComponent],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent,
+     FooterComponent,NotFoundComponent,CarruselComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
