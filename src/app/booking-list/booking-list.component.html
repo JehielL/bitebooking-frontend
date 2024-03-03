@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col">
         @if (booking) {
-            <div class="container">
+            <div class="container-fluid">
+              <h2 class="title">Restaurant favoritos</h2>
                 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
                     <div class="col">
                       <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
@@ -10,7 +11,9 @@
                           <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
                           <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
-                                <i class="bi bi-calendar-heart fs-1"></i>
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
                             </li>
                             <li class="d-flex align-items-center me-3">
                               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -31,7 +34,9 @@
                           <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Zuma</h3>
                           <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
+                              <a routerLink="/home">
                                 <i class="bi bi-calendar-heart fs-1"></i>
+                              </a>
                             </li>
                             <li class="d-flex align-items-center me-3">
                               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -52,7 +57,9 @@
                           <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Amazonico</h3>
                           <ul class="d-flex list-unstyled mt-auto">
                             <li class="me-auto">
+                              <a routerLink="/home">
                                 <i class="bi bi-calendar-heart fs-1"></i>
+                              </a>
                             </li>
                             <li class="d-flex align-items-center me-3">
                               <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -63,16 +70,21 @@
                               <small>5d</small>
                             </li>
                           </ul>
+                          
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col">
+                      
                         <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://fotografias.lasexta.com/clipping/cmsimages01/2022/09/23/E03D41A4-2F86-46EE-A8CE-023DDF433CBB/robuchon-madrid_69.jpg?crop=1707,960,x49,y0&width=1280&height=720&optimize=low&format=jpg');">
                           <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
                             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Robuchon</h3>
                             <ul class="d-flex list-unstyled mt-auto">
                               <li class="me-auto">
-                                <i class="bi bi-calendar-heart fs-1"></i>
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
                               </li>
                               <li class="d-flex align-items-center me-3">
                                 <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -92,7 +104,9 @@
                             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Sky Rooftop</h3>
                             <ul class="d-flex list-unstyled mt-auto">
                               <li class="me-auto">
-                                <i class="bi bi-calendar-heart fs-1"></i>
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
                               </li>
                               <li class="d-flex align-items-center me-3">
                                 <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -112,7 +126,9 @@
                             <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Diverxo</h3>
                             <ul class="d-flex list-unstyled mt-auto">
                               <li class="me-auto">
-                                <i class="bi bi-calendar-heart fs-1"></i>
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
                               </li>
                               <li class="d-flex align-items-center me-3">
                                 <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
@@ -127,6 +143,78 @@
                         </div>
                       </div>
                   </div>
+                  <h2 class="title">Visitados recientemente.</h2>
+                  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+                      <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/12/34/b2/17/yakiniku.jpg');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Maguro</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>Marbella</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar"></use></svg>
+                                <small>60€</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.focuspiedra.com/wp-content/uploads/2022/07/omeraki4.png');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Omeraki by Alberto Chicote</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>Puerta del sol.</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>+90€</small>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="col">
+                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.culturajoven.es/wp-content/uploads/2021/11/Vista-del-Restaurante-Terraza-Puertalsol-1.jpg');">
+                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Puertalsol</h3>
+                            <ul class="d-flex list-unstyled mt-auto">
+                              <li class="me-auto">
+                                <a routerLink="/home">
+                                  <i class="bi bi-calendar-heart fs-1"></i>
+                                </a>
+                              </li>
+                              <li class="d-flex align-items-center me-3">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                                <small>Puerta del sol</small>
+                              </li>
+                              <li class="d-flex align-items-center">
+                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+                                <small>50€</small>
+                              </li>
+                            </ul>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
             </div>
         } @else {
             

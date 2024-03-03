@@ -19,14 +19,29 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    filter: grayscale(100%);
+    transition: filter 1s ease;
   }
-  
+  .card-cover:hover{
+
+    filter: grayscale(0%);
+  }
   .feature-icon-small {
     width: 3rem;
     height: 3rem;
   }
   .card:hover {
     transform: scale(1.05);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in;
   }
   
+  .title{
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: -5px;
+  }
+
+  a {
+    color: white; 
+    text-decoration: none; 
+}
