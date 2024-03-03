@@ -7,8 +7,3 @@
     color: white; 
     background-color: black; 
 }
-.custom-accordion-header button {
-    background-color: grey !important; /* Cambia el color de fondo del botón a gris */
-    color: white !important; /* Cambia el color del texto del botón a blanco */
-    border-color: grey !important; /* Cambia el color del borde del botón a gris */
-}
