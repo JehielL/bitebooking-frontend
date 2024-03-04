@@ -9,6 +9,7 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { BookingDetailComponent } from "./booking-detail/booking-detail.component";
 import { BookingListComponent } from "./booking-list/booking-list.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,6 +18,7 @@ import { BookingListComponent } from "./booking-list/booking-list.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
 
 
 

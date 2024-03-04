@@ -39,6 +39,10 @@
     color: rgb(0, 0, 0);
     
   }
+  .skill .icon {
+    color: black; 
+    font-size: 30px;
+  }
   
   .skill .svg-inline--fa {
     font-size: 36px;
