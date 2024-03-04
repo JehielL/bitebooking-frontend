@@ -13,9 +13,12 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
+      
       
       <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
         <ul class="navbar-nav ms-auto">
+        
           <li class="nav-item" ngbDropdown>
             <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" > Reservas</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
@@ -24,6 +27,7 @@
               <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Something else here</a>
             </div>
           </li>
+
       
           <li class="nav-item " ngbDropdown>
             <a class="nav-link bi bi-person-circle" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Usuario</a>
@@ -44,15 +48,9 @@
               <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Preguntas frecuentes</a>
             </div>
           </li>
-          
-          <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
-            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">Registrate</a>
-            <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-              <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Restaurante</a>
-              <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Usuario</a>
-              
-            </div>
-          </li>
+
+          <button type="button" class="btn btn-secondary">Registrate</button>
+
           
         </ul>
       </div>

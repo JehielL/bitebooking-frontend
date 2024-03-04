@@ -6,6 +6,8 @@
   .carousel{
     background-size: cover;
     background-position: center;
+    border-radius: 50px;
+    
   }
 
   .btn-primary {
