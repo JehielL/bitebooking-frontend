@@ -21,7 +21,7 @@ export const routes: Routes = [
    component: LoginMainComponent
  },
  {
-   path:'registration',
+   path:'registro',
    component: RegistrationFormComponent
  },
  {
