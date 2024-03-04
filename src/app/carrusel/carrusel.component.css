@@ -1,0 +1,8 @@
+.card-img-top {
+    height: 200px;
+    object-fit: cover; 
+    width: 100%;
+  }
+  .carousel{
+    background-image: url(https://img.freepik.com/free-photo/tabletop-looking-out-empty-restaurant_23-2147701293.jpg);
+  }
