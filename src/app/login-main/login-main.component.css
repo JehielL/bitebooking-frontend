@@ -1,14 +1,3 @@
-@keyframes cambioDeColor{
-    0%{
-        background-color:#07e6f2;
-    }to
-    50%{
-        background-color: #4b0f4a;
-    }
-    100%{
-        background-color: #4b0f4a;
-    }
-}
 
 .imagenFondo
 {
