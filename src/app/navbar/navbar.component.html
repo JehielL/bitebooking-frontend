@@ -20,17 +20,17 @@
         <ul class="navbar-nav ms-auto">
         
           <li class="nav-item" ngbDropdown>
-            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" > Reservas</a>
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" > Reservar</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-              <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()"><i class="bi bi-calendar-check-fill"></i> Reservar</a>
-              <a ngbDropdownItem routerLink="/booking/1/detail" (click)="$event.preventDefault()">Mis Reservas</a>
+              <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()"><i class="bi bi-calendar-check-fill"></i> Mis reservas</a>
+              
               <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Something else here</a>
             </div>
           </li>
 
       
           <li class="nav-item " ngbDropdown>
-            <a class="nav-link bi bi-person-circle" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Usuario</a>
+            <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Usuario</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
