@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: HomeComponent
  },
  {
-   path:'registration',
+   path:'Registrate',
    component: RegistrationFormComponent
  },
  {
