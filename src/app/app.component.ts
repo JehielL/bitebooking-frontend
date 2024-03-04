@@ -14,6 +14,7 @@ import { CarruselComponent } from './carrusel/carrusel.component';
 
 >>>>>>> CarlosRama
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -27,6 +28,7 @@ import { CarruselComponent } from './carrusel/carrusel.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
 
 
 
