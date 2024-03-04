@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 
 export const routes: Routes = [
    {
@@ -18,6 +19,10 @@ export const routes: Routes = [
  {
    path:'registration',
    component: RegistrationFormComponent
+ },
+ {
+   path:'restaurant-list',
+   component: RestaurantListComponent
  },
  {
     path: 'booking',
