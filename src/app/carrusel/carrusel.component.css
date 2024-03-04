@@ -4,5 +4,17 @@
     width: 100%;
   }
   .carousel{
-    background-image: url(https://img.freepik.com/free-photo/tabletop-looking-out-empty-restaurant_23-2147701293.jpg);
+    background-size: cover;
+    background-position: center;
   }
+
+  .btn-primary {
+    color: black;
+    border-color: black; 
+    background-color: white;
+}
+
+.btn-primary:hover {
+    color: white; 
+    background-color: black; 
+}
