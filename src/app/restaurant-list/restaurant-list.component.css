@@ -19,7 +19,6 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    filter: grayscale(100%);
     transition: filter 1s ease;
   }
   .card-cover:hover{
