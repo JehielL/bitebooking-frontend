@@ -6,6 +6,9 @@ import { BookingDetailComponent } from './booking-detail/booking-detail.componen
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { LoginMainComponent } from './login-main/login-main.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
    {
@@ -22,8 +25,16 @@ export const routes: Routes = [
    component: LoginMainComponent
  },
  {
-   path:'registro',
-   component: RegistrationFormComponent
+    path:'registro',
+    component:RegisterComponent
+ }, 
+ {
+   path:'registroUser',
+   component: RegisterUserComponent
+ },
+ {
+    path:'registroRestaurant',
+    component:RegisterRestaurantComponent
  },
  {
    path:'restaurant-list',
