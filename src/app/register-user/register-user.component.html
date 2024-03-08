@@ -1,1 +1,51 @@
-<p>register-user works!</p>
+
+
+<div class="container">
+   
+<form [formGroup]="registerUserForm" (ngSubmit)="save()">
+  <div class="text-center">
+  <img src="/assets/img/logo_bitebooking.png" alt="logo_bitebooking" width="100" height="100" >
+  </div>
+  <div class="row"> 
+          <div class="col-12 text-center">  
+            <h1 class="h3 mb-3 fw-normal">Registrate Usuario</h1>
+          </div>  
+          <div class="col-6 form-floating mb-3">
+            <input type="text" class="form-control" id="firtsName" placeholder="firtsName" formControlName="firtsName">
+            <label for="firtsName">First Name</label>
+          </div>
+          <div class="col-6 form-floating mb-3">
+            <input type="text" class="form-control" id="lastName" placeholder="lastName" formControlName="lastName">
+            <label for="lastName">Last Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="password" placeholder="name@example.com" formControlName="email">
+            <label for="email">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="email" placeholder="password" formControlName="password">
+            <label for="password">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+            <label for="phone">Telefono Móvil</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+            <label for="email">Email address</label>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-primary w-100 py-2" type="submit">Guardar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-danger w-100 py-2" type="submit">Cancelar</button>
+          </div>
+          
+          <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
+    </div>      
+  </form>
+    
+
+  
+
+</div>

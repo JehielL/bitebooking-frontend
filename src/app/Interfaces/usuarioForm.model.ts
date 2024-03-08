@@ -1,10 +1,10 @@
 export interface UserForm {
     id: number,
-    firtsName: string,
+    firtsName: String,
     lastName: string,
     birthdayDate: Date,
     email: string,
     password: string,
-    phone: number,
+    phone: string,
     //role:[]
 }
