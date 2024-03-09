@@ -26,9 +26,10 @@ export class BookingListComponent implements OnInit {
       this.booking = 
     {
     id: 1,
-    publishDate: new Date(),
+    date: new Date(),
     title: "Reserva Jehiel",
     numUsers: 5,
+    price: 300.0,
     observations: "Reserva prueba",
     status: "confirmada",
     discount: 300,

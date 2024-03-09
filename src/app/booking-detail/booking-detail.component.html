@@ -66,7 +66,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponibilidad</h3>
-                    <p>{{booking}}</p>
+                    <p>{{booking.status}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -75,7 +75,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Alergias</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.observations}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -84,7 +84,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Terraza</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.interior}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -93,7 +93,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descuento</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.discount}}.</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -102,7 +102,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Numero de mesa</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.numTable}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -110,8 +110,8 @@
                     <use xlink:href="#tools"></use>
                   </svg>
                   <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio total</h3>
+                    <p>{{booking.totalPrice}} $ </p>
                   </div>
                 </div>
               </div>
