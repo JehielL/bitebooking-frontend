@@ -1,9 +1,10 @@
 <div class="container custom-container">
     <div class="row">
 
-        
+
         <div class="col d-flex justify-content-center align-items-center">
-            <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg custom-card-size" style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
+            <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg custom-card-size"
+                style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
                     <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
                     <ul class="d-flex list-unstyled mt-auto">
@@ -13,21 +14,25 @@
                             </a>
                         </li>
                         <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+                            <svg class="bi me-2" width="1em" height="1em">
+                                <use xlink:href="#geo-fill"></use>
+                            </svg>
                             <small>Moraleja</small>
                         </li>
                         <li class="d-flex align-items-center">
-                            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar"></use></svg>
+                            <svg class="bi me-2" width="1em" height="1em">
+                                <use xlink:href="#calendar"></use>
+                            </svg>
                             <small>60€</small>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
+
+
+
+
         <div class="col">
             <div class="col custom-div">
                 <form [formGroup]="bookingForm" (ngSubmit)="save()">
@@ -36,7 +41,7 @@
                     </div>
                     <h1 class="h3 mb-3 fw-normal">Reserva ahora!</h1>
                     <div class="form-floating mb-3">
-    
+
                         <input type="text" class="form-control" id="title" placeholder="Angular avanzado"
                             formControlName="title">
                         <label for="floatingInput">Titulo de reseva</label>
@@ -47,8 +52,8 @@
                             formControlName="date">
                         <label for="date">Fecha de reserva</label>
                     </div>
-                    
-    
+
+
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="price" placeholder="Angular avanzado"
                             formControlName="price" step="0.01">
@@ -60,7 +65,7 @@
                             formControlName="numUsers" step="1">
                         <label for="numUsers">Numero de usuarios</label>
                     </div>
-    
+
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="observations" placeholder="Angular avanzado"
                             formControlName="observations">
@@ -73,7 +78,7 @@
                         <label for="status">Status de reserva</label>
                     </div>
 
-                   
+
 
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="interior" formControlName="interior">
@@ -93,16 +98,16 @@
                             formControlName="totalPrice" step="1">
                         <label for="totalPrice">Precio total (€)</label>
                     </div>
-                    
-    
+
+
                     <div class="d-grid gap-2">
                         <button class="btn btn-outline-dark">Enviar</button>
                         <button class="btn btn-outline-danger">cancelar</button>
-    
+
                     </div>
-    
+
                     <p class="mt-5 mb-3 text-body-secondary">Bitebooking © 2017–2024</p>
-    
+
                 </form>
             </div>
         </div>

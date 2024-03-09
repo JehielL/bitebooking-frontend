@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [RouterLink, NgbAccordionModule, NgbAlertModule, NgbCarouselModule, HttpClientModule],
   templateUrl: './booking-detail.component.html',
-  styleUrl: './booking-detail.component.css' , 
+  styleUrl: './booking-detail.component.css',
 })
 export class BookingDetailComponent implements OnInit {
 

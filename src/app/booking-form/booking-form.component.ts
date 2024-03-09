@@ -18,11 +18,11 @@ export class BookingFormComponent {
     id: null,
     date: [""],
     title: [""],
-    price:[0.0],
+    price: [0.0],
     numUsers: 0,
-    observations:[""],
-    status:[""],
-    discount:[0],
+    observations: [""],
+    status: [""],
+    discount: [0],
     interior: [false],
     numTable: 0,
     totalPrice: 0,
@@ -30,9 +30,9 @@ export class BookingFormComponent {
 
   });
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient){}
+  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
 
-  save(){
+  save() {
 
     console.log("Guardando booking");
 
@@ -48,16 +48,16 @@ export class BookingFormComponent {
     const interior = this.bookingForm.get('interior')?.value ?? true;
     const numTable = this.bookingForm.get('numTable')?.value ?? 5;
     const totalPrice = this.bookingForm.get('totalPrice')?.value ?? 320.40;
-    const imageUrl = this.bookingForm.get('imageurl')?.value ?? ''; 
+    const imageUrl = this.bookingForm.get('imageurl')?.value ?? '';
     //const topics = this.bookingForm.get('menu')?.value ?? [];
 
-    
+
 
 
 
     // Crear un objeto utilizando los valores extraidos
 
-    const bookingToSave: Booking ={
+    const bookingToSave: Booking = {
 
       id: id,
       date: date,
@@ -81,7 +81,7 @@ export class BookingFormComponent {
 
     this.httpClient.post<Booking>(url, bookingToSave).subscribe(booking => console.log(booking))
 
-    
+
   }
 
 
