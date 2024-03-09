@@ -41,12 +41,9 @@ export class RegisterUserComponent implements OnInit {
         }
     }
   }
-  user: User[] = [];
+  
 
-  ngOnInit(): void {
-    const url= 'http://localhost:8080/user';
-    this.httpClient.get<User[]>(url).subscribe(registerUserForm=> this.registerUserForm = registerUserForm);
-  }
+  
   
   save(){
     const registerUserForm: UserForm ={
@@ -62,6 +59,9 @@ export class RegisterUserComponent implements OnInit {
     this.registerUserForm.reset();
 
   }
-  
+  ngOnInit(): void {
+   // const url= 'http://localhost:8080/user';
+   // this.httpClient.get<User[]>(url).subscribe(registerUserForm=> this.registerUserForm = registerUserForm);
+  }
   
 }

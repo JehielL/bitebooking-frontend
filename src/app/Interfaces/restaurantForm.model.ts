@@ -1,11 +1,13 @@
 export interface RestauratForm {
-    id: number;
-    name: string;
-    phone: string;
-    openingTime: string;
-    closingTime: string;
-    averageRating: number;
-    status: boolean;
+    
+    
+    firtsName: String,
+    lastName: string,
+    birthdayDate: Date,
+    email: string,
+    password: string,
+    phone: string,
+    title: string;   
     address: string;
     city: string;
     cp: number;
