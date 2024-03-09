@@ -8,6 +8,7 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
 import { RegisterComponent } from './register/register.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 export const routes: Routes = [
    {
@@ -46,6 +47,13 @@ export const routes: Routes = [
  {
    path: 'booking/:id/detail',
    component: BookingDetailComponent
+},
+{
+   path: 'booking/:id/detail',
+   component: BookingDetailComponent
+},{
+   path: 'booking/form',
+   component: BookingFormComponent
 },
 {
     path: '**',
