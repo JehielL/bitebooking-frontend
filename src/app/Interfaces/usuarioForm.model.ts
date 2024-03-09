@@ -1,5 +1,4 @@
-export interface UserForm {
-    id: number,
+export interface UserForm { 
     firtsName: String,
     lastName: string,
     birthdayDate: Date,

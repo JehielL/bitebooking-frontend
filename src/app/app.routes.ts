@@ -28,11 +28,11 @@ export const routes: Routes = [
     component:RegisterComponent
  }, 
  {
-   path:'registro/user',
+   path:'user',
    component: RegisterUserComponent
  },
  {
-    path:'registro/restaurant',
+    path:'restaurant',
     component:RegisterRestaurantComponent
  },
  {
