@@ -22,7 +22,7 @@ export class BookingFormComponent {
     numUsers: 0,
     observations: [""],
     status: [""],
-    discount: [0],
+    discount: 0,
     interior: [false],
     numTable: 0,
     totalPrice: 0,
