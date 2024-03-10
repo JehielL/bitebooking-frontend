@@ -23,7 +23,7 @@ export class BookingFormComponent {
     observations: [""],
     status: [""],
     discount: 0,
-    interior: [false],
+    interior: false,
     numTable: 0,
     totalPrice: 0,
     imageUrl: ""
