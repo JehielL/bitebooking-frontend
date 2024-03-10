@@ -1,7 +1,7 @@
 .custom-div {
   padding: 20px; 
   border: 3px solid rgba(0, 0, 0, 0.684); 
-  border-radius: 10px; 
+  border-radius: 15px; 
   width: 80%;
   text-align: center;
   align-items: center;
@@ -9,6 +9,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #7B7263;
+  height: 90%;
  
 }
 
@@ -18,12 +20,14 @@
 
 }
 
+.custom-col{
 
-
+  margin: 50px auto;
+}
 .custom-col .card {
 
   width: 80%;
-  height: 70%;
+  height: 60%;
 }
 
 .reservation-info {
@@ -46,6 +50,17 @@
   font-family: 'Roboto', sans-serif;
 }
 
+.custominput input[type=text].form-control,
+.custominput input[type=date].form-control,
+.custominput input[type=number].form-control,
+.custominput input[type=checkbox].form-check-input {
+
+  border: 2px #050105 solid;
+  border-radius: 4px;
+  background: white;
+}
+
+
 
 /* RESPONSIVE */
 
@@ -56,5 +71,5 @@
     width: 100%;
     height: 100%;
   }
-  
+ 
 }
