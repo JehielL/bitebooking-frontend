@@ -2,41 +2,46 @@
     <div class="row">
 
 
-        <div class="col d-flex justify-content-center align-items-center">
-            <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg custom-card-size"
+        <div class="col d-flex justify-content-center align-items-center custom-col">
+            <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg "
                 style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
                 <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                    <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
-                    <ul class="d-flex list-unstyled mt-auto">
+                    <h3 class="pt-5 mt-2 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
+
+                    <div class="container-fluid reservation-info">
+
+                        <p> Reserva a nombre de: {{ bookingForm.get('title')?.value }}</p>
+                        <p> Fecha de reservación: {{ bookingForm.get('date')?.value }}</p>
+                        <p>Precio por persona: {{ bookingForm.get('price')?.value }}</p>
+                        <p> Numero de Clientes: {{ bookingForm.get('numUsers')?.value }}</p>
+                        <p>Observaciones: {{ bookingForm.get('observations')?.value }}</p>
+                        <p>Status: {{ bookingForm.get('status')?.value }}</p>
+                        <p>Descuento: {{ bookingForm.get('discount')?.value }}</p>
+                        <p>Numero de mesa: {{ bookingForm.get('numTable')?.value }}</p>
+                    </div>
+                    <ul class="d-flex list-unstyled mt-3">
                         <li class="me-auto">
                             <a routerLink="/booking/1/detail">
-                                <i class="bi bi-calendar-heart fs-1"></i>
+                                <i class="bi bi-calendar-heart fs-1 custom-calender"></i>
                             </a>
-                        </li>
-                        <li class="d-flex align-items-center me-3">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#geo-fill"></use>
-                            </svg>
+                            <br>
+
                             <small>Moraleja</small>
                         </li>
-                        <li class="d-flex align-items-center">
-                            <svg class="bi me-2" width="1em" height="1em">
-                                <use xlink:href="#calendar"></use>
-                            </svg>
-                            <small>60€</small>
-                        </li>
+
+
+
                     </ul>
                 </div>
             </div>
+
         </div>
 
 
-
-
-        <div class="col">
+        <div class="col ">
             <div class="col custom-div">
                 <form [formGroup]="bookingForm" (ngSubmit)="save()">
-                    <div class="d-flex justify-content-center align-items-center mb-4">
+                    <div>
                         <img src="/assets/img/logo_bitebooking.png" alt="" width="100" height="100">
                     </div>
                     <h1 class="h3 mb-3 fw-normal">Reserva ahora!</h1>
@@ -85,25 +90,27 @@
                     </div>
 
 
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="checkbox" id="interior" formControlName="interior">
-                        <label class="form-check-label" for="interior">
-                            interior
-                        </label>
-                    </div>
+
 
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="numTable" placeholder="Angular avanzado"
                             formControlName="numTable" step="1">
-                        <label for="numTablet">Numero de mesa</label>
+                        <label for="numTable">Numero de mesa</label>
                     </div>
 
-                   
+
 
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" id="totalPrice" placeholder="Angular avanzado"
                             formControlName="totalPrice" step="1">
                         <label for="totalPrice">Precio total (€)</label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="interior" formControlName="interior">
+                        <label class="form-check-label" for="interior">
+                            Interior
+                        </label>
                     </div>
 
 
@@ -117,6 +124,6 @@
 
                 </form>
             </div>
+
         </div>
     </div>
-</div>

@@ -48,7 +48,7 @@ export class BookingFormComponent {
     const interior = this.bookingForm.get('interior')?.value ?? true;
     const numTable = this.bookingForm.get('numTable')?.value ?? 5;
     const totalPrice = this.bookingForm.get('totalPrice')?.value ?? 320.40;
-    const imageUrl = this.bookingForm.get('imageurl')?.value ?? '';
+    const imageUrl = this.bookingForm.get('imageUrl')?.value ?? '';
     //const topics = this.bookingForm.get('menu')?.value ?? [];
 
 
