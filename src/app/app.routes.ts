@@ -4,10 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { LoginMainComponent } from './login-main/login-main.component';
-import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
-import { RegisterComponent } from './register/register.component';
-import { BookingFormComponent } from './booking-form/booking-form.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 export const routes: Routes = [
    {
@@ -24,16 +21,13 @@ export const routes: Routes = [
    component: LoginMainComponent
  },
  {
-    path:'registro',
-    component:RegisterComponent
- }, 
+  path:'user-list',
+  component: UserListComponent
+},
+ 
  {
-   path:'user',
-   component: RegisterUserComponent
- },
- {
-   path:'restaurant-list',
-   component: RestaurantListComponent
+   path:'registration',
+   component: RegistrationFormComponent
  },
  {
     path: 'booking',
