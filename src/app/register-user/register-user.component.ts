@@ -58,7 +58,7 @@ export class RegisterUserComponent  {
       password: this.registerUserForm.get('password')?.value ?? '',
       phone: this.registerUserForm.get('phone')?.value ?? '',
       role: this.registerUserForm.get('role')?.value ?? Role.USER
-      //role: this.registerUserForm.get('role')?.value ?? [],
+    
     }
     
 

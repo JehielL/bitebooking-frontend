@@ -6,7 +6,7 @@ export interface UserForm {
     email: string;
     password: string;
     phone: string;
-   role: Role;
+    role: Role;
 }
 
 export enum Role {
