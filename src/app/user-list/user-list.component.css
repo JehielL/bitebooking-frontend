@@ -1,0 +1,50 @@
+
+
+.cajitas div{
+    height: 50px;
+   
+
+}
+.cajitas div input{
+    height: 50px;
+    width: 500px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+.cajitas div button{
+    
+    height: 50px;
+    border-radius: 25px;
+    transition: 0.5s;
+    margin-left: 20px;
+}
+.cartitauser {
+    border-radius: 15px ;
+    box-shadow: 0px 5px 10px rgba(0,0,0, .8);
+}
+.cartitauser button {
+margin: 3px;
+height: 40px;
+width: 40px;
+
+}
+.cartitauser img:hover{
+    transform: scale(1.5);
+    filter: drop-shadow(
+        0 0 5px rgba(0,0,0, .8)
+      );
+
+}
+
+.cartitauser img{
+    transition: transform 0.2s, box-shadow 0.2s;
+    
+
+}
+
+.custom-row{
+    
+    padding: 20px;
+
+}
+

@@ -5,6 +5,7 @@ import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { LoginMainComponent } from './login-main/login-main.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 export const routes: Routes = [
    {
@@ -20,6 +21,11 @@ export const routes: Routes = [
    path:'login',
    component: LoginMainComponent
  },
+ {
+  path:'user-list',
+  component: UserListComponent
+},
+ 
  {
    path:'registration',
    component: RegistrationFormComponent
