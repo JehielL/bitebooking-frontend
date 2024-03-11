@@ -6,8 +6,12 @@ import { BookingDetailComponent } from './booking-detail/booking-detail.componen
 import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+<<<<<<< HEAD
 import { RegisterComponent } from './register/register.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+=======
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+>>>>>>> CarlosRama
 
 export const routes: Routes = [
    {
@@ -52,8 +56,12 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
+   path:'restaurant-detail',
+   component: RestaurantDetailComponent
+ },
+{
     path: '**',
     component:NotFoundComponent
     
-}
+},
 ];

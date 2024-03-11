@@ -1,5 +1,3 @@
-import { Booking } from "./booking.model";
-
 export interface Restaurant {
     id: number;
     name: string;
