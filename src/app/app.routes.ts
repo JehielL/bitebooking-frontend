@@ -3,9 +3,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
-import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { LoginMainComponent } from './login-main/login-main.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { RegisterComponent } from './register/register.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 export const routes: Routes = [
    {
@@ -22,8 +25,16 @@ export const routes: Routes = [
    component: LoginMainComponent
  },
  {
-   path:'registro',
-   component: RegistrationFormComponent
+    path:'registro',
+    component:RegisterComponent
+ }, 
+ {
+   path:'user',
+   component: RegisterUserComponent
+ },
+ {
+    path:'restaurant',
+    component:RegisterRestaurantComponent
  },
  {
    path:'restaurant-list',
@@ -36,6 +47,13 @@ export const routes: Routes = [
  {
    path: 'booking/:id/detail',
    component: BookingDetailComponent
+},
+{
+   path: 'booking/:id/detail',
+   component: BookingDetailComponent
+},{
+   path: 'booking/form',
+   component: BookingFormComponent
 },
 {
     path: '**',
