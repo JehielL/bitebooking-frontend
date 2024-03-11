@@ -5,6 +5,9 @@ import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 export const routes: Routes = [
    {
@@ -26,8 +29,12 @@ export const routes: Routes = [
 },
  
  {
-   path:'registration',
-   component: RegistrationFormComponent
+   path:'registro',
+   component: RegisterComponent
+ },
+ {
+   path:'user',
+   component: RegisterUserComponent
  },
  {
     path: 'booking',
