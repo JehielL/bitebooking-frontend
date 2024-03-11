@@ -9,6 +9,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
 import { RegisterComponent } from './register/register.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 
 export const routes: Routes = [
    {
@@ -56,8 +57,12 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
+   path:'restaurant-detail',
+   component: RestaurantDetailComponent
+ },
+{
     path: '**',
     component:NotFoundComponent
     
-}
+},
 ];
