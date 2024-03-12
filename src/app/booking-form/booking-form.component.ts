@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -11,11 +11,11 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
-export class BookingFormComponent {
+export class BookingFormComponent implements OnInit {
 
   bookingForm = this.fb.group({
 
-    id: null,
+    id: [0],
     date: [""],
     title: [""],
     price: [0.0],
@@ -33,7 +33,27 @@ export class BookingFormComponent {
   constructor(private fb: FormBuilder, 
     private httpClient: HttpClient, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute) {}
+
+    ngOnInit(): void {
+
+      this.activatedRoute.params.subscribe(params => {
+        
+        const id = params['id'];
+        if(!id) return;
+        
+        this.httpClient.get<Booking>('http://localhost:8080' + id)
+        .subscribe(bookingFromBackend => {
+          this.bookingForm.reset({
+            id: bookingFromBackend.id,
+            title: bookingFromBackend.title,
+
+          });
+
+        });
+      });
+    }
+    
 
   save() {
 
