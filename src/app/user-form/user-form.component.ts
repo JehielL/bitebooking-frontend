@@ -1,15 +1,15 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Role, UserForm } from '../Interfaces/usuarioForm.model';
 import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-register-user',
+  selector: 'app-user-form',
   standalone: true,
   imports: [ReactiveFormsModule, HttpClientModule],
-  templateUrl: './register-user.component.html',
-  styleUrl: './register-user.component.css'
+  templateUrl: './user-form.component.html',
+  styleUrl: './user-form.component.css'
 })
 
 export class RegisterUserComponent  {
@@ -31,7 +31,7 @@ export class RegisterUserComponent  {
   {validators: this.passwordConfirmValidator}
   );
 
-  constructor(private httpClient : HttpClient, private fb: FormBuilder){}
+  constructor(private httpClient : HttpClient){}
  
 
   passwordConfirmValidator(control: AbstractControl){
@@ -67,8 +67,7 @@ export class RegisterUserComponent  {
     console.log(registerUserForm);
 
     const url= 'http://localhost:8080/user';
-    this.httpClient.post(url,registerUserForm ).subscribe(result => console.log(result)
-    );
+    this.httpClient.post(url,registerUserForm ).subscribe(result => console.log(result));
 
     //this.registerUserForm.reset();
     

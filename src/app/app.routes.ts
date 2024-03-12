@@ -4,13 +4,14 @@ import { HomeComponent } from './home/home.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { LoginMainComponent } from './login-main/login-main.component';
-import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
-import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
-import { RegisterComponent } from './register/register.component';
-import { BookingFormComponent } from './booking-form/booking-form.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterUserComponent } from './user-form/user-form.component';
+import { RestaurantFromComponent } from './restaurant-from/restaurant-from.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 
 export const routes: Routes = [
    {
@@ -47,6 +48,10 @@ export const routes: Routes = [
  {
    path:'user',
    component: RegisterUserComponent
+ },
+ {
+   path:'restaurant-from',
+   component: RestaurantFromComponent
  },
  {
     path: 'booking',
