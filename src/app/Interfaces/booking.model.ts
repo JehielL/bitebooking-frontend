@@ -1,8 +1,9 @@
 
 export interface Booking {
     id: number;
-    publishDate: Date;
+    date: Date;
     title: string;
+    price: number;
     numUsers: number;
     observations: string;
     status: string;
@@ -18,5 +19,5 @@ export interface Booking {
     //Many to one
     //restaurant: Restaurant;
     //Many to one
-    //menu: Menu;cl
+    //menu: Menu;
     }

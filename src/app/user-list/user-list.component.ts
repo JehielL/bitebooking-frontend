@@ -1,10 +1,11 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [HttpClientModule, ReactiveFormsModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

@@ -34,13 +34,13 @@
                 </div>
               </div>
             </div>
-            
+
 
           </div>
           <div class="col-lg-8 col-md-8 col-sm-12">
             <!--Icon grid-->
             <div class="container px-4 py-5" id="icon-grid">
-              <h2 class="pb-2 border-bottom">Reserva:  {{booking.id}}</h2>
+              <h2 class="pb-2 border-bottom">Reserva: {{booking.id}}</h2>
 
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
 
@@ -56,7 +56,7 @@
                   <i class="bi bi-currency-dollar flex-shrink-0 me-3 fs-2"></i>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio</h3>
-                    <p>{{booking.totalPrice}} $</p>
+                    <p>{{booking.price}} $</p>
                   </div>
                 </div>
 
@@ -66,7 +66,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponibilidad</h3>
-                    <p>{{booking}}</p>
+                    <p>{{booking.status}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -74,8 +74,9 @@
                     <use xlink:href="#home"></use>
                   </svg>
                   <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Alergias</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Observaciones:</h3>
+                    <br>  
+                    <p>{{booking.observations}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -84,16 +85,20 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Terraza</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.interior}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
                   <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
                     <use xlink:href="#toggles2"></use>
                   </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descuento</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                  <div class="col d-flex align-items-start">
+                    <i class="bi bi-percent flex-shrink-0 me-3 fs-2"></i>
+                    <div>
+                      
+                      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descuento</h3>
+                      <p>{{booking.discount}} %</p>
+                    </div>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -102,7 +107,7 @@
                   </svg>
                   <div>
                     <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Numero de mesa</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <p>{{booking.numTable}}</p>
                   </div>
                 </div>
                 <div class="col d-flex align-items-start">
@@ -110,8 +115,8 @@
                     <use xlink:href="#tools"></use>
                   </svg>
                   <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Featured title</h3>
-                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio total</h3>
+                    <p>{{booking.totalPrice}} $ </p>
                   </div>
                 </div>
               </div>
@@ -211,7 +216,7 @@
 
       <hr />
 
-  
+
       <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.expandAll()">Abrir todos</button>
       <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.collapseAll()">Cerrar todos</button>
     </div>

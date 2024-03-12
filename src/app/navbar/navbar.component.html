@@ -20,11 +20,10 @@
         <ul class="navbar-nav ms-auto">
         
           <li class="nav-item" ngbDropdown>
-            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" > Reservar</a>
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" ><i class="bi bi-calendar-check-fill"></i> Reservas</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-              <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()"><i class="bi bi-calendar-check-fill"></i> Reservar.</a>
-              <a ngbDropdownItem routerLink="/login-main/login-main.components.html" (click)="$event.preventDefault()">Another action</a>
-              <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Something else here</a>
+              <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()">Reservar.</a>
+              <a ngbDropdownItem routerLink="/login-main/login-main.components.html" (click)="$event.preventDefault()">Mis Reservas.</a>
             </div>
           </li>
 
@@ -41,7 +40,7 @@
           </li>
       
           <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
-            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"> Contactanos</a>
+            <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"><i class="bi bi-chat-right-quote"></i> Contactanos</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
               <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Formulario de contacto</a>
               <a ngbDropdownItem routerLink="user-list" (click)="$event.preventDefault()">About us</a>
@@ -49,9 +48,9 @@
             </div>
           </li>
 
-          <button routerLink="login" type="button" class="btn btn-primary" >Login</button>
+          <button routerLink="/login" type="button" class="btn btn-secondary" >Login</button>
 
-          <button type="button" class="btn btn-secondary">Registrate</button>
+          <button routerLink="/registro" type="button" class="btn btn-secondary">Registrate</button>
           
         </ul>
       </div>

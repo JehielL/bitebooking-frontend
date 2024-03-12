@@ -6,6 +6,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 
 
 
@@ -13,7 +14,7 @@ import { BookingListComponent } from './booking-list/booking-list.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
