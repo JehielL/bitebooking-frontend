@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-booking-form',
@@ -30,7 +30,10 @@ export class BookingFormComponent {
 
   });
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
+  constructor(private fb: FormBuilder, 
+    private httpClient: HttpClient, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   save() {
 
@@ -79,9 +82,11 @@ export class BookingFormComponent {
 
     const url = 'http://localhost:8080/bookings';
 
-    this.httpClient.post<Booking>(url, bookingToSave).subscribe(booking => console.log(booking))
+    this.httpClient.post<Booking>(url, bookingToSave).subscribe({
+      next: (bookingFromBackend) => this.router.navigate(['/booking', bookingFromBackend.id, 'detail']),
+      error: (error) => window.alert("Datos incorrectos")
 
-
+    });
   }
 
 
