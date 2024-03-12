@@ -1,0 +1,61 @@
+
+
+<div class="container ">
+ 
+    <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
+     
+        <div class="row"> 
+                <div class="col-12 text-center">  
+                    <h1 class="h3 mb-3 fw-normal">Crea Un Restaurant</h1>
+                </div> 
+
+                <div class="col-3 form-floating md-3">
+                    <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+                    <label for="name">Name of the Restaurant</label>
+                </div>
+                <div class="col-6 form-floating mb-3">
+                    <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+                    <label for="phone">Telefono Móvil *</label>
+                    @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
+                    <div>
+                        @if (restaurantFrom.controls.phone.errors['required']) {
+                        <small class="text-danger">Se Requiere un Phone</small>
+                        }
+                        @if (restaurantFrom.controls.phone.errors['pattern']) {
+                        <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="restaurantType" formControlName="restaurantType">
+                      <option selected></option>
+                      <option value="1">one</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="RestaurantType">Restaurant Type</label>
+                </div>
+            
+                <div class="col-6 form-floating mb-3">
+                    <input type="text" class="form-control" id="firtsName" placeholder="firtsName" formControlName="firtsName">
+                    <label for="firtsName">First Name *</label>  
+                </div>
+                
+                <div class="text-center">
+                    <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="restaurantFrom.invalid" >Guardar</button>
+                    
+                    
+                    
+                </div>
+                
+                
+                <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
+        </div>      
+    </form>
+        
+    
+      
+    
+</div>

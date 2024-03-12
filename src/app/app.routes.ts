@@ -7,7 +7,8 @@ import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './user-form/user-form.component';
+import { RestaurantFromComponent } from './restaurant-from/restaurant-from.component';
 
 export const routes: Routes = [
    {
@@ -35,6 +36,10 @@ export const routes: Routes = [
  {
    path:'user',
    component: RegisterUserComponent
+ },
+ {
+   path:'restaurant-from',
+   component: RestaurantFromComponent
  },
  {
     path: 'booking',
