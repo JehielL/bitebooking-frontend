@@ -67,8 +67,7 @@ export class RegisterUserComponent  {
     console.log(registerUserForm);
 
     const url= 'http://localhost:8080/user';
-    this.httpClient.post(url,registerUserForm )
-    .subscribe(result => console.log(result));
+    this.httpClient.post(url,registerUserForm ).subscribe(result => console.log(result));
 
     //this.registerUserForm.reset();
     

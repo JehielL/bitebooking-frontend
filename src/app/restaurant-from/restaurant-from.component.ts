@@ -13,15 +13,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class RestaurantFromComponent {
   restaurants: Restaurant[] = [];
-  restaurantTypes = Object.values(RestaurantType).filter(value => typeof value === 'string');
-  
+  restaurantTypes = Object.values(RestaurantType);
 
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
     //location: 
     phone: new FormControl('',[Validators.required,Validators.pattern(('^[0-9]{9}$'))]),
-    restaurantType: new FormControl<RestaurantType>(RestaurantType.AFRICAN_FOOD),
+    restaurantType: new FormControl<RestaurantType>(RestaurantType.SPAIN_FOOD),
     openingTime: new FormControl(new Date()),
     closingTime: new FormControl(new Date()),
     averageRating: new FormControl(0),
