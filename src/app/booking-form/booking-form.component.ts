@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-booking-form',
@@ -11,11 +11,11 @@ import { RouterLink } from '@angular/router';
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
-export class BookingFormComponent {
+export class BookingFormComponent implements OnInit {
 
   bookingForm = this.fb.group({
 
-    id: null,
+    id: [0],
     date: [""],
     title: [""],
     price: [0.0],
@@ -30,7 +30,30 @@ export class BookingFormComponent {
 
   });
 
-  constructor(private fb: FormBuilder, private httpClient: HttpClient) { }
+  constructor(private fb: FormBuilder, 
+    private httpClient: HttpClient, 
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {}
+
+    ngOnInit(): void {
+
+      this.activatedRoute.params.subscribe(params => {
+        
+        const id = params['id'];
+        if(!id) return;
+        
+        this.httpClient.get<Booking>('http://localhost:8080' + id)
+        .subscribe(bookingFromBackend => {
+          this.bookingForm.reset({
+            id: bookingFromBackend.id,
+            title: bookingFromBackend.title,
+
+          });
+
+        });
+      });
+    }
+    
 
   save() {
 
@@ -79,9 +102,11 @@ export class BookingFormComponent {
 
     const url = 'http://localhost:8080/bookings';
 
-    this.httpClient.post<Booking>(url, bookingToSave).subscribe(booking => console.log(booking))
+    this.httpClient.post<Booking>(url, bookingToSave).subscribe({
+      next: (bookingFromBackend) => this.router.navigate(['/booking', bookingFromBackend.id, 'detail']),
+      error: (error) => window.alert("Datos incorrectos")
 
-
+    });
   }
 
 
