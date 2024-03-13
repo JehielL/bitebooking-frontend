@@ -2,16 +2,23 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
+<<<<<<< Updated upstream
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+=======
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, RouterLink],
+  imports: [ReactiveFormsModule, HttpClientModule, RouterLink, CommonModule],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent implements OnInit {
+
+  showSuccessMessage: boolean = false;
 
   bookingForm = this.fb.group({
 
@@ -103,8 +110,25 @@ export class BookingFormComponent implements OnInit {
     const url = 'http://localhost:8080/bookings';
 
     this.httpClient.post<Booking>(url, bookingToSave).subscribe({
+<<<<<<< Updated upstream
       next: (bookingFromBackend) => this.router.navigate(['/booking', bookingFromBackend.id, 'detail']),
       error: (error) => window.alert("Datos incorrectos")
+=======
+      next: (booking) => {
+        console.log(booking);
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
+      },
+      error: (error) => {
+        console.error('Error al enviar el formulario:', error);
+      }
+    });
+    
+    
+
+>>>>>>> Stashed changes
 
     });
   }
