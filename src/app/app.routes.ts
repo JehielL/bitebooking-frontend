@@ -7,7 +7,11 @@ import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { RegisterComponent } from './register/register.component';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './user-form/user-form.component';
+import { RestaurantFromComponent } from './restaurant-from/restaurant-from.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 
 export const routes: Routes = [
    {
@@ -19,6 +23,15 @@ export const routes: Routes = [
     path:'home',
     component: HomeComponent
  },
+ {
+   path:'user-list/user-detail',
+   component: UserDetailComponent
+},
+ {
+   path:'user-list',
+   component: UserListComponent
+},
+
  {
    path:'login',
    component: LoginMainComponent
@@ -37,6 +50,10 @@ export const routes: Routes = [
    component: RegisterUserComponent
  },
  {
+   path:'restaurant-from',
+   component: RestaurantFromComponent
+ },
+ {
     path: 'booking',
     component: BookingListComponent
  },
@@ -52,8 +69,16 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
+   path:'restaurant-list',
+   component: RestaurantListComponent
+ },
+{
+   path:'restaurant-detail',
+   component: RestaurantDetailComponent
+ },
+{
     path: '**',
     component:NotFoundComponent
     
-}
+},
 ];
