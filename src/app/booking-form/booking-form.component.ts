@@ -110,10 +110,6 @@ export class BookingFormComponent implements OnInit {
     const url = 'http://localhost:8080/bookings';
 
     this.httpClient.post<Booking>(url, bookingToSave).subscribe({
-<<<<<<< Updated upstream
-      next: (bookingFromBackend) => this.router.navigate(['/booking', bookingFromBackend.id, 'detail']),
-      error: (error) => window.alert("Datos incorrectos")
-=======
       next: (booking) => {
         console.log(booking);
         this.showSuccessMessage = true;
@@ -128,7 +124,6 @@ export class BookingFormComponent implements OnInit {
     
     
 
->>>>>>> Stashed changes
 
     });
   }
