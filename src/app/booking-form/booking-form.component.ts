@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, RouterLink],
+  imports: [ReactiveFormsModule, HttpClientModule, RouterLink, CommonModule],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
@@ -29,6 +30,7 @@ export class BookingFormComponent implements OnInit {
     imageUrl: ""
 
   });
+showSuccessMessage: any;
 
   constructor(private fb: FormBuilder, 
     private httpClient: HttpClient, 
