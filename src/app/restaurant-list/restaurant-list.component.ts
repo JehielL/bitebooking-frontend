@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { DatePipe } from '@angular/common';
 import { BookingListComponent } from '../booking-list/booking-list.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
   styleUrl: './restaurant-list.component.css', 
   standalone: true,
-  imports: [HttpClientModule, BookingListComponent]
+  imports: [HttpClientModule, RouterLink]
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
@@ -27,8 +27,5 @@ export class RestaurantListComponent implements OnInit {
         ...restaurant
       }));
     });
-  }
-  trackByFunction(index: number, item: Restaurant): number {
-    return item.id; // Asume que cada `restaurant` tiene un `id` único.
   }
 }
