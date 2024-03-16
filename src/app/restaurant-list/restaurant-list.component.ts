@@ -7,9 +7,9 @@ import { BookingListComponent } from '../booking-list/booking-list.component';
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
-  styleUrls: ['./restaurant-list.component.css'], 
+  styleUrl: './restaurant-list.component.css', 
   standalone: true,
-  imports: [HttpClientModule, DatePipe, BookingListComponent]
+  imports: [HttpClientModule, BookingListComponent]
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
@@ -22,6 +22,13 @@ export class RestaurantListComponent implements OnInit {
 
   loadRestaurantsDirectly() {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => this.restaurants = restaurants);
+    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+      this.restaurants = restaurants.map(restaurant => ({
+        ...restaurant
+      }));
+    });
+  }
+  trackByFunction(index: number, item: Restaurant): number {
+    return item.id; // Asume que cada `restaurant` tiene un `id` único.
   }
 }

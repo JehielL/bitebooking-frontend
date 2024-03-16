@@ -7,7 +7,7 @@
           @for (restaurant of restaurants; track restaurant.id) {
           <div class="col">
             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
-                style="background-image: url('{{restaurant.imageUrl}}');">
+             [style.background-image]="'url('+ restaurant.imageUrl +')'">
               <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
                 <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
                 <ul class="d-flex list-unstyled mt-auto">
@@ -23,10 +23,6 @@
                   <li class="d-flex align-items-center">
                     <a class="bi me-2" width="1em" height="1em"><i class="bi bi-star-fill"></i></a>
                     <small>{{restaurant.averageRating}}</small>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <small>Abre: {{restaurant.openingTime | date:'dd/MM/yy'}} - Cierra: {{restaurant.closingTime | date:'dd/MM/yy'}}</small>
-                  </li>
                 </ul>
               </div>  
             </div>
