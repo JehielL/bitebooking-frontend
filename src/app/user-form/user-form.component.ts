@@ -19,7 +19,7 @@ export class RegisterUserComponent  {
 
   registerUserForm = new FormGroup({
     id: new FormControl (0),
-    firtsName: new FormControl('',Validators.required),
+    firstName: new FormControl('',Validators.required),
     lastName: new FormControl('',Validators.required),
     birthdayDate: new FormControl(new Date()),
     email: new FormControl('',[Validators.required, Validators.email]),
@@ -51,7 +51,7 @@ export class RegisterUserComponent  {
     const registerUserForm: UserForm ={
 
       id: this.registerUserForm.get('id')?.value ?? 0,
-      firtsName: this.registerUserForm.get('firtsName')?.value ?? '',
+      firstName: this.registerUserForm.get('firstName')?.value ?? '',
       lastName: this.registerUserForm.get('lastName')?.value ?? '',
       birthdayDate: this.registerUserForm.get('birthdayDate')?.value ?? new Date(),
       email: this.registerUserForm.get('email')?.value ?? '',

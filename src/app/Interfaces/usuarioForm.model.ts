@@ -1,6 +1,6 @@
 export interface UserForm { 
     id:number;
-    firtsName: string;
+    firstName: string;
     lastName: string;
     birthdayDate: Date;
     email: string;
