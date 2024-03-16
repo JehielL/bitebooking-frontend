@@ -13,7 +13,6 @@ import { BookingListComponent } from '../booking-list/booking-list.component';
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
-restaurant: any;
 
   constructor(private httpClient: HttpClient) {}
 
