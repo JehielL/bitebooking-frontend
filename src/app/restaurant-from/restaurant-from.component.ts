@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Restaurant, RestaurantType } from '../Interfaces/restaurant.model';
+import { Restaurant } from '../Interfaces/restaurant.model';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class RestaurantFromComponent {
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
-    //location: 
+    //location: new FormControl <RestaurantLocation>(RestaurantLocation.location), 
     phone: new FormControl('',[Validators.required,Validators.pattern(('^[0-9]{9}$'))]),
     restaurantType: new FormControl<RestaurantType>(RestaurantType.SPAIN_FOOD),
     openingTime: new FormControl(new Date()),
@@ -26,7 +27,7 @@ export class RestaurantFromComponent {
     averageRating: new FormControl(0),
     //bookings: Booking
     //tables: Tables
-    status:new FormControl(false),
+    status:new FormControl(false)
 
   });
 
@@ -35,18 +36,18 @@ export class RestaurantFromComponent {
 
   save(){
     const  restaurantFrom: Restaurant ={
-      id: this.restaurantFrom.get('id')?.value ?? 0,  
+      id: this.restaurantFrom.get('id')?.value ?? 0,
       name: this.restaurantFrom.get('name')?.value ?? '',
-      //location: RestaurantLocation;
+      // location: this.restaurantFrom.get('location')?.value ?? '',
       phone: this.restaurantFrom.get('phone')?.value ?? '',
-      restaurantType:this.restaurantFrom.get('restaurantType')?.value ?? RestaurantType.AFRICAN_FOOD,
+      restaurantType: this.restaurantFrom.get('restaurantType')?.value ?? RestaurantType.AFRICAN_FOOD,
       openingTime: this.restaurantFrom.get('openingTime')?.value ?? new Date(),
-      closingTime: this.restaurantFrom.get('closingTime')?.value ?? new Date (),
+      closingTime: this.restaurantFrom.get('closingTime')?.value ?? new Date(),
       averageRating: this.restaurantFrom.get('averageRating')?.value ?? 0,
       //bookings: Booking[];
       //tables: Tables[];
       status: this.restaurantFrom.get('status')?.value ?? false,
-
+      imageUrl: '', 
     }
     console.log(restaurantFrom);
 

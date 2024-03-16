@@ -69,7 +69,7 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
-   path:'restaurant-list',
+   path:'restaurant',
    component: RestaurantListComponent
  },
 {
