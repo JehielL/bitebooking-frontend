@@ -21,7 +21,8 @@
                     @for (image of images; track images) {
                     <ng-template ngbSlide>
                       <div class="picsum-img-wrapper">
-                        <img [src]="image" alt="Random first slide" style="max-width: 100%; height: auto;" />
+                        <div class="background-image" [style.background-image]="'url(' + booking.imageUrl + ')'"></div>
+
                       </div>
                       <div class="carousel-caption">
                         <h3></h3>
