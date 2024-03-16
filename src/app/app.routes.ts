@@ -62,8 +62,8 @@ export const routes: Routes = [
    component: BookingDetailComponent
 },
 {
-   path: 'booking/:id/detail',
-   component: BookingDetailComponent
+   path: 'booking/:id/update',
+   component: BookingFormComponent
 },{
    path: 'booking/form',
    component: BookingFormComponent
