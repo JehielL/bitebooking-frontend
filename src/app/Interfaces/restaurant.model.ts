@@ -3,6 +3,7 @@ import { Booking } from "./booking.model";
 import { RestaurantLocation } from "./restaurantLocation.model";
 
 export interface Restaurant {
+imageUrl: any;
     id: number;
     name: string;
     location: RestaurantLocation;
