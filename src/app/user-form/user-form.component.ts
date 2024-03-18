@@ -2,6 +2,7 @@ import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Role, UserForm } from '../Interfaces/usuarioForm.model';
 import { ActivatedRoute, Router} from '@angular/router';
+import { Component } from '@angular/core';
 
 
 @Component({
