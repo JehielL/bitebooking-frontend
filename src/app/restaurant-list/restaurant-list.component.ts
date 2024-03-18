@@ -22,10 +22,8 @@ export class RestaurantListComponent implements OnInit {
 
   loadRestaurantsDirectly() {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
-      this.restaurants = restaurants.map(restaurant => ({
-        ...restaurant
-      }));
-    });
+    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => 
+      this.restaurants = restaurants
+      );
   }
 }
