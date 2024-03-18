@@ -34,14 +34,28 @@
                             <option [value]="type">{{ type }}</option>
                         }
                     </select>
+                    
                     <label for="RestaurantType">Restaurant Type</label>
                 </div>
+                <div class="col-6 form-floating mb-3">
+                    <input type="datetime-local" class="form-control" id="openingTime"  formControlName="openingTime" >
+                    <label for="openingTime" >Opening Time</label>
+                  </div>
                 
                 <div class="col-6 form-floating mb-3">
-                    <input type="text" class="form-control" id="firtsName" placeholder="firtsName" formControlName="firtsName">
-                    <label for="firtsName">First Name *</label>  
+                    <input type="datetime-local" class="form-control" id="closingTime"  formControlName="closingTime" >
+                    <label for="closingTime" >Closing Time</label>
                 </div>
-                
+                <div class="col-6 form-floating mb-3">
+                    <input type="number" class="form-control" id="averageRating" placeholder="averageRating" formControlName="averageRating">
+                    <label for="averageRating">AverageRating</label>  
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="status"   formControlName="status">
+                    <label class="form-check-label" for="gridRadios2">
+                      Restaurant
+                    </label>
+                  </div> 
                 <div class="text-center">
                     <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="restaurantFrom.invalid" >Guardar</button>
                       
