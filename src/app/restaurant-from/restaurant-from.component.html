@@ -1,72 +1,91 @@
 
 
 <div class="container ">
- 
+ <div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
+    <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
+  </div> 
+  <div class="col-6">
     <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
-     
-        <div class="row"> 
-                <div class="col-12 text-center">  
-                    <h1 class="h3 mb-3 fw-normal">Crea Un Restaurant</h1>
-                </div> 
+      <div class="text-center">  
+        <h1>Crea Un Restaurant</h1>
+    </div> 
 
-                <div class="col-3 form-floating md-3">
-                    <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
-                    <label for="name">Name of the Restaurant</label>
-                </div>
-                <div class="col-6 form-floating mb-3">
-                    <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
-                    <label for="phone">Telefono Móvil *</label>
-                    @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
-                    <div>
-                        @if (restaurantFrom.controls.phone.errors['required']) {
-                        <small class="text-danger">Se Requiere un Phone</small>
-                        }
-                        @if (restaurantFrom.controls.phone.errors['pattern']) {
-                        <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
-                        }
-                    </div>
-                    }
-                </div>
+    <div class="form-floating md-3">
+        <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+        <label for="name">Name of the Restaurant</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+        <label for="phone">Telefono Móvil *</label>
+        @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
+        <div>
+            @if (restaurantFrom.controls.phone.errors['required']) {
+            <small class="text-danger">Se Requiere un Phone</small>
+            }
+            @if (restaurantFrom.controls.phone.errors['pattern']) {
+            <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
+            }
+        </div>
+        }
+    </div>
 
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="restaurantType" formControlName="restaurantType">
-                        @for (type of restaurantTypes; track type) {
-                            <option [value]="type">{{ type }}</option>
-                        }
-                    </select>
-                    
-                    <label for="RestaurantType">Restaurant Type</label>
-                </div>
-                <div class="col-6 form-floating mb-3">
-                    <input type="datetime-local" class="form-control" id="openingTime"  formControlName="openingTime" >
-                    <label for="openingTime" >Opening Time</label>
-                  </div>
-                
-                <div class="col-6 form-floating mb-3">
-                    <input type="datetime-local" class="form-control" id="closingTime"  formControlName="closingTime" >
-                    <label for="closingTime" >Closing Time</label>
-                </div>
-                <div class="col-6 form-floating mb-3">
-                    <input type="number" class="form-control" id="averageRating" placeholder="averageRating" formControlName="averageRating">
-                    <label for="averageRating">AverageRating</label>  
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="status"   formControlName="status">
-                    <label class="form-check-label" for="gridRadios2">
-                      Restaurant
-                    </label>
-                  </div> 
-                <div class="text-center">
-                    <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="restaurantFrom.invalid" >Guardar</button>
-                      
-                </div>
-                
-                
-                <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
-        </div>      
-    </form>
+    <div class="form-floating mb-3">
+        <select class="form-select" id="restaurantType" formControlName="restaurantType">
+            @for (type of restaurantTypes; track type) {
+                <option [value]="type">{{ type }}</option>
+            }
+        </select>
         
+        <label for="RestaurantType">Restaurant Type</label>
+    </div>
+    <div class=" form-floating mb-3">
+        <input type="datetime-local" class="form-control" id="openingTime"  formControlName="openingTime" >
+        <label for="openingTime" >Opening Time</label>
+      </div>
     
-      
+    <div class=" form-floating mb-3">
+        <input type="datetime-local" class="form-control" id="closingTime"  formControlName="closingTime" >
+        <label for="closingTime" >Closing Time</label>
+    </div>
+    <div class=" form-floating mb-3">
+        <input type="number" class="form-control" id="averageRating" placeholder="averageRating" formControlName="averageRating">
+        <label for="averageRating">AverageRating</label>  
+    </div>
+    <div class="form-check mb-3">
+        <input class="form-check-input" type="radio" name="status" id="status"   formControlName="status">
+        <label class="form-check-label" for="gridRadios2">
+          Restaurant
+        </label>
+      </div> 
+
+      <div class=" form-floating mb-3" formGroupName="location">
+        <input type="text" class="form-control" id="address" placeholder="locationAddress" formControlName="address">
+        <label for="address">Location address</label>  
+    </div>
+
+    <div class="form-floating mb-3" formGroupName="location">
+        <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
+        <label for="locationCity">Location city</label>  
+    </div>
+
+    <div class="float-end mb-3">
+      @if (restaurantFrom.invalid) {
+        <small class="text-danger mb-3">Completa los Campos Obligatorios</small>
+        }
+      <div class="mb-3">
+        <button class="custom-btn mb-3" type="submit" [disabled]="restaurantFrom.invalid" >Guardar</button>
+        
+        <button class="custom-btn " type="submit"  >Cancelar</button>
+      </div>
+    </div>
     
+    
+    <div><p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p></div>
+        
+                
+              
+    </form>
+  </div>      
+  </div>     
 </div>

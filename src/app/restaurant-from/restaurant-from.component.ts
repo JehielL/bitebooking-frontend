@@ -3,6 +3,7 @@ import { Restaurant, RestaurantType } from '../Interfaces/restaurant.model';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { log } from 'console';
 
 @Component({
   selector: 'app-restaurant-from',
@@ -23,10 +24,19 @@ export class RestaurantFromComponent implements OnInit {
       address:[''],
       city: [''],}),
     phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
-    restaurantType:[RestaurantType],
+    restaurantType:[RestaurantType.BAR],
     openingTime: [new Date()],
     closingTime:[new Date()],
     averageRating: [0],
+    imageUrl: [''],
+
+    //tables: Tables
+    status:[false],
+
+  });
+
+  isUpdate: boolean = false;
+    /*
     bookings: this.fb.group({
       id: [0],
       date: [""],
@@ -40,13 +50,7 @@ export class RestaurantFromComponent implements OnInit {
       numTable: 0,
       totalPrice: 0,
       imageUrl: [],
-    }),
-    //tables: Tables
-    status:[false],
-
-  });
-
-  isUpdate: boolean = false;
+    }),*/
 
   constructor( private httpClient: HttpClient,
                private fb: FormBuilder,
@@ -58,7 +62,10 @@ export class RestaurantFromComponent implements OnInit {
   ngOnInit(): void {
    
     this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants').
-    subscribe(restaurantBacken => this.restaurants = restaurantBacken);
+    subscribe(restaurantBacken => {
+      console.log(restaurantBacken);
+      
+     });
 
     this.activatedRoute.params.subscribe(params=>{
       const id = params['id'];
@@ -83,7 +90,9 @@ export class RestaurantFromComponent implements OnInit {
 
 
   save () {
-    const restaurantBacken: Restaurant= this.restaurantFrom.value as unknown as Restaurant;
+    const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
+    console.log(this.restaurantFrom.value);
+    console.log(restaurantBacken);
     
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurants/' + restaurantBacken.id;
