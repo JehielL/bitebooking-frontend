@@ -1,6 +1,7 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Role, UserForm } from '../Interfaces/usuarioForm.model';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Component } from '@angular/core';
 
 
@@ -31,7 +32,12 @@ export class RegisterUserComponent  {
   {validators: this.passwordConfirmValidator}
   );
 
-  constructor(private httpClient : HttpClient){}
+  constructor(private httpClient : HttpClient,
+              private router: Router,  // esto es para navegar
+              private activatedRoute: ActivatedRoute
+  ){}
+  
+  
  
 
   passwordConfirmValidator(control: AbstractControl){
@@ -67,7 +73,10 @@ export class RegisterUserComponent  {
     console.log(registerUserForm);
 
     const url= 'http://localhost:8080/user';
-    this.httpClient.post(url,registerUserForm ).subscribe(result => console.log(result));
+    this.httpClient.post(url,registerUserForm ).subscribe(result => {
+      console.log(result);
+    this.router.navigate(['/user-list'])
+    });
 
     //this.registerUserForm.reset();
     
