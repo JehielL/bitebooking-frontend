@@ -7,6 +7,7 @@ export interface UserForm {
     password: string;
     phone: string;
     role: Role;
+    fotourl: string;
 }
 
 export enum Role {

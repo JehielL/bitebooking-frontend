@@ -14,7 +14,7 @@ import { __param } from 'tslib';
 })
 export class UserListComponent implements OnInit{
 
-  users: UserForm[] = [];
+  users: User[] = [];
   searchTerm: string = '';
   router: any;
  
@@ -26,10 +26,10 @@ export class UserListComponent implements OnInit{
 
   loadUsers() {
     const url = 'http://localhost:8080/user';
-    this.httpClient.get<UserForm[]>(url).subscribe(users => this.users = users);
+    this.httpClient.get<User[]>(url).subscribe(users => this.users = users);
   }
 
-  searchUsers() {
+  /*searchUsers() {
     if (this.searchTerm.trim() === '') {
       // Si el término de búsqueda está vacío, cargar todos los usuarios
       this.loadUsers();
@@ -53,13 +53,13 @@ export class UserListComponent implements OnInit{
         }
       );
     }
-  }
+  } 
 
   resetSearch() {
     // Restablecer la búsqueda y cargar todos los usuarios
     this.searchTerm = '';
     this.loadUsers();
-  }
+  } */
 
   delete(user: UserForm) {
     const url = 'http://localhost:8080/user/' + user.id;
