@@ -3,7 +3,7 @@ import { Restaurant, RestaurantType } from '../Interfaces/restaurant.model';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { log } from 'console';
+
 
 @Component({
   selector: 'app-restaurant-from',
@@ -36,22 +36,7 @@ export class RestaurantFromComponent implements OnInit {
   });
 
   isUpdate: boolean = false;
-    /*
-    bookings: this.fb.group({
-      id: [0],
-      date: [""],
-      title: [""],
-      price: [0.0],
-      numUsers: 0,
-      observations: [""],
-      status: [""],
-      discount: 0,
-      interior: false,
-      numTable: 0,
-      totalPrice: 0,
-      imageUrl: [],
-    }),*/
-
+   
   constructor( private httpClient: HttpClient,
                private fb: FormBuilder,
                private router: Router,
@@ -97,13 +82,13 @@ export class RestaurantFromComponent implements OnInit {
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurants/' + restaurantBacken.id;
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/productos', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
     
     } else {
     const url = 'http://localhost:8080/restaurants';
     this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/productos', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
     }
   }
