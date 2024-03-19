@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -9,4 +8,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './restaurant-detail.component.css'
 })
 export class RestaurantDetailComponent {
+  restaurant: Restaurant [] = [];
 }
