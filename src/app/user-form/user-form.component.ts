@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-form.component.css'
 })
 
-export class RegisterUserComponent  {
+export class UserFormComponent  {
    
   users: UserForm[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
@@ -75,7 +75,7 @@ export class RegisterUserComponent  {
     const url= 'http://localhost:8080/user';
     this.httpClient.post(url,registerUserForm ).subscribe(result => {
       console.log(result);
-    this.router.navigate(['/user-list'])
+    this.router.navigate(['user-detail'])
     });
 
     //this.registerUserForm.reset();

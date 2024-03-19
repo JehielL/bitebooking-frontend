@@ -1,115 +1,25 @@
+<div class="container text-center" style="border-radius: 15px;">
+  <div class="container text-center cajitas">
+    <div class="col-sm-8" style="margin-left: -95px; display: contents;">
+      <input type="search" class="busqueda" [(ngModel)]="searchTerm" placeholder="Usuarios">
+      <button class="btn btn-outline-dark" (click)="searchUsers()">Buscar</button>
+    </div>
+  </div>
+</div>
 
-<div class="row custom-row">
-
-    <div class="container text-center" style=" border-radius: 15px;">
-        <div class="container text-center cajitas">  
-            <div class="col-sm-8" style="margin-left: -95px ; display: contents;"><input type="search" class="busqueda" placeholder="  Usuarios  "><button class="btn btn-outline-dark">buscar</button></div>
-              
-      </div> 
-
-      <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 cajaMosaico" style="padding: 15px;">
-        
-        
-            
-           
-            
-          <div class="p-5 cartitauser"><i  class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><img src="/assets/img/logo_bitebooking.png" routerLink="user-detail" style="cursor: pointer;" alt="logo" width="100">Usuario random 
-            
-                 <div class="col">
-                   
-                    <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                    <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                    <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-    
-                </div>
-            </div>
-        
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 cajaMosaico" style="padding: 15px;">
+    @for (user of users; track user.id)
+    {
+    <div class="col">
+      <div class="p-5 cartitauser">
+        <i class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i>
+        <img src="/assets/img/logo_bitebooking.png" routerLink="user-detail" style="cursor: pointer;" alt="logo" width="100">{{user.firtsName}} {{user.lastName}}
         <div class="col">
-          <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                 <div>
-                    <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                    <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                    <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-            <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                   <div>
-                      <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                      <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                      <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                  </div>
-              </div>
-          </div>
-          <div class="col">
-          <div class="p-5 cartitauser"><i routerLink="user-detail" class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i><a href=""><img src="/assets/img/logo_bitebooking.png" alt="logo" width="100"></a>Usuario random
-                 <div>
-                    <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-                    <button class="btn btn-outline-dark" ><i class="bi bi-telephone"></i></button>
-                    <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
-                </div>
-            </div>
+          <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
+          <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>
+          <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
         </div>
       </div>
     </div>
-    
-
-</div>
-<script src="/src/app/user-detail/señal.js"></script>
-
-
+    }
+  </div>
