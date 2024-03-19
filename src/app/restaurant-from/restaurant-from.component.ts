@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-restaurant-from',
   standalone: true,
@@ -23,31 +24,19 @@ export class RestaurantFromComponent implements OnInit {
       address:[''],
       city: [''],}),
     phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
-    restaurantType:[RestaurantType],
+    restaurantType:[RestaurantType.BAR],
     openingTime: [new Date()],
     closingTime:[new Date()],
     averageRating: [0],
-    bookings: this.fb.group({
-      id: [0],
-      date: [""],
-      title: [""],
-      price: [0.0],
-      numUsers: 0,
-      observations: [""],
-      status: [""],
-      discount: 0,
-      interior: false,
-      numTable: 0,
-      totalPrice: 0,
-      imageUrl: [],
-    }),
+    imageUrl: [''],
+
     //tables: Tables
     status:[false],
 
   });
 
   isUpdate: boolean = false;
-
+   
   constructor( private httpClient: HttpClient,
                private fb: FormBuilder,
                private router: Router,
@@ -58,7 +47,10 @@ export class RestaurantFromComponent implements OnInit {
   ngOnInit(): void {
    
     this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants').
-    subscribe(restaurantBacken => this.restaurants = restaurantBacken);
+    subscribe(restaurantBacken => {
+      console.log(restaurantBacken);
+      
+     });
 
     this.activatedRoute.params.subscribe(params=>{
       const id = params['id'];
@@ -83,18 +75,20 @@ export class RestaurantFromComponent implements OnInit {
 
 
   save () {
-    const restaurantBacken: Restaurant= this.restaurantFrom.value as unknown as Restaurant;
+    const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
+    console.log(this.restaurantFrom.value);
+    console.log(restaurantBacken);
     
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurants/' + restaurantBacken.id;
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/productos', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
     
     } else {
     const url = 'http://localhost:8080/restaurants';
     this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/productos', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
     }
   }
