@@ -45,6 +45,11 @@ export const routes: Routes = [
   component: UserListComponent
 },
 {
+   path:'user-detail/:id/detail',
+   component: UserDetailComponent
+ },
+
+{
    path: 'user-detail',
    component: UserDetailComponent
 },
@@ -60,6 +65,12 @@ export const routes: Routes = [
     path: 'bookings',
     component: BookingListComponent
  },
+ 
+ {
+   path: 'bookings/:id/detail',
+   component: BookingDetailComponent
+},
+
  {
    path: 'bookings/:id/detail',
    component: BookingDetailComponent
