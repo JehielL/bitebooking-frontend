@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { UserForm } from '../Interfaces/usuarioForm.model';
+import { User } from '../Interfaces/user.model';
 import { __param } from 'tslib';
 
 @Component({
@@ -14,7 +14,7 @@ import { __param } from 'tslib';
 })
 export class UserListComponent implements OnInit{
 
-  users: UserForm[] = [];
+  users: User[] = [];
   searchTerm: string = '';
   router: any;
  
@@ -26,7 +26,7 @@ export class UserListComponent implements OnInit{
 
   loadUsers() {
     const url = 'http://localhost:8080/user';
-    this.httpClient.get<UserForm[]>(url).subscribe(users => this.users = users);
+    this.httpClient.get<User[]>(url).subscribe(users => this.users = users);
   }
 
   searchUsers() {
@@ -36,7 +36,7 @@ export class UserListComponent implements OnInit{
     } else {
       // Si hay un término de búsqueda, realizar la búsqueda
       const url = `http://localhost:8080/user/search/${this.searchTerm}`;
-      this.httpClient.get<UserForm[]>(url).subscribe(
+      this.httpClient.get<User[]>(url).subscribe(
         users => {
           if (users.length === 0) {
             // Si no se encontraron usuarios, redirigir a la página 'not-found'
@@ -61,7 +61,7 @@ export class UserListComponent implements OnInit{
     this.loadUsers();
   }
 
-  delete(user: UserForm) {
+  delete(user: User) {
     const url = 'http://localhost:8080/user/' + user.id;
     this.httpClient.delete(url).subscribe(response => {
       // Volver a cargar los usuarios después de eliminar uno
