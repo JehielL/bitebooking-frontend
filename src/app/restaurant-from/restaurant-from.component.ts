@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Restaurant, RestaurantType } from '../Interfaces/restaurant.model';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @Component({
@@ -12,85 +11,50 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './restaurant-from.component.html',
   styleUrl: './restaurant-from.component.css'
 })
-export class RestaurantFromComponent implements OnInit {
+export class RestaurantFromComponent {
   restaurants: Restaurant[] = [];
   restaurantTypes = Object.values(RestaurantType);
 
-  restaurantFrom = this.fb.group({
-    id: [0],
-    name:[''], 
-    location: this.fb.group({
-      id:[0],
-      address:[''],
-      city: [''],}),
-    phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
-    restaurantType:[RestaurantType.BAR],
-    openingTime: [new Date()],
-    closingTime:[new Date()],
-    averageRating: [0],
-    imageUrl: [''],
-
+  restaurantFrom = new FormGroup({
+    id: new FormControl(0),
+    name: new FormControl(''),
+    //location: 
+    phone: new FormControl('',[Validators.required,Validators.pattern(('^[0-9]{9}$'))]),
+    restaurantType: new FormControl<RestaurantType>(RestaurantType.SPAIN_FOOD),
+    openingTime: new FormControl(new Date()),
+    closingTime: new FormControl(new Date()),
+    averageRating: new FormControl(0),
+    //bookings: Booking
     //tables: Tables
-    status:[false],
+    status:new FormControl(false),
 
   });
 
-  isUpdate: boolean = false;
-   
-  constructor( private httpClient: HttpClient,
-               private fb: FormBuilder,
-               private router: Router,
-               private activatedRoute: ActivatedRoute){
-
-              }
-
-  ngOnInit(): void {
-   
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants').
-    subscribe(restaurantBacken => {
-      console.log(restaurantBacken);
-      
-     });
-
-    this.activatedRoute.params.subscribe(params=>{
-      const id = params['id'];
-      if(!id) return;
-      this.httpClient.get<Restaurant>('http://localhost:8080/restaurants/' + id).subscribe(restaurantBacken =>{
-        this.restaurantFrom.reset({
-          id: restaurantBacken.id,
-          name:restaurantBacken.name, 
-          location: restaurantBacken.location,  
-          phone: restaurantBacken.phone,
-          openingTime: restaurantBacken.openingTime ,
-          closingTime: restaurantBacken.closingTime,
-          averageRating: restaurantBacken.averageRating,
-          
-          //tables: Tables
-          status: restaurantBacken.status,
-        });
-        this.isUpdate = true;
-      });
-    });
-  }
+  constructor( private httpClient: HttpClient){}
 
 
-  save () {
-    const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
-    console.log(this.restaurantFrom.value);
-    console.log(restaurantBacken);
-    
-    if (this.isUpdate) {
-    const url = 'http://localhost:8080/restaurants/' + restaurantBacken.id;
-    this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
-    });
-    
-    } else {
-    const url = 'http://localhost:8080/restaurants';
-    this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
-    });
+  save(){
+    const  restaurantFrom: Restaurant ={
+      id: this.restaurantFrom.get('id')?.value ?? 0,  
+      name: this.restaurantFrom.get('name')?.value ?? '',
+      //location: RestaurantLocation;
+      phone: this.restaurantFrom.get('phone')?.value ?? '',
+      restaurantType:this.restaurantFrom.get('restaurantType')?.value ?? RestaurantType.AFRICAN_FOOD,
+      openingTime: this.restaurantFrom.get('openingTime')?.value ?? new Date(),
+      closingTime: this.restaurantFrom.get('closingTime')?.value ?? new Date (),
+      averageRating: this.restaurantFrom.get('averageRating')?.value ?? 0,
+      //bookings: Booking[];
+      //tables: Tables[];
+      status: this.restaurantFrom.get('status')?.value ?? false,
+
     }
+    console.log(restaurantFrom);
+
+    const url= 'http://localhost:8080/restaurants';
+    this.httpClient.post(url,restaurantFrom).subscribe(result => console.log(result));
+
+    //this.restaurantFrom.reset();
+
   }
 
 
