@@ -64,7 +64,7 @@ export class BookingFormComponent implements OnInit {
     // cargar autores de backend para el selector de autores en el formulario
     this.httpClient.get<Menu[]>('http://localhost:8080/menus')
       .subscribe(menus => this.menus = menus);
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants')
+    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
       .subscribe(restaurants => this.restaurants = restaurants);
 
     this.activatedRoute.params.subscribe(params => {
