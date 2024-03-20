@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { Restaurant } from '../Interfaces/restaurant.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-carrusel',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule,RouterLink, NgbCarouselModule],
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.css'] 
 })
-export class CarruselComponent {
-constructor(private router: Router) {}
+export class CarruselComponent implements OnInit {
+  restaurants: Restaurant[] = [];
 
-navigateToReservation() {
-  this.router.navigate(['/booking']);
+  constructor(private httpClient: HttpClient) {}
+
+  ngOnInit(): void {
+    this.loadRestaurantsDirectly1();
+  }
+  loadRestaurantsDirectly1() {
+    const Url = 'http://localhost:8080/restaurant';
+    this.httpClient.get<Restaurant[]>(Url).subscribe(restaurants => 
+      this.restaurants = restaurants);
+  }
 }
-
-}
-

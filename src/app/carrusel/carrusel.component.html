@@ -1,90 +1,14 @@
-
-<div id="carouselExampleControls" class="carousel slide mb-6" data-bs-ride="carousel">
-    <div class="carousel-inner">
-    
-        <div class="carousel-item active">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://theworldkeys.com/wp-content/uploads/2022/10/zuma-restaurant-madrid_theworldkeys.webp" class="card-img-top" alt="Restaurante 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 1</h5>
-                            <p class="card-text">Descripción breve del Restaurante 1.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/12/34/b1/ea/maguro-sushi-bar.jpg" class="card-img-top" alt="Restaurante 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 2</h5>
-                            <p class="card-text">Descripción breve del Restaurante 2.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://repositorio.turismocastillalamancha.com/miscelanea/184937/49/9e75/restaurante-ivan-cerdeno.jpg" class="card-img-top" alt="Restaurante 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 3</h5>
-                            <p class="card-text">Descripción breve del Restaurante 3.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
+<ngb-carousel>
+    @for (restaurant of restaurants; track restaurant.id) {
+    <ng-template ngbSlide>
+        <div class="card mx-auto mb-5"> 
+            <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
+            <div class="card-body">
+                <h5 class="card-title">{{restaurant.name}}</h5>
+                <p class="card-text">Tipo: {{restaurant.restaurantType}}. Rating: {{restaurant.averageRating}}</p>
+                <a [routerLink]="['/booking', restaurant.id]" class="btn btn-outline-dark">Reservar</a>
             </div>
         </div>
-        
-        <div class="carousel-item active">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://i.ibb.co/h7pR39B/restaurante-madrid.jpg" class="card-img-top" alt="Restaurante 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 4</h5>
-                            <p class="card-text">Descripción breve del Restaurante 4.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="
-                        https://i.ibb.co/RgWW2FL/los-mejores-restaurantes-que-tienes-que-probar-en-madrid-1644914076.jpg" class="card-img-top" alt="Restaurante 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 5</h5>
-                            <p class="card-text">Descripción breve del Restaurante 5.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://i.ibb.co/fvM3yC7/restaurantes-madrid-allegra-italiano-elle-gourmet-64f7a9e17e755.jpg" class="card-img-top" alt="Restaurante 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Restaurante 6</h5>
-                            <p class="card-text">Descripción breve del Restaurante 6.</p>
-                            <a href="#" class="btn btn-primary">Reservar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--atras-->
-   <div class="row mt-3">
-    <div  class="col" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </div>
-    <!--siguente-->
-    <div class="col" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </div>
-   </div>
-
-    
-</div>
+    </ng-template>
+}
+</ngb-carousel>
