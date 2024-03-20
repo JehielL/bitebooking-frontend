@@ -22,11 +22,10 @@
           <li class="nav-item" ngbDropdown>
             <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" ><i class="bi bi-calendar-check-fill"></i> Reservas</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-              <a ngbDropdownItem routerLink="/booking" (click)="$event.preventDefault()">Reservar.</a>
-              <a ngbDropdownItem routerLink="/login-main/login-main.components.html" (click)="$event.preventDefault()">Mis Reservas.</a>
+              <a ngbDropdownItem routerLink="/bookings/create" (click)="$event.preventDefault()">Crear Reserva.</a>
+              <a ngbDropdownItem routerLink="bookings" (click)="$event.preventDefault()">Mis Reservas.</a>
             </div>
           </li>
-
       
           <li class="nav-item " ngbDropdown>
             <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Usuario</a>
