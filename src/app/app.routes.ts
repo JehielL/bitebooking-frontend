@@ -71,7 +71,7 @@ export const routes: Routes = [
    component: RestaurantListComponent
  },
 {
-   path:'restaurant-detail',
+   path:'restaurant/:id/detail',
    component: RestaurantDetailComponent
  },
 {
