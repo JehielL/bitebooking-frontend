@@ -52,18 +52,19 @@ export const routes: Routes = [
    component: RestaurantFromComponent
  },
  {
-    path: 'booking',
+    path: 'bookings',
     component: BookingListComponent
  },
  {
-   path: 'booking/:id/detail',
+   path: 'bookings/:id/detail',
    component: BookingDetailComponent
 },
 {
-   path: 'booking/:id/update',
+   path: 'bookings/:id/update',
    component: BookingFormComponent
-},{
-   path: 'booking/form',
+}
+,{
+   path: 'bookings/create',
    component: BookingFormComponent
 },
 {

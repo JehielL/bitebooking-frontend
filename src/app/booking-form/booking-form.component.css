@@ -1,7 +1,6 @@
 .custom-div {
   padding: 20px; 
   border: 3px solid rgba(0, 0, 0, 0.684); 
-  width: 80%;
   text-align: center;
   align-items: center;
   margin: 50px auto;
@@ -24,11 +23,7 @@
   margin: 50px auto;
   margin-left: 100px;
 }
-.custom-col .card {
 
-  width: 80%;
-  height: 60%;
-}
 
 .reservation-info {
   background-color: rgba(14, 14, 14, 0.379);
@@ -50,14 +45,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-.custominput input[type=text].form-control,
-.custominput input[type=date].form-control,
-.custominput input[type=number].form-control {
-
-  border: 2px #050105 solid;
-  border-radius: 4px;
-  background: white;
-}
 
 /* RESPONSIVE */
 
@@ -77,18 +64,4 @@
   }
  
 }
-
-
-
-.success-message {
-
-  bottom: 10px;
-  left: 50%;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
-}
-
 
