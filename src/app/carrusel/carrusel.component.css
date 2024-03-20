@@ -1,36 +1,43 @@
-.card-img-top {
-    height: 200px;
-    object-fit: cover; 
-    width: 100%;
-  }
-  .carousel{
-    background-size: cover;
-    background-position: center;
-    border-radius: 50px;
-    
-  }
-
-  .btn-primary {
-    color: black;
-    border-color: black; 
-    background-color: white;
+.card {
+  max-width: 940px;
+  width: 100%; 
+  height: auto; 
+  margin: 20px auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between;
 }
+
+.card-img-top {
+  width: 100%; 
+  height: 240px;
+  object-fit: cover; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 18px; 
+  margin-bottom: 10px; 
+}
+
+.card-text {
+  font-size: 14px; 
+  margin-bottom: 10px; 
+}
+
+.btn-primary {
+  padding: 5px 10px;
+  font-size: 14px; 
+}
+
 
 .btn-primary:hover {
-    color: white; 
-    background-color: black; 
-}
-.card{
-  background-color: rgba(255, 255, 255, 0.7);
-
-}
-
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  height: 50px;
-  width: 50px;
-  outline: black;
-  background-color: rgba(0, 0, 0, 0.3);
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  border: 1px solid black;
+  background-color: #0056b3; /* Color más oscuro al pasar el ratón */
+  border-color: #004085; /* Color del borde al pasar el ratón */
 }

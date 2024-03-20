@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Restaurant } from '../Interfaces/restaurant.model';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
 @Component({

@@ -1,13 +1,19 @@
+
+import { Booking } from "./booking.model";
+import { RestaurantLocation } from "./restaurantLocation.model";
+
 export interface Restaurant {
+
     id: number;
     name: string;
-    //location: RestaurantLocation;
-    phone: string;
+    location: RestaurantLocation;
+    phone: number;
     restaurantType: RestaurantType;
     openingTime: Date;
     closingTime: Date;
     averageRating: number;
-    //bookings: Booking[];
+    imageUrl: string;
+    //bookings: Booking;
     //tables: Tables[];
     status: boolean;
   }
