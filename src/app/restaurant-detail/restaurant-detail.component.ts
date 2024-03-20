@@ -7,7 +7,7 @@ import {Booking} from "../Interfaces/booking.model";
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
-  imports: [RouterLink,HttpClientModule],
+  imports: [RouterLink],
   templateUrl: './restaurant-detail.component.html',
   styleUrl: './restaurant-detail.component.css'
 })
@@ -29,5 +29,5 @@ export class RestaurantDetailComponent implements OnInit{
       this.httpClient.get<Restaurant>(url).subscribe(restaurant => this.restaurant = restaurant);
 
     });
-}
+  }
 }

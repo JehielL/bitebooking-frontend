@@ -1,19 +1,16 @@
 <div class="container my-5 p-3 bg-white shadow-sm rounded">
   <div class="row">
     <div class="col-md-6 mb-3 mb-md-0">
-      <img [src]="restaurant?.imageUrl" [alt]="restaurant?.name" class="img-fluid rounded">
+      <img src="https://theworldkeys.com/wp-content/uploads/2022/10/zuma-restaurant-madrid_theworldkeys.webp" alt="Delicious Dish" class="img-fluid rounded">
     </div>
     <div class="col-md-6">
-      <h1 class="h2">{{restaurant?.name}}</h1>
-      <p class="text-muted">Tipo de Cocina: {{restaurant?.restaurantType}}</p>
+      <h1 class="h2">Zuma Madrid</h1>
+      <p class="text-muted">Italiana, Americana</p>
       <div class="mb-3">
-        <p href="tel:123456789" class="btn btn-outline-dark me-2">📞{{restaurant?.phone}}</p>
-        <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
-          @if (restaurant?.status){
-              <p class="bi bi-bag-check-fill btn btn-outline-dark me-2">Vitado</p>
-          } @else {
-              <p class="bi bi-bag-x btn btn-outline-dark me-2">No Visitado</p>
-          }
+        <a href="tel:123456789" class="btn btn-outline-dark me-2">📞 Ver teléfono</a>
+        <button class="btn btn-outline-dark me-2">📱 Llamar</button>
+        <button class="btn btn-outline-dark me-2">💾 Guardar</button>
+        <button class="btn btn-outline-dark ">✅ Visitado</button>
       </div>
       <div class="fw-bold fs-4">$25</div>
     </div>
