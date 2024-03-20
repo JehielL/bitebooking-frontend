@@ -4,10 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { User } from '../Interfaces/user.model';
 
+
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink,HttpClientModule,DatePipe],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })

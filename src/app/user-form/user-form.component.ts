@@ -1,6 +1,6 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Role, UserForm } from '../Interfaces/usuarioForm.model';
+import { Role, User } from '../Interfaces/user.model';
 import { Component } from '@angular/core';
 
 
@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
 
 export class RegisterUserComponent  {
    
-  users: UserForm[] = [];
+  users: User[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
 
   registerUserForm = new FormGroup({
@@ -48,7 +48,7 @@ export class RegisterUserComponent  {
 
   save(){
 
-    const registerUserForm: UserForm ={
+    const registerUserForm: User ={
 
       id: this.registerUserForm.get('id')?.value ?? 0,
       firstName: this.registerUserForm.get('firstName')?.value ?? '',

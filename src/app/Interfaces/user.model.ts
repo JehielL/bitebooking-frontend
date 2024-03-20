@@ -1,4 +1,4 @@
-export interface UserForm { 
+export interface User { 
     id:number;
     firstName: string;
     lastName: string;
