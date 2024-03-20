@@ -1,47 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Booking } from '../Interfaces/booking.model';
-import { NgbAccordionModule, NgbAlertModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NgbAccordionModule, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking-detail',
   standalone: true,
-  imports: [RouterLink, NgbAccordionModule, NgbAlertModule, NgbCarouselModule, HttpClientModule],
+  imports: [HttpClientModule, NgbAccordionModule, RouterLink,DatePipe,NgbAlert],
   templateUrl: './booking-detail.component.html',
-  styleUrl: './booking-detail.component.css',
+  styleUrl: './booking-detail.component.css'
 })
 export class BookingDetailComponent implements OnInit {
 
   booking: Booking | undefined;
+  bookings: Booking[] = []; // Agrega la propiedad bookings y asegúrate de inicializarla
 
-  images: string[] = [
-    "https://offloadmedia.feverup.com/madridsecreto.co/wp-content/uploads/2022/10/27170526/Smoked-Room-Madrid-Spain-Astet-Studio-2-1-1024x683.jpg",
-    "https://cdn.sortiraparis.com/images/80/100789/834071-too-restaurant-too-hotel-paris-photos-menu-entrees.jpg",
-    "https://media.traveler.es/photos/634ec2c26d82486fc0d1774a/16:9/w_2048,h_1152,c_limit/Asia-%201111%20ONES%20(Hong%20Kong,%20China),%20disen%CC%83ado%20por%20M.R.%20STUDIO%20.jpeg"
-  ]
+  showDeleteBookingMessage: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpClient
   ) { }
 
-
   ngOnInit(): void {
-
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
-
       if (!id) return;
-
       const url = 'http://localhost:8080/bookings/' + id;
-
       this.httpClient.get<Booking>(url).subscribe(b => this.booking = b);
-
-
     });
+    this.loadBookings(); // Carga las reservas al inicializar el componente
+  }
 
+  delete(booking: Booking) {
+    const url = 'http://localhost:8080/bookings/' + booking.id;
+    this.httpClient.delete(url).subscribe(response => {
+      this.booking = undefined;
+      this.showDeleteBookingMessage = true;
+    });
+  }
+
+  private loadBookings() {
+    const url = 'http://localhost:8080/bookings';
+    this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
+  }
+
+  hideDeletedBookingMessage() {
+    this.showDeleteBookingMessage = false;
   }
 
 }

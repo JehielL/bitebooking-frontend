@@ -33,7 +33,7 @@
   flex-grow: 1; /* Esto permite que el título y el texto ocupen el espacio disponible */
 }
 
-/* un capricho para que los precios esten siempre debajo */
+/* capricho para que los precios esten siempre debajo */
 .card-price {
   margin-top: auto;
 }

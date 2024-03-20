@@ -1,146 +1,130 @@
-<!--Carrousel-->
+<h1 class="mt-5 mb-5"></h1>
+@if (showDeleteBookingMessage) {
 
+<ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
+}
 
-
-<!--Listado de detalles de la reserva-->
+@if (booking)
+{
 <div class="container">
   <div class="row">
-    <div class="col">
 
-      @if(booking) {
+    <div class="col-md-4 col-sm-12 mt-5">
+      <div class="container mt-5 mb-5">
+        <div class="row card overflow-hidden rounded-4">
+          <img [src]="booking.restaurant" alt="" style="width: 100%;">
+        </div>
+      </div>
+    </div>
 
-      <div class="container">
-        <div class="row">
 
-          <div class="col-lg-4 col-md-4 col-sm-12 mt-5">
-            <div class="container mt-5 mb-5">
-              <div class="row">
-                <div class="col">
-                  @if (images) {
-                  <ngb-carousel style="max-width: 350px;">
-                    @for (image of images; track images) {
-                    <ng-template ngbSlide>
-                      <div class="picsum-img-wrapper">
-                        <img [src]="image" alt="Random first slide" style="max-width: 100%; height: auto;" />
-                      </div>
-                      <div class="carousel-caption">
-                        <h3></h3>
-                        <p></p>
-                      </div>
-                    </ng-template>
-                    }
-                  </ngb-carousel>
-                  }
-                </div>
-              </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <!--Icon grid-->
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom">Reserva: {{booking.id}}</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+
+          <div class="col d-flex align-items-start">
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Reserva</h3>
+              <p>{{booking.title}}</p>
             </div>
-
-
           </div>
-          <div class="col-lg-8 col-md-8 col-sm-12">
-            <!--Icon grid-->
-            <div class="container px-4 py-5" id="icon-grid">
-              <h2 class="pb-2 border-bottom">Reserva: {{booking.id}}</h2>
 
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+          <div class="col d-flex align-items-start">
 
-                <div class="col d-flex align-items-start">
-                  <i class="bi bi-calendar-check flex-shrink-0 me-3 fs-2"></i>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Reserva</h3>
-                    <p>{{booking.title}}</p>
-                  </div>
-                </div>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio</h3>
+              <p>{{booking.price}} $</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
 
-                <div class="col d-flex align-items-start">
-                  <i class="bi bi-currency-dollar flex-shrink-0 me-3 fs-2"></i>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio</h3>
-                    <p>{{booking.price}} $</p>
-                  </div>
-                </div>
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Fecha de Reserva</h3>
+              <p>{{booking.createDate}}</p>
+            </div>
+          </div>
 
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#calendar3"></use>
-                  </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponibilidad</h3>
-                    <p>{{booking.status}}</p>
-                  </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#home"></use>
-                  </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Observaciones:</h3>
-                    <br>  
-                    <p>{{booking.observations}}</p>
-                  </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#speedometer2"></use>
-                  </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Terraza</h3>
-                    <p>{{booking.interior}}</p>
-                  </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#toggles2"></use>
-                  </svg>
-                  <div class="col d-flex align-items-start">
-                    <i class="bi bi-percent flex-shrink-0 me-3 fs-2"></i>
-                    <div>
-                      
-                      <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descuento</h3>
-                      <p>{{booking.discount}} %</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#geo-fill"></use>
-                  </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Numero de mesa</h3>
-                    <p>{{booking.numTable}}</p>
-                  </div>
-                </div>
-                <div class="col d-flex align-items-start">
-                  <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em">
-                    <use xlink:href="#tools"></use>
-                  </svg>
-                  <div>
-                    <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio total</h3>
-                    <p>{{booking.totalPrice}} $ </p>
-                  </div>
-                </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Estatus de reserva</h3>
+              @if (booking.status) {
+              <span class="badge text-bg-success mt-3">Activa</span>
+              } @else{
+              <span class="badge text-bg-danger mt-3">Inactiva</span>
+              }
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Menú</h3>
+              <br>
+              <a class="badge text-bg-secondary text-decoration-none"
+                [routerLink]="['/menus', booking.menu.id, 'detail']">
+                {{booking.menu.title}}
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Interior</h3>
+              <div>
+
+                @if (booking.interior) {
+                <span class="badge text-bg-success mt-3">Sí</span>
+                } @else{
+                <span class="badge text-bg-danger mt-3">No</span>
+                }
               </div>
             </div>
-            <button class="btn btn-sucess" [routerLink]="['/booking', booking.id, 'update']">Editar Reserva</button>
+          </div>
+          <div class="col d-flex align-items-start">
 
+            <div class="col d-flex align-items-start">
+              <i class="bi bi-percent flex-shrink-0 me-3 fs-2"></i>
+              <div>
+
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descuento</h3>
+                <p>{{booking.discount}} %</p>
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Numero de mesa</h3>
+              <p>{{booking.numTable}}</p>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Precio total</h3>
+              <p>{{booking.totalPrice}} </p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="buttons">
 
+        <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
+          Reserva</button>
 
-      } @else {
+        <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
 
-      <ngb-alert [dismissible]="false" type="danger">
-        <strong>Error:</strong> No se ha encontrado el producto.
-      </ngb-alert>
-
-
-      }
-
+      </div>
     </div>
   </div>
 </div>
-<!--Acordeon preguntas y respuestas-->
+}
+
+
 <div class="container mb-5">
   <div class="row">
     <div class="col">
@@ -219,8 +203,8 @@
       <hr />
 
 
-      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.expandAll()">Abrir todos</button>
-      <button class="btn btn-sm btn-outline-primary me-2" (click)="accordion.collapseAll()">Cerrar todos</button>
+      <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.expandAll()">Abrir todos</button>
+      <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.collapseAll()">Cerrar todos</button>
     </div>
   </div>
 </div>

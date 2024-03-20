@@ -6,7 +6,8 @@ import { BookingDetailComponent } from './booking-detail/booking-detail.componen
 import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
-import { UserFormComponent } from './user-form/user-form.component';
+import { RegisterComponent } from './register/register.component';
+import { RegisterUserComponent } from './user-form/user-form.component';
 import { RestaurantFromComponent } from './restaurant-from/restaurant-from.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
@@ -39,32 +40,38 @@ export const routes: Routes = [
   path:'user-list',
   component: UserListComponent
 },
-{
-   path: 'user-detail',
-   component: UserDetailComponent
-},
+ 
  {
-   path:'user-form',
-   component: UserFormComponent
+   path:'registro',
+   component: RegisterComponent
+ },
+ {
+   path:'user',
+   component: RegisterUserComponent
  },
  {
    path:'restaurant-from',
    component: RestaurantFromComponent
  },
  {
-    path: 'booking',
+    path: 'bookings',
     component: BookingListComponent
  },
  {
-   path: 'booking/:id/detail',
+   path: 'bookings/:id/detail',
    component: BookingDetailComponent
 },
 {
-   path: 'booking/:id/update',
+   path: 'bookings/:id/update',
    component: BookingFormComponent
 },{
-   path: 'booking/form',
+   path: 'bookings/create',
    component: BookingFormComponent
+},
+{
+  path: 'bookings/:id/update',
+  component: BookingFormComponent
+  
 },
 {
    path:'restaurant-list',

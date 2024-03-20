@@ -4,17 +4,15 @@ import { RestaurantLocation } from "./restaurantLocation.model";
 import { RestaurantType } from "./restaurantType.model";
 
 export interface Restaurant {
-
     id: number;
     name: string;
-    location: RestaurantLocation;
-    phone: number;
+    //location: RestaurantLocation;
+    phone: string;
     restaurantType: RestaurantType;
     openingTime: Date;
     closingTime: Date;
     averageRating: number;
-    imageUrl: string;
-    //bookings: Booking;
+    //bookings: Booking[];
     //tables: Tables[];
     status: boolean;
   }
