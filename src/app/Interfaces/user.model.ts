@@ -1,4 +1,4 @@
-export interface UserForm { 
+export interface User { 
     id:number;
     firstName: string;
     lastName: string;
@@ -7,6 +7,7 @@ export interface UserForm {
     password: string;
     phone: string;
     role: Role;
+    fotourl: string;
 }
 
 export enum Role {
