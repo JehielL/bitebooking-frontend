@@ -1,7 +1,8 @@
-import { HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { User } from '../Interfaces/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -59,7 +60,7 @@ export class UserListComponent implements OnInit{
     this.loadUsers();
   } */
 
-  delete(user: UserForm) {
+  delete(user: User) {
     const url = 'http://localhost:8080/user/' + user.id;
     this.httpClient.delete(url).subscribe(response => {
       // Volver a cargar los usuarios después de eliminar uno

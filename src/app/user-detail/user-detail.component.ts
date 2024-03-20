@@ -2,8 +2,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { UserForm } from '../Interfaces/usuarioForm.model';
+
 import { NgbAlert, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../Interfaces/user.model';
 
 @Component({
   selector: 'app-user-detail',
@@ -14,7 +15,7 @@ import { NgbAlert, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UserDetailComponent implements OnInit {
 
-  users: UserForm | undefined;
+  users: User| undefined;
 
   images: string[] = [
 
@@ -34,7 +35,7 @@ export class UserDetailComponent implements OnInit {
 
     const url = 'http://localhost:8080/user/' + id;
 
-    this.httpClient.get<UserForm>(url).subscribe(b => this.users = b);
+    this.httpClient.get<User>(url).subscribe(b => this.users = b);
     })
   }
 

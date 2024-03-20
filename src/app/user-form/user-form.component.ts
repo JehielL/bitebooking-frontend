@@ -48,7 +48,7 @@ export class RegisterUserComponent  {
 
   save(){
 
-    const registerUserForm: UserForm ={
+    const registerUserForm: User ={
       id: this.registerUserForm.get('id')?.value ?? 0,
       firstName: this.registerUserForm.get('firstName')?.value ?? '',
       lastName: this.registerUserForm.get('lastName')?.value ?? '',
