@@ -13,6 +13,6 @@ import { User } from '../Interfaces/user.model';
 })
 export class UserDetailComponent {
   user: User[] =[];
-  location 
+  
 
 }
