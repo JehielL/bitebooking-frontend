@@ -7,6 +7,7 @@ export interface User {
     password: string;
     phone: string;
     role: Role;
+    fotourl: string;
 }
 
 export enum Role {

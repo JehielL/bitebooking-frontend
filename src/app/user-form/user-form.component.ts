@@ -48,8 +48,7 @@ export class RegisterUserComponent  {
 
   save(){
 
-    const registerUserForm: User ={
-
+    const registerUserForm: UserForm ={
       id: this.registerUserForm.get('id')?.value ?? 0,
       firstName: this.registerUserForm.get('firstName')?.value ?? '',
       lastName: this.registerUserForm.get('lastName')?.value ?? '',
@@ -57,8 +56,8 @@ export class RegisterUserComponent  {
       email: this.registerUserForm.get('email')?.value ?? '',
       password: this.registerUserForm.get('password')?.value ?? '',
       phone: this.registerUserForm.get('phone')?.value ?? '',
-      role: this.registerUserForm.get('role')?.value ?? Role.USER
-    
+      role: this.registerUserForm.get('role')?.value ?? Role.USER,
+      fotourl: this.registerUserForm.get('fotourl')?.value ?? '',
     }
     
 
