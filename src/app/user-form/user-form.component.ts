@@ -72,5 +72,5 @@ export class RegisterUserComponent  {
     //this.registerUserForm.reset();
     
   }
-  
+  //comentario
 }
