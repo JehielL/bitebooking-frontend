@@ -11,6 +11,7 @@ import { RestaurantFromComponent } from './restaurant-from/restaurant-from.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 
 export const routes: Routes = [
    {
@@ -25,6 +26,10 @@ export const routes: Routes = [
  {
    path:'user-list/user-detail',
    component: UserDetailComponent
+},
+{
+   path:'dashboard-user',
+   component: DashboardUserComponent
 },
  {
    path:'user-list',
