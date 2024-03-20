@@ -1,19 +1,23 @@
-import { Menu } from "./menu.model";
-import { Restaurant } from "./restaurant.model";
 
 export interface Booking {
-
     id: number;
-    createDate: Date;
+    date: Date;
     title: string;
     price: number;
     numUsers: number;
     observations: string;
-    status: boolean;
+    status: string;
     discount: number;
     interior: boolean;
     numTable: number;
     totalPrice: number;
-    menu: Menu,
-    restaurant: Restaurant
-}
+    imageUrl: string;
+   // available: false;
+    //Many to One
+    //user: User;
+    
+    //Many to one
+    //restaurant: Restaurant;
+    //Many to one
+    //menu: Menu;
+    }

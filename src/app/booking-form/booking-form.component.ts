@@ -1,128 +1,116 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Booking } from '../Interfaces/booking.model';
-import { ActivatedRoute, Router } from '@angular/router';
-
-import { Menu } from '../Interfaces/menu.model';
-import { Restaurant } from '../Interfaces/restaurant.model';
-
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule, RouterLink],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent implements OnInit {
-  
- /* bookingForm = this.fb.group({
-    id: [0],
-    title: [''],
-    numTable: [0.0],
-    menu: this.fb.group({
-      id: [0],
-      title: [''],
-      category: [''],
-      active: [false]
-    })
-  });*/
 
-  bookingForm = new FormGroup({
-    id: new FormControl<number>(0),
-    createDate: new FormControl<Date>(new Date()),
-    title: new FormControl<string>(''),
-    price: new FormControl<number>(0),
-    numUsers: new FormControl<number>(0),
-    observations: new FormControl<string>(''),
-    status: new FormControl<boolean>(true),
-    discount: new FormControl<number>(0),
-    interior: new FormControl<boolean>(true),
-    numTable: new FormControl<number>(0),
-    totalPrice: new FormControl<number>(0), 
-    menu: new FormControl(),
-    restaurant: new FormControl()
+  bookingForm = this.fb.group({
+
+    id: [0],
+    date: [""],
+    title: [""],
+    price: [0.0],
+    numUsers: 0,
+    observations: [""],
+    status: [""],
+    discount: 0,
+    interior: false,
+    numTable: 0,
+    totalPrice: 0,
+    imageUrl: ""
+
   });
 
-  
-
-
-
-  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
-  menus: Menu[] = []; // array de autores para asociar un autor al libro
-  restaurants: Restaurant[] = [];
-
-  constructor(
-    private fb: FormBuilder,
-    private httpClient: HttpClient,
+  constructor(private fb: FormBuilder, 
+    private httpClient: HttpClient, 
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
-  }
+    private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    // cargar autores de backend para el selector de autores en el formulario
-    this.httpClient.get<Menu[]>('http://localhost:8080/menus')
-      .subscribe(menus => this.menus = menus);
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants')
-      .subscribe(restaurants => this.restaurants = restaurants);
+    ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe(params => {
-      
-      const id = params['id'];
-      if (!id) return;
+      this.activatedRoute.params.subscribe(params => {
+        
+        const id = params['id'];
+        if(!id) return;
+        
+        this.httpClient.get<Booking>('http://localhost:8080' + id)
+        .subscribe(bookingFromBackend => {
+          this.bookingForm.reset({
+            id: bookingFromBackend.id,
+            title: bookingFromBackend.title,
 
-      this.httpClient.get<Booking>('http://localhost:8080/bookings/' + id).subscribe(bookingFromBackend => {
-        // cargar el libro obtenido en el formulario bookForm
-        this.bookingForm.reset({
-          id: bookingFromBackend.id,
-          createDate: bookingFromBackend.createDate,
-          title: bookingFromBackend.title,
-          price: bookingFromBackend.price,
-          numUsers: bookingFromBackend.numUsers,
-          observations: bookingFromBackend.observations,
-          status: bookingFromBackend.status,
-          discount: bookingFromBackend.discount,
-          interior: bookingFromBackend.interior,
-          numTable: bookingFromBackend.numTable,
-          totalPrice: bookingFromBackend.totalPrice,
-          menu: bookingFromBackend.menu,
-          restaurant: bookingFromBackend.restaurant,
-      
+          });
+
         });
-
-        // marcar boolean true isUpdate
-        this.isUpdate = true;
-
       });
-    });
-  }
+    }
+    
 
   save() {
-    const booking: Booking = this.bookingForm.value as Booking;
 
-    if (this.isUpdate) {
-      const url = 'http://localhost:8080/bookings/' + booking.id;
-      this.httpClient.put<Booking>(url, booking).subscribe(bookFromBackend => {
-        this.router.navigate(['/bookings', bookFromBackend.id, 'detail']);
-      });
+    console.log("Guardando booking");
 
-    } else {
-      const url = 'http://localhost:8080/bookings';
-      this.httpClient.post<Booking>(url, booking).subscribe(bookFromBackend => {
-        this.router.navigate(['/bookings', bookFromBackend.id, 'detail']);
-      });
+    const id = this.bookingForm.get('id')?.value ?? 0;
+    const dateValue = this.bookingForm.get('date')?.value ?? '01-01-2022';
+    const date = new Date(dateValue);
+    const title = this.bookingForm.get('title')?.value ?? 'titulo por defecto';
+    const price = this.bookingForm.get('price')?.value ?? 0.0;
+    const numUsers = this.bookingForm.get('numUsers')?.value ?? 5;
+    const observations = this.bookingForm.get('observations')?.value ?? 'Observacion por defecto';
+    const status = this.bookingForm.get('status')?.value ?? 'Categoria por defecto';
+    const discount = this.bookingForm.get('discount')?.value ?? 0;
+    const interior = this.bookingForm.get('interior')?.value ?? true;
+    const numTable = this.bookingForm.get('numTable')?.value ?? 5;
+    const totalPrice = this.bookingForm.get('totalPrice')?.value ?? 320.40;
+    const imageUrl = this.bookingForm.get('imageUrl')?.value ?? '';
+    //const topics = this.bookingForm.get('menu')?.value ?? [];
+
+
+
+
+
+    // Crear un objeto utilizando los valores extraidos
+
+    const bookingToSave: Booking = {
+
+      id: id,
+      date: date,
+      title: title,
+      price: price,
+      numUsers: numUsers,
+      observations: observations,
+      status: status,
+      discount: discount,
+      interior: interior,
+      numTable: numTable,
+      totalPrice: totalPrice,
+      imageUrl: imageUrl
+
+
     }
-  } 
 
-  compareObjects(o1: any, o2: any): boolean{
+    console.log(bookingToSave)
 
-    if (o1 && o2){
-      return o1.id == o2.id;
-    }
+    const url = 'http://localhost:8080/bookings';
 
-    return o1 == o2;
+    this.httpClient.post<Booking>(url, bookingToSave).subscribe({
+      next: (bookingFromBackend) => this.router.navigate(['/booking', bookingFromBackend.id, 'detail']),
+      error: (error) => window.alert("Datos incorrectos")
+
+    });
   }
 
 
 }
+
+
+

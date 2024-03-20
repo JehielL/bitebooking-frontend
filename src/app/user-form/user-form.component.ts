@@ -1,6 +1,7 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Role, UserForm } from '../Interfaces/usuarioForm.model';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Component } from '@angular/core';
 
 
@@ -12,14 +13,14 @@ import { Component } from '@angular/core';
   styleUrl: './user-form.component.css'
 })
 
-export class RegisterUserComponent  {
+export class UserFormComponent  {
    
   users: UserForm[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
 
   registerUserForm = new FormGroup({
     id: new FormControl (0),
-    firstName: new FormControl('',Validators.required),
+    firtsName: new FormControl('',Validators.required),
     lastName: new FormControl('',Validators.required),
     birthdayDate: new FormControl(new Date()),
     email: new FormControl('',[Validators.required, Validators.email]),
@@ -31,7 +32,12 @@ export class RegisterUserComponent  {
   {validators: this.passwordConfirmValidator}
   );
 
-  constructor(private httpClient : HttpClient){}
+  constructor(private httpClient : HttpClient,
+              private router: Router,  // esto es para navegar
+              private activatedRoute: ActivatedRoute
+  ){}
+  
+  
  
 
   passwordConfirmValidator(control: AbstractControl){
@@ -51,7 +57,7 @@ export class RegisterUserComponent  {
     const registerUserForm: UserForm ={
 
       id: this.registerUserForm.get('id')?.value ?? 0,
-      firstName: this.registerUserForm.get('firstName')?.value ?? '',
+      firtsName: this.registerUserForm.get('firtsName')?.value ?? '',
       lastName: this.registerUserForm.get('lastName')?.value ?? '',
       birthdayDate: this.registerUserForm.get('birthdayDate')?.value ?? new Date(),
       email: this.registerUserForm.get('email')?.value ?? '',
@@ -67,7 +73,10 @@ export class RegisterUserComponent  {
     console.log(registerUserForm);
 
     const url= 'http://localhost:8080/user';
-    this.httpClient.post(url,registerUserForm ).subscribe(result => console.log(result));
+    this.httpClient.post(url,registerUserForm ).subscribe(result => {
+      console.log(result);
+    this.router.navigate(['user-detail'])
+    });
 
     //this.registerUserForm.reset();
     

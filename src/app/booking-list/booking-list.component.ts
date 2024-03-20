@@ -1,52 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Booking } from '../Interfaces/booking.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
-import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-booking-list',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, NgbAlertModule, DatePipe],
+  imports: [RouterLink, HttpClientModule],
   templateUrl: './booking-list.component.html',
   styleUrl: './booking-list.component.css'
 })
 export class BookingListComponent implements OnInit {
 
-  bookings: Booking[] = [];
-  showDeleteBookingMessage: boolean = false;
+  booking: Booking | undefined;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private activatedRoute : ActivatedRoute){}
+  
 
   ngOnInit(): void {
+      console.log("booking details");
 
-    this.loadBookings();
-  }
+      this.activatedRoute.params.subscribe(params => {
+      console.log(params)
+      console.log(params['id']);
 
-  delete(booking: Booking) {
+      this.booking = 
+    {
+    id: 1,
+    date: new Date(),
+    title: "Reserva Jehiel",
+    numUsers: 5,
+    price: 300.0,
+    observations: "Reserva prueba",
+    status: "confirmada",
+    discount: 300,
+    interior: true,
+    numTable: 4,
+    totalPrice: 300,
+    imageUrl: "",
+    //Many to one
+    //restaurant: Restaurant;
+    //Many to one
+    
 
-    const url = 'http://localhost:8080/bookings/' + booking.id;
-    this.httpClient.delete(url).subscribe(response => {
+    }
+    
 
-      this.loadBookings();
-      this.showDeleteBookingMessage = true;
-    })
-  }
+      
+  });
 
-  private loadBookings() {
-
-    const url = 'http://localhost:8080/bookings';
-    this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
-  }
-
-  hideDeletedBookingMessage() {
-
-    this.showDeleteBookingMessage = false;
-  }
-
-
-
+}
 }
 
 

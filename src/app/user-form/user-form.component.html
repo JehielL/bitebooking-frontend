@@ -1,119 +1,122 @@
 
-
 <div class="container ">
- 
-<form [formGroup]="registerUserForm" (ngSubmit)="save()">
-  <div class="text-center">
-  </div>
   <div class="row"> 
-          <div class="col-12 text-center">  
-            <h1 class="h3 mb-3 fw-normal">Registrate</h1>
-          </div>  
-          <div class="col-6 form-floating mb-3">
-            <input type="text" class="form-control" id="firstName" placeholder="firstName" formControlName="firstName">
-            <label for="firstName">First Name *</label>
-            @if (registerUserForm.controls.firstName.touched && registerUserForm.controls.firstName.errors) {
-              <div>
-                <small class="text-danger">Se Requiere un first Name</small>
-              </div>
-            }
-          </div>
-          <div class="col-6 form-floating mb-3">
-            <input type="text" class="form-control" id="lastName" placeholder="lastName" formControlName="lastName">
-            <label for="lastName">Last Name *</label>
-            @if (registerUserForm.controls.lastName.touched && registerUserForm.controls.lastName.errors) {
-              <div>
-                <small class="text-danger">Se Requiere un Last Name</small>
-              </div>
-            }
-          </div>
-          <div class="col-6 form-floating mb-3">
-            <input type="datetime-local" class="form-control" id="birthdayDate"  formControlName="birthdayDate" >
-            <label for="birthdayDate" >Fecha de Nacimiento</label>
-          </div>
-          <div class="col-6 form-floating mb-3">
-            <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
-            <label for="phone">Telefono Móvil *</label>
-            @if (registerUserForm.controls.phone.touched && registerUserForm.controls.phone.errors) {
-              <div>
-                @if (registerUserForm.controls.phone.errors['required']) {
-                  <small class="text-danger">Se Requiere un Phone</small>
-                }
-                @if (registerUserForm.controls.phone.errors['pattern']) {
-                  <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
-                }
-              </div>
-            }
-          </div>
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="password" placeholder="name@example.com" formControlName="email">
-            <label for="email">Email address *</label>
-            @if (registerUserForm.controls.email.touched && registerUserForm.controls.email.errors) {
-              <div>
-                @if (registerUserForm.controls.email.errors['required']) {
-                  <small class="text-danger">Se Requiere un Email</small>
-                }
-                @if (registerUserForm.controls.email.errors['email']) {
-                  <small class="text-danger">El Formato del Email es Incorrecto</small>
-                }               
-              </div>
-            }
-           
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="Password" placeholder="password" formControlName="password">
-            <label for="password">Password *</label>
-            
-            
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordConfirm" placeholder="password" formControlName="passwordConfirm">
-            <label for="passwordConfirm">Confirme Password *</label>
-            @if(
-              registerUserForm.controls.passwordConfirm.touched &&
-                (
-                  registerUserForm.controls.password.errors ||
-                  registerUserForm.controls.passwordConfirm.errors ||
-                  registerUserForm.getError('confirmError')
-                )
-              ) {
-                <small class="text-danger">
-                  La contraseña y confirmación son obligatorias, deben coincidir y estar comprendidas entre 8 y 30 caracteres.
-                </small>
-            }
-              
-          </div>
-          <fieldset>
-            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="role" id="role" formControlName="role" value="{{ roles.USER }}">
-                <label class="form-check-label" for="gridRadios1">
-                  Particular
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="role" id="role"  value="{{ roles.ADMIN }}" formControlName="role">
-                <label class="form-check-label" for="gridRadios2">
-                  Empresa restauración
-                </label>
-              </div> 
-            </div>
-          </fieldset>
-          
-          <div class="text-center">
-            <button class="btn btn-primary w-100 py-2" type="submit" [disabled]="registerUserForm.invalid" >Guardar</button>
-            @if (registerUserForm.invalid) {
-              <small class="text-danger">Completa los Campos Obligatorios</small>
-            }
-          </div>
-         
-          
-          <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
-    </div>      
-  </form>
+    <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
+      <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
+      <form [formGroup]="registerUserForm" (ngSubmit)="save()">
     
+            <div class="text-center">  
+              <h1 class="h3 mb-3 fw-normal">Registrate</h1>
+            </div>  
+            <div class=" form-floating mb-3">
+              <input type="text" class="form-control" id="firtsName" placeholder="firtsName" formControlName="firtsName">
+              <label for="firtsName">First Name *</label>
+              @if (registerUserForm.controls.firtsName.touched && registerUserForm.controls.firtsName.errors) {
+                <div>
+                  <small class="text-danger">Se Requiere un firts Name</small>
+                </div>
+              }
+            </div>
+            <div class=" form-floating mb-3">
+              <input type="text" class="form-control" id="lastName" placeholder="lastName" formControlName="lastName">
+              <label for="lastName">Last Name *</label>
+              @if (registerUserForm.controls.lastName.touched && registerUserForm.controls.lastName.errors) {
+                <div>
+                  <small class="text-danger">Se Requiere un Last Name</small>
+                </div>
+              }
+            </div>
+            <div class="form-floating mb-3">
+              <input type="datetime-local" class="form-control" id="birthdayDate"  formControlName="birthdayDate" >
+              <label for="birthdayDate" >Fecha de Nacimiento</label>
+            </div>
+            <div class=" form-floating mb-3">
+              <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+              <label for="phone">Telefono Móvil *</label>
+              @if (registerUserForm.controls.phone.touched && registerUserForm.controls.phone.errors) {
+                <div>
+                  @if (registerUserForm.controls.phone.errors['required']) {
+                    <small class="text-danger">Se Requiere un Phone</small>
+                  }
+                  @if (registerUserForm.controls.phone.errors['pattern']) {
+                    <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
+                  }
+                </div>
+              }
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="password" placeholder="name@example.com" formControlName="email">
+              <label for="email">Email address *</label>
+              @if (registerUserForm.controls.email.touched && registerUserForm.controls.email.errors) {
+                <div>
+                  @if (registerUserForm.controls.email.errors['required']) {
+                    <small class="text-danger">Se Requiere un Email</small>
+                  }
+                  @if (registerUserForm.controls.email.errors['email']) {
+                    <small class="text-danger">El Formato del Email es Incorrecto</small>
+                  }               
+                </div>
+              }
+            
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="Password" placeholder="password" formControlName="password">
+              <label for="password">Password *</label>
+              
+              
+            </div>
+            <div class="form-floating ">
+              <input type="password" class="form-control" id="passwordConfirm" placeholder="password" formControlName="passwordConfirm">
+              <label for="passwordConfirm">Confirme Password *</label>
+              @if(
+                registerUserForm.controls.passwordConfirm.touched &&
+                  (
+                    registerUserForm.controls.password.errors ||
+                    registerUserForm.controls.passwordConfirm.errors ||
+                    registerUserForm.getError('confirmError')
+                  )
+                ) {
+                  <small class="text-danger">
+                    La contraseña y confirmación son obligatorias, deben coincidir y estar comprendidas entre 8 y 30 caracteres.
+                  </small>
+              }
+                
+            </div>
+            <fieldset>
+              <legend class="col-form-label col-sm-2 pt-0 mb-3"></legend>
+              <div class="col-sm-10">
+                <div class="form-check ">
+                  <input class="form-check-input" type="radio" name="role" id="role" formControlName="role" value="{{ roles.USER }}">
+                  <label class="form-check-label" for="gridRadios1">
+                    Usuario
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input" type="radio" name="role" id="role"  value="{{ roles.ADMIN }}" formControlName="role">
+                  <label class="form-check-label" for="gridRadios2">
+                    Empresa restauración
+                  </label>
+                </div> 
+              </div>
+            </fieldset>
+            
+            <div class="float-end mb-3">
+              @if (registerUserForm.invalid) {
+                <small class="text-danger mb-3">Completa los Campos Obligatorios</small>
+                }
+              <div class="mb-3">
+                <button class="custom-btn mb-3" type="submit" [disabled]="registerUserForm.invalid" >Guardar</button>
+                
+                <button class="custom-btn " type="submit"  >Cancelar</button>
+              </div>
+            </div>
 
-  
-
-</div>
+            <div>
+              <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
+            </div>
+      </form>
+    </div>  
+  </div>  
+</div>  
