@@ -1,123 +1,150 @@
 <div class="container-fluid">
-    <div class="row">
-      <div class="col mt-5">
-        <div class="card card-cover rounded-4 shadow-lg bg-dark text-white "
-          style="background-image: url('+ booking.restaurant.imageUrl ');">
-          
-          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-            <h3 class="mt-2 mb-4 display-6 lh-1 fw-bold"></h3>
-            <div class="container-fluid reservation-info">
-              <p> Reserva a nombre de: {{ bookingForm.get('title')?.value }}</p>
-              <p> Fecha de reservación: {{ bookingForm.get('createDate')?.value }}</p>
-              <p>Precio por persona: {{ bookingForm.get('price')?.value }}</p>
-              <p> Numero de Clientes: {{ bookingForm.get('numUsers')?.value }}</p>
-              <p>Observaciones: {{ bookingForm.get('observations')?.value }}</p>
-              <p>Estado de reserva: {{ bookingForm.get('status')?.value }}</p>
-              <p>Descuento: {{ bookingForm.get('discount')?.value }}</p>
-              <p>Numero de mesa: {{ bookingForm.get('numTable')?.value }}</p>
-              <p>Interior: {{ bookingForm.get('interior')?.value }}</p>
-            </div>
-            <ul class="d-flex list-unstyled mt-3">
-              <li class="me-auto">
-                <a routerLink="/booking/1/detail">
-                  <i class="bi bi-calendar-check-fill fs-1 custom-calender"></i>
-                </a>
-                <br>
-                <i class="bi bi-geo-alt"></i>
-              </li>
-            </ul>
+  <div class="row">
+    <div class="col mt-5 custom">
+      <div class="card card-cover rounded-4 shadow-lg bg-dark text-white">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+          <h3 class="mt-2 mb-4 display-6 lh-1 fw-bold"></h3>
+          <div class="container-fluid reservation-info">
+            <p> Reserva a nombre de: {{ bookingForm.get('title')?.value }}</p>
+            <p> Fecha de reservación: {{ bookingForm.get('createDate')?.value }}</p>
+            <p> Numero de Clientes: {{ bookingForm.get('numUsers')?.value }}</p>
+            <p>Observaciones: {{ bookingForm.get('observations')?.value }}</p>
+            <p>Estado de reserva: {{ bookingForm.get('status')?.value }}</p>
+            <p>Descuento: {{ bookingForm.get('discount')?.value }}</p>
+            <p>Numero de mesa: {{ bookingForm.get('numTable')?.value }}</p>
+            <p>Interior: {{ bookingForm.get('interior')?.value }}</p>
           </div>
+          <ul class="d-flex list-unstyled mt-3">
+            <li class="me-auto">
+              <a routerLink="/booking/1/detail">
+                <i class="bi bi-calendar-check-fill fs-1 custom-calender"></i>
+              </a>
+              <br>
+              <i class="bi bi-geo-alt"></i>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col">
-  
-        @if (isUpdate) {
-        <h1 class="mt-5 mb-5">Actualizar reserva existente con id {{bookingForm.get('id')?.value}}</h1>
-        } @else {
-        <h1 class="mt-5 mb-5">Crear una nueva reserva</h1>
+    </div>
+    <div class="col form-side">
+
+      @if (isUpdate) {
+      <h1 class="mt-5 mb-5">Actualizar reserva existente con id {{bookingForm.get('id')?.value}}</h1>
+      } @else {
+      <h1 class="mt-5 mb-5">Crear una nueva reserva</h1>
+      }
+
+      <form [formGroup]="bookingForm" (ngSubmit)="save()">
+
+        <input type="hidden" formControlName="id">
+
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="title" formControlName="title">
+          <label for="title">Titulo Reserva</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+          <input type="datetime-local" class="form-control" id="createDate" formControlName="createDate">
+          <label for="createDate">Fecha de Reservación.</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="numUsers" formControlName="numUsers" step="1"
+            (change)="calculatePrice()">
+          <label for="numUsers">Numero de Usuarios</label>
+        </div>
+
+        <div class="mb-3">
+          <label for="observations" class="form-label">Observaciones de reserva</label>
+          <input type="text" class="form-control" id="observations" formControlName="observations">
+        </div>
+        <div class="mb-3">
+          <label for="discount" class="form-label">Descuento (%)</label>
+          <input type="number" class="form-control" id="discount" formControlName="discount" step="1">
+        </div>
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="numTable" formControlName="numTable" step="1">
+          <label for="numTable">Numero de mesa</label>
+        </div>
+
+
+
+        <div class="form-floating mb-3">
+          <select class="form-select" id="restaurant" formControlName="restaurant" [compareWith]="compareObjects">
+
+
+            <!-- iterar sobre el array de authors mostrando cada uno -->
+            @for (restaurant of restaurants; track restaurant.id) {
+            <option [ngValue]="restaurant">{{restaurant.name}}</option>
+            }
+
+          </select>
+          <label for="restaurant">Restaurant asociado</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <select class="form-select" id="menu" formControlName="menu" [compareWith]="compareObjects">
+
+
+            <!-- iterar sobre el array de authors mostrando cada uno -->
+            @for (menu of menus; track menu.id) {
+            <option [ngValue]="menu">{{menu.title}}</option>
+            }
+
+          </select>
+          <label for="menu">Menu asociado</label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="status" formControlName="status">
+          <label class="form-check-label" for="status" style="cursor:pointer;">
+            Reserva confirmada(sí o no)
+          </label>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="interior" formControlName="interior">
+          <label class="form-check-label" for="interior">
+            Interior
+          </label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="isPremium" formControlName="isPremium"
+            (change)="calculatePrice()">
+          <label class="form-check-label" for="isPremium">
+            Salon VIP
+          </label>
+        </div>
+
+
+        @if(vipRoom > 0) {
+        <li class="list-group-item mb-5 d-flex justify-content-between lh-sm mt-3 ">
+          <div>
+            <h6 class="my-0">Servicio de comedor / salon privado.</h6>
+            <small class="text-body-secondary">vip</small>
+          </div>
+          <span class="text-body-secondary" id="isPremium">{{vipRoom}} €</span>
+        </li>
         }
-  
-        <form [formGroup]="bookingForm" (ngSubmit)="save()">
-  
-          <input type="hidden" formControlName="id">
-  
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="title" formControlName="title">
-            <label for="title">Titulo Reserva</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="price" formControlName="price" step="1">
-            <label for="price">Precio (€)</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="datetime-local" class="form-control" id="createDate" formControlName="createDate">
-            <label for="createDate">Fecha de Reservación.</label>
-          </div>
-  
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="numUsers" formControlName="numUsers" step="1">
-            <label for="numUsers">Numero de Usuarios</label>
-          </div>
-          <div class="mb-3">
-            <label for="observations" class="form-label">Observaciones de reserva</label>
-            <input type="text" class="form-control" id="observations" formControlName="observations">
-          </div>
-          <div class="mb-3">
-            <label for="discount" class="form-label">Descuento (%)</label>
-            <input type="number" class="form-control" id="discount" formControlName="discount" step="1">
-          </div>
-  
-          <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="numTable" formControlName="numTable" step="1">
-            <label for="numTable">Numero de mesa</label>
-          </div>
-  
-  
-  
-          <div class="form-floating mb-3">
-            <select class="form-select" id="restaurant" formControlName="restaurant" [compareWith]="compareObjects">
-  
-  
-              <!-- iterar sobre el array de authors mostrando cada uno -->
-              @for (restaurant of restaurants; track restaurant.id) {
-              <option [ngValue]="restaurant">{{restaurant.name}}</option>
-              }
-  
-            </select>
-            <label for="restaurant">Restaurant asociado</label>
-          </div>
-  
-          <div class="form-floating mb-3">
-            <select class="form-select" id="menu" formControlName="menu" [compareWith]="compareObjects">
-  
-  
-              <!-- iterar sobre el array de authors mostrando cada uno -->
-              @for (menu of menus; track menu.id) {
-              <option [ngValue]="menu">{{menu.title}}</option>
-              }
-  
-            </select>
-            <label for="menu">Menu asociado</label>
-          </div>
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="status" formControlName="status">
-            <label class="form-check-label" for="status" style="cursor:pointer;">
-              Reserva confirmada(sí o no)
-            </label>
-          </div>
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="interior" formControlName="interior">
-            <label class="form-check-label" for="interior">
-              Interior
-            </label>
-          </div>
-  
-          @if (isUpdate) {
-          <button class="btn btn-success" type="submit">Actualizar</button>
-          } @else {
-          <button class="btn btn-success" type="submit">Crear</button>
-          }
-        </form>
-      </div>
+
+
+        <div class="form floating mb-3 mt-3">
+          <label for="extraService">Servicios Adicionales</label>
+          <select class="form-select" id="extraService" formControlName="extraService" >
+            <option value="Vallet Parking">Vallet Parking</option>
+            <option value="Bar incluido">Bar incluido</option>
+            <option value="Ropero">Ropero</option>
+          </select>
+          
+        </div>
+
+        @if (isUpdate) {
+
+          
+        <button class="btn" type="submit">Actualizar</button>
+        } @else {
+        <button class="btn " type="submit">Crear</button>
+        }
+      </form>
     </div>
   </div>
+</div>

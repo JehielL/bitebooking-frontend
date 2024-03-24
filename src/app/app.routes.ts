@@ -12,6 +12,8 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { MenuFormComponent } from './menu-form/menu-form.component';
 
 export const routes: Routes = [
    {
@@ -91,6 +93,16 @@ export const routes: Routes = [
    path:'restaurant/:id/detail',
    component: RestaurantDetailComponent
  },
+ {
+   path: 'menus',
+   component: MenuListComponent
+},
+{
+   path: 'menus/create',
+   component: MenuFormComponent
+
+},
+ 
 {
     path: '**',
     component:NotFoundComponent
