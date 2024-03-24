@@ -1,9 +1,11 @@
 
 <div class="container px-4 py-5 custom-background" id="custom-cards">
     <div class="horizontal-bars"></div>
-    <h2 class="pb-2 border-bottom">Menús Favoritos.</h2>
+    <h2 class="pb-2 custom-title">Menús Favoritos.</h2>
+    <div class="horizontal-bars"></div>
   </div>
   
+
     
       <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
         @for (menu of menus; track menu.id) {
@@ -21,7 +23,7 @@
     
                   <li class="d-flex align-items-center">
                     <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
-                      Ver
+                      
                       <i class="bi bi-arrow-right ms-2"></i>
                       
                     </button>

@@ -1,7 +1,9 @@
 <div class="container">
   <div class="col">
 
-    <h2 class="title text-center m-5">Mis reservas activas</h2>
+    <div class="horizontal-bars mt-5"></div>
+        <h2 class="pb-2 custom-title">Reservas Activas</h2>
+        <div class="horizontal-bars"></div>
 
     @if (showDeleteBookingMessage) {
 
@@ -101,7 +103,9 @@
     <p>No hay Reservas actualmente.</p>
     }
 
-    <h2 class="title text-center m-5">Visitados Anteriormente</h2>
+    <div class="horizontal-bars mt-5"></div>
+        <h2 class="pb-2 custom-title">Visitados recientemente</h2>
+        <div class="horizontal-bars"></div>
 
     @if (showDeleteBookingMessage) {
 
@@ -112,9 +116,9 @@
 
       @if (booking.status == false ) {
         <table class="table">
-          <div class="container-fluid text-center position-relative">
+          <div class="container-fluid text-center position-relative ">
             <div class="row">
-              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg ">
                 <div class="background-image" [style.background-image]="'url(' + booking.restaurant + ')'"></div>
     
                 <div class="container-fluid custom">
