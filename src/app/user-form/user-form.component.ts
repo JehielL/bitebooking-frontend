@@ -1,20 +1,20 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Role, User } from '../Interfaces/user.model';
-import { ActivatedRoute, Router} from '@angular/router';
-import { Component } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule,RouterLink],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.css'
 })
 
-export class UserFormComponent  {
-   
+export class UserFormComponent  implements OnInit {
+  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR 
   users: User[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
 
@@ -31,15 +31,14 @@ export class UserFormComponent  {
   },
   {validators: this.passwordConfirmValidator}
   );
+  backendUser: any;
 
   constructor(private httpClient : HttpClient,
               private router: Router,  // esto es para navegar
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private fb: FormBuilder
   ){}
-  
-  
  
-
   passwordConfirmValidator(control: AbstractControl){
 
     if(control.get('password')?.value === control.get('passwordConfirm')?.value){
@@ -52,34 +51,52 @@ export class UserFormComponent  {
     }
   } 
 
-  save(){
+  ngOnInit(): void { 
+    this.activatedRoute.params.subscribe(params => {
+      const id = params['id'];
+      if(!id) return;
 
-    const registerUserForm: User ={
+      this.httpClient.get<User>('http://localhost:8080/user/' + id).subscribe(backendUser => {
+        
+        this.registerUserForm.reset({
+          id: backendUser.id,
+          firtsName:backendUser.firtsName,
+          lastName:backendUser.lastName,
+          birthdayDate:backendUser.birthdayDate,
+          email: backendUser.email,
+          password: backendUser.password,
+          phone: backendUser.phone,
+          role: backendUser.role,
+        });
+           // marcar boolean true isUpdate para utilizar en  mismo form
+        this.isUpdate = true; 
 
-      id: this.registerUserForm.get('id')?.value ?? 0,
-      firtsName: this.registerUserForm.get('firtsName')?.value ?? '',
-      lastName: this.registerUserForm.get('lastName')?.value ?? '',
-      birthdayDate: this.registerUserForm.get('birthdayDate')?.value ?? new Date(),
-      email: this.registerUserForm.get('email')?.value ?? '',
-      password: this.registerUserForm.get('password')?.value ?? '',
-      phone: this.registerUserForm.get('phone')?.value ?? '',
-      role: this.registerUserForm.get('role')?.value ?? Role.USER
-    
-    }
-    
-
-
-
-    console.log(registerUserForm);
-
-    const url= 'http://localhost:8080/user';
-    this.httpClient.post(url,registerUserForm ).subscribe(result => {
-      console.log(result);
-    this.router.navigate(['user-detail'])
+      });
     });
-
-    //this.registerUserForm.reset();
-    
   }
-  //comentario
+  
+  save(){
+    const users: User = this.registerUserForm.value as User;
+    console.log(users)
+
+    if(this.isUpdate){
+      const url = 'http://localhost:8080/user/'+ users.id;
+      this.httpClient.put<User>(url,users).subscribe(backendUser =>{
+        this.router.navigate(['/user',backendUser.id,'detail']);
+      });
+    }else{
+      const url = 'http://localhost:8080/user';
+      this.httpClient.post<User>(url,users).subscribe(backendUser =>{
+        this.router.navigate(['/user',backendUser.id,'detail']); 
+      });
+    }
+  }
+  compareObjects(o1: any, o2: any): boolean {
+    // console.log("Comparando objetos: ", o1, o2);
+
+    if(o1 && o2) {
+      return o1.id === o2.id;
+    }
+    return o1 === o2;
+  }
 }
