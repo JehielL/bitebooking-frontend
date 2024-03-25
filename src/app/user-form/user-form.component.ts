@@ -76,17 +76,17 @@ export class UserFormComponent  implements OnInit {
   }
   
   save(){
-    const users: User = this.registerUserForm.value as User;
-    console.log(users)
+    const user: User = this.registerUserForm.value as User;
+    console.log(user)
 
     if(this.isUpdate){
-      const url = 'http://localhost:8080/user/'+ users.id;
-      this.httpClient.put<User>(url,users).subscribe(backendUser =>{
+      const url = 'http://localhost:8080/user/'+ user.id;
+      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
         this.router.navigate(['/user',backendUser.id,'detail']);
       });
     }else{
       const url = 'http://localhost:8080/user';
-      this.httpClient.post<User>(url,users).subscribe(backendUser =>{
+      this.httpClient.post<User>(url,user).subscribe(backendUser =>{
         this.router.navigate(['/user',backendUser.id,'detail']); 
       });
     }
