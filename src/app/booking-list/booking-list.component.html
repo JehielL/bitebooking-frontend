@@ -1,8 +1,8 @@
 <div class="container">
   <div class="col">
 
-    <div class="horizontal-bars mt-5"></div>
-        <h2 class="pb-2 custom-title">Reservas Activas</h2>
+ 
+        <h2 class="pb-2 custom-title mt-5">Reservas Activas</h2>
         <div class="horizontal-bars"></div>
 
     @if (showDeleteBookingMessage) {
@@ -13,8 +13,8 @@
     @for (booking of bookings; track booking.id ) {
 
     @if (booking.status == true ) {
-      <table class="table">
-        <div class="container-fluid text-center position-relative">
+      <table class="table ">
+        <div class="container-fluid text-center position-relative custom-div">
           <div class="row">
             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
               <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
@@ -103,7 +103,6 @@
     <p>No hay Reservas actualmente.</p>
     }
 
-    <div class="horizontal-bars mt-5"></div>
         <h2 class="pb-2 custom-title">Visitados recientemente</h2>
         <div class="horizontal-bars"></div>
 
@@ -118,8 +117,8 @@
         <table class="table">
           <div class="container-fluid text-center position-relative ">
             <div class="row">
-              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg ">
-                <div class="background-image" [style.background-image]="'url(' + booking.restaurant + ')'"></div>
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg custom-div">
+                <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
     
                 <div class="container-fluid custom">
                   <thead>

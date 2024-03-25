@@ -1,9 +1,9 @@
 
 <div class="container px-4 py-5 custom-background" id="custom-cards">
-    <div class="horizontal-bars"></div>
     <h2 class="pb-2 custom-title">Menús Favoritos.</h2>
     <div class="horizontal-bars"></div>
   </div>
+  
   
 
     
@@ -18,7 +18,10 @@
                   <li class="me-auto menu-badge">
                 
   
-                    {{menu.description}}
+                    <a class="badge text-bg-secondary text-decoration-none"
+                        [routerLink]="['/menus', menu.id, 'detail']">
+                        {{menu.restaurantType}}
+                      </a>
                   </li>
     
                   <li class="d-flex align-items-center">

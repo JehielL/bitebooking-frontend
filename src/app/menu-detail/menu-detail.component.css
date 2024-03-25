@@ -1,0 +1,58 @@
+.horizontal-bars {
+    width: 100%;
+    height: 3px; 
+    background-color: black; 
+    margin-bottom: 1rem; 
+    margin-top: 1rem;
+  }
+  
+  #custom-cards h2 {
+    margin-top: 1rem;
+  }
+  .custom-title{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 20px;
+    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
+  }
+
+  .featurette-divider {
+    margin: 5rem 0; 
+    background-color: black;
+  }
+  
+
+  .featurette-heading {
+    letter-spacing: -.05rem;
+    
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .rotating-image {
+    transition: transform 1s ease;
+  }
+  
+  .rotating-image.rotate {
+    animation: rotate 5s linear infinite;
+  }
+
+  .card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+  }
+  
+  .card-body {
+    min-height: 120px; 
+    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
+    background-color: rgba(235, 231, 231, 0.622);
+  }
+  

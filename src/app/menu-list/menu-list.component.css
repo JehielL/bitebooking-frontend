@@ -14,10 +14,10 @@
   width: 100%;
   height: 3px; 
   background-color: black; 
-  margin-bottom: 1rem; 
+
 }
 
-/* Espacio entre las barras y el título */
+
 #custom-cards h2 {
   margin-top: 1rem;
 }

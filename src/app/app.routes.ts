@@ -14,6 +14,7 @@ import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 
 export const routes: Routes = [
    {
@@ -101,6 +102,10 @@ export const routes: Routes = [
    path: 'menus/create',
    component: MenuFormComponent
 
+},
+{
+   path: 'menus/:id/detail',
+   component: MenuDetailComponent
 },
  
 {
