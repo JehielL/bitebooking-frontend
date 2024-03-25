@@ -28,23 +28,47 @@
     
   }
 
-  @keyframes rotate {
-    from {
+  @keyframes rotate-clockwise {
+    0% {
       transform: rotate(0deg);
     }
-    to {
-      transform: rotate(360deg);
+    50% {
+      transform: rotate(15deg); /* Rotación hacia un lado */
+    }
+    100% {
+      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
     }
   }
+  
+  @keyframes rotate-counter-clockwise {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-15deg); /* Rotación hacia el otro lado */
+    }
+    100% {
+      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+    }
+  }
+  
+  
   
   .rotating-image {
     transition: transform 1s ease;
+    animation: rotate-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+
+    border-radius: 99999px;
+    
   }
   
-  .rotating-image.rotate {
-    animation: rotate 5s linear infinite;
-  }
+  .rotating-image-counter {
+    transition: transform 1s ease;
+    animation: rotate-counter-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
 
+    border-radius: 99999px;
+    
+  }
   .card-img-top {
     height: 200px; 
     object-fit: cover; 
@@ -55,4 +79,4 @@
     font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
     background-color: rgba(235, 231, 231, 0.622);
   }
-  
+ 
