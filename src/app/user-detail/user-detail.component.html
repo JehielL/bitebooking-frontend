@@ -28,20 +28,25 @@
   </header>
 
   <div class="p-3 mb-4 bg-body-tertiary rounded-3">
-    <div class="container-fluid py-5">
-      <img [src]="" style="float: inline-end; margin-top: -60px;" height="350" alt="">
-      <h1 class="display-5 fw-bold">nombre de usuario</h1>
-      
-      <ul class="list-group list-group-flush">
-          <li class="list-group-item">nombre y apellidos</li>
-          <li class="list-group-item">correo electronico</li>
-          <li class="list-group-item">numero de telefono</li>
-          <li class="list-group-item">nacimiento</li>
-          <li class="list-group-item">And a fifth one</li>
-        </ul>
+  @if (users) {
+      <div class="container-fluid py-5">
+        <img [src]="" style="float: inline-end; margin-top: -60px;" height="350" alt="">
+        <h1 class="display-5 fw-bold">{{users.id}}</h1>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{users.firtsName}}</li>
+            <li class="list-group-item">{{users.lastName}}</li>
+            <li class="list-group-item">{{users.phone}}</li>
+            <li class="list-group-item">{{users.email}}</li>
+            <li class="list-group-item">{{users.password}}</li>           
+          </ul>
+        </div>
+    
+    <div>
+      <button class="btn btn-success" [routerLink]="['/user', users.id, 'update']">Editar Usuario</button>
+      <button class="btn btn-success" [routerLink]="['/user', users.id, 'update']">Eliminar</button>
     </div>
+  }
   </div>
-
   <div class="row align-items-md-stretch">
     <div class="col-md-6">
       <div class="h-100 p-5 text-bg-dark rounded-3">

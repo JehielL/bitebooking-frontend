@@ -61,10 +61,13 @@ export const routes: Routes = [
    component: UserFormComponent
  },
  {
+   path: 'user/:id/update',
+   component: UserFormComponent
+ },
+ {
     path: 'bookings',
     component: BookingListComponent
  },
- 
  {
    path: 'bookings/:id/detail',
    component: BookingDetailComponent
