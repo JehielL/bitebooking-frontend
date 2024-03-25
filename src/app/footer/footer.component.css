@@ -20,10 +20,12 @@
 .footer-custom a {
   background-color: #1e1e1e;
   color:  #aaaaaa !important; 
+  transition: all 0.5s;
+
  
 }
 .footer-custom a:hover {
   background-color: #1e1e1e;
-  color:  #ffffff !important; 
+  color:  #06d3cc !important; 
  
 }

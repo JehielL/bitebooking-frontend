@@ -1,94 +1,260 @@
-.custom-div {
-  padding: 20px; 
-  border: 3px solid rgba(0, 0, 0, 0.684); 
-  width: 80%;
-  text-align: center;
-  align-items: center;
-  margin: 50px auto;
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #7B7263;  
-  height: 90%;
- 
+  flex-wrap: wrap;
+  justify-content: center; 
 }
+
+.col {
+  flex: 1 0 50%;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.form-side {
+  padding: 50px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px rgb(0, 0, 0);
+  margin: 50px auto;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  max-width: 500px;
+  width: 100%; 
+}
+
+
 
 .custom-calender{
   text-decoration: none;
   color: white;
 
 }
+.card-cover {
+  background-image: url('https://imgbb.host/images/e6OB.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%; 
+  animation-name: slideMove;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 
-.custom-col{
-
+  border-radius: 15px;
+  box-shadow: 0px 2px 8px rgb(0, 0, 0);
   margin: 50px auto;
-  margin-left: 100px;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  max-width: 500px;
+  width: 100%; 
+ 
 }
-.custom-col .card {
+@keyframes slideMove {
 
-  width: 80%;
-  height: 60%;
+0% {
+    background-size: 50%;
 }
+
+50% {
+  background-size: 60%;
+}
+}
+
+
+
+
 
 .reservation-info {
-  background-color: rgba(14, 14, 14, 0.379);
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0px 2px 4px rgb(0, 0, 0);
   transition: all 0.3s ease;
+  /* Agregar animación de cambio de color */
+  animation: changeColor 5s infinite alternate;
 }
 
-.reservation-info:hover {
-  background-color: rgba(14, 14, 14, 0.6);
-  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+@keyframes changeColor {
+  0% {
+      background-color: rgba(180, 124, 124, 0.379);
+  }
+  50% {
+      background-color: rgba(0, 255, 255, 0.379);
+  }
+  100% {
+      background-color: rgba(56, 171, 14, 0.379);
+  }
 }
+.container-fluid {
+  max-width: 1200px; /* Establece el ancho máximo del contenedor principal */
+  margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+
+
 .reservation-info .p{
 
   margin: 10px 0;
   font-size: 16px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
+
 }
 
-.custominput input[type=text].form-control,
-.custominput input[type=date].form-control,
-.custominput input[type=number].form-control {
-
-  border: 2px #050105 solid;
-  border-radius: 4px;
-  background: white;
-}
 
 /* RESPONSIVE */
 
-@media screen and (max-width:576px) {
+@media screen and (max-width:600px) {
 
-  .custom-div{
-
-    width: 100%;
-    height: 100%;
+  .card-cover {
+    background-image: url('https://imgbb.host/images/e6OB.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    animation-name: slideMove;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-right: 0px;
+   
   }
 
-  .custom-col{
+  
 
-    margin: 50px auto;
-    margin-left: 5px;
-    width: 100%;
-  }
+
  
 }
+@media screen and (max-width:600px) {
+
+  .card-cover {
+    background-image: url('https://imgbb.host/images/e6OB.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    animation-name: slideMove;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-right: 0px;
+   
+  }
+
+  
 
 
-
-.success-message {
-
-  bottom: 10px;
-  left: 50%;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  margin-top: 10px;
+ 
 }
+@media screen and (max-width:600px) {
+
+  .card-cover {
+    background-image: url('https://imgbb.host/images/e6OB.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    animation-name: slideMove;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-right: 0px;
+   
+  }
+
+  
+
+
+ 
+}
+@media screen and (max-width:450px) {
+
+  .card-cover {
+    background-image: url('https://imgbb.host/images/e6OB.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    animation-name: slideMove;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-right: 0px;
+   
+  }
+
+  
+
+
+ 
+}
+@media screen and (max-width:600px) {
+
+  .card-cover {
+    background-image: url('https://imgbb.host/images/e6OB.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%; 
+    animation-name: slideMove;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    margin-right: 0px;
+   
+  }
+}
+
+
+
+.btn{
+  cursor:pointer;
+    position:relative;
+    padding:10px 20px;
+    align-self: center;
+    margin-left: 37%;
+    background:white;
+    font-size:28px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:10px;
+    transition:all 1s;
+    &:after,&:before{
+      content:" ";
+      width:10px;
+      height:10px;
+      position:absolute;
+      border :0px solid #fff;
+      transition:all 1.5s;
+      }
+    &:after{
+      top:-1px;
+      left:-1px;
+      border-top:5px solid rgb(1, 255, 213);
+      border-left:5px solid rgb(3, 225, 214);
+    }
+    &:before{
+      bottom:-1px;
+      right:-1px;
+      border-bottom:5px solid black;
+      border-right:5px solid black;
+    }
+    &:hover{
+      border-top-right-radius:0px;
+      border-bottom-left-radius:0px;
+      background:rgba(0, 0, 0, 0.5);
+      color:rgb(255, 255, 255);
+      &:before,&:after{
+        
+        width:100%;
+        height:100%;
+        border-color:white;
+      }
+    }
+  }
+  
+ 
+
+  .custom-title{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 20px;
+    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
+  }
+
 
 

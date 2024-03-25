@@ -1,225 +1,204 @@
 <div class="container">
-    <div class="row">
-        <div class="col">
-        @if (booking) {
-            <div class="container-fluid">
-              <h2 class="title">Mis reservas activas</h2>
-                <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-                    <div class="col">
-                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://madridvelazquez.slvj.es/new-images/SALA%20PRINCIPAL.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Slvj Madrid</h3>
-                          <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                                <a [routerLink]="['/booking', booking.id, 'detail']">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                              <small>Moraleja</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar"></use></svg>
-                              <small>60€</small>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-              
-                    <div class="col">
-                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/zuma-restaurante-madrid-elle-2-1639729041.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Zuma</h3>
-                          <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                              <a routerLink="/booking/form">
-                                <i  class="bi bi-calendar-check-fill fs-1"></i>
-                              </a>
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                              <small>Paseo Colón.</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                              <small>70€</small>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-              
-                    <div class="col">
-                      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.guiarepsol.com/content/dam/repsol-guia/guia-cf/restaurante/imagenes/media-filer_public-8a-db-8adb2b01-1720-4a25-9e6e-97b927ed5810-_d1a9203juanlafita.jpg');">
-                        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Amazonico</h3>
-                          <ul class="d-flex list-unstyled mt-auto">
-                            <li class="me-auto">
-                              <a routerLink="/booking/1/detail">
-                                <i class="bi bi-calendar-check-fill fs-1"></i>
-                              </a>
-                            </li>
-                            <li class="d-flex align-items-center me-3">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                              <small>La castellana</small>
-                            </li>
-                            <li class="d-flex align-items-center">
-                              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                              <small>90€</small>
-                            </li>
-                          </ul>
-                          
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div class="col">
-                      
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://fotografias.lasexta.com/clipping/cmsimages01/2022/09/23/E03D41A4-2F86-46EE-A8CE-023DDF433CBB/robuchon-madrid_69.jpg?crop=1707,960,x49,y0&width=1280&height=720&optimize=low&format=jpg');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Robuchon</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>Moraleja</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>120€</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://images.hola.com/imagenes/cocina/noticiaslibros/20230816237291/mejores-restaurantes-de-madrid-en-verano/1-292-703/portada-agosto-m.jpg');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Sky Rooftop</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>California</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>100€</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.menudegustacion.net/wp-content/uploads/2019/07/menu-degustacion-diverxo-con-cerdos-voladores.jpg');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Diverxo</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>California</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>70€</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+  <div class="col">
+
+ 
+        <h2 class="pb-2 custom-title mt-5">Reservas Activas</h2>
+        <div class="horizontal-bars"></div>
+
+    @if (showDeleteBookingMessage) {
+
+    <ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
+    }
+
+    @for (booking of bookings; track booking.id ) {
+
+    @if (booking.status == true ) {
+      <table class="table ">
+        <div class="container-fluid text-center position-relative custom-div">
+          <div class="row">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+              <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
+  
+              <div class="container-fluid custom">
+                <thead>
+  
+                  <tr>
+  
+                    <th scope="col">Id</th>
+                    <th scope="col ">Title</th>
+                    <th scope="col">Available</th>
+                    <th scope="col">Table</th>
+                    <th scope="col">Fecha de reserva</th>
+                    <th scope="col">Menú Seleccionado</th>
+                    <th scope="col">Restaurant</th>
+                    <th scope="col">Interior</th>
+  
+                  </tr>
+  
+                </thead>
+  
+                <tbody>
+  
+                  <th scope="row">{{booking.id}}</th>
+                  <td>
+                    <h3>{{booking.title}}</h3>
+                  </td>
+                  <td>
+                    @if (booking.status) {
+                    <span class="badge text-bg-success">Sí</span>
+                    } @else{
+                    <span class="badge text-bg-danger">No</span>
+                    }
+                  </td>
+  
+                  <td>{{booking.numTable}}</td>
+                  <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
+                  <td>
+                    <a class="badge text-bg-secondary text-decoration-none"
+                      [routerLink]="['/menus', booking.menu.id, 'detail']">
+                      {{booking.menu.title}}
+                    </a>
+                  </td>
+                  <td>
+                    <a class="badge text-bg-warning text-decoration-none"
+                      [routerLink]="['/restaurant', booking.restaurant.id, 'detail']">
+                      {{booking.restaurant.name}}
+                    </a>
+                  </td>
+                  <td>
+                    @if (booking.interior) {
+                    <span class="badge text-bg-success">Sí</span>
+                    } @else{
+                    <span class="badge text-bg-danger">No</span>
+                    }
+                  </td>
+  
+                  <div class="buttons">
+                    <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                      Reserva</button>
+  
+                    <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
+                      Reserva</button>
+  
+                    <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
+  
                   </div>
-                  <h2 class="title">Visitados recientemente.</h2>
-                  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-                      <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://media-cdn.tripadvisor.com/media/photo-s/12/34/b2/17/yakiniku.jpg');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Maguro</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>Marbella</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar"></use></svg>
-                                <small>60€</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
                 
-                      <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.focuspiedra.com/wp-content/uploads/2022/07/omeraki4.png');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Omeraki by Alberto Chicote</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>Puerta del sol.</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>+90€</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                
-                      <div class="col">
-                        <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('https://www.culturajoven.es/wp-content/uploads/2021/11/Vista-del-Restaurante-Terraza-Puertalsol-1.jpg');">
-                          <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Puertalsol</h3>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <a routerLink="/booking/1/detail">
-                                  <i class="bi bi-calendar-check-fill  fs-1"></i>
-                                </a>
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>Puerta del sol</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>50€</small>
-                              </li>
-                            </ul>
-                            
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                </tbody>
+              </div>
             </div>
-        } @else {
-            
-            
-        } 
+          </div>
+  
+  
+  
         </div>
-    </div>
+  
+      </table>
+    } 
+
+
+
+
+    } @empty {
+    <p>No hay Reservas actualmente.</p>
+    }
+
+        <h2 class="pb-2 custom-title">Visitados recientemente</h2>
+        <div class="horizontal-bars"></div>
+
+    @if (showDeleteBookingMessage) {
+
+    <ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
+    }
+
+    @for (booking of bookings; track booking.id) {
+
+      @if (booking.status == false ) {
+        <table class="table">
+          <div class="container-fluid text-center position-relative ">
+            <div class="row">
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg custom-div">
+                <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
+    
+                <div class="container-fluid custom">
+                  <thead>
+    
+                    <tr>
+    
+                      <th scope="col">Id</th>
+                      <th scope="col ">Title</th>
+                      <th scope="col">Available</th>
+                      <th scope="col">Table</th>
+                      <th scope="col">Fecha de reserva</th>
+                      <th scope="col">Menú Seleccionado</th>
+                      <th scope="col">Restaurant</th>
+    
+                    </tr>
+    
+                  </thead>
+    
+                  <tbody>
+    
+                    <th scope="row">{{booking.id}}</th>
+                    <td>
+                      <h3>{{booking.title}}</h3>
+                    </td>
+                    <td>
+                      @if (booking.status) {
+                      <span class="badge text-bg-success">Sí</span>
+                      } @else{
+                      <span class="badge text-bg-danger">No</span>
+                      }
+                    </td>
+    
+                    <td>{{booking.numTable}}</td>
+                    <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
+                    <td>
+                      <a class="badge text-bg-secondary text-decoration-none"
+                        [routerLink]="['/menus', booking.menu.id, 'detail']">
+                        {{booking.menu.title}}
+                      </a>
+                    </td>
+                    <td>
+                      <a class="badge text-bg-warning text-decoration-none"
+                        [routerLink]="['/restaurants', booking.restaurant.id, 'detail']">
+                        {{booking.restaurant.name}}
+                      </a>
+                    </td>
+    
+                    <div class="buttons">
+                      <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                        Reserva</button>
+    
+                      <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
+                        Reserva</button>
+    
+                      <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
+    
+                    </div>
+                  
+                  </tbody>
+                </div>
+              </div>
+            </div>
+    
+    
+    
+          </div>
+    
+        </table>
+      } 
+
+
+
+
+    } @empty {
+    <p>No hay Reservas actualmente.</p>
+    }
+
+
+
+    
+
+  </div>
 </div>

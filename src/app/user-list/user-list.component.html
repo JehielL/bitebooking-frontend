@@ -13,7 +13,7 @@
     <div class="col">
       <div class="p-5 cartitauser">
         <i class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i>
-        <img src="/assets/img/logo_bitebooking.png" routerLink="user-detail" style="cursor: pointer;" alt="logo" width="100">{{user.firtsName}} {{user.lastName}}
+        <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user-detail', user.id, 'detail']" style="cursor: pointer;" alt="logo" width="100">{{user.firtsName}} {{user.lastName}}
         <div class="col">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
           <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>

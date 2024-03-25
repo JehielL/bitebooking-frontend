@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col">
       <div class="container-fluid">
-        <h2 class="title">Restaurantes</h2>
+        <div class="horizontal-bars mt-5"></div>
+        <h2 class="pb-2 custom-title">Todos los Restaurants</h2>
+        <div class="horizontal-bars"></div>
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
           @for (restaurant of restaurants; track restaurant.id) {
           <div class="col">
@@ -12,7 +14,7 @@
                 <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
                 <ul class="d-flex list-unstyled mt-auto">
                   <li class="me-auto">
-                    <a [routerLink]="['/booking',restaurant.id, 'detail']">
+                    <a [routerLink]="['/restaurant',restaurant.id, 'detail']">
                       <i class="bi bi-calendar-check-fill fs-1"></i>
                     </a>
                 </li>

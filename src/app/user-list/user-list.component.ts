@@ -2,7 +2,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { User } from '../Interfaces/user.model';
+import { User} from '../Interfaces/user.model';
 import { __param } from 'tslib';
 
 @Component({

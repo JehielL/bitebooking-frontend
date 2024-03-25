@@ -1,6 +1,6 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Role, User} from '../Interfaces/user.model';
+import { Role, User } from '../Interfaces/user.model';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Component } from '@angular/core';
 
@@ -81,5 +81,5 @@ export class UserFormComponent  {
     //this.registerUserForm.reset();
     
   }
-  
+  //comentario
 }

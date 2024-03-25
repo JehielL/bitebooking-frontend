@@ -11,6 +11,10 @@ import { RestaurantFromComponent } from './restaurant-from/restaurant-from.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { MenuFormComponent } from './menu-form/menu-form.component';
+import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 
 export const routes: Routes = [
    {
@@ -26,6 +30,10 @@ export const routes: Routes = [
    path:'user-list/user-detail',
    component: UserDetailComponent
 },
+{
+   path:'dashboard-user',
+   component: DashboardUserComponent
+},
  {
    path:'user-list',
    component: UserListComponent
@@ -40,6 +48,11 @@ export const routes: Routes = [
   component: UserListComponent
 },
 {
+   path:'user-detail/:id/detail',
+   component: UserDetailComponent
+ },
+
+{
    path: 'user-detail',
    component: UserDetailComponent
 },
@@ -52,18 +65,25 @@ export const routes: Routes = [
    component: RestaurantFromComponent
  },
  {
-    path: 'booking',
+    path: 'bookings',
     component: BookingListComponent
  },
+ 
  {
-   path: 'booking/:id/detail',
+   path: 'bookings/:id/detail',
+   component: BookingDetailComponent
+},
+
+ {
+   path: 'bookings/:id/detail',
    component: BookingDetailComponent
 },
 {
-   path: 'booking/:id/update',
+   path: 'bookings/:id/update',
    component: BookingFormComponent
-},{
-   path: 'booking/form',
+}
+,{
+   path: 'bookings/create',
    component: BookingFormComponent
 },
 {
@@ -71,9 +91,23 @@ export const routes: Routes = [
    component: RestaurantListComponent
  },
 {
-   path:'restaurant-detail',
+   path:'restaurant/:id/detail',
    component: RestaurantDetailComponent
  },
+ {
+   path: 'menus',
+   component: MenuListComponent
+},
+{
+   path: 'menus/create',
+   component: MenuFormComponent
+
+},
+{
+   path: 'menus/:id/detail',
+   component: MenuDetailComponent
+},
+ 
 {
     path: '**',
     component:NotFoundComponent

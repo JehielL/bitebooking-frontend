@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Restaurant, RestaurantType } from '../Interfaces/restaurant.model';
+import { Restaurant } from '../Interfaces/restaurant.model';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 
 @Component({
