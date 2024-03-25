@@ -57,7 +57,7 @@ export const routes: Routes = [
    component: UserDetailComponent
 },
  {
-   path:'user-form',
+   path:'user/create',
    component: UserFormComponent
  },
  {
