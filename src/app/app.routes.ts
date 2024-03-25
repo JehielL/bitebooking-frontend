@@ -61,10 +61,6 @@ export const routes: Routes = [
    component: UserFormComponent
  },
  {
-   path:'restaurant-from',
-   component: RestaurantFromComponent
- },
- {
     path: 'bookings',
     component: BookingListComponent
  },
@@ -86,6 +82,10 @@ export const routes: Routes = [
    path: 'bookings/create',
    component: BookingFormComponent
 },
+{
+   path:'restaurant-from',
+   component: RestaurantFromComponent
+ },
 {
    path:'restaurant-list',
    component: RestaurantListComponent

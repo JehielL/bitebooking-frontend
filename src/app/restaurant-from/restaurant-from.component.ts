@@ -47,7 +47,7 @@ export class RestaurantFromComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurants').
+    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant').
     subscribe(restaurantBacken => {
       console.log(restaurantBacken);
       
@@ -56,7 +56,7 @@ export class RestaurantFromComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       const id = params['id'];
       if(!id) return;
-      this.httpClient.get<Restaurant>('http://localhost:8080/restaurants/' + id).subscribe(restaurantBacken =>{
+      this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id).subscribe(restaurantBacken =>{
         this.restaurantFrom.reset({
           id: restaurantBacken.id,
           name:restaurantBacken.name, 
@@ -81,13 +81,13 @@ export class RestaurantFromComponent implements OnInit {
     console.log(restaurantBacken);
     
     if (this.isUpdate) {
-    const url = 'http://localhost:8080/restaurants/' + restaurantBacken.id;
+    const url = 'http://localhost:8080/restaurant/' + restaurantBacken.id;
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
     this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
     
     } else {
-    const url = 'http://localhost:8080/restaurants';
+    const url = 'http://localhost:8080/restaurant';
     this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
     this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
     });
