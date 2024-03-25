@@ -44,9 +44,4 @@ export class BookingListComponent implements OnInit {
 
     this.showDeleteBookingMessage = false;
   }
-
-
-
 }
-
-
