@@ -23,7 +23,10 @@ export class RestaurantFromComponent implements OnInit {
     location: this.fb.group({
       id:[0],
       address:[''],
-      city: [''],}),
+      city: [''],
+      postalCode:[''],
+    }),
+      
     phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
     restaurantType:[RestaurantType.BAR],
     openingTime: [new Date()],

@@ -4,9 +4,9 @@
  <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
     @if (isUpdate) {
-      <h1 class="mt-5 mb-5">Actualizar Usuario existente con id {{restaurantFrom.get('id')?.value}}</h1>
+      <h1 class="mt-5 mb-5">Actualizar Restaurant existente con id {{restaurantFrom.get('id')?.value}}</h1>
     } @else {
-      <h1 class="mt-5 mb-5">Crear nuevo Usuario</h1>
+      <h1 class="mt-5 mb-5">Crear nuevo Restaurant</h1>
     }
     <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
   </div> 
@@ -73,6 +73,10 @@
         <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
         <label for="locationCity">Location city</label>  
     </div>
+    <div class="form-floating mb-3" formGroupName="location">
+      <input type="number" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
+      <label for="postalCode">CP</label>  
+  </div>
 
     <div class="float-end mb-3">
       @if (restaurantFrom.invalid) {
