@@ -44,3 +44,15 @@
   object-fit: cover;
   width: 200%;
 }
+/*esto de los boton de actualizar restaurant  y crear menu*/
+.custom-btn {
+  
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: .25rem;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+ }
+ 
+ 

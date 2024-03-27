@@ -93,6 +93,10 @@ export const routes: Routes = [
    component: RestaurantDetailComponent
  },
  {
+   path:'restaurant/:id/update',
+   component:RestaurantFromComponent
+ },
+ {
    path: 'menus',
    component: MenuListComponent
 },
