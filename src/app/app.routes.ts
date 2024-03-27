@@ -26,49 +26,39 @@ export const routes: Routes = [
     path:'home',
     component: HomeComponent
  },
- {
-   path:'user-list/user-detail',
-   component: UserDetailComponent
-},
 {
    path:'dashboard-user',
    component: DashboardUserComponent
 },
  {
-   path:'user-list',
-   component: UserListComponent
-},
-
- {
    path:'login',
    component: LoginMainComponent
  },
  {
-  path:'user-list',
+  path:'user/list',
   component: UserListComponent
 },
 {
-   path:'user-detail/:id/detail',
+   path:'user/:id/detail',
    component: UserDetailComponent
  },
 
 {
-   path: 'user-detail',
+   path: 'user/detail',
    component: UserDetailComponent
 },
  {
-   path:'user-form',
+   path:'user/create',
    component: UserFormComponent
  },
  {
-   path:'restaurant-from',
-   component: RestaurantFromComponent
+   path: 'user/:id/update',
+   component: UserFormComponent
  },
  {
     path: 'bookings',
     component: BookingListComponent
  },
- 
  {
    path: 'bookings/:id/detail',
    component: BookingDetailComponent
@@ -87,12 +77,24 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
+   path:'restaurant-from',
+   component: RestaurantFromComponent
+ },
+{
    path:'restaurant-list',
    component: RestaurantListComponent
+ },
+ {
+   path:'restaurant/detail',
+   component: RestaurantDetailComponent
  },
 {
    path:'restaurant/:id/detail',
    component: RestaurantDetailComponent
+ },
+ {
+   path:'restaurant/:id/update',
+   component:RestaurantFromComponent
  },
  {
    path: 'menus',
