@@ -8,6 +8,7 @@ export interface Restaurant {
     location: RestaurantLocation;
     phone: number;
     restaurantType: RestaurantType;
+    description: string;
     openingTime: Date;
     closingTime: Date;
     averageRating: number;
