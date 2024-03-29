@@ -5,7 +5,7 @@
       @if (isUpdate) {
         <h1 class="mt-5 mb-5">Actualizar Usuario existente con id {{registerUserForm.get('id')?.value}}</h1>
       } @else {
-        <h1 class="mt-5 mb-5">Crear nuevo Usuario</h1>
+        <h1 class="mt-5 mb-5"></h1>
       }
       <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
     </div>
@@ -15,8 +15,9 @@
             <div class="text-center">  
               <h1 class="h3 mb-3 fw-normal">Registrate</h1>
             </div>  
-            <div class=" form-floating mb-3">
-              <input type="text" class="form-control" id="firtsName" placeholder="firtsName" formControlName="firtsName">
+
+            <div class="coolinput form-floating mb-3">
+              <input type="text" class="form-control" id="firtsName" placeholder="" formControlName="firtsName">
               <label for="firtsName">First Name *</label>
               @if (registerUserForm.controls.firtsName.touched && registerUserForm.controls.firtsName.errors) {
                 <div>
@@ -24,7 +25,7 @@
                 </div>
               }
             </div>
-            <div class=" form-floating mb-3">
+            <div class="coolinput form-floating mb-3" >
               <input type="text" class="form-control" id="lastName" placeholder="lastName" formControlName="lastName">
               <label for="lastName">Last Name *</label>
               @if (registerUserForm.controls.lastName.touched && registerUserForm.controls.lastName.errors) {
@@ -33,11 +34,12 @@
                 </div>
               }
             </div>
-            <div class="form-floating mb-3">
+            <div class="coolinput form-floating mb-3">
               <input type="datetime-local" class="form-control" id="birthdayDate"  formControlName="birthdayDate" >
               <label for="birthdayDate" >Fecha de Nacimiento</label>
             </div>
-            <div class=" form-floating mb-3">
+
+            <div class="coolinput form-floating mb-3">
               <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
               <label for="phone">Telefono Móvil *</label>
               @if (registerUserForm.controls.phone.touched && registerUserForm.controls.phone.errors) {
@@ -51,7 +53,7 @@
                 </div>
               }
             </div>
-            <div class="form-floating mb-3">
+            <div class="coolinput form-floating mb-3">
               <input type="email" class="form-control" id="password" placeholder="name@example.com" formControlName="email">
               <label for="email">Email address *</label>
               @if (registerUserForm.controls.email.touched && registerUserForm.controls.email.errors) {
@@ -66,13 +68,13 @@
               }
             
             </div>
-            <div class="form-floating mb-3">
+            <div class="coolinput form-floating mb-3">
               <input type="password" class="form-control" id="Password" placeholder="password" formControlName="password">
               <label for="password">Password *</label>
               
               
             </div>
-            <div class="form-floating ">
+            <div class="coolinput form-floating ">
               <input type="password" class="form-control" id="passwordConfirm" placeholder="password" formControlName="passwordConfirm">
               <label for="passwordConfirm">Confirme Password *</label>
               @if(
@@ -92,13 +94,13 @@
             <fieldset>
               <legend class="col-form-label col-sm-2 pt-0 mb-3"></legend>
               <div class="col-sm-10">
-                <div class="form-check ">
+                <div class="coolinput form-check ">
                   <input class="form-check-input" type="radio" name="role" id="role" formControlName="role" value="{{ roles.USER }}">
                   <label class="form-check-label" for="gridRadios1">
                     Usuario
                   </label>
                 </div>
-                <div class="form-check mb-3">
+                <div class="coolinput form-check mb-3">
                   <input class="form-check-input" type="radio" name="role" id="role"  value="{{ roles.ADMIN }}" formControlName="role">
                   <label class="form-check-label" for="gridRadios2">
                     Empresa restauración
@@ -120,11 +122,10 @@
                 <button class="custom-btn " routerLink="/home" type="submit"  >Cancelar</button>
               </div>
             </div>
-
-            <div>
-              <p class="mt-5 mb-3 text-body-secondary">© 2024-Bite-Booking</p>
-            </div>
       </form>
     </div>  
-  </div>  
+  </div> 
+  <div>
+    <p class="mt-1 text-body-secondary text-center">© 2024-Bite-Booking</p>
+  </div> 
 </div>  
