@@ -109,6 +109,11 @@ export const routes: Routes = [
    path: 'menus/:id/detail',
    component: MenuDetailComponent
 },
+{
+
+   path: 'menus/create',
+   component: MenuFormComponent
+},
  
 {
     path: '**',

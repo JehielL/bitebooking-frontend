@@ -1,291 +1,311 @@
-
-
 @if (showDeleteMenuMessage) {
 
-<ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
+<ngb-alert class="mt-5" type="success" [dismissible]="false">Menú eliminada correctamente</ngb-alert>
 }
 
 @if (menu)
 {
-   
+
 <div class="container">
-    <div class="container px-4 py-5 custom-background" id="custom-cards">
-      
-        <h2 class="pb-2 custom-title">Menú: {{menu.title}}.</h2>
-        <div class="horizontal-bars"></div>
+  <div class="container px-4 py-5 custom-background" id="custom-cards">
+
+    <h2 class="pb-2 custom-title">Menú: {{menu.title}}.</h2>
+    <div class="horizontal-bars"></div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-4 col-sm-12 mt-5">
+      <div class="container mt-5 mb-5">
+        <div class="row card overflow-hidden rounded-4">
+
+          <img class="rounded-img" [src]="menu.imgMenu" alt="" style="width: 100%;">
+
+          @if (!menu.imgMenu.startsWith('http://localhost:8080/files/'))
+          {
+          <img class="card-img" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
+
+          }
+        </div>
+      </div>
     </div>
+
+
+
+    <div class="col-lg-8 col-md-8 col-sm-12">
+      <!--Icon grid-->
+      <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom">Menú id: {{menu.id}}</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+
+          <div class="col d-flex align-items-start">
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Nombre del menú</h3>
+              <p>{{menu.title}}</p>
+            </div>
+          </div>
+
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descripción</h3>
+              <p>{{menu.description}} </p>
+            </div>
+          </div>
+
+
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Alergias</h3>
+              @if (menu.alergys) {
+              <span class="badge text-bg-success mt-3">Alergias</span>
+              } @else{
+              <span class="badge text-bg-danger mt-3">No alergias</span>
+              }
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Restaurant</h3>
+              <br>
+              <a class="badge text-bg-secondary text-decoration-none"
+                [routerLink]="['/restaurant', menu.restaurant.id, 'detail']">
+                {{menu.restaurant.name}}
+              </a>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div>
+              <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponible</h3>
+              <div>
+
+                @if (menu.active) {
+                <span class="badge text-bg-success mt-3">Sí</span>
+                } @else{
+                <span class="badge text-bg-danger mt-3">No</span>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex align-items-start">
+
+            <div class="col d-flex align-items-start">
+
+              <div>
+
+                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Categoria Restaurant</h3>
+                <span class="badge text-bg-success mt-3">{{menu.restaurantType}}</span>
+
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+      <div class="buttons">
+
+        <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
+          Menú</button>
+
+        <button class="btn btn-outline-danger ms-2" (click)="delete(menu)">Borrar Menú</button>
+
+      </div>
+    </div>
+  </div>
+
+  <hr class="featurette-divider horizontal-bars">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll
+          blow your mind.</span></h2>
+      <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.
+      </p>
+    </div>
+    <div class="col-md-5">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image"
+        width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+        preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="https://www.pucheromix.com/wp-content/uploads/2024/01/ramen-verduras-huevo.jpg" width="100%"
+          height="100%" />
+      </svg>
+    </div>
+  </div>
+
+  <hr class="featurette-divider horizontal-bars">
+
+  <div class="row featurette">
+    <div class="col-md-7 order-md-2">
+      <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for
+          yourself.</span></h2>
+      <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this
+        layout would work with some actual real-world content in place.</p>
+    </div>
+    <div class="col-md-5 order-md-1">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image-counter"
+        width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+        preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/12/Lobster-tail-14.jpg"
+          width="100%" height="100%" />
+      </svg>
+    </div>
+  </div>
+
+  <hr class="featurette-divider horizontal-bars">
+
+  <div class="row featurette">
+    <div class="col-md-7">
+      <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span
+          class="text-body-secondary">Checkmate.</span></h2>
+      <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended
+        to be actually read, simply here to give you a better view of what this would look like with some actual
+        content. Your content.</p>
+    </div>
+    <div class="col-md-5">
+      <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image"
+        width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+        preserveAspectRatio="xMidYMid slice" focusable="false">
+        <image href="https://www.pucheromix.com/wp-content/uploads/2024/01/ramen-verduras-huevo.jpg" width="100%"
+          height="100%" />
+      </svg>
+    </div>
+  </div>
+
+  <hr class="featurette-divider">
+
+  <div class="menu-section py-4">
+
     <div class="row">
+      <div class="container px-4 py-5 custom-background" id="custom-cards">
 
-        <div class="col-md-4 col-sm-12 mt-5">
-            <div class="container mt-5 mb-5">
-                <div class="row card overflow-hidden rounded-4">
-                    <img class="rounded-img" [src]="menu.imgMenu" alt="" style="width: 100%;">
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="col-lg-8 col-md-8 col-sm-12">
-            <!--Icon grid-->
-            <div class="container px-4 py-5" id="icon-grid">
-                <h2 class="pb-2 border-bottom">Menú id: {{menu.id}}</h2>
-
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
-
-                    <div class="col d-flex align-items-start">
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Nombre del menú</h3>
-                            <p>{{menu.title}}</p>
-                        </div>
-                    </div>
-
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Descripción</h3>
-                            <p>{{menu.description}} </p>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Fecha de Reserva</h3>
-                            <p>{{menu.active}}</p>
-                        </div>
-                    </div>
-
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Alergias</h3>
-                            @if (menu.alergys) {
-                            <span class="badge text-bg-success mt-3">Alergias</span>
-                            } @else{
-                            <span class="badge text-bg-danger mt-3">No alergias</span>
-                            }
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Restaurant</h3>
-                            <br>
-                            <a class="badge text-bg-secondary text-decoration-none"
-                                [routerLink]="['/restaurant', menu.restaurant.id, 'detail']">
-                                {{menu.restaurant.name}}
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Disponible</h3>
-                            <div>
-
-                                @if (menu.active) {
-                                <span class="badge text-bg-success mt-3">Sí</span>
-                                } @else{
-                                <span class="badge text-bg-danger mt-3">No</span>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-                        <div class="col d-flex align-items-start">
-                            
-                            <div>
-
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Categoria Restaurant</h3>
-                                <span class="badge text-bg-success mt-3">{{menu.restaurantType}}</span>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Numero de mesa</h3>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="col d-flex align-items-start">
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="buttons">
-
-                <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
-                    Menú</button>
-
-                <button class="btn btn-outline-danger ms-2" (click)="delete(menu)">Borrar Menú</button>
-
-            </div>
-        </div>
-    </div>
-
-    <hr class="featurette-divider horizontal-bars">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
-        <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        <h2 class="pb-2 custom-title">Platos Relevantes.</h2>
+        <div class="horizontal-bars"></div>
       </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <image href="https://www.pucheromix.com/wp-content/uploads/2024/01/ramen-verduras-huevo.jpg" width="100%" height="100%" />
-          </svg>
-                </div>
-    </div>
-
-    <hr class="featurette-divider horizontal-bars">
-
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
-        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image-counter" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <image href="https://staticcookist.akamaized.net/wp-content/uploads/sites/22/2021/12/Lobster-tail-14.jpg" width="100%" height="100%" />
-          </svg>      </div>
-    </div>
-
-    <hr class="featurette-divider horizontal-bars">
-
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
-        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <image href="https://www.pucheromix.com/wp-content/uploads/2024/01/ramen-verduras-huevo.jpg" width="100%" height="100%" />
-          </svg>      </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="menu-section py-4">
-        
-        <div class="row">
-            <div class="container px-4 py-5 custom-background" id="custom-cards">
-                
-                <h2 class="pb-2 custom-title">Platos Relevantes.</h2>
-                <div class="horizontal-bars"></div>
-            </div>
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <img class="card-img-top" src="https://www.foodandwine.com/thmb/0AXGLeY6dYnY8sEXFqxBa8opDrs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Tonkotsu-Ramen-FT-BLOG1122-8fe6c12d609a4fd4ab246bea3aae140e.jpg" alt="Dish 1">
-              <div class="card-body">
-                <h5 class="card-title">Ramen</h5>
-                <p class="card-text">Delicioso ramen tradicional tonkotsu.</p>
-                <div class="card-footer">
-                  <small class="text-muted">$12</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Okonomiyaki_001.jpg/1200px-Okonomiyaki_001.jpg" alt="Dish 2">
-              <div class="card-body">
-                <h5 class="card-title">Okonomiyaki</h5>
-                <p class="card-text">Tortilla Japonesa tradicional.</p>
-                <div class="card-footer">
-                  <small class="text-muted">$15</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <img class="card-img-top" src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg" alt="dish 3">
-              <div class="card-body">
-                <h5 class="card-title">Roasted Lobster</h5>
-                <p class="card-text">Langosta rostizada a la robata con mantequilla de shizo.</p>
-                <div class="card-footer">
-                  <small class="text-muted">$100</small>
-                </div>
-              </div>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img class="card-img-top"
+            src="https://www.foodandwine.com/thmb/0AXGLeY6dYnY8sEXFqxBa8opDrs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Tonkotsu-Ramen-FT-BLOG1122-8fe6c12d609a4fd4ab246bea3aae140e.jpg"
+            alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title">Ramen</h5>
+            <p class="card-text">Delicioso ramen tradicional tonkotsu.</p>
+            <div class="card-footer">
+              <small class="text-muted">$12</small>
             </div>
           </div>
         </div>
       </div>
-      <section class="py-7 py-md-9 border-bottom">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 text-center">
-              <!-- Heading -->
-            
-  
-              <!-- Subheading -->
-              <p class="mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam eos perferendis itaque hic unde, ad, laudantium minima.
-              </p>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img class="card-img-top"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Okonomiyaki_001.jpg/1200px-Okonomiyaki_001.jpg"
+            alt="Dish 2">
+          <div class="card-body">
+            <h5 class="card-title">Okonomiyaki</h5>
+            <p class="card-text">Tortilla Japonesa tradicional.</p>
+            <div class="card-footer">
+              <small class="text-muted">$15</small>
             </div>
           </div>
-          <div class="row">
-           1
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
+            alt="dish 3">
+          <div class="card-body">
+            <h5 class="card-title">Roasted Lobster</h5>
+            <p class="card-text">Langosta rostizada a la robata con mantequilla de shizo.</p>
+            <div class="card-footer">
+              <small class="text-muted">$100</small>
+            </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <!-- Content -->
-              <div class="tab-content" id="menuContent">
-                <div class="tab-pane fade show active" id="mains" role="tabpanel" aria-labelledby="mainsTab">
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                      <div class="py-3 border-bottom">
-                        <div class="row">
-                          <div class="col-3 align-self-center">
-                            <!-- Image -->
-                            <div class="ratio ratio-1x1">
-                              <img class="object-fit-cover" src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg" alt="...">
-                            </div>
-                          </div>
-                          <div class="col-7">
-                            <!-- Heading -->
-                            <h5 class="mb-2">{{menu.title}}</h5>
-  
-                            <!-- Text -->
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati! Sapiente laudantium.</p>
-                          </div>
-                          <div class="col-2">
-                            <!-- Price -->
-                            <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
-                          </div>
-                          <div class="col-3 align-self-center">
-                            <!-- Image -->
-                            <div class="ratio ratio-1x1">
-                              <img class="object-fit-cover" src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg" alt="...">
-                            </div>
-                          </div>
-                          <div class="col-7">
-                            <!-- Heading -->
-                            <h5 class="mb-2">{{menu.title}}</h5>
-  
-                            <!-- Text -->
-                            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati! Sapiente laudantium.</p>
-                          </div>
-                          <div class="col-2">
-                            <!-- Price -->
-                            <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
-                          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="py-7 py-md-9 border-bottom">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 text-center">
+          <!-- Heading -->
+
+
+          <!-- Subheading -->
+          <p class="mb-6">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam eos perferendis itaque hic unde,
+            ad, laudantium minima.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        1
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <!-- Content -->
+          <div class="tab-content" id="menuContent">
+            <div class="tab-pane fade show active" id="mains" role="tabpanel" aria-labelledby="mainsTab">
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="py-3 border-bottom">
+                    <div class="row">
+                      <div class="col-3 align-self-center">
+                        <!-- Image -->
+                        <div class="ratio ratio-1x1">
+                          <img class="object-fit-cover"
+                            src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
+                            alt="...">
                         </div>
                       </div>
+                      <div class="col-7">
+                        <!-- Heading -->
+                        <h5 class="mb-2">{{menu.title}}</h5>
+
+                        <!-- Text -->
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati!
+                          Sapiente laudantium.</p>
+                      </div>
+                      <div class="col-2">
+                        <!-- Price -->
+                        <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
+                      </div>
+                      <div class="col-3 align-self-center">
+                        <!-- Image -->
+                        <div class="ratio ratio-1x1">
+                          <img class="object-fit-cover"
+                            src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
+                            alt="...">
+                        </div>
+                      </div>
+                      <div class="col-7">
+                        <!-- Heading -->
+                        <h5 class="mb-2">{{menu.title}}</h5>
+
+                        <!-- Text -->
+                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati!
+                          Sapiente laudantium.</p>
+                      </div>
+                      <div class="col-2">
+                        <!-- Price -->
+                        <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
+                      </div>
                     </div>
-                
                   </div>
                 </div>
-               
+
               </div>
             </div>
+
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 </div>
 }
 
@@ -293,101 +313,101 @@
 
 
 <div class="container mb-5">
-    <div class="row">
-        <div class="col">
-            <!---Acordeon NgBootstrap-->
+  <div class="row">
+    <div class="col">
+      <!---Acordeon NgBootstrap-->
 
-            <h2 class="mt-3 mb-3 text-center">Preguntas Frecuentes</h2>
-            <div class="horizontal-bars"></div>
-            <div ngbAccordion #accordion="ngbAccordion">
-                <div ngbAccordionItem="first">
-                    <h2 ngbAccordionHeader>
-                        <button ngbAccordionButton>Tarifas de reseva.</button>
-                    </h2>
-                    <div ngbAccordionCollapse>
-                        <div ngbAccordionBody>
-                            <ng-template>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf
-                                moon
-                                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                eiusmod. Brunch
-                                3 wolf
-                                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                shoreditch et.
-                                Nihil anim
-                                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                Ad vegan
-                                excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you
-                                probably
-                                haven't heard of them accusamus labore sustainable VHS.
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-                <div ngbAccordionItem="second">
-                    <h2 ngbAccordionHeader>
-                        <button ngbAccordionButton>Politicas de cancelación.</button>
-                    </h2>
-                    <div ngbAccordionCollapse>
-                        <div ngbAccordionBody>
-                            <ng-template>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf
-                                moon
-                                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                eiusmod. Brunch
-                                3 wolf
-                                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                shoreditch et.
-                                Nihil anim
-                                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                Ad vegan
-                                excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you
-                                probably
-                                haven't heard of them accusamus labore sustainable VHS.
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
-                <div ngbAccordionItem="three">
-                    <h2 ngbAccordionHeader>
-                        <button ngbAccordionButton>Consideraciones adicionales.</button>
-                    </h2>
-                    <div ngbAccordionCollapse>
-                        <div ngbAccordionBody>
-                            <ng-template>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf
-                                moon
-                                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                eiusmod. Brunch
-                                3 wolf
-                                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                shoreditch et.
-                                Nihil anim
-                                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                Ad vegan
-                                excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you
-                                probably
-                                haven't heard of them accusamus labore sustainable VHS.
-                            </ng-template>
-                        </div>
-                    </div>
-                </div>
+      <h2 class="mt-3 mb-3 text-center">Preguntas Frecuentes</h2>
+      <div class="horizontal-bars"></div>
+      <div ngbAccordion #accordion="ngbAccordion">
+        <div ngbAccordionItem="first">
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>Tarifas de reseva.</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf
+                moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                eiusmod. Brunch
+                3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+                Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                Ad vegan
+                excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you
+                probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
             </div>
-
-            <hr />
-
-
-            <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.expandAll()">Abrir todos</button>
-            <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.collapseAll()">Cerrar todos</button>
+          </div>
         </div>
+        <div ngbAccordionItem="second">
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>Politicas de cancelación.</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf
+                moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                eiusmod. Brunch
+                3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+                Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                Ad vegan
+                excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you
+                probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+        <div ngbAccordionItem="three">
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton>Consideraciones adicionales.</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <ng-template>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf
+                moon
+                officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                eiusmod. Brunch
+                3 wolf
+                moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et.
+                Nihil anim
+                keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                Ad vegan
+                excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you
+                probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+
+      <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.expandAll()">Abrir todos</button>
+      <button class="btn btn-sm btn-outline-dark me-2" (click)="accordion.collapseAll()">Cerrar todos</button>
     </div>
+  </div>
 </div>

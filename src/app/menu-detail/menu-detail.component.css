@@ -79,4 +79,12 @@
     font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
     background-color: rgba(235, 231, 231, 0.622);
   }
+  .card-img {
+    position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: -1; 
+  }
  

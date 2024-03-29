@@ -141,14 +141,14 @@ export class BookingFormComponent implements OnInit {
 
     if (this.isUpdate) {
       const url = 'http://localhost:8080/bookings/' + booking.id;
-      this.httpClient.put<Booking>(url, booking).subscribe(bookFromBackend => {
-        this.router.navigate(['/bookings', bookFromBackend.id, 'detail']);
+      this.httpClient.put<Booking>(url, booking).subscribe(bookingFromBackend => {
+        this.router.navigate(['/bookings', bookingFromBackend.id, 'detail']);
       });
 
     } else {
       const url = 'http://localhost:8080/bookings';
-      this.httpClient.post<Booking>(url, booking).subscribe(bookFromBackend => {
-        this.router.navigate(['/bookings', bookFromBackend.id, 'detail']);
+      this.httpClient.post<Booking>(url, booking).subscribe(bookingFromBackend => {
+        this.router.navigate(['/bookings', bookingFromBackend.id, 'detail']);
       });
     }
 
