@@ -60,6 +60,15 @@ h1{
     opacity: 0;
    }
 
+   /*estoe s de los bordes de formulario*/
+   
+  .coolinput input {
+    border: 3px #4b0f4a solid;
+    border-radius: 4px;
+    
+  }
+  
+  
 
 
 

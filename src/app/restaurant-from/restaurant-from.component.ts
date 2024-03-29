@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 
 @Component({
   selector: 'app-restaurant-from',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule,RouterLink],
   templateUrl: './restaurant-from.component.html',
   styleUrl: './restaurant-from.component.css'
 })
@@ -25,6 +25,7 @@ export class RestaurantFromComponent implements OnInit {
       address:[''],
       city: [''],
       postalCode:[''],
+      number:[0]
     }),
       
     phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
@@ -33,7 +34,6 @@ export class RestaurantFromComponent implements OnInit {
     closingTime:[new Date()],
     averageRating: [0],
     imageUrl: [''],
-
     //tables: Tables
     status:[false],
 

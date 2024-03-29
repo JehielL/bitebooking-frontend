@@ -4,5 +4,6 @@ export interface RestaurantLocation
     address: string;
     city: string;
     postalCode: string;
+    number:number;
 }
   
