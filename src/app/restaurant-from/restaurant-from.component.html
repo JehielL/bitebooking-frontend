@@ -4,17 +4,17 @@
  <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
     @if (isUpdate) {
-      <h1 class="mt-5 mb-5">Actualizar Restaurant existente con id {{restaurantFrom.get('id')?.value}}</h1>
+      <h1 class="mt-5 mb-5">Update existing Restaurant with id{{restaurantFrom.get('id')?.value}}</h1>
     } @else {
-      <h1 class="mt-5 mb-5">Crear nuevo Restaurant</h1>
+      <h1 class="mt-5 mb-5"></h1>
     }
     <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
   </div> 
   <div class="col-6">
     <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
       <div class="text-center">  
-        <h1>Crea Un Restaurant</h1>
-    </div> 
+        <h1>Create Restaurant</h1>
+      </div> 
 
     <div class="form-floating md-3">
         <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
@@ -22,14 +22,14 @@
     </div>
     <div class="form-floating mb-3">
         <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
-        <label for="phone">Telefono Móvil *</label>
+        <label for="phone">Phone *</label>
         @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
         <div>
             @if (restaurantFrom.controls.phone.errors['required']) {
-            <small class="text-danger">Se Requiere un Phone</small>
+            <small class="text-danger">It requires a Phone</small>
             }
             @if (restaurantFrom.controls.phone.errors['pattern']) {
-            <small class="text-danger">Formato de Telefono Incorrecto. Debe de Tener 9 digitos.</small>
+            <small class="text-danger">Incorrect Telephone Format. Must be 9 digits.</small>
             }
         </div>
         }
@@ -80,13 +80,13 @@
 
     <div class="float-end mb-3">
       @if (restaurantFrom.invalid) {
-        <small class="text-danger mb-3">Completa los Campos Obligatorios</small>
+        <small class="text-danger mb-3">Complete the Required Fields</small>
         }
         <div class="mb-3">
           @if (isUpdate) {
-            <button class="custom-btn mb-3" type="submit" >Actualizar</button>
+            <button class="custom-btn mb-3" type="submit" >Update</button>
           }@else { 
-          <button class="custom-btn mb-3" type="submit" [disabled]="restaurantFrom.invalid" >Guardar</button>   
+          <button class="custom-btn mb-3" type="submit" [disabled]="restaurantFrom.invalid" >save</button>   
           }  
           <button class="custom-btn " routerLink="/home" type="submit"  >Cancelar</button>
         </div>
