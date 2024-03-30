@@ -58,6 +58,7 @@ export class MenuFormComponent implements OnInit {
       this.httpClient.get<Menu>('http://localhost:8080/menus/' + id).subscribe(menu => {
       this.menuForm.reset(menu);
       this.isUpdate = true;
+      this.menuForm.get('restaurant')?.setValue(menu.restaurant); 
       this.menu = menu;
           
       });
@@ -99,6 +100,7 @@ export class MenuFormComponent implements OnInit {
     formData.append('active', this.menuForm.get('active')?.value?.toString() ?? 'false');
     formData.append('restaurantType', this.menuForm.get('restaurantType')?.value ?? '');
     formData.append('alergys', this.menuForm.get('alergys')?.value?.toString() ?? 'false');
+    formData.append('restaurant', this.menuForm.get('restaurant')?.value?.id.toString() ?? '0');
     
 
    if(this.photoFile) {

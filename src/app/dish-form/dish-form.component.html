@@ -1,0 +1,66 @@
+<div class="col-lg-4 custom-col">
+
+    @if (photoPreview) {
+    <h2 class="my-5">Foto de portada</h2>
+    <img class="img-fluid" [src]="photoPreview">
+    }
+    @if (!photoPreview && dish?.imgDish) {
+    <h2 class="my-5">Foto de portada</h2>
+    <img class="img-fluid" [src]="'http://localhost:8080/files/' + dish?.imgDish">
+    }
+
+
+
+</div>
+<div class="col-lg-8 custom-col">
+
+    <h1 class="my-5 text-center">Introducir datos carta</h1>
+
+    <form [formGroup]="dishForm" (ngSubmit)="save()">
+
+        <input type="hidden" formControlName="id">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <label for="title">Titulo de tu plato</label>
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="description" formControlName="description" rows="5"></textarea>
+            <label for="description">Describe tu plato</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="price" formControlName="price" step="0.01">
+            <label for="price">Precio</label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+            <select class="form-select" id="menu" formControlName="menu" [compareWith]="compareObjects">
+
+              @for (menu of menus; track menu.id) {
+                <option [ngValue]="menu">{{menu.title}}</option>
+              }
+
+            </select>
+            <label for="menu">Menú Asociado</label>
+        </div>
+        <div class="form-check mb-3 mt-3">
+            <input class="form-check-input" type="checkbox" id="active" formControlName="active">
+            <label class="form-check-label" for="active">
+                Activo
+            </label>
+        </div>
+        <div class="form-check mb-3 mt-3">
+            <input class="form-check-input" type="checkbox" id="alergys" formControlName="alergys">
+            <label class="form-check-label" for="alergys">
+                Alergias
+            </label>
+        </div>
+        <div class="input-group">
+            <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
+
+            <button class="w-100 btn  btn-lg mb-5 mt-5" type="submit">Guardar</button>
+
+        </div>
+
+    </form>

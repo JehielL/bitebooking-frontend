@@ -15,6 +15,7 @@ import { DashboardUserComponent } from './dashboard-user/dashboard-user.componen
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
+import { DishFormComponent } from './dish-form/dish-form.component';
 
 export const routes: Routes = [
    {
@@ -106,13 +107,25 @@ export const routes: Routes = [
 
 },
 {
+   path: 'menus/:id/update',
+   component: MenuFormComponent
+
+},
+{
    path: 'menus/:id/detail',
    component: MenuDetailComponent
 },
 {
-
-   path: 'menus/create',
-   component: MenuFormComponent
+   path: 'dishes/create',
+   component: DishFormComponent
+},
+{
+   path: 'dishes/:id/update',
+   component: DishFormComponent
+},
+{
+   path: 'dishes/:id/update',
+   component: DishFormComponent
 },
  
 {

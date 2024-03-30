@@ -87,4 +87,42 @@
       height: auto;
       z-index: -1; 
   }
- 
+
+
+.custom-button {
+  background-color: transparent; 
+  border: none; 
+  padding: 0; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+}
+
+
+.custom-button .bi-plus-circle {
+  font-size: 1em; 
+  color: blue; 
+}
+
+
+.custom-button .button-text {
+  margin-left: 0.5em; 
+}
+
+
+.custom-button:hover .bi-plus-circle {
+  color: red; 
+}
+
+.form-div{
+
+  padding: 30px;
+}
+.modal-content {
+  margin: 20px; /* Ajusta el margen exterior del contenido del modal */
+  padding: 20px; /* Ajusta el relleno interior del contenido del modal */
+}
+
+.modal-dialog {
+  margin: 50px auto; /* Ajusta el margen alrededor del modal */
+}
