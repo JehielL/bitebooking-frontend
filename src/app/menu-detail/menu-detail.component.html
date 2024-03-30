@@ -9,7 +9,7 @@
 <div class="container">
   <div class="container px-4 py-5 custom-background" id="custom-cards">
 
-    <h2 class="pb-2 custom-title">Menú: {{menu.title}}.</h2>
+    <h2 class="pb-2 custom-title">Menú {{menu.title}}</h2>
     <div class="horizontal-bars"></div>
   </div>
   <div class="row">
@@ -41,8 +41,7 @@
           <div class="col d-flex align-items-start">
             <div>
               <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Nombre del menú</h3>
-              <p>{{menu.title}}</p>
-            </div>
+ng            </div>
           </div>
 
           <div class="col d-flex align-items-start">
@@ -103,7 +102,7 @@
             </div>
           </div>
 
-          
+
         </div>
       </div>
       <div class="buttons">
@@ -177,6 +176,7 @@
 
   <hr class="featurette-divider">
 
+
   <div class="menu-section py-4">
 
     <div class="row">
@@ -185,127 +185,86 @@
         <h2 class="pb-2 custom-title">Platos Relevantes.</h2>
         <div class="horizontal-bars"></div>
       </div>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img class="card-img-top"
-            src="https://www.foodandwine.com/thmb/0AXGLeY6dYnY8sEXFqxBa8opDrs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Tonkotsu-Ramen-FT-BLOG1122-8fe6c12d609a4fd4ab246bea3aae140e.jpg"
-            alt="Dish 1">
-          <div class="card-body">
-            <h5 class="card-title">Ramen</h5>
-            <p class="card-text">Delicioso ramen tradicional tonkotsu.</p>
-            <div class="card-footer">
-              <small class="text-muted">$12</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img class="card-img-top"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Okonomiyaki_001.jpg/1200px-Okonomiyaki_001.jpg"
-            alt="Dish 2">
-          <div class="card-body">
-            <h5 class="card-title">Okonomiyaki</h5>
-            <p class="card-text">Tortilla Japonesa tradicional.</p>
-            <div class="card-footer">
-              <small class="text-muted">$15</small>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
-            alt="dish 3">
-          <div class="card-body">
-            <h5 class="card-title">Roasted Lobster</h5>
-            <p class="card-text">Langosta rostizada a la robata con mantequilla de shizo.</p>
-            <div class="card-footer">
-              <small class="text-muted">$100</small>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <section class="py-7 py-md-9 border-bottom">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12 col-md-8 col-lg-6 text-center">
-          <!-- Heading -->
+      @for (dish of dishes; track dish.id ) {
 
-
-          <!-- Subheading -->
-          <p class="mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione numquam eos perferendis itaque hic unde,
-            ad, laudantium minima.
-          </p>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <img class="card-img-top" src="{{dish.imgDish}}" alt="Dish 1">
+          <div class="card-body">
+            <h5 class="card-title"> {{dish.title}}</h5>
+            <p class="card-text">{{dish.description}}</p>
+            <div class="card-footer">
+              <small class="text-muted">{{dish.price}}</small>
+            </div>
+          </div>
         </div>
       </div>
+
+      }
+      <section class="py-7 py-md-9 border-bottom">
+        <div class="container">
+          <div class="row justify-content-center">
+            <h2 class="pb-2 custom-title">Toda nuestra carta.</h2>
+            <div class="horizontal-bars"></div>
+          </div>
+          <div class="row">
+            <button type="button" routerLink="/dishes/create" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+              data-bs-whatever="@getbootstrap">
+              <i class="bi bi-plus-circle"></i>
+              <span class="button-text">Agrega un nuevo elemento</span>
+            </button>     
+
+          </div>
+        </div>
+      </section>
       <div class="row">
-        1
-      </div>
-      <div class="row">
-        <div class="col-12">
+        @for (dish of dishes; track dish.id) {
+        <div class="col-md-4">
           <!-- Content -->
           <div class="tab-content" id="menuContent">
             <div class="tab-pane fade show active" id="mains" role="tabpanel" aria-labelledby="mainsTab">
               <div class="row">
-                <div class="col-12 col-md-6">
+                <div class="row-12">
                   <div class="py-3 border-bottom">
                     <div class="row">
-                      <div class="col-3 align-self-center">
+                      <div class="col-2 align-self-center">
                         <!-- Image -->
                         <div class="ratio ratio-1x1">
-                          <img class="object-fit-cover"
-                            src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
-                            alt="...">
+                          <img class="object-fit-cover" src="{{dish.imgDish}}" alt="...">
                         </div>
                       </div>
                       <div class="col-7">
                         <!-- Heading -->
-                        <h5 class="mb-2">{{menu.title}}</h5>
-
+                        <h5 class="mb-2">{{dish.title}}</h5>
                         <!-- Text -->
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati!
-                          Sapiente laudantium.</p>
+                        <p class="mb-0">{{dish.description}}</p>
                       </div>
                       <div class="col-2">
                         <!-- Price -->
-                        <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
+                        <div class="fs-4 font-serif text-center text-body-emphasis">{{dish.price}}€</div>
                       </div>
                       <div class="col-3 align-self-center">
-                        <!-- Image -->
-                        <div class="ratio ratio-1x1">
-                          <img class="object-fit-cover"
-                            src="https://good2b.es/wp-content/uploads/2022/11/zuma-madrid-03-e1668082120458.jpg"
-                            alt="...">
-                        </div>
-                      </div>
-                      <div class="col-7">
-                        <!-- Heading -->
-                        <h5 class="mb-2">{{menu.title}}</h5>
-
-                        <!-- Text -->
-                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, obcaecati!
-                          Sapiente laudantium.</p>
-                      </div>
-                      <div class="col-2">
-                        <!-- Price -->
-                        <div class="fs-4 font-serif text-center text-body-emphasis">$15</div>
+                        <!-- Other content -->
                       </div>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
+        }
       </div>
+
+
+
+
+
     </div>
-  </section>
+  </div>
+
+
+
 </div>
 }
 

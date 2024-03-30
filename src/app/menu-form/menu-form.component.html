@@ -95,17 +95,16 @@
           </select>
           <label for="restaurantType">Tipo de Gastronomía</label>
         </div>
-        <select class="form-select" id="restaurant" formControlName="restaurant" [compareWith]="compareObjects">
+        <div class="form-floating mb-3">
+          <select class="form-select" id="restaurant" formControlName="restaurant" [compareWith]="compareObjects">
 
+            @for (restaurant of restaurants; track restaurant.id) {
+              <option [ngValue]="restaurant">{{restaurant.name}}</option>
+            }
 
-          <!-- iterar sobre el array de authors mostrando cada uno -->
-          @for (restaurant of restaurants; track restaurant.id) {
-          <option value="restaurant">{{restaurant.name}}</option>
-
-
-          }
-
-        </select>
+          </select>
+          <label for="restaurant">Restaurant Asociado</label>
+      </div>
         <div class="form-check mb-3 mt-3">
           <input class="form-check-input" type="checkbox" id="active" formControlName="active">
           <label class="form-check-label" for="active">
