@@ -13,6 +13,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CarruselComponent implements OnInit {
   restaurants: Restaurant[] = [];
+  carruselIntervalo = 2000;
 
   constructor(private httpClient: HttpClient) {}
 
