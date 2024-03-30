@@ -13,8 +13,6 @@ export interface Restaurant {
     closingTime: Date;
     averageRating: number;
     imageUrl: string;
-    //bookings: Booking;
-    //tables: Tables[];
     status: boolean;
   }
 
