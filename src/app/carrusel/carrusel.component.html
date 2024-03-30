@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{restaurant.name}}</h5>
                 <p class="card-text">Tipo: {{restaurant.restaurantType}}. Rating: {{restaurant.averageRating}}</p>
-                <a [routerLink]="['/booking', restaurant.id]" class="btn btn-outline-dark">Reservar</a>
+                <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
             </div>
         </div>
     </ng-template>
