@@ -18,13 +18,15 @@
       <div class="container mt-5 mb-5">
         <div class="row card overflow-hidden rounded-4">
 
-          <img class="rounded-img" [src]="menu.imgMenu" alt="" style="width: 100%;">
+     
 
-          @if (!menu.imgMenu.startsWith('http://localhost:8080/files/'))
-          {
-          <img class="card-img" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
+          <div class="ratio ratio-1x1">
+            <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
 
-          }
+            <img class="rounded-img" [src]="menu.imgMenu" alt="" style="width: 100%;">
+
+          </div>
+          
         </div>
       </div>
     </div>
@@ -41,7 +43,8 @@
           <div class="col d-flex align-items-start">
             <div>
               <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">Nombre del menú</h3>
-ng            </div>
+              <p>{{menu.title}}</p>
+            </div>
           </div>
 
           <div class="col d-flex align-items-start">
@@ -189,7 +192,11 @@ ng            </div>
 
       <div class="col-md-4 mb-3">
         <div class="card h-100">
-          <img class="card-img-top" src="{{dish.imgDish}}" alt="Dish 1">
+
+
+          <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+          <img class="object-fit-cover" [src]="dish.imgDish" alt="">
+
           <div class="card-body">
             <h5 class="card-title"> {{dish.title}}</h5>
             <p class="card-text">{{dish.description}}</p>
@@ -208,11 +215,11 @@ ng            </div>
             <div class="horizontal-bars"></div>
           </div>
           <div class="row">
-            <button type="button" routerLink="/dishes/create" class="custom-button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-              data-bs-whatever="@getbootstrap">
+            <button type="button" routerLink="/dishes/create" class="custom-button" data-bs-toggle="modal"
+              data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
               <i class="bi bi-plus-circle"></i>
               <span class="button-text">Agrega un nuevo elemento</span>
-            </button>     
+            </button>
 
           </div>
         </div>
@@ -229,9 +236,12 @@ ng            </div>
                     <div class="row">
                       <div class="col-2 align-self-center">
                         <!-- Image -->
+
                         <div class="ratio ratio-1x1">
-                          <img class="object-fit-cover" src="{{dish.imgDish}}" alt="...">
+                          <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+                          <img class="object-fit-cover" [src]="dish.imgDish" alt="">
                         </div>
+
                       </div>
                       <div class="col-7">
                         <!-- Heading -->

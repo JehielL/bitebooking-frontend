@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angul
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Dish } from '../Interfaces/dish.model';
 import { Menu } from '../Interfaces/menu.model';
+import AOS from 'aos';
+
 
 @Component({
   selector: 'app-dish-form',
@@ -29,7 +31,7 @@ export class DishFormComponent implements OnInit{
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute) { 
   }
 
   photoFile: File | undefined;
@@ -37,9 +39,17 @@ export class DishFormComponent implements OnInit{
   dish: Dish | undefined;
   isUpdate: boolean = false;
   menus: Menu[] = [];
+  dishes: Dish[] = []; 
+  selectedMenu: Menu | undefined;
+
+  
+
+
  
  
   ngOnInit(): void {
+
+    AOS.init();
     
     this.httpClient.get<Menu[]>('http://localhost:8080/menus')
       .subscribe(menus => this.menus = menus);
@@ -62,6 +72,11 @@ export class DishFormComponent implements OnInit{
             
         });         
         });
+        this.dishForm.get('menu')?.valueChanges.subscribe(menu => {
+          this.selectedMenu = menu;
+        });
+
+      
   
 
   }
