@@ -46,7 +46,7 @@ export class MenuFormComponent implements OnInit {
 
     this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
       .subscribe(restaurants => this.restaurants = restaurants);
-    
+ 
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if(!id) return;

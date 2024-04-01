@@ -9,8 +9,7 @@
 <div class="container">
   <div class="container px-4 py-5 custom-background" id="custom-cards">
 
-    <h2 class="pb-2 custom-title">Menú {{menu.title}}</h2>
-    <div class="horizontal-bars"></div>
+   
   </div>
   <div class="row">
 
@@ -18,14 +17,16 @@
       <div class="container mt-5 mb-5">
         <div class="row card overflow-hidden rounded-4">
 
-     
-
-          <div class="ratio ratio-1x1">
-            <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
-
-            <img class="rounded-img" [src]="menu.imgMenu" alt="" style="width: 100%;">
-
-          </div>
+          
+          @if (menu.imgMenu.startsWith('http')) {
+            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+            <img class="" [src]="menu.imgMenu" alt="">
+          }
+          @else{
+            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+            <img class="" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
+      
+          }
           
         </div>
       </div>
@@ -188,14 +189,23 @@
         <h2 class="pb-2 custom-title">Platos Relevantes.</h2>
         <div class="horizontal-bars"></div>
       </div>
-      @for (dish of dishes; track dish.id ) {
 
-      <div class="col-md-4 mb-3">
+      
+      @for (dish of dishes; track dish.id ) {
+     <div class="col-md-4 mb-3">
         <div class="card h-100">
 
+          @if (dish.imgDish.startsWith('http')) {
+            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+            <img class="card-img-top" [src]="dish.imgDish" alt="">
+          }
+          @else{
+            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+            <img class="card-img-top" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+    
+          }
 
-          <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
-          <img class="object-fit-cover" [src]="dish.imgDish" alt="">
+          
 
           <div class="card-body">
             <h5 class="card-title"> {{dish.title}}</h5>
@@ -215,11 +225,11 @@
             <div class="horizontal-bars"></div>
           </div>
           <div class="row">
-            <button type="button" routerLink="/dishes/create" class="custom-button" data-bs-toggle="modal"
-              data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">
+            <button type="button" [routerLink]="['/dishes/create']" class="custom-button">
               <i class="bi bi-plus-circle"></i>
               <span class="button-text">Agrega un nuevo elemento</span>
             </button>
+            
 
           </div>
         </div>
@@ -238,8 +248,15 @@
                         <!-- Image -->
 
                         <div class="ratio ratio-1x1">
-                          <img class="object-fit-cover" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
-                          <img class="object-fit-cover" [src]="dish.imgDish" alt="">
+                          @if (dish.imgDish.startsWith('http')) {
+                            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+                            <img class="card-img" [src]="dish.imgDish" alt="">
+                          }
+                          @else{
+                            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+                            <img class="card-img" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+
+                          }
                         </div>
 
                       </div>

@@ -6,19 +6,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Menu } from '../Interfaces/menu.model';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CurrencyPipe],
+  imports: [ReactiveFormsModule, HttpClientModule, CurrencyPipe,DatePipe],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent implements OnInit {
 
   booking: Booking | undefined;
+  restaurant: Restaurant | undefined;
   
 
   bookingForm = new FormGroup({

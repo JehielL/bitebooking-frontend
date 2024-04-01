@@ -6,7 +6,7 @@
           <h3 class="mt-2 mb-4 display-6 lh-1 fw-bold"></h3>
           <div class="reservation-info">
             <p> Reserva a nombre de: {{ bookingForm.get('title')?.value }}</p>
-            <p> Fecha de reservación: {{ bookingForm.get('createDate')?.value }}</p>
+            <p> Fecha de reservación: {{ bookingForm.get('createDate')?.value  | date:'dd/MM/yy HH:mm'}}</p>
             <p> Numero de Clientes: {{ bookingForm.get('numUsers')?.value }}</p>
             <p>Observaciones: {{ bookingForm.get('observations')?.value }}</p>
             <p>Estado de reserva: {{ bookingForm.get('status')?.value }}</p>

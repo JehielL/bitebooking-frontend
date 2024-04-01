@@ -67,7 +67,7 @@ export class DishFormComponent implements OnInit{
         this.dishForm.reset(dish);
         this.isUpdate = true;
         this.dish = dish;
-        this.dishForm.get('menu')?.setValue(dish.menu); // Asignar el objeto de menú al control del formulario
+        this.dishForm.get('menu')?.setValue(dish.menu); 
 
             
         });         
