@@ -27,10 +27,6 @@ export class RestaurantDetailComponent implements OnInit {
 
       const url = `http://localhost:8080/restaurant/${id}`;
       this.httpClient.get<Restaurant>(url).subscribe(restaurant => {
-
-    
-
-        console.log(restaurant);
         this.restaurant = restaurant;
       });
     });
