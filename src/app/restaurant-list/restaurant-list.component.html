@@ -1,12 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="container-fluid">
-        <div class="horizontal-bars mt-5"></div>
-        <h2 class="pb-2 custom-title">Todos los Restaurants</h2>
-        <div class="horizontal-bars"></div>
+      <div class="container-fluid"> 
+        <h2 class="pb-2 custom-title">Restaurantes</h2>
+        <input type="text" class="form-control" placeholder="Buscar restaurantes..." formControlName="searchTerm">
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-          @for (restaurant of restaurants; track restaurant.id) {
+          @for (restaurant of filteredRestaurants; track restaurant.name) {
           <div class="col">
             <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
              [style.background-image]="'url('+ restaurant.imageUrl +')'" [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">

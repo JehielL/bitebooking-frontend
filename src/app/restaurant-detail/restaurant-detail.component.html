@@ -14,8 +14,7 @@
               <p class="bi bi-bag-x btn btn-outline-dark me-2">Cerrado</p>
           }
         <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
-        <p class="btn btn-outline-dark me-2">Hora de apertura: {{restaurant?.openingTime}}</p>
-        <p class="btn btn-outline-dark me-2">Hora de cierre: {{restaurant?.closingTime}}</p>
+        <p class="btn btn-outline-dark me-2">Horario {{restaurant?.openingTime | date:"HH:mm"}}, Hasta : {{restaurant?.closingTime | date:"HH:mm"}}</p>
       </div>
       <div class="fw-bold fs-4">Descripción</div>
       {{restaurant?.description}}
