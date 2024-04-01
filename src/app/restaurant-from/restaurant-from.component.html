@@ -10,8 +10,11 @@
     }
     <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
   </div> 
+
   <div class="col-6 mb-3 ">
+
     <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
+      
     <div class="coolinput form-floating mb-3">
         <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
         <label for="name">Name of the Restaurant</label>
@@ -31,9 +34,9 @@
         }
     </div>
 
-    <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;
-    border-radius: 4px;">
-        <select class="form-select" id="restaurantType" formControlName="restaurantType">
+    <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 4px;">
+      
+        <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
             @for (type of restaurantTypes; track type) {
                 <option [value]="type">{{ type }}</option>
             }
@@ -66,6 +69,8 @@
         <label for="address">Location address</label>  
     </div>
 
+    <input type="hidden" formControlName="imageUrl">
+
     <div class="coolinput form-floating mb-3" formGroupName="location">
         <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
         <label for="locationCity">Location city</label>  
@@ -77,8 +82,8 @@
     <div class="coolinput col-3 form-floating mb-3" formGroupName="location">
       <input type="number" class="form-control" id="number" placeholder="number" formControlName="number">
       <label for="number">Nº</label>  
-    </div>        
-    </form>
+    </div>
+
     <div class="float-end mb-3">
       @if (restaurantFrom.invalid) {
         <small class="text-danger mb-3">Complete the Required Fields</small>
@@ -91,7 +96,9 @@
         }  
         <button class="custom-btn "  type="submit"  routerLink="/home">Cancelar</button>
       </div>
-    </div>
+    </div>        
+    </form>
+    
   </div>  <div><p class="text-body-secondary text-center">© 2024-Bite-Booking</p></div>     
   </div>     
 </div>

@@ -108,20 +108,21 @@
                 </div> 
               </div>
             </fieldset>
+            <div class="float-end mb-3">
+              @if (registerUserForm.invalid) {
+                <small class="text-danger mb-3">Completa los Campos Obligatorios</small>
+                }
+              <div class="mb-3">
+                @if (isUpdate) {
+                  <button class="custom-btn mb-3" type="submit" >Actualizar</button>
+                }@else { 
+                <button class="custom-btn mb-3" type="submit" [disabled]="registerUserForm.invalid" >Guardar</button>   
+                }  
+                <button class="custom-btn " routerLink="/home" type="submit"  >Cancelar</button>
+              </div>
+            </div>
       </form>
-      <div class="float-end mb-3">
-        @if (registerUserForm.invalid) {
-          <small class="text-danger mb-3">Completa los Campos Obligatorios</small>
-          }
-        <div class="mb-3">
-          @if (isUpdate) {
-            <button class="custom-btn mb-3" type="submit" >Actualizar</button>
-          }@else { 
-          <button class="custom-btn mb-3" type="submit" [disabled]="registerUserForm.invalid" >Guardar</button>   
-          }  
-          <button class="custom-btn " routerLink="/home" type="submit"  >Cancelar</button>
-        </div>
-      </div>
+      
     </div>  
   </div> 
   <div>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
+import { RestaurantLocation } from '../Interfaces/restaurantLocation.model';
 
 
 @Component({
@@ -15,28 +16,28 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 })
 export class RestaurantFromComponent implements OnInit {
   restaurants: Restaurant[] = [];
-  restaurantTypes = Object.values(RestaurantType);
+  restaurantTypes = Object.values(RestaurantType); 
+  
 
-  restaurantFrom = this.fb.group({
-    id: [0],
-    name:[''], 
-    location: this.fb.group({
+
+  restaurantFrom = new FormGroup({
+    id: new FormControl(0),
+    name: new FormControl(''),
+    restaurantTypes:new FormControl(),
+    imageUrl: new FormControl(),
+    //location: new FormControl(),
+    location:this.fb.group({
       id:[0],
       address:[''],
       city: [''],
       postalCode:[''],
       number:[0]
     }),
-      
-    phone:[0,[Validators.required,Validators.pattern(('^[0-9]{9}$'))]],
-    restaurantType:[RestaurantType.BAR],
-    openingTime: [new Date()],
-    closingTime:[new Date()],
-    averageRating: [0],
-    imageUrl: [''],
-    //tables: Tables
-    status:[false],
-
+    phone: new FormControl(''), 
+    openingTime: new FormControl(new Date),
+    closingTime: new FormControl(new Date), 
+    averageRating: new FormControl(0), 
+    status: new FormControl(false)
   });
 
   isUpdate: boolean = false;
@@ -64,12 +65,11 @@ export class RestaurantFromComponent implements OnInit {
           id: restaurantBacken.id,
           name:restaurantBacken.name, 
           location: restaurantBacken.location,  
+          imageUrl: restaurantBacken.imageUrl,  
           phone: restaurantBacken.phone,
           openingTime: restaurantBacken.openingTime ,
           closingTime: restaurantBacken.closingTime,
           averageRating: restaurantBacken.averageRating,
-          
-          //tables: Tables
           status: restaurantBacken.status,
         });
         this.isUpdate = true;
@@ -86,13 +86,13 @@ export class RestaurantFromComponent implements OnInit {
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurant/' + restaurantBacken.id;
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
     });
     
     } else {
     const url = 'http://localhost:8080/restaurant';
     this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']);
+    this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
     });
     }
   }
