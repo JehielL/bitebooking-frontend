@@ -49,7 +49,7 @@
   <div class="recommendation-section py-4">
     <h2 class="h5 mb-3">Recomendaciones de Restaurantes</h2>
     <div class="row">
-      @for (restaurant of restaurants.slice(0,3); track restaurant) {
+      @for (restaurant of recommendedRestaurants; track restaurant) {
         <div class="col-md-4 mb-3">
           <div class="card h-100" [routerLink]="['/restaurant',restaurant.id,'detail']" style="cursor: pointer;">
             <img class="card-img-top" [src]="restaurant.imageUrl" alt="Restaurants">
@@ -62,4 +62,5 @@
           </div>
         </div>
       }
+      </div>
 </div>
