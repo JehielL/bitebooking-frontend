@@ -48,3 +48,9 @@ width: 40px;
 
 }
 
+@media screen and (min-width: 671.5) and (min-height: 125.12) and (max-width: 671.5) and (max-height: 125.12)  {
+    .LASCAR {
+        align-items: center;
+    }
+ 
+  }

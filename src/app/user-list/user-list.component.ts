@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { User} from '../Interfaces/user.model';
 import { __param } from 'tslib';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-user-list',
@@ -17,10 +18,14 @@ export class UserListComponent implements OnInit{
   users: User[] = [];
   searchTerm: string = '';
   router: any;
+  collapsed =true;
  
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+
+    AOS.init();
+
     this.loadUsers();
   }
 
