@@ -26,7 +26,7 @@ export class UserFormComponent  implements OnInit {
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
     passwordConfirm: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
-    phone: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{9}$')]),
+    phone: new FormControl(0,[Validators.required, Validators.pattern('^[0-9]{9}$')]),
     role: new FormControl<Role>(Role.USER)
   },
   {validators: this.passwordConfirmValidator}
