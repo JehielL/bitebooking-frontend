@@ -18,8 +18,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class MenuDetailComponent implements OnInit{
 
   menu: Menu | undefined;
-  dishes: Dish[] = []; 
-  menus: Menu[] = [];                              
+  dishes: Dish[] = [];                               
   photoFile: File | undefined;
   photoPreview: string | undefined;
   isUpdate: boolean = false;
@@ -53,7 +52,7 @@ export class MenuDetailComponent implements OnInit{
 
       
     });
-    this.loadMenus();
+ 
    
   }
 
@@ -65,10 +64,6 @@ export class MenuDetailComponent implements OnInit{
     });
   }
 
-  private loadMenus() { 
-    const url = 'http://localhost:8080/menus';
-    this.httpClient.get<Menu[]>(url).subscribe(menus => this.menus = menus);
-  }
 
   hideDeletedMenuMessage() {
     this.showDeleteMenuMessage = false;
