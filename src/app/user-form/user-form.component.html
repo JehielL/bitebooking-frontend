@@ -5,21 +5,19 @@
       @if (isUpdate) {
         <h1 class="mt-5 mb-5">Actualizar Usuario existente con id {{registerUserForm.get('id')?.value}}</h1>
       } @else {
-        <h1 class="mt-5 mb-5"></h1>
+        <h1 class="mt-5 mb-5">New User</h1>
       }
       <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
       <form [formGroup]="registerUserForm" (ngSubmit)="save()">
     
-            <div class="text-center">  
-              <h1 class="h3 mb-3 fw-normal">Registrate</h1>
-            </div>  
+              
 
             <div class="coolinput form-floating mb-3">
-              <input type="text" class="form-control" id="firtsName" placeholder="" formControlName="firtsName">
-              <label for="firtsName">First Name *</label>
-              @if (registerUserForm.controls.firtsName.touched && registerUserForm.controls.firtsName.errors) {
+              <input type="text" class="form-control" id="firstName" placeholder="firstName" formControlName="firstName">
+              <label for="firstName">First Name*</label>
+              @if (registerUserForm.controls.firstName.touched && registerUserForm.controls.firstName.errors) {
                 <div>
                   <small class="text-danger">Se Requiere un firts Name</small>
                 </div>
