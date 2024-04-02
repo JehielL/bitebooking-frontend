@@ -11,11 +11,11 @@ import { RestaurantFromComponent } from './restaurant-from/restaurant-from.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
-import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 
 export const routes: Routes = [
    {
@@ -28,7 +28,7 @@ export const routes: Routes = [
     component: HomeComponent
  },
 {
-   path:'dashboard-user',
+   path:'dashboard/:id/update',
    component: DashboardUserComponent
 },
  {
