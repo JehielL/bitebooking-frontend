@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
 import { Restaurant } from "../Interfaces/restaurant.model";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { DatePipe } from '@angular/common';
-
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
@@ -14,12 +14,18 @@ import { DatePipe } from '@angular/common';
 export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
+  restaurantType = RestaurantType;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpClient
   ) {}
 
+getRestaurantType(type?: RestaurantType): string {
+  if (type === undefined) return 'No especificado';
+  const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
+  return typeAsString;
+}
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
@@ -31,4 +37,5 @@ export class RestaurantDetailComponent implements OnInit {
       });
     });
   }
+  
 }

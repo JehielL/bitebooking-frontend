@@ -1,66 +1,34 @@
 export enum RestaurantType {
-    JAPANESE_FOOD,
-  
-    THAI_FOOD,
-  
-    SPAIN_FOOD,
-  
-    CHINESE_FOOD,
-  
-    BRUNCH, 
-  
-    COFFEE_STORE, 
-  
-    BAR, 
-    
-    VIETNAM_FOOD,
-  
-    ITALIAN_FOOD,
-  
-    FRENCH_FOOD,
-  
-    TEX_MEX_FOOD,
-  
-    KOREAN_FOOD,
-  
-    VEGAN_FOOD,
-  
-    AMERICAN_FOOD,
-  
-    GERMAN_FOOD,
-  
-    PORTUGUESE_FOOD,
-  
-    FUSION_FOOD,
-  
-    GREEK_FOOD,
-  
-    INDIAN_FOOD,
-  
-    PERUVIAN_FOOD,
-  
-    CANADIAN_FOOD,
-  
-    DOMINICAN_FOOD,
-  
-    LATIN_AMERICAN_FOOD,
-  
-    ARGENTINE_FOOD,
-  
-    BALKAN_FOOD,
-  
-    GEORGIAN_FOOD,
-  
-    ARABIAN_FOOD,
-  
-    MARRAKECH_FOOD,
-  
-    ASIAN_FOOD,
-  
-    AFRICAN_FOOD,
-  
-    MAGHREB_FOOD,
-  
-    CARIBBEAN_FOOD
-  }
-  
+  JAPANESE_FOOD = "Comida Japonesa",
+  THAI_FOOD = "Comida Tailandesa",
+  SPAIN_FOOD = "Comida Española",
+  CHINESE_FOOD = "Comida China",
+  BRUNCH = "Brunch",
+  COFFEE_STORE = "Cafetería",
+  BAR = "Bar",
+  VIETNAM_FOOD = "Comida Vietnamita",
+  ITALIAN_FOOD = "Comida Italiana",
+  FRENCH_FOOD = "Comida Francesa",
+  TEX_MEX_FOOD = "Tex-Mex",
+  KOREAN_FOOD = "Comida Coreana",
+  VEGAN_FOOD = "Comida Vegana",
+  AMERICAN_FOOD = "Comida Americana",
+  GERMAN_FOOD = "Comida Alemana",
+  PORTUGUESE_FOOD = "Comida Portuguesa",
+  FUSION_FOOD = "Comida Fusión",
+  GREEK_FOOD = "Comida Griega",
+  INDIAN_FOOD = "Comida India",
+  PERUVIAN_FOOD = "Comida Peruana",
+  CANADIAN_FOOD = "Comida Canadiense",
+  DOMINICAN_FOOD = "Comida Dominicana",
+  LATIN_AMERICAN_FOOD = "Comida Latinoamericana",
+  ARGENTINE_FOOD = "Comida Argentina",
+  BALKAN_FOOD = "Comida Balcánica",
+  GEORGIAN_FOOD = "Comida Georgiana",
+  ARABIAN_FOOD = "Comida Árabe",
+  MARRAKECH_FOOD = "Comida Marroquí",
+  ASIAN_FOOD = "Comida Asiática",
+  AFRICAN_FOOD = "Comida Africana",
+  MAGHREB_FOOD = "Comida del Magreb",
+  CARIBBEAN_FOOD = "Comida Caribeña",
+}
