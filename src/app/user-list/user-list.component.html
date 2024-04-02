@@ -1,3 +1,6 @@
+
+  <h1 style="text-align: center;" class="display-5 fw-bold">Listado de usuarios</h1>
+
 <div class="container text-center" style="border-radius: 15px;">
   <div class="container text-center cajitas">
     <div class="col-sm-8" style="margin-left: -95px; display: contents;">
@@ -7,14 +10,15 @@
   </div>
 </div>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 cajaMosaico" style="padding: 15px;">
+  <div class="row row-cols-1 row-cols-lg-5 g-1 g-lg-3 cajaMosaico" style="padding: 19px; padding-bottom: 30px;">
     @for (user of users; track user.id)
     {
     <div class="col">
       <div class="p-5 cartitauser">
         <i class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i>
-        <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer;" alt="logo" width="100">{{user.firtsName}} {{user.lastName}}
-        <div class="col">
+        <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" width="100" >
+        <div style="font-size: 20px; font-style: " class="fw-bold">{{user.firtsName}}{{user.lastName}}</div>
+        <div class="col" style="padding-left: 8px ;">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
           <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>
           <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>

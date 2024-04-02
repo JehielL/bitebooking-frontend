@@ -1,14 +1,7 @@
 
-.imagenFondo
-{
-  filter: drop-shadow(
-    0 0 10px rgba(0,0,0, .8)
-  );
-}
 
-body{
-    animation: cambioDeColor 5s infinite alternate;
-}
+
+
 
  #formdiv{
    
