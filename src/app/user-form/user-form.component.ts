@@ -20,7 +20,7 @@ export class UserFormComponent  implements OnInit {
 
   registerUserForm = new FormGroup({
     id: new FormControl (0),
-    firtsName: new FormControl('',Validators.required),
+    firstName: new FormControl('',Validators.required),
     lastName: new FormControl('',Validators.required),
     birthdayDate: new FormControl(new Date()),
     email: new FormControl('',[Validators.required, Validators.email]),
@@ -60,7 +60,7 @@ export class UserFormComponent  implements OnInit {
         
         this.registerUserForm.reset({
           id: backendUser.id,
-          firtsName:backendUser.firtsName,
+          firstName:backendUser.firstName,
           lastName:backendUser.lastName,
           birthdayDate:backendUser.birthdayDate,
           email: backendUser.email,

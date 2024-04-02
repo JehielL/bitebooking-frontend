@@ -17,7 +17,8 @@ import { __values } from 'tslib';
 })
 export class RestaurantFromComponent implements OnInit {
   restaurants: Restaurant[] = [];
-  
+  restaurantTypes = Object.values(RestaurantType);
+
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
