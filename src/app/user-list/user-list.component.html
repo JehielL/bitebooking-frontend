@@ -1,23 +1,42 @@
+<button
+class="navbar-toggler"
+type="button"
+aria-controls="navbarContent"
+[attr.aria-expanded]="!collapsed"
+aria-label="Toggle navigation"
+(click)="collapsed = !collapsed"
+>
+<span class="navbar-toggler-icon"></span>
+</button>
 
-  <h1 style="text-align: center;" class="display-5 fw-bold">Listado de usuarios</h1>
+  <h1 style="text-align: center;" class="display-5 mt-3 fw-bold">Listado de usuarios</h1>
 
 <div class="container text-center" style="border-radius: 15px;">
   <div class="container text-center cajitas">
     <div class="col-sm-8" style="margin-left: -95px; display: contents;">
       <input type="search" class="busqueda" [(ngModel)]="searchTerm" placeholder="Usuarios">
-      <button class="btn btn-outline-dark" (click)="searchUsers()">Buscar</button>
+      <button class="btn btn-outline-dark " (click)="searchUsers()">Buscar</button>
     </div>
   </div>
 </div>
 
-  <div class="row row-cols-1 row-cols-lg-5 g-1 g-lg-3 cajaMosaico" style="padding: 19px; padding-bottom: 30px;">
+  <div  class="row row-cols-1 row-cols-lg-5 g-1 g-lg-3 cajaMosaico" style="padding: 19px; padding-bottom: 30px;">
     @for (user of users; track user.id)
     {
-    <div class="col">
-      <div class="p-5 cartitauser">
-        <i class="bi bi-three-dots-vertical" style="float: right; margin-top: -25px; cursor: pointer;"></i>
+    <div class="col LASCAR ">
+      <div class="p-5 mb-5 cartitauser">
+        <div class="dropdown">
+          <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" style="float: inline-end;" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical" style="font-size: 1.5rem; color: black;"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" [routerLink]="['/user', user.id, 'detail']">ver perfil</a></li>
+            <li><a class="dropdown-item" href="#">Eliminar</a></li>
+            <li><a class="dropdown-item" href="#">denunciar</a></li>
+          </ul>
+        </div>
         <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" width="100" >
-        <div style="font-size: 20px; font-style: " class="fw-bold">{{user.firtsName}}{{user.lastName}}</div>
+        <div style="font-size: 20px;" class="fw-bold">{{user.firtsName}}{{user.lastName}}</div>
         <div class="col" style="padding-left: 8px ;">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
           <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>

@@ -4,15 +4,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../Interfaces/user.model';
-
+import AOS from 'aos';
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [RouterLink, HttpClientModule, ReactiveFormsModule, NgbAlertModule  ],
+  imports: [RouterLink, HttpClientModule, ReactiveFormsModule, NgbAlertModule ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
 export class UserDetailComponent implements OnInit {
+
+  
 
   users: User | undefined;
 
@@ -26,6 +28,8 @@ export class UserDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    AOS.init();
+
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
 
