@@ -27,7 +27,7 @@ export class DashboardUserComponent  implements OnInit {
     email: new FormControl('',[Validators.required, Validators.email]),
     password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
     passwordConfirm: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
-    phone: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{9}$')]),
+    phone: new FormControl(0,[Validators.required, Validators.pattern('^[0-9]{9}$')]),
     role: new FormControl<Role>(Role.USER)
   },
   {validators: this.passwordConfirmValidator}
@@ -62,7 +62,7 @@ user: any;
         
         this.registerUserForm.reset({
           id: backendUser.id,
-          firtsName:backendUser.firtsName,
+          firtsName:backendUser.firstName,
           lastName:backendUser.lastName,
           birthdayDate:backendUser.birthdayDate,
           email: backendUser.email,
@@ -93,7 +93,7 @@ user: any;
     reader.readAsDataURL(this.photoFile);
   }
   save(){
-    const user: User = this.registerUserForm.value as User;
+    const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
 
     if(this.isUpdate){
