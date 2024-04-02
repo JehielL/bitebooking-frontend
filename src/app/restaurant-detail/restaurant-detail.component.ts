@@ -28,20 +28,21 @@ getRestaurantType(type?: RestaurantType): string {
   const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
   return typeAsString;
 }
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      const id = params['id'];
-      if (!id) return;
+ngOnInit(): void {
+  this.activatedRoute.params.subscribe(params => {
+    const id = params['id'];
+    if (!id) return;
 
-      const url = `http://localhost:8080/restaurant/${id}`;
-      this.httpClient.get<Restaurant>(url).subscribe(restaurant => {
+    const restaurantUrl = `http://localhost:8080/restaurant/${id}`;
+    this.httpClient.get<Restaurant>(restaurantUrl).subscribe(restaurant => {
       this.restaurant = restaurant;
 
-      this.httpClient.get<Menu[]>('http://localhost:8080/menus')
-      .subscribe(Menus => this.Menus = Menus);
-
-      });
+      
+      const menusUrl = `http://localhost:8080/menus/byRestaurant/${id}`;
+      this.httpClient.get<Menu[]>(menusUrl)
+        .subscribe(Menus => this.Menus = Menus);
     });
-  }
+  });
+}
   
 }
