@@ -37,9 +37,39 @@
     <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 4px;">
       
         <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
-            @for (type of restaurantTypes; track type) {
+           <!--@for (type of restaurantTypes; track type) {
                 <option [value]="type">{{ type }}</option>
-            }
+            }--> 
+            <option value="JAPANESE_FOOD">Japones</option>
+            <option value="THAI_FOOD">Thai Food</option>
+            <option value="SPAIN_FOOD">Gastronomía Española</option>
+            <option value="CHINESE_FOOD">Comida China</option>
+            <option value="BRUNCH">Brunch</option>
+            <option value="COFFEE_STORE">Cafetería</option>
+            <option value="BAR">Bar & Mixology</option>
+            <option value="VIETNAM_FOOD">Vietnamita</option>
+            <option value="FRENCH_FOOD">Gastronomía Francesa</option>
+            <option value="TEX_MEX_FOOD">Tex Mex Food</option>
+            <option value="KOREAN_FOOD">Koreana</option>
+            <option value="VEGAN_FOOD">Vegan</option>
+            <option value="AMERICAN_FOOD">Americana</option>
+            <option value="GERMAN_FOOD">Bavarian Food</option>
+            <option value="PORTUGUESE_FOOD">Gastronomía Portugues</option>
+            <option value="FUSION_FOOD">Fusion & Molecular</option>
+            <option value="GREEK_FOOD">Griega</option>
+            <option value="INDIAN_FOOD">Comida Hindí</option>
+            <option value="PERUVIAN_FOOD">Gastronomía Peruana</option>
+            <option value="CANADIAN_FOOD">Canadiense</option>
+            <option value="DOMINICAN_FOOD">Dominicana</option>
+            <option value="BALKAN_FOOD">Europea</option>
+            <option value="GEORGIAN_FOOD">Gergian Food</option>
+            <option value="ARABIAN_FOOD">Gastronomía Arabe</option>
+            <option value="MARRAKECH_FOOD">Marrakech</option>
+            <option value="ASIAN_FOOD">Asiatica</option>
+            <option value="AFRICAN_FOOD">Gastronomía Africana</option>
+            <option value="MAGHREB_FOOD"></option>
+            <option value="CARIBBEAN_FOOD">Caribeña</option>
+
         </select>
         <label for="RestaurantType">Restaurant Type</label>
     </div>
