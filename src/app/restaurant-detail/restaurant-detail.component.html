@@ -42,8 +42,8 @@
 </div>
 
 <div>
-  <button class="btn btn-outline-dark me-2">Crear Menu</button>
-  <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar</button>
+  <button class="btn btn-outline-dark me-2"[routerLink]="['/menus',restaurant?.id,'update']">Crear Menu</button>
+  <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi restaurante</button>
 </div>
 
   <div class="recommendation-section py-4">
