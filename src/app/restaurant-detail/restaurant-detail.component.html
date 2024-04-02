@@ -25,7 +25,7 @@
 <div class="menu-section py-4">
   <h2 class="h5 mb-3">Menú Destacado</h2>
   <div class="row">
-    @for (Menu of Menus; track Menu.restaurant.id) {
+    @for (Menu of Menus; track Menu) {
     <div class="col-md-4 mb-3">
       <div class="card h-100">
         <img class="card-img-top" [src]="Menu.imgMenu" alt="Dish 1">
@@ -39,7 +39,6 @@
     </div>
   }
   </div>
-
 </div>
 
 <div>
@@ -47,20 +46,20 @@
   <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar</button>
 </div>
 
-  
-  <div class="other-recommendations pt-4">
-    <h2 class="h5 mb-3">Otras recomendaciones</h2>
-    <div class="recommendation mb-3">
-      <div class="h6">Taphouse Restaurante & Cervecería Salvaje</div>
-      <p class="text-muted">San Francisco</p>
-      <div class="badge bg-success mb-2">4.4</div>
-      <button class="btn btn-outline-dark">Reservar</button>
-    </div>
-    <div class="recommendation mb-3">
-      <div class="h6">Pretelt Gourmet Meats (Condado del Rey)</div>
-      <p class="text-muted">Condado del Rey</p>
-      <div class="badge bg-success mb-2">4.8</div>
-      <button class="btn btn-outline-dark">Reservar</button>
-    </div>
-  </div>
+  <div class="recommendation-section py-4">
+    <h2 class="h5 mb-3">Recomendaciones de Restaurantes</h2>
+    <div class="row">
+      @for (restaurant of restaurants.slice(0,3); track restaurant) {
+        <div class="col-md-4 mb-3">
+          <div class="card h-100" [routerLink]="['/restaurant',restaurant.id,'detail']" style="cursor: pointer;">
+            <img class="card-img-top" [src]="restaurant.imageUrl" alt="Restaurants">
+            <div class="card-body">
+              <h5 class="card-title">{{restaurant.name}}</h5>
+              <p class="card-text">{{restaurant.description}}</p>
+              <div class="card-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+      }
 </div>

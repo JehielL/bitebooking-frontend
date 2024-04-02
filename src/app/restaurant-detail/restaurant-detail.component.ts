@@ -17,6 +17,7 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
   restaurantType = RestaurantType;
+  restaurants!: Restaurant[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,8 +42,13 @@ ngOnInit(): void {
       const menusUrl = `http://localhost:8080/menus/byRestaurant/${id}`;
       this.httpClient.get<Menu[]>(menusUrl)
         .subscribe(Menus => this.Menus = Menus);
+
+      const apiUrl = 'http://localhost:8080/restaurant';
+      this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+      this.restaurants = restaurants;
+
+    });
     });
   });
-}
-  
+} 
 }
