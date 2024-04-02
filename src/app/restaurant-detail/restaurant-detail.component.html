@@ -21,49 +21,28 @@
     </div>
   
   </div>
+  
 <div class="menu-section py-4">
   <h2 class="h5 mb-3">Menú Destacado</h2>
   <div class="row">
+    @for (Menu of Menus; track Menu.restaurant.id) {
     <div class="col-md-4 mb-3">
       <div class="card h-100">
-        <img class="card-img-top" src="https://i.ibb.co/sPBj8t6/los-platos-criollos-que-debes-probar-si-vienes-a-peru.jpg" alt="Dish 1">
+        <img class="card-img-top" [src]="Menu.imgMenu" alt="Dish 1">
         <div class="card-body">
-          <h5 class="card-title">Plato 1</h5>
-          <p class="card-text">Descripción corta del plato 1.</p>
+          <h5 class="card-title">{{Menu.title}}</h5>
+          <p class="card-text">{{Menu.description}}</p>
           <div class="card-footer">
-            <small class="text-muted">$12</small>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <img class="card-img-top" src="https://i.ibb.co/7C8NLBk/meta-platos-queso.jpg" alt="Dish 2">
-        <div class="card-body">
-          <h5 class="card-title">Plato 2</h5>
-          <p class="card-text">Descripción corta del plato 2.</p>
-          <div class="card-footer">
-            <small class="text-muted">$15</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <div class="card h-100">
-        <img class="card-img-top" src="https://i.ibb.co/FYj4tXc/comida-economica-1080x675.jpg" alt="dish 3">
-        <div class="card-body">
-          <h5 class="card-title">Plato 3</h5>
-          <p class="card-text">Descripción corta del plato 3.</p>
-          <div class="card-footer">
-            <small class="text-muted">$10</small>
-          </div>
-        </div>
-      </div>
-    </div>
+  }
   </div>
+
 </div>
+
 <div>
-  
   <button class="btn btn-outline-dark me-2">Crear Menu</button>
   <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar</button>
 </div>

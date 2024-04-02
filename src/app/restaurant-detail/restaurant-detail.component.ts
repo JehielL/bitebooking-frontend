@@ -4,6 +4,7 @@ import { Restaurant } from "../Interfaces/restaurant.model";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { DatePipe } from '@angular/common';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
+import { Menu } from '../Interfaces/menu.model';
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
@@ -12,6 +13,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
   styleUrls: ['./restaurant-detail.component.css']
 })
 export class RestaurantDetailComponent implements OnInit {
+   Menus: Menu[] = [];
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
   restaurantType = RestaurantType;
@@ -33,7 +35,11 @@ getRestaurantType(type?: RestaurantType): string {
 
       const url = `http://localhost:8080/restaurant/${id}`;
       this.httpClient.get<Restaurant>(url).subscribe(restaurant => {
-        this.restaurant = restaurant;
+      this.restaurant = restaurant;
+
+      this.httpClient.get<Menu[]>('http://localhost:8080/menus')
+      .subscribe(Menus => this.Menus = Menus);
+
       });
     });
   }
