@@ -23,9 +23,14 @@
     <div class="col form-side">
 
       @if (isUpdate) {
-      <h1 class="mt-5 mb-5  custom-title">Actualizar reserva existente con id {{bookingForm.get('id')?.value}}</h1>
+      <h1 class="mt-5 mb-5  custom-title">Actualizar reserva existente con id {{bookingForm.get('title')?.value}}</h1>
       } @else {
       <h1 class="mt-5 mb-5  custom-title">Crear una nueva reserva</h1>
+      }
+      @if (restaurant ) {
+        <h2 class="mt-5 mb-5  custom-title">Reserva de restaurant {{restaurant.name}}</h2>
+      } @else {
+        <h2 class="mt-5 mb-5  custom-title">Reserva de restaurant</h2>
       }
 
       <form [formGroup]="bookingForm" (ngSubmit)="save()">
@@ -43,8 +48,7 @@
         </div>
 
         <div class="form-floating mb-3">
-          <input type="number" class="form-control" id="numUsers" formControlName="numUsers" step="1"
-            (change)="calculatePrice()">
+          <input type="number" class="form-control" id="numUsers" formControlName="numUsers" step="1">
           <label for="numUsers">Numero de Usuarios</label>
         </div>
 
@@ -69,12 +73,13 @@
 
 
             <!-- iterar sobre el array de authors mostrando cada uno -->
-            @for (restaurant of restaurants; track restaurant.id) {
+            @if (restaurant) {
             <option [ngValue]="restaurant">{{restaurant.name}}</option>
+            <label for="restaurant">Restaurant asociado</label>
             }
 
           </select>
-          <label for="restaurant">Restaurant asociado</label>
+         
         </div>
 
         <div class="form-floating mb-3">
@@ -103,7 +108,7 @@
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="isPremium" formControlName="isPremium"
-            (change)="calculatePrice()">
+            >
           <label class="form-check-label" for="isPremium">
             Salon VIP
           </label>

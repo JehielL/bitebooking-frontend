@@ -15,10 +15,19 @@
           }
         <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
         <p class="btn btn-outline-dark me-2">Horario {{restaurant?.openingTime | date:"HH:mm"}}, Hasta : {{restaurant?.closingTime | date:"HH:mm"}}</p>
+        <div>
+          <button class="btn btn-outline-dark  btn-sm" [routerLink]="['/bookings', restaurant?.id, 'reserve']">Reservar</button>
+  
+        </div>
       </div>
+      
+      
+
+      
       <div class="fw-bold fs-4">Descripción</div>
       {{restaurant?.description}}
     </div>
+    
   
   </div>
   
