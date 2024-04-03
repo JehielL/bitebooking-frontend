@@ -48,6 +48,9 @@ export class MenuDetailComponent implements OnInit {
       this.httpClient.get<Menu>(menuUrl).subscribe(m => this.menu = m);
       this.httpClient.get<Rating[]>(ratingsUrl).subscribe(ratings => this.ratings = ratings);
       this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
+
+      this.httpClient.get<Dish[]>('http://localhost:8080/dishes/filter-by-menu/' + id)
+      .subscribe(dishes => this.dishes = dishes);
     });
   }
 
