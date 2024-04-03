@@ -7,6 +7,7 @@ import { Menu } from '../Interfaces/menu.model';
 import { Dish } from '../Interfaces/dish.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Rating } from '../Interfaces/rating.model';
+import { User } from '../Interfaces/user.model';
 
 
 @Component({
@@ -16,83 +17,63 @@ import { Rating } from '../Interfaces/rating.model';
   templateUrl: './menu-detail.component.html',
   styleUrl: './menu-detail.component.css'
 })
-export class MenuDetailComponent {
+export class MenuDetailComponent implements OnInit {
 
   menu: Menu | undefined;
-
+  user: User | undefined;
 
   ratings: Rating[] = [];
   ratingForm = new FormGroup({
-
     score: new FormControl(0),
     comment: new FormControl(''),
   });
 
-
-
   showDeleteMenuMessage: boolean = false;
-dishes: any;
+  dishes: Dish[] = [];
+  users: User[] = [];
 
   constructor(
-
     private activedRoute: ActivatedRoute,
     private httpClient: HttpClient
-  ) {
-
-
-  }
+  ) {}
 
   ngOnInit(): void {
-
     this.activedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
-      const url = 'http://localhost:8080/menus/' + id;
-      this.httpClient.get<Menu>(url).subscribe(m => this.menu = m);
+      const menuUrl = 'http://localhost:8080/menus/' + id;
+      const ratingsUrl = 'http://localhost:8080/menus/filter-by-menu/' + id;
+      const userUrl = 'http://localhost:8080/user/' + id;
 
-      this.httpClient.get<Rating[]>('http://localhost:8080/menus/filter-by-menu/' + id)
-        .subscribe(ratings => this.ratings = ratings);
+      this.httpClient.get<Menu>(menuUrl).subscribe(m => this.menu = m);
+      this.httpClient.get<Rating[]>(ratingsUrl).subscribe(ratings => this.ratings = ratings);
+      this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
     });
-
-
-
   }
 
-  delete(menus: Menu) {
-    const url = 'http://localhost:8080/menus/' + menus.id;
+  delete(menu: Menu) {
+    const url = 'http://localhost:8080/menus/' + menu.id;
     this.httpClient.delete(url).subscribe(response => {
       this.menu = undefined;
       this.showDeleteMenuMessage = true;
     });
   }
 
-
-
   hideDeletedMenuMessage() {
     this.showDeleteMenuMessage = false;
   }
 
-
-
-
-
   save() {
-
     const rating: Rating = {
       id: 0,
       score: this.ratingForm.get('score')?.value ?? 0,
       comment: this.ratingForm.get('comment')?.value ?? '',
       menu: this.menu,
-
     };
 
-    this.httpClient.post<Rating>('http://localhost:8080/ratings', rating).subscribe(rating => {
+    this.httpClient.post<Rating>('http://localhost:8080/ratings', rating).subscribe(savedRating => {
       this.ratingForm.reset();
+      this.ratings.push(savedRating);
     });
-
-    this.httpClient.get<Rating[]>('http://localhost:8080/menus/filter-by-menu/' + this.menu?.id)
-    .subscribe(ratings => this.ratings = ratings);
   }
-
-
 }

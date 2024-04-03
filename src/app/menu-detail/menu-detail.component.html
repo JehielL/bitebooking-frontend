@@ -295,7 +295,9 @@
 </div>
 }
 
-<div class="container py-5">
+
+
+<div class="container py-5 ">
   <div class="row">
     <div class="col">
       <h3>Listado de valoraciones</h3>
@@ -306,9 +308,19 @@
           @for (rating of ratings; track rating.id) {
 
           <li>
-            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-              href="#">
-              <img src="https://placehold.co/100" alt="">
+
+            
+            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top "
+              >
+
+             
+            @if (rating.user?.imgUser) {
+
+              <img [routerLink]="['/user/list']" class="bd-placeholder-img2" [src]="rating.user?.imgUser" alt="">
+
+            }
+        
+  
               <div class="col-lg-8">
                 <h6 class="mb-0">
 
@@ -333,6 +345,9 @@
       </div>
 
     </div>
+   
+  </div>
+  <div class="row">
     <div class="col">
       <h3>Añade una valoración</h3>
 

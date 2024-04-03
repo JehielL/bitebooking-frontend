@@ -35,7 +35,7 @@ aria-label="Toggle navigation"
             <li><a class="dropdown-item" href="#">denunciar</a></li>
           </ul>
         </div>
-        <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" width="100" >
+        <img src="{{user.imgUser}}" class="custom-picture"  [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" width="100" >
         <div style="font-size: 20px; text-align: center;" class="fw-bold  ">{{user.firstName}} {{user.lastName}}</div>
         <div class="col" style="padding-left: 8px ;">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
