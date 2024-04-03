@@ -16,6 +16,7 @@ import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+import { TiposDeCocinaComponent } from './tipos-de-cocinas/tipos-de-cocinas.component';
 
 
 export const routes: Routes = [
@@ -124,7 +125,10 @@ export const routes: Routes = [
    path: 'dishes/:id/update',
    component: DishFormComponent
 },
- 
+{
+   path: 'tipos-de-cocinas',
+   component: TiposDeCocinaComponent
+},
 {
     path: '**',
     component:NotFoundComponent
