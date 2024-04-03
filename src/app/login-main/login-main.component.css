@@ -1,14 +1,7 @@
 
-.imagenFondo
-{
-  filter: drop-shadow(
-    0 0 10px rgba(0,0,0, .8)
-  );
-}
 
-body{
-    animation: cambioDeColor 5s infinite alternate;
-}
+
+
 
  #formdiv{
    
@@ -126,5 +119,17 @@ a {
     color: #3b5998;
 }
 
+.left-column, .right-column {
+  width: 50%;
+  float: right;
+}
 
+@media screen and (min-width: 671.5) and (min-height: 125.12) and (max-width: 671.5) and (max-height: 125.12)  {
+  img {
+      display: none; /* Oculta la columna izquierda */
+  }
   
+  .columnaDER {
+      width: 100%; /* Ajusta la columna derecha para ocupar todo el ancho */
+  }
+}

@@ -1,5 +1,5 @@
 <body class="bg-body-tertiary">
-    
+  
 
     <!-- de aqui para abajo va todo el codigo -->
 
@@ -34,7 +34,7 @@
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4"  src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">
       <h2>Personaliza tu cuenta</h2>
-      <p class="lead">actualiza tus datos para que sea mas facil para los demas reconocerte.</p>
+      <p class="lead">actualiza tus datos para que sea mas facil reconocerte.</p>
     </div>
 
     <div class="row g-5">
@@ -67,7 +67,7 @@
           </li>
         </ul>
 
-        <form class="card p-2">
+        <form  class="card p-2">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="añada favoritos">
             <button type="submit" class="btn btn-secondary">añadir</button>
@@ -76,7 +76,7 @@
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
-        <form class="needs-validation" novalidate="">
+        <form [formGroup]="registerUserForm" (ngSubmit)="save()" class="needs-validation" novalidate="">
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Nombres</label>
@@ -160,17 +160,27 @@
             </div>
 
           </div>
-
-
-
- 
-
+          <label class="form-check-label" for="photo">Foto de perfil</label>
+          <div class="input-group">
+            <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
+            <div class="col-lg-4 custom-col">
+              @if (photoPreview) {
+              <h2 class="my-5 text-center">Foto seleccionada</h2>
+              <img class="img-fluid" [src]="photoPreview">
+              }
+              @if (!photoPreview && user?.imgUser) {
+              <h2 class="my-5">Foto de portada</h2>
+              <img class="img-fluid" [src]="'http://localhost:8080/files/' + user?.imgUser">
+              }
+            </div>
+          </div>
     
-
           <hr class="my-4">
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Atualizar Datos</button>
         </form>
+      
+    
       </div>
     </div>
   </main>
