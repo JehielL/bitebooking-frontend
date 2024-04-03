@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './user-form.component.css'
 })
 
-export class UserFormComponent  implements OnInit {
-  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR 
+export class UserFormComponent{
+  
   users: User[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
 
@@ -51,52 +51,13 @@ export class UserFormComponent  implements OnInit {
     }
   } 
 
-  ngOnInit(): void { 
-    this.activatedRoute.params.subscribe(params => {
-      const id = params['id'];
-      if(!id) return;
-
-      this.httpClient.get<User>('http://localhost:8080/user/' + id).subscribe(backendUser => {
-        
-        this.registerUserForm.reset({
-          id: backendUser.id,
-          firstName:backendUser.firstName,
-          lastName:backendUser.lastName,
-          birthdayDate:backendUser.birthdayDate,
-          email: backendUser.email,
-          password: backendUser.password,
-          phone: backendUser.phone,
-          role: backendUser.role,
-        });
-           // marcar boolean true isUpdate para utilizar en  mismo form
-        this.isUpdate = true; 
-
-      });
-    });
-  }
   
   save(){
     const user: User = this.registerUserForm.value as User;
     console.log(user)
-
-    if(this.isUpdate){
-      const url = 'http://localhost:8080/user/'+ user.id;
-      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']);
-      });
-    }else{
       const url = 'http://localhost:8080/user';
       this.httpClient.post<User>(url,user).subscribe(backendUser =>{
         this.router.navigate(['/user',backendUser.id,'detail']); 
-      });
-    }
-  }
-  compareObjects(o1: any, o2: any): boolean {
-    // console.log("Comparando objetos: ", o1, o2);
-
-    if(o1 && o2) {
-      return o1.id === o2.id;
-    }
-    return o1 === o2;
-  }
+      });    
+  } 
 }
