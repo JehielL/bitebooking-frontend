@@ -297,6 +297,87 @@
 
 
 
+<div class="container py-5 ">
+  <div class="row">
+    <div class="col">
+      <h3>Listado de valoraciones</h3>
+      <div>
+
+        <ul class="list-unstyled">
+
+          @for (rating of ratings; track rating.id) {
+
+          <li>
+
+            
+            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top "
+              >
+
+             
+            @if (rating.user?.imgUser) {
+
+              <img [routerLink]="['/user/list']" class="bd-placeholder-img2" [src]="rating.user?.imgUser" alt="">
+
+            }
+        
+  
+              <div class="col-lg-8">
+                <h6 class="mb-0">
+
+                  <ngb-rating [(rate)]="rating.score" [max]="5" [readonly]="true">
+                    <ng-template let-fill="fill" let-index="index">
+                      <i class="bi-star{{ fill === 100 ? '-fill' : '' }} fs-3" style="color: #ffc845;"></i>
+                    </ng-template>
+                  </ngb-rating>
+
+                </h6>
+                <small class="text-body-secondary">{{rating.comment}}</small>
+              </div>
+            </a>
+          </li>
+
+
+          }
+
+
+
+        </ul>
+      </div>
+
+    </div>
+   
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>Añade una valoración</h3>
+
+      <form [formGroup]="ratingForm" (ngSubmit)="save()">
+
+        <ngb-rating [max]="5" formControlName="score">
+          <ng-template let-fill="fill" let-index="index">
+            <i class="bi-star{{ fill === 100 ? '-fill' : '' }} fs-3" style="color: #ffc845;"></i>
+          </ng-template>
+        </ngb-rating>
+
+        <div class="form-floating mb-3">
+          <textarea class="form-control" placeholder="Introduza un comentario" id="comment" formControlName="comment"
+            style="min-height: 100px;">
+
+              </textarea>
+          <label for="comment">Agregar Comentario</label>
+        </div>
+
+
+
+        <button class="btn btn-outline-dark rounded " type="submit"><span class="text-green">Enviar
+            comentario</span></button>
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
 
 <div class="container mb-5">
   <div class="row">

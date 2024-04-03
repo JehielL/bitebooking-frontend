@@ -2,6 +2,7 @@ import { Restaurant } from "./restaurant.model";
 import { RestaurantType } from "./restaurantType.model";
 
 export interface Menu {
+    userId: string;
 
     id: number;
     title: string;
