@@ -28,7 +28,7 @@ export const routes: Routes = [
     component: HomeComponent
  },
 {
-   path:'dashboard/:id/update',
+   path:'dashboard',
    component: DashboardUserComponent
 },
  {

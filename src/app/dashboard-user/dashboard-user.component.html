@@ -160,31 +160,25 @@
             </div>
 
           </div>
+          <label class="form-check-label" for="photo">Foto de perfil</label>
           <div class="input-group">
             <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
-            <button class="w-100 btn btn-lg mb-5 mt-5" type="submit">Guardar</button>
+            <div class="col-lg-4 custom-col">
+              @if (photoPreview) {
+              <h2 class="my-5 text-center">Foto seleccionada</h2>
+              <img class="img-fluid" [src]="photoPreview">
+              }
+              @if (!photoPreview && user?.imgUser) {
+              <h2 class="my-5">Foto de portada</h2>
+              <img class="img-fluid" [src]="'http://localhost:8080/files/' + user?.imgUser">
+              }
+            </div>
           </div>
-
-
- 
-
     
-
           <hr class="my-4">
 
           <button class="w-100 btn btn-primary btn-lg" type="submit">Atualizar Datos</button>
         </form>
-
-        <div class="col-lg-4 custom-col">
-          @if (photoPreview) {
-          <h2 class="my-5 text-center">Foto seleccionada</h2>
-          <img class="img-fluid" [src]="photoPreview">
-          }
-          @if (!photoPreview && users?.imgUser) {
-          <h2 class="my-5">Foto de portada</h2>
-          <img class="img-fluid" [src]="'http://localhost:8080/files/' + users?.imgUser">
-          }
-        </div>
       
     
       </div>

@@ -33,6 +33,7 @@ export class DashboardUserComponent  implements OnInit {
   {validators: this.passwordConfirmValidator}
   );
   backendUser: any;
+user: any;
 
   constructor(private httpClient : HttpClient,
               private router: Router,  // esto es para navegar
