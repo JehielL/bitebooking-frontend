@@ -163,7 +163,7 @@
           <label class="form-check-label" for="photo">Foto de perfil</label>
           <div class="input-group">
             <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
-            <div class="col-lg-4 custom-col">
+            <span>         <div class="col-lg-4 custom-col">
               @if (photoPreview) {
               <h2 class="my-5 text-center">Foto seleccionada</h2>
               <img class="img-fluid" [src]="photoPreview">
@@ -172,7 +172,7 @@
               <h2 class="my-5">Foto de portada</h2>
               <img class="img-fluid" [src]="'http://localhost:8080/files/' + user?.imgUser">
               }
-            </div>
+            </div></span>
           </div>
     
           <hr class="my-4">
