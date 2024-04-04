@@ -67,6 +67,20 @@
 
 
       </ul>
+
+      @if (isAdmin) {
+        <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"><i class="bi bi-chat-right-quote"></i> Contactanos</a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+            <button routerLink="/menus/create" type="button" class="btn btn-secondary"  >Crear Menú</button>
+            <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Formulario de contacto</a>
+            <a ngbDropdownItem routerLink="user-list" (click)="$event.preventDefault()">About us</a>
+            <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Preguntas frecuentes</a>
+          </div>
+        </li>
+
+
+      }
       @if (userEmail) {
         
         <button class="btn btn-outline-light me-2 ">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
