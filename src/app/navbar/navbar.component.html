@@ -24,19 +24,23 @@
             <a ngbDropdownItem routerLink="bookings" (click)="$event.preventDefault()">Mis Reservas.</a>
           </div>
         </li>
+        @if (isLoggedin) {
 
-        <li class="nav-item " ngbDropdown>
-          <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-            Usuario</a>
-          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-            <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
-            <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
-          </div>
-        </li>
+          <li class="nav-item " ngbDropdown>
+            <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+              Usuario</a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+              <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
+              <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+            </div>
+          </li>
+        }
+
+        
 
         
            
@@ -45,15 +49,13 @@
 
           <li class="nav-item " ngbDropdown>
             <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-              Administraci</a>
+              Administración</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
               <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
-  
-  
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
   
               
@@ -76,7 +78,7 @@
       }
 
       @if (isLoggedin) {
-        <button routerLink="" type="button" class="btn btn-warning" (click)="logout()" >
+        <button routerLink="" type="button" class="btn btn-primary" (click)="logout()" >
           <i class="bi bi-box-arrow-right"></i>
           Logout</button>
 
