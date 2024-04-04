@@ -12,12 +12,8 @@ import AOS from 'aos';
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
-export class UserDetailComponent implements OnInit {
-
-  
-
+export class UserDetailComponent implements OnInit { 
   users: User | undefined;
-
   images: string[] = [
 
   ]
