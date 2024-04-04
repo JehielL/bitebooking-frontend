@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
       ? this.restaurants.filter(restaurant =>
           restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
       : [];
-
     this.puedeMostrarMas = resultadosFiltrados.length > this.maxResultados;
     this.resultadosBusqueda = resultadosFiltrados.slice(0, this.maxResultados);
   }
