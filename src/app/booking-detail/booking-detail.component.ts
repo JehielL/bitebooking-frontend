@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgbAccordionModule, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-booking-detail',
@@ -15,14 +16,18 @@ import { DatePipe } from '@angular/common';
 export class BookingDetailComponent implements OnInit {
 
   booking: Booking | undefined;
-  bookings: Booking[] = []; // Agrega la propiedad bookings y asegúrate de inicializarla
-
+  bookings: Booking[] = [];
   showDeleteBookingMessage: boolean = false;
+  isAdmin = false;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private httpClient: HttpClient
-  ) { }
+    private httpClient: HttpClient,
+    private authService: AuthenticationService) {
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+      console.log(this.isAdmin);
+      }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
