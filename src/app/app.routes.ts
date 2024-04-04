@@ -33,7 +33,7 @@ export const routes: Routes = [
    component: DashboardUserComponent
 },
  {
-   path:'login',
+   path:'user/login',
    component: LoginMainComponent
  },
  {
@@ -50,7 +50,7 @@ export const routes: Routes = [
    component: UserDetailComponent
 },
  {
-   path:'user/create',
+   path:'user/register',
    component: UserFormComponent
  },
  {

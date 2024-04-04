@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
-import { RouterLink } from '@angular/router';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { login } from '../Interfaces/login.model';
-import { log } from 'console';
-import { response } from 'express';
-
+import { Component } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Login } from '../Interfaces/login.dto';
+import { Token } from '../Interfaces/token.dto';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { Router, RouterLink } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
@@ -19,24 +18,31 @@ import { response } from 'express';
 export class LoginMainComponent {
 
 
- loginform = this.fb.group({    
- 
-    username: ['', [Validators.required]],
-    password: ['']
-
- });
-
- constructor(private fb: FormBuilder, private httpClient: HttpClient) {}
-
- save() {
-
-    const login: login = {
-        username: this.loginform.get('username')?.value ?? '',        
-        password: this.loginform.get('password')?.value ?? '',
+    loginForm = this.fb.group({
+        email: [''],
+        password: ['']
+      });
+    
+      constructor(private fb: FormBuilder, 
+        private httpClient: HttpClient,
+        private authService: AuthenticationService,
+        private router: Router) {}
+    
+      save() {
+        const login: Login = {
+          email: this.loginForm.get('email')?.value ?? '',
+          password: this.loginForm.get('password')?.value ?? '',
+        }
+        console.log(login);
+    
+        const url = 'http://localhost:8080/users/login';
+        this.httpClient.post<Token>(url, login).subscribe(response => {
+          console.log(response.token);
+          this.authService.saveToken(response.token);
+          this.router.navigate(['/menus']);
+        });
+    
+    
+      }
     }
     
-console.log(login);
-const url = 'http://localhost:8080/auth/login';
-this.httpClient.post<any>(url, login).subscribe(response => console.log(response));
-}
-}

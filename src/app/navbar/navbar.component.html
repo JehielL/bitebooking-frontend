@@ -56,22 +56,38 @@
 
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
 
+            
+
           </div>
-        </li>
-
-        <button routerLink="/login" type="button" class="btn btn-secondary">Login</button>
-
-        <li>
-
-        </li>
-        <li>
-          <button routerLink="/user/create" type="button" class="btn btn-secondary">Registrate</button>
-
-        </li>
+           
+          
+  
+          
 
 
 
       </ul>
+      @if (userEmail) {
+        
+        <button class="btn btn-outline-light me-2 ">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
+      }
+
+      @if (isLoggedin) {
+        <button routerLink="" type="button" class="btn btn-warning" (click)="logout()" >
+          <i class="bi bi-box-arrow-right"></i>
+          Logout</button>
+
+
+
+      } @else {
+
+        <button routerLink="user/login" type="button" class="btn btn-secondary"  >
+          <i class="bi bi-box-arrow-left ms-2"></i>
+          Login</button>
+
+        <button routerLink="/user/register" type="button" class="btn btn-secondary" >
+          <i class="bi bi-person-fill-add p-1"></i>Registrate</button>
+      }
     </div>
   </div>
 </nav>
