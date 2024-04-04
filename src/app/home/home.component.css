@@ -93,3 +93,17 @@
     width: 100%;
     text-align: center;
 }
+/* esto es lo que modifica los resultados en el filtro, cuidado aqui gente */
+.list-group-item {
+  cursor: pointer;
+  border-bottom: 1px solid #000000; 
+}
+.list-group-item:hover {
+  background-color: #db740e;
+}
+.btn-outline-primary{
+  margin-top: 10px;
+}
+.list-group-item a:visited {
+  color: #e78f0a;
+}
