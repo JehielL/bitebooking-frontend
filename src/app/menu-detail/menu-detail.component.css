@@ -1,93 +1,111 @@
 .horizontal-bars {
-    width: 100%;
-    height: 3px; 
-    background-color: black; 
-    margin-bottom: 1rem; 
-    margin-top: 1rem;
-  }
-  
-  #custom-cards h2 {
-    margin-top: 1rem;
-  }
-  .custom-title{
-    font-size: 30px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin: 20px;
-    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
-  }
+  width: 100%;
+  height: 3px; 
+  background-color: black; 
+  margin-bottom: 1rem; 
+  margin-top: 1rem;
+}
 
-  .featurette-divider {
-    margin: 5rem 0; 
-    background-color: black;
-  }
-  
+#custom-cards h2 {
+  margin-top: 1rem;
+}
 
-  .featurette-heading {
-    letter-spacing: -.05rem;
-    
-  }
+.custom-title {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin: 20px;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
-  @keyframes rotate-clockwise {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(15deg); /* Rotación hacia un lado */
-    }
-    100% {
-      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
-    }
-  }
-  
-  @keyframes rotate-counter-clockwise {
-    0% {
-      transform: rotate(0deg);
-    }
-    50% {
-      transform: rotate(-15deg); /* Rotación hacia el otro lado */
-    }
-    100% {
-      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
-    }
-  }
-  
-  
-  
-  .rotating-image {
-    transition: transform 1s ease;
-    animation: rotate-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+.featurette-divider {
+  margin: 5rem 0; 
+  background-color: black;
+}
 
-    border-radius: 99999px;
-    
-  }
-  
-  .rotating-image-counter {
-    transition: transform 1s ease;
-    animation: rotate-counter-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+.featurette-heading {
+  letter-spacing: -.05rem;
+}
 
-    border-radius: 99999px;
-    
+@keyframes rotate-clockwise {
+  0% {
+    transform: rotate(0deg);
   }
-  .card-img-top {
-    height: 200px; 
-    object-fit: cover; 
+  50% {
+    transform: rotate(15deg); /* Rotación hacia un lado */
   }
-  
-  .card-body {
-    min-height: 120px; 
-    font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
-    background-color: rgba(235, 231, 231, 0.622);
+  100% {
+    transform: rotate(0deg); /* Revertir la rotación a 0 grados */
   }
-  .card-img {
-    position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      z-index: -1; 
-  }
+}
 
+@keyframes rotate-counter-clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-15deg); /* Rotación hacia el otro lado */
+  }
+  100% {
+    transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+  }
+}
+
+.rotating-image {
+  transition: transform 1s ease;
+  animation: rotate-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+  border-radius: 50%;
+}
+
+.rotating-image-counter {
+  transition: transform 1s ease;
+  animation: rotate-counter-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+  border-radius: 50%;
+}
+
+.card-img-top {
+  height: 200px; 
+  object-fit: cover; 
+}
+
+.card-img {
+  border-radius: 50%;
+  overflow: hidden; 
+  height: 100%; 
+  width: 100%; 
+  object-fit: cover; 
+}
+
+.card-body {
+  background-color: transparent; /* Fondo transparente para el cuerpo de la tarjeta */
+}
+
+.card {
+  margin-bottom: 20px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s ease; 
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+}
+
+.card-title {
+  font-size: 1.5rem; 
+  margin-bottom: 10px; 
+}
+
+.card-text {
+  font-size: 1rem; 
+  color: #666; 
+}
+
+.card-price {
+  font-size: 1.25rem; /* Tamaño de la fuente del precio */
+  color: #007bff; /* Color del precio */
+}
 
 .custom-button {
   background-color: transparent; 
@@ -97,7 +115,6 @@
   display: flex; 
   align-items: center; 
 }
-
 
 .bd-placeholder-img2 {
   width: 100px;

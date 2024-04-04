@@ -8,6 +8,7 @@ import { Dish } from '../Interfaces/dish.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Rating } from '../Interfaces/rating.model';
 import { User } from '../Interfaces/user.model';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class MenuDetailComponent implements OnInit {
 
   menu: Menu | undefined;
   user: User | undefined;
+  isAdmin = false;
+
 
   ratings: Rating[] = [];
   ratingForm = new FormGroup({
@@ -34,8 +37,11 @@ export class MenuDetailComponent implements OnInit {
 
   constructor(
     private activedRoute: ActivatedRoute,
-    private httpClient: HttpClient
-  ) {}
+    private httpClient: HttpClient,
+    private authService: AuthenticationService) {
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+      console.log(this.isAdmin);
+      }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe(params => {

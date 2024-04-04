@@ -108,14 +108,18 @@
           </div>
         </div>
       </div>
-      <div class="buttons">
+      @if (isAdmin) {
+        <div class="buttons">
 
-        <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
-          Reserva</button>
+          <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
+            Reserva</button>
+  
+          <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
+  
+        </div>
 
-        <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
-
-      </div>
+      }
+      
     </div>
   </div>
 </div>
