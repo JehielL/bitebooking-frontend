@@ -45,36 +45,36 @@
         
            
           
+        @if (isAdmin) {
+
+          <li class="nav-item " ngbDropdown>
+            <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+              Contactanos</a>
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+              <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">About us</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
+              <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
   
+  
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+  
+              
+  
+            </div>
+         
+  
+  
+        }
           
 
 
 
       </ul>
 
-      @if (isAdmin) {
-
-        <li class="nav-item " ngbDropdown>
-          <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-            Contactanos</a>
-          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-            <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">About us</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
-            <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
-
-
-            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
-
-            
-
-          </div>
-       
-
-
-      }
+     
       @if (userEmail) {
         
         <button class="btn btn-outline-light me-2 ">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
