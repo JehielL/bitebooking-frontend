@@ -1,204 +1,208 @@
 <div class="container">
   <div class="col">
 
- 
-        <h2 class="pb-2 custom-title mt-5">Reservas Activas</h2>
-        <div class="horizontal-bars"></div>
+    <h2 class="title text-center m-5">Mis reservas activas</h2>
 
     @if (showDeleteBookingMessage) {
 
     <ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
     }
 
-    @for (booking of bookings; track booking.id ) {
-
-    @if (booking.status == true ) {
-      <table class="table ">
-        <div class="container-fluid text-center position-relative custom-div">
-          <div class="row">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
-              <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
-  
-              <div class="container-fluid custom">
-                <thead>
-  
-                  <tr>
-  
-                    <th scope="col">Id</th>
-                    <th scope="col ">Title</th>
-                    <th scope="col">Available</th>
-                    <th scope="col">Table</th>
-                    <th scope="col">Fecha de reserva</th>
-                    <th scope="col">Menú Seleccionado</th>
-                    <th scope="col">Restaurant</th>
-                    <th scope="col">Interior</th>
-  
-                  </tr>
-  
-                </thead>
-  
-                <tbody>
-  
-                  <th scope="row">{{booking.id}}</th>
-                  <td>
-                    <h3>{{booking.title}}</h3>
-                  </td>
-                  <td>
-                    @if (booking.status) {
-                    <span class="badge text-bg-success">Sí</span>
-                    } @else{
-                    <span class="badge text-bg-danger">No</span>
-                    }
-                  </td>
-  
-                  <td>{{booking.numTable}}</td>
-                  <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
-                  <td>
-                    <a class="badge text-bg-secondary text-decoration-none"
-                      [routerLink]="['/menus', booking.menu.id, 'detail']">
-                      {{booking.menu.title}}
-                    </a>
-                  </td>
-                  <td>
-                    <a class="badge text-bg-warning text-decoration-none"
-                      [routerLink]="['/restaurant', booking.restaurant.id, 'detail']">
-                      {{booking.restaurant.name}}
-                    </a>
-                  </td>
-                  <td>
-                    @if (booking.interior) {
-                    <span class="badge text-bg-success">Sí</span>
-                    } @else{
-                    <span class="badge text-bg-danger">No</span>
-                    }
-                  </td>
-  
-                  <div class="buttons">
-                    <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
-                      Reserva</button>
-  
-                    <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
-                      Reserva</button>
-  
-                    <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
-  
-                  </div>
-                
-                </tbody>
-              </div>
-            </div>
-          </div>
-  
-  
-  
-        </div>
-  
-      </table>
-    } 
-
-
-
-
-    } @empty {
-    <p>No hay Reservas actualmente.</p>
-    }
-
-        <h2 class="pb-2 custom-title">Visitados recientemente</h2>
-        <div class="horizontal-bars"></div>
-
-    @if (showDeleteBookingMessage) {
-
-    <ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
-    }
+    @if (bookings) {
 
     @for (booking of bookings; track booking.id) {
 
-      @if (booking.status == false ) {
-        <table class="table">
-          <div class="container-fluid text-center position-relative ">
-            <div class="row">
-              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg custom-div">
-                <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
+    @if (booking.status == true) {
+    <table class="table">
+      <div class="container-fluid text-center position-relative">
+        <div class="row">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
+
+            <div class="container-fluid custom">
+              <thead>
+
+                <tr>
+
+                  <th scope="col">Id</th>
+                  <th scope="col ">Title</th>
+                  <th scope="col">Available</th>
+                  <th scope="col">Table</th>
+                  <th scope="col">Fecha de reserva</th>
+                  <th scope="col">Menú Seleccionado</th>
+                  <th scope="col">Restaurant</th>
+                  <th scope="col">Interior</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <th scope="row">{{booking.id}}</th>
+                <td>
+                  <h3>{{booking.title}}</h3>
+                </td>
+                <td>
+                  @if (booking.status) {
+                  <span class="badge text-bg-success">Sí</span>
+                  } @else{
+                  <span class="badge text-bg-danger">No</span>
+                  }
+                </td>
+
+                <td>{{booking.numTable}}</td>
+                <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
+                <td>
+                  <a class="badge text-bg-secondary text-decoration-none"
+                    [routerLink]="['/menus', booking.menu.id, 'detail']">
+                    {{booking.menu.title}}
+                  </a>
+                </td>
+                <td>
+                  <a class="badge text-bg-warning text-decoration-none"
+                    [routerLink]="['/restaurants', booking.restaurant.id, 'detail']">
+                    {{booking.restaurant.name}}
+                  </a>
+                </td>
+                <td>
+                  @if (booking.interior) {
+                  <span class="badge text-bg-success">Sí</span>
+                  } @else{
+                  <span class="badge text-bg-danger">No</span>
+                  }
+                </td>
+
+                <div class="buttons">
+                  <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                    Reserva</button>
+
+                    @if (isAdmin) {
+
+                      <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">
+                        Editar Reserva
+                      </button>
     
-                <div class="container-fluid custom">
-                  <thead>
-    
-                    <tr>
-    
-                      <th scope="col">Id</th>
-                      <th scope="col ">Title</th>
-                      <th scope="col">Available</th>
-                      <th scope="col">Table</th>
-                      <th scope="col">Fecha de reserva</th>
-                      <th scope="col">Menú Seleccionado</th>
-                      <th scope="col">Restaurant</th>
-    
-                    </tr>
-    
-                  </thead>
-    
-                  <tbody>
-    
-                    <th scope="row">{{booking.id}}</th>
-                    <td>
-                      <h3>{{booking.title}}</h3>
-                    </td>
-                    <td>
-                      @if (booking.status) {
-                      <span class="badge text-bg-success">Sí</span>
-                      } @else{
-                      <span class="badge text-bg-danger">No</span>
+                      <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">
+                        Borrar Reserva
+                      </button>
                       }
-                    </td>
-    
-                    <td>{{booking.numTable}}</td>
-                    <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
-                    <td>
-                      <a class="badge text-bg-secondary text-decoration-none"
-                        [routerLink]="['/menus', booking.menu.id, 'detail']">
-                        {{booking.menu.title}}
-                      </a>
-                    </td>
-                    <td>
-                      <a class="badge text-bg-warning text-decoration-none"
-                        [routerLink]="['/restaurants', booking.restaurant.id, 'detail']">
-                        {{booking.restaurant.name}}
-                      </a>
-                    </td>
-    
-                    <div class="buttons">
-                      <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
-                        Reserva</button>
-    
-                      <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar
-                        Reserva</button>
-    
-                      <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">Borrar Reserva</button>
-    
-                    </div>
-                  
-                  </tbody>
+
                 </div>
-              </div>
+
+              </tbody>
             </div>
-    
-    
-    
           </div>
-    
-        </table>
-      } 
+        </div>
 
 
 
+      </div>
 
-    } @empty {
+    </table>
+    }
+    @else
+    {
+
+    <h2 class="title text-center m-5">Visitados Anteriormente</h2>
+
+    <table class="table">
+      <div class="container-fluid text-center position-relative">
+        <div class="row">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <div class="background-image" [style.background-image]="'url(' + booking.restaurant.imageUrl + ')'"></div>
+
+            <div class="container-fluid custom">
+              <thead>
+
+                <tr>
+
+                  <th scope="col">Id</th>
+                  <th scope="col ">Title</th>
+                  <th scope="col">Available</th>
+                  <th scope="col">Table</th>
+                  <th scope="col">Fecha de reserva</th>
+                  <th scope="col">Menú Seleccionado</th>
+                  <th scope="col">Restaurant</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <th scope="row">{{booking.id}}</th>
+                <td>
+                  <h3>{{booking.title}}</h3>
+                </td>
+                <td>
+                  @if (booking.status) {
+                  <span class="badge text-bg-success">Sí</span>
+                  } @else{
+                  <span class="badge text-bg-danger">No</span>
+                  }
+                </td>
+
+                <td>{{booking.numTable}}</td>
+                <td>{{booking.createDate | date: 'dd/MM/yy' }}</td>
+                <td>
+                  <a class="badge text-bg-secondary text-decoration-none"
+                    [routerLink]="['/menus', booking.menu.id, 'detail']">
+                    {{booking.menu.title}}
+                  </a>
+                </td>
+                <td>
+                  <a class="badge text-bg-warning text-decoration-none"
+                    [routerLink]="['/restaurants', booking.restaurant.id, 'detail']">
+                    {{booking.restaurant.name}}
+                  </a>
+                </td>
+
+                <div class="buttons">
+                  <button class="btn btn-outline-light" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                    Reserva
+                  </button>
+                  @if (isAdmin) {
+
+                  <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">
+                    Editar Reserva
+                  </button>
+
+                  <button class="btn btn-outline-danger ms-2" (click)="delete(booking)">
+                    Borrar Reserva
+                  </button>
+                  }
+
+                </div>
+
+              </tbody>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </table>
+
+
+    }
+    }
+    @empty {
     <p>No hay Reservas actualmente.</p>
+    }
     }
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
 
   </div>
 </div>
