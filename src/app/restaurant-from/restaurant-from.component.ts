@@ -75,7 +75,9 @@ export class RestaurantFromComponent implements OnInit {
     });
   }
 
-
+  onFilechange(event: Event){
+  console.log(event)
+ }
   save () {
     const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
     //const restaurantBacken: Restaurant = {this.restaurantFrom.value,restaurantTypes: RestaurantType[this.restaurantFrom.value.restaurantTypes]};

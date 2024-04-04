@@ -79,6 +79,10 @@
        <input type="number" class="form-control" id="number" placeholder="number" formControlName="number">
        <label for="number">Nº</label>  
      </div>
+     <div class="coolinput input-group mb-3">
+      <input type="file" class="form-control" id="photo" (change)="onFilechange($event)">
+      
+    </div>
     
        @if (restaurantFrom.invalid) {
          <small class="text-danger mb-3">Complete the Required Fields</small>
