@@ -13,7 +13,7 @@ import { Role, User } from '../Interfaces/user.model';
 })
 
 export class DashboardUserComponent  implements OnInit {
-  isUpdate: boolean = true; // por defecto estamos en CREAR no en ACTUALIZAR 
+ 
   users: User[] = [];
   photoFile: File | undefined;
   photoPreview: string | undefined;
@@ -30,13 +30,13 @@ export class DashboardUserComponent  implements OnInit {
     phone: new FormControl(0,[Validators.required, Validators.pattern('^[0-9]{9}$')]),
     role: new FormControl<Role>(Role.USER)
   },
+
   {validators: this.passwordConfirmValidator}
   );
-  backendUser: any;
-user: any;
+
 
   constructor(private httpClient : HttpClient,
-              private router: Router,  // esto es para navegar
+
               private activatedRoute: ActivatedRoute,
               private fb: FormBuilder
   ){}
@@ -70,10 +70,7 @@ user: any;
           phone: backendUser.phone,
           role: backendUser.role,
         });
-           // marcar boolean true isUpdate para utilizar en  mismo form
-        this.isUpdate = true; 
-
-        
+ 
 
       });
     });
@@ -96,24 +93,12 @@ user: any;
     const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
 
-    if(this.isUpdate){
+    
       const url = 'http://localhost:8080/user/'+ user.id;
       this.httpClient.put<User>(url,user).subscribe(backendUser =>{
         this.router.navigate(['/user',backendUser.id,'detail']);
       });
-    }else{
-      const url = 'http://localhost:8080/user';
-      this.httpClient.post<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']); 
-      });
-    }
+    
   }
-  compareObjects(o1: any, o2: any): boolean {
-    // console.log("Comparando objetos: ", o1, o2);
 
-    if(o1 && o2) {
-      return o1.id === o2.id;
-    }
-    return o1 === o2;
-  } 
 }

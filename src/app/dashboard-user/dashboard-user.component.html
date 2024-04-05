@@ -3,7 +3,7 @@
 
     <!-- de aqui para abajo va todo el codigo -->
 
-
+    @if (users) {   
     <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
       
@@ -12,14 +12,14 @@
               </svg>
        
         </header>
-      
+  
         <div class="p-3 mb-4 bg-body-tertiary rounded-3">
           <div class="container-fluid py-5">
             <img [src]="" style="float: inline-end; margin-top: -60px;" height="350" alt="">
             <h1 class="display-5 fw-bold">nombre de usuario</h1>
             
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">nombre y apellidos</li>
+                <li class="list-group-item">{{}}</li>
                 <li class="list-group-item">correo electronico</li>
                 <li class="list-group-item">numero de telefono</li>
                 <li class="list-group-item">nacimiento</li>
@@ -28,7 +28,7 @@
           </div>
         </div>    
       </div>
-   
+    }
 <div class="container">
   <main>
     <div class="py-5 text-center">
@@ -185,11 +185,13 @@
     </div>
   </main>
 
+
   <footer class="my-5 pt-5 text-body-secondary text-center text-small">
     <p class="mb-1">© 2024 Bite booking</p>
-
+  
   </footer>
 </div>
+    
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script src="checkout.js"></script>
