@@ -1,82 +1,48 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Role, User } from '../Interfaces/user.model';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ActivatedRoute,RouterLink } from '@angular/router';
+import { User } from '../Interfaces/user.model';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-dashboard-user',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule, HttpClientModule,RouterLink],
+  imports: [RouterLink,ReactiveFormsModule, HttpClientModule, RouterLink],
   templateUrl: './dashboard-user.component.html',
   styleUrl: './dashboard-user.component.css'
 })
 
-export class DashboardUserComponent  implements OnInit {
-[x: string]: any;
-  user: any
-  users: User[] = [];
+export class DashboardUserComponent implements OnInit { 
+  users: User | undefined;
+  images: string[] = []
+  registerUserForm: any;
   photoFile: File | undefined;
   photoPreview: string | undefined;
-  roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
-
-  registerUserForm = new FormGroup({
-    id: new FormControl (0),
-    firtsName: new FormControl('',Validators.required),
-    lastName: new FormControl('',Validators.required),
-    birthdayDate: new FormControl(new Date()),
-    email: new FormControl('',[Validators.required, Validators.email]),
-    password: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
-    passwordConfirm: new FormControl('',[Validators.required, Validators.minLength(8),Validators.maxLength(30)]),
-    phone: new FormControl(0,[Validators.required, Validators.pattern('^[0-9]{9}$')]),
-    role: new FormControl<Role>(Role.USER)
-  },
-
-  {validators: this.passwordConfirmValidator}
-  );
   router: any;
+  
+  constructor(
+    private httpClient: HttpClient,
+    private activatedRoute: ActivatedRoute){}
 
 
-  constructor(private httpClient : HttpClient,
+  ngOnInit(): void {
+    AOS.init();
 
-              private activatedRoute: ActivatedRoute,
-              private fb: FormBuilder
-  ){}
- 
-  passwordConfirmValidator(control: AbstractControl){
-
-    if(control.get('password')?.value === control.get('passwordConfirm')?.value){
-      return null;
-
-    }else{
-        return{
-          'confirmError': true
-        }
-    }
-  } 
-
-  ngOnInit(): void { 
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
-      if(!id) return;
 
-      this.httpClient.get<User>('http://localhost:8080/user/' + id).subscribe(backendUser => {
-        
-        this.registerUserForm.reset({
-          id: backendUser.id,
-          firtsName:backendUser.firstName,
-          lastName:backendUser.lastName,
-          birthdayDate:backendUser.birthdayDate,
-          email: backendUser.email,
-          password: backendUser.password,
-          phone: backendUser.phone,
-          role: backendUser.role,
-        });
- 
+      if (!id) return;
 
-      });
-    });
+
+    const url = 'http://localhost:8080/user/' + id;
+
+    this.httpClient.get<User>(url).subscribe(b => this.users = b);
+    })
   }
+
+  
+
 
   save(){
     const user: User = this.registerUserForm.value as unknown as User;

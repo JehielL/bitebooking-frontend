@@ -1,44 +1,18 @@
+
 <body class="bg-body-tertiary">
-  
 
-    <!-- de aqui para abajo va todo el codigo -->
-
-    @if (users) {   
-    <div class="container py-4">
-        <header class="pb-3 mb-4 border-bottom">
-      
-            <svg xmlns="http://www.w3.org/2000/svg" routerLink="/user-list" width="35" height="35" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0  1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-              </svg>
-       
-        </header>
-  
-        <div class="p-3 mb-4 bg-body-tertiary rounded-3">
-          <div class="container-fluid py-5">
-            <img [src]="" style="float: inline-end; margin-top: -60px;" height="350" alt="">
-            <h1 class="display-5 fw-bold">nombre de usuario</h1>
-            
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">correo</li>
-                <li class="list-group-item">correo electronico</li>
-                <li class="list-group-item">numero de telefono</li>
-                <li class="list-group-item">nacimiento</li>
-                <li class="list-group-item">And a fifth one</li>
-              </ul>
-          </div>
-        </div>    
-      </div>
-    }
 <div class="container">
+
   <main>
     <div class="py-5 text-center">
       <img class="d-block mx-auto mb-4"  src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">
       <h2>Personaliza tu cuenta</h2>
       <p class="lead">actualiza tus datos para que sea mas facil reconocerte.</p>
     </div>
-
+    @if (users) {
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
+        <img src="{{users.imgUser}}" class="custom-picture"  [routerLink]="['/user', users.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Tus preferencias</span>
           <span class="badge bg-primary rounded-pill">3</span>
@@ -73,6 +47,7 @@
             <button type="submit" class="btn btn-secondary">añadir</button>
           </div>
         </form>
+        
       </div>
       <div class="col-md-7 col-lg-8">
         <h4 class="mb-3">Billing address</h4>
@@ -80,7 +55,7 @@
           <div class="row g-3">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Nombres</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+              <input type="text" class="form-control" id="firstName" placeholder="{{users.firstName}}" value="" required="">
               <div class="invalid-feedback">
                 Valid first name is required.
               </div>
@@ -168,9 +143,9 @@
               <h2 class="my-5 text-center">Foto seleccionada</h2>
               <img class="img-fluid" [src]="photoPreview">
               }
-              @if (!photoPreview && user?.imgUser) {
+              @if (!photoPreview && users.imgUser) {
               <h2 class="my-5">Foto de portada</h2>
-              <img class="img-fluid" [src]="'http://localhost:8080/files/' + user?.imgUser">
+              <img class="img-fluid" [src]="'http://localhost:8080/files/' + users.imgUser">
               }
             </div></span>
           </div>
@@ -180,20 +155,16 @@
           <button class="w-100 btn btn-primary btn-lg" type="submit">Atualizar Datos</button>
         </form>
       
-    
+      
       </div>
     </div>
+  }
   </main>
-
 
   <footer class="my-5 pt-5 text-body-secondary text-center text-small">
     <p class="mb-1">© 2024 Bite booking</p>
   
   </footer>
 </div>
-    
-<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script src="checkout.js"></script>
 
 </body>
