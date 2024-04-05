@@ -38,7 +38,7 @@
           <ul class="d-flex list-unstyled mt-auto">
             <li class="me-auto menu-badge">
               <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
-                {{menu.restaurantType}}
+                {{getRestaurantType(menu.restaurantType)}}
                 
               </a>
             </li>

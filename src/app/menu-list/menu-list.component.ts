@@ -2,6 +2,7 @@ import {  HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Menu } from '../Interfaces/menu.model';
 import { RouterLink } from '@angular/router';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 @Component({
   selector: 'app-menu-list',
@@ -11,8 +12,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu-list.component.css'
 })
 export class MenuListComponent {
-
-  menus: Menu[] = []; 
+  menus: Menu[] = [];
+  restaurantType = RestaurantType;
   resultadosBusqueda: Menu[] = [];
   searchTerm: string = '';
   maxResultados: number = 5; 
@@ -57,6 +58,11 @@ export class MenuListComponent {
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
     return name.replace(regex, `<mark>$1</mark>`);
-  }  
-
+  }
+  
+  getRestaurantType(type?: RestaurantType): string {
+    if (type === undefined) return 'No especificado';
+    const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
+    return typeAsString;
+  }
 }
