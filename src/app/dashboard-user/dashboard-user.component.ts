@@ -4,68 +4,66 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModu
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Role, User } from '../Interfaces/user.model';
 
+import Aos from 'aos';
+
 @Component({
   selector: 'app-dashboard-user',
   standalone: true,
-  imports: [RouterLink,ReactiveFormsModule, HttpClientModule, RouterLink],
+  imports: [RouterLink, ReactiveFormsModule, HttpClientModule, RouterLink],
   templateUrl: './dashboard-user.component.html',
   styleUrl: './dashboard-user.component.css'
 })
 
-export class DashboardUserComponent implements OnInit { 
+export class DashboardUserComponent implements OnInit {
   users: User | undefined;
   images: string[] = []
   registerUserForm: any;
   photoFile: File | undefined;
   photoPreview: string | undefined;
   router: any;
-  
+
   constructor(
     private httpClient: HttpClient,
-    private activatedRoute: ActivatedRoute){}
+    private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit(): void {
-    AOS.init();
-    this.httpClient.get<User[]>('http://localhost:8080/user').subscribe(userbacken => {
+    Aos.init();
+    this.httpClient.get<User>('http://localhost:8080/user').subscribe(userbacken => {
       console.log(userbacken);
     });
 
-    this.activatedRoute.params.subscribe(params =>{
+    this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
-      this.httpClient.get<User>('http://localhost:8080/user') + id).suscribe(userbacken => {
-      this.registerUserForm.reset({
-        id: userbacken.id,
-        firstname: userbacken.firstname,
-        lastname: userbacken.lastname,
-        email: userbacken.email,
-        phone: userbacken.phone,
-        imgUser: userbacken.imgUser
-      });
+      this.httpClient.get<User>('http://localhost:8080/user/' + id).subscribe(userbacken => {
+        this.registerUserForm.reset({
+          id: userbacken.id,
+          firstname: userbacken.firtsName,
+          lastname: userbacken.lastName,
+          email: userbacken.email,
+          phone: userbacken.phone,
+          imgUser: userbacken.imgUser
+        });
 
-      });  
+      });
+    });
   }
 
-  
-
-
-  save(){
+  save() {
     const user: User = this.registerUserForm.value as unknown as User;
-    console.log(user)
+    console.log(user);
 
-    
-      const url = 'http://localhost:8080/user/'+ user.id;
-      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']);
-      });
-    
-  }
+    const url = 'http://localhost:8080/user/' + user.id;
+    this.httpClient.put<User>(url, user).subscribe(backendUser => {
+      this.router.navigate(['/user', backendUser.id, 'detail']);
+    });
+  };
 
   onFileChange(event: Event) {
     let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
 
-    if(target.files === null || target.files.length == 0){
+    if (target.files === null || target.files.length == 0) {
       return; // no se procesa ningún archivo
     }
 
@@ -76,7 +74,5 @@ export class DashboardUserComponent implements OnInit {
     reader.onload = event => this.photoPreview = reader.result as string;
     reader.readAsDataURL(this.photoFile);
   }
-
-
 }
 
