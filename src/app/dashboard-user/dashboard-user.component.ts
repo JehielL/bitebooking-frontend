@@ -13,7 +13,8 @@ import { Role, User } from '../Interfaces/user.model';
 })
 
 export class DashboardUserComponent  implements OnInit {
- 
+[x: string]: any;
+  user: any
   users: User[] = [];
   photoFile: File | undefined;
   photoPreview: string | undefined;
@@ -33,6 +34,7 @@ export class DashboardUserComponent  implements OnInit {
 
   {validators: this.passwordConfirmValidator}
   );
+  router: any;
 
 
   constructor(private httpClient : HttpClient,
@@ -75,6 +77,19 @@ export class DashboardUserComponent  implements OnInit {
       });
     });
   }
+
+  save(){
+    const user: User = this.registerUserForm.value as unknown as User;
+    console.log(user)
+
+    
+      const url = 'http://localhost:8080/user/'+ user.id;
+      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
+        this.router.navigate(['/user',backendUser.id,'detail']);
+      });
+    
+  }
+
   onFileChange(event: Event) {
     let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
 
@@ -89,16 +104,6 @@ export class DashboardUserComponent  implements OnInit {
     reader.onload = event => this.photoPreview = reader.result as string;
     reader.readAsDataURL(this.photoFile);
   }
-  save(){
-    const user: User = this.registerUserForm.value as unknown as User;
-    console.log(user)
 
-    
-      const url = 'http://localhost:8080/user/'+ user.id;
-      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']);
-      });
-    
-  }
 
 }
