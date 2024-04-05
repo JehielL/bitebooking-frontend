@@ -113,6 +113,10 @@ export const routes: Routes = [
    component: DishFormComponent
 },
 {
+   path: 'dishes/:id/create',
+   component: DishFormComponent
+},
+{
    path: 'dishes/:id/update',
    component: DishFormComponent
 },
