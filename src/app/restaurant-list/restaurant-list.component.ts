@@ -12,21 +12,14 @@ import { RouterLink } from '@angular/router';
   imports: [ReactiveFormsModule,RouterLink,HttpClientModule,FormsModule]
 })
 export class RestaurantListComponent implements OnInit {
-  form: FormGroup;
   restaurants: Restaurant[] = [];
-  filteredRestaurants: Restaurant[] = [];
+  resultadosBusqueda: Restaurant[] = [];
   searchTerm: string = '';
+  maxResultados: number = 5; 
+  minResultados: number = 5;
 
-  constructor(private httpClient: HttpClient) {
-    this.form = new FormGroup({
-      searchTerm: new FormControl('')
-    });
-
-    this.form.get('searchTerm')?.valueChanges.subscribe(val => {
-      this.searchTerm = val;
-      this.filterRestaurants();
-    });
-  }
+  constructor(private httpClient: HttpClient) {}
+  puedeMostrarMas: boolean = false;
 
   ngOnInit(): void {
     this.loadRestaurantsDirectly();
@@ -36,17 +29,39 @@ export class RestaurantListComponent implements OnInit {
     const apiUrl = 'http://localhost:8080/restaurant';
     this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
       this.restaurants = restaurants;
-      this.filteredRestaurants = restaurants;
+
+      this.restaurants.filter(restaurant =>
+        restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
   }
+  buscar(termino: string): void {
+    this.searchTerm = termino;
+    this.filtrarResultados();
+  }
 
-  filterRestaurants() {
-    if (!this.searchTerm) {
-      this.filteredRestaurants = this.restaurants;
-    } else {
-      this.filteredRestaurants = this.restaurants.filter(restaurant =>
-        restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
+  filtrarResultados(): void {
+    const resultadosFiltrados = this.searchTerm
+      ? this.restaurants.filter(restaurant =>
+          restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      : [];
+    this.puedeMostrarMas = resultadosFiltrados.length > this.maxResultados;
+    this.resultadosBusqueda = resultadosFiltrados.slice(0, this.maxResultados);
+  }
+
+  mostrarMas(): void {
+    this.maxResultados += 5;
+    this.filtrarResultados();
+  }
+  mostrarMenos(): void {
+    this.maxResultados = Math.max(this.minResultados, this.maxResultados - 5);
+    this.filtrarResultados();
+  }
+
+  highlightSearchTerm(name: string, searchTerm: string): string {
+    if (!searchTerm) return name;
+
+    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
+    return name.replace(regex, `<mark>$1</mark>`);
   }  
 }

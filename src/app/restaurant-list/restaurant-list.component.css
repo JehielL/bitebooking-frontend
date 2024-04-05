@@ -52,3 +52,17 @@
   background-color: black; 
   margin-bottom: 1rem; 
 }
+.list-group-item {
+  cursor: pointer;
+  border-bottom: 1px solid #000000;
+  background-color: rgb(69, 145, 138);
+}
+.list-group-item:hover {
+  background-color: #1f1e1d;
+}
+.btn-outline-primary{
+  margin-top: 10px;
+}
+.list-group-item a:visited {
+  color: #e78f0a;
+}
