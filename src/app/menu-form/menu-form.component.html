@@ -45,9 +45,21 @@
     </div>
     <div class="col-lg-8 custom-col">
 
+      
       <h1 class="my-5 text-center">Introducir datos de Menú</h1>
 
       <form [formGroup]="menuForm" (ngSubmit)="save()">
+        @if (isUpdate) {
+        <h1 class="mt-5 mb-5 custom-title">Actualizar menu existente: {{menuForm.get('title')?.value}}</h1>
+      }
+      @else {
+        <h1 class="mt-5 mb-5 custom-title">Crear un nuevo menú</h1>
+      }
+      
+      @if (isUpdate && restaurant) {
+        <h2 class="mt-5 mb-5 custom-title">Menú de: {{restaurant.name}}</h2>
+      }
+      
 
         <input type="hidden" formControlName="id">
 
@@ -98,9 +110,10 @@
         <div class="form-floating mb-3">
           <select class="form-select" id="restaurant" formControlName="restaurant" [compareWith]="compareObjects">
 
-            @for (restaurant of restaurants; track restaurant.id) {
+            @if (restaurant) {
               <option [ngValue]="restaurant">{{restaurant.name}}</option>
-            }
+              <label for="restaurant">Restaurant asociado</label>
+              }
 
           </select>
           <label for="restaurant">Restaurant Asociado</label>
