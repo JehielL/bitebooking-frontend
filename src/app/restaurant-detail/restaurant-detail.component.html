@@ -15,15 +15,24 @@
           }
         <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
         <p class="btn btn-outline-dark me-2">Horario {{restaurant?.openingTime | date:"HH:mm"}}, Hasta : {{restaurant?.closingTime | date:"HH:mm"}}</p>
+        <div>
+          <button class="btn btn-outline-dark  btn-sm" [routerLink]="['/bookings', restaurant?.id, 'reserve']">Reservar</button>
+  
+        </div>
       </div>
+      
+      
+
+      
       <div class="fw-bold fs-4">Descripción</div>
       {{restaurant?.description}}
     </div>
+    
   
   </div>
   
 <div class="menu-section py-4">
-  <h2 class="h5 mb-3">Menú Destacado</h2>
+  <h2 class="h5 mb-3">Menús</h2>
   <div class="row">
     @for (Menu of Menus; track Menu) {
     <div class="col-md-4 mb-3">

@@ -63,14 +63,10 @@ export const routes: Routes = [
 },
 
  {
-   path: 'bookings/:id/detail',
-   component: BookingDetailComponent
-},
-{
    path: 'bookings/:id/update',
    component: BookingFormComponent
-}
-,{
+},
+{
    path: 'bookings/create',
    component: BookingFormComponent
 },
@@ -121,13 +117,12 @@ export const routes: Routes = [
    component: DishFormComponent
 },
 {
-   path: 'dishes/:id/update',
-   component: DishFormComponent
+   path: 'bookings/:id/reserve',
+   component: BookingFormComponent
 },
- 
 {
     path: '**',
     component:NotFoundComponent
     
-},
+}
 ];

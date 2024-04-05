@@ -11,4 +11,14 @@
     background-color: rgba(0, 0, 0, 0.529);
     border-color: black;
   }
+  @media (max-width: 576px) {
+
+    .btn-secondary {
+      margin-top: 10px;
+      width: 100px;
+      text-align: center;
+      text-align: center;
+      margin-left: 40%;
+    }
+  }
   

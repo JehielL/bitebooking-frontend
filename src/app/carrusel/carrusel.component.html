@@ -5,7 +5,7 @@
             <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
             <div class="card-body">
                 <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">Tipo: {{restaurant.restaurantType}}. Rating: {{restaurant.averageRating}}</p>
+                <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
                 <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
             </div>
         </div>
