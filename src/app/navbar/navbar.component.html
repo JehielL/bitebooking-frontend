@@ -1,39 +1,38 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <a routerLink="/home">
-      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">       
+      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      aria-controls="navbarContent"
-      [attr.aria-expanded]="!collapsed"
-      aria-label="Toggle navigation"
-      (click)="collapsed = !collapsed"
-    >
+    <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
+      aria-label="Toggle navigation" (click)="collapsed = !collapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    
-    
+
+
     <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+
+
       <ul class="navbar-nav ms-auto">
-      
+
+
         <li class="nav-item" ngbDropdown>
-          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button" ><i class="bi bi-calendar-check-fill"></i> Reservas</a>
+          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"><i
+              class="bi bi-calendar-check-fill"></i> Reservas</a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
             <a ngbDropdownItem routerLink="/bookings/create" (click)="$event.preventDefault()">Crear Reserva.</a>
             <a ngbDropdownItem routerLink="bookings" (click)="$event.preventDefault()">Mis Reservas.</a>
           </div>
         </li>
-    
+
         <li class="nav-item " ngbDropdown>
-          <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button"> Usuario</a>
+          <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+            Usuario</a>
           <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
-            <a ngbDropdownItem routerLink="dashboard-user" (click)="$event.preventDefault()">Configuración</a>
+            <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
 
@@ -42,21 +41,53 @@
 
           </div>
         </li>
-    
-        <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
-          <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"><i class="bi bi-chat-right-quote"></i> Contactanos</a>
-          <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
-            <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Formulario de contacto</a>
+
+        <li class="nav-item " ngbDropdown>
+          <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+            Contactanos</a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
             <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">About us</a>
-            <a ngbDropdownItem routerLink="" (click)="$event.preventDefault()">Preguntas frecuentes</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
+            <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
+
+
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+
+            
+
           </div>
-        </li>
+           
+          
+  
+          
 
-        <button routerLink="/login" type="button" class="btn btn-secondary" >Login</button>
 
-        <button routerLink="/user/create" type="button" class="btn btn-secondary">Registrate</button>
-        
+
       </ul>
+      @if (userEmail) {
+        
+        <button class="btn btn-outline-light me-2 ">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
+      }
+
+      @if (isLoggedin) {
+        <button routerLink="" type="button" class="btn btn-warning" (click)="logout()" >
+          <i class="bi bi-box-arrow-right"></i>
+          Logout</button>
+
+
+
+      } @else {
+
+        <button routerLink="user/login" type="button" class="btn btn-secondary"  >
+          <i class="bi bi-box-arrow-left ms-2"></i>
+          Login</button>
+
+        <button routerLink="/user/register" type="button" class="btn btn-secondary" >
+          <i class="bi bi-person-fill-add p-1"></i>Registrate</button>
+      }
     </div>
   </div>
 </nav>

@@ -1,104 +1,100 @@
 
 
 <div class="container mt-3 ">
- <div class="row">
-  <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">
-    @if (isUpdate) {
-      <h1 class="mt-5 mb-5">Update existing Restaurant with id{{restaurantFrom.get('id')?.value}}</h1>
-    } @else {
-      <h1 class="mt-5 mb-5">Create Restaurant</h1>
-    }
-    <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
-  </div> 
-
-  <div class="col-6 mb-3 ">
-
-    <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
-      
-    <div class="coolinput form-floating mb-3">
-        <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
-        <label for="name">Name of the Restaurant</label>
-    </div>
-    <div class="coolinput form-floating mb-3">
-        <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
-        <label for="phone">Phone *</label>
-        @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
-        <div>
-            @if (restaurantFrom.controls.phone.errors['required']) {
-            <small class="text-danger">It requires a Phone</small>
-            }
-            @if (restaurantFrom.controls.phone.errors['pattern']) {
-            <small class="text-danger">Incorrect Telephone Format. Must be 9 digits.</small>
-            }
-        </div>
-        }
-    </div>
-
-    <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 4px;">
-      
-        <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
-            @for (type of restaurantTypes; track type) {
-                <option [value]="type">{{ type }}</option>
-            }
-        </select>
-        <label for="RestaurantType">Restaurant Type</label>
-    </div>
+  <div class="row">
+   <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">   
+     <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
+   </div> 
+ 
+   <div class="col-6 mb-3 ">
     
-    <div class="coolinput form-floating mb-3">
-        <input type="datetime-local" class="form-control" id="openingTime"  formControlName="openingTime" >
-        <label for="openingTime" >Opening Time</label>
-      </div>
+     <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
+       @if (isUpdate) {
+         <h1 class="mt-3 mb-3">Update existing Restaurant with id{{restaurantFrom.get('id')?.value}}</h1>
+       } @else {
+         <h1 class="mt-3 mb-3">Create Restaurant</h1>
+       } 
+     <div class="coolinput form-floating mb-3">
+         <input type="text" class="form-control" id="name" placeholder="name" formControlName="name">
+         <label for="name">Name of the Restaurant</label>
+     </div>
+     <div class="coolinput form-floating mb-3">
+         <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
+         <label for="phone">Phone *</label>
+         @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
+         <div>
+             @if (restaurantFrom.controls.phone.errors['required']) {
+             <small class="text-danger">It requires a Phone</small>
+             }
+             @if (restaurantFrom.controls.phone.errors['pattern']) {
+             <small class="text-danger">Incorrect Telephone Format. Must be 9 digits.</small>
+             }
+         </div>
+         }
+     </div>
+ 
+     <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 20px;">
+       
+         <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
+             @for (type of restaurantTypes; track type) {
+                 <option [value]="type">{{ type }}</option>
+             }
+         </select>
+         <label for="RestaurantType">Restaurant Type</label>
+     </div>
+     
+     <div class="coolinput form-floating mb-3">
+         <input type="datetime-local" class="form-control" id="openingTime"  formControlName="openingTime" >
+         <label for="openingTime" >Opening Time</label>
+       </div>
+     
+     <div class="coolinput form-floating mb-3">
+         <input type="datetime-local" class="form-control" id="closingTime"  formControlName="closingTime" >
+         <label for="closingTime" >Closing Time</label>
+     </div>
+     
+     <div class="coolinput form-check mb-3">
+         <input class="form-check-input" type="radio" name="status" id="status"   formControlName="status">
+         <label class="form-check-label" for="gridRadios2">
+           Restaurant
+         </label>
+       </div> 
+ 
+       <div class="coolinput form-floating mb-3" formGroupName="location">
+         <input type="text" class="form-control" id="address" placeholder="locationAddress" formControlName="address">
+         <label for="address">Location address</label>  
+     </div>
+ 
+     <input type="hidden" formControlName="imageUrl">
+ 
+     <div class="coolinput form-floating mb-3" formGroupName="location">
+         <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
+         <label for="locationCity">Location city</label>  
+     </div>
+     <div class="coolinput form-floating mb-3" formGroupName="location">
+       <input type="number" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
+       <label for="postalCode">CP</label>  
+     </div>
+     <div class="coolinput col-3 form-floating mb-3" formGroupName="location">
+       <input type="number" class="form-control" id="number" placeholder="number" formControlName="number">
+       <label for="number">Nº</label>  
+     </div>
     
-    <div class="coolinput form-floating mb-3">
-        <input type="datetime-local" class="form-control" id="closingTime"  formControlName="closingTime" >
-        <label for="closingTime" >Closing Time</label>
-    </div>
-    <div class="coolinput form-floating mb-3">
-        <input type="number" class="form-control" id="averageRating" placeholder="averageRating" formControlName="averageRating">
-        <label for="averageRating">AverageRating</label>  
-    </div>
-    <div class="coolinput form-check mb-3">
-        <input class="form-check-input" type="radio" name="status" id="status"   formControlName="status">
-        <label class="form-check-label" for="gridRadios2">
-          Restaurant
-        </label>
-      </div> 
-
-      <div class="coolinput form-floating mb-3" formGroupName="location">
-        <input type="text" class="form-control" id="address" placeholder="locationAddress" formControlName="address">
-        <label for="address">Location address</label>  
-    </div>
-
-    <input type="hidden" formControlName="imageUrl">
-
-    <div class="coolinput form-floating mb-3" formGroupName="location">
-        <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
-        <label for="locationCity">Location city</label>  
-    </div>
-    <div class="coolinput form-floating mb-3" formGroupName="location">
-      <input type="number" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
-      <label for="postalCode">CP</label>  
-    </div>
-    <div class="coolinput col-3 form-floating mb-3" formGroupName="location">
-      <input type="number" class="form-control" id="number" placeholder="number" formControlName="number">
-      <label for="number">Nº</label>  
-    </div>
-
-    <div class="float-end mb-3">
-      @if (restaurantFrom.invalid) {
-        <small class="text-danger mb-3">Complete the Required Fields</small>
-        }
-      <div class="mb-3">
-        @if (isUpdate) {
-          <button class="custom-btn mb-3" type="submit" >Update</button>
-        }@else { 
-          <button class="custom-btn mb-3" type="submit" [disabled]="restaurantFrom.invalid" >save</button>   
-        }  
-        <button class="custom-btn "  type="submit"  routerLink="/home">Cancelar</button>
-      </div>
-    </div>        
-    </form>
-    
-  </div>  <div><p class="text-body-secondary text-center">© 2024-Bite-Booking</p></div>     
-  </div>     
-</div>
+       @if (restaurantFrom.invalid) {
+         <small class="text-danger mb-3">Complete the Required Fields</small>
+         }
+       <div class="mb-3 text-end">
+         @if (isUpdate) {
+           <button class="custom-btn" type="submit" >Update</button>
+         }@else { 
+           <button class="custom-btn" type="submit" [disabled]="restaurantFrom.invalid" >save</button>   
+         }  
+         <button class="custom-btn  "  type="submit"  routerLink="/home">Cancelar</button>
+       </div>
+            
+     </form>
+     
+   </div>  
+   <div><p class="text-body-secondary text-star">© 2024-Bite-Booking</p></div>     
+   </div>     
+ </div>

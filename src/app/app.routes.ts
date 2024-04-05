@@ -11,11 +11,12 @@ import { RestaurantFromComponent } from './restaurant-from/restaurant-from.compo
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
-import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { MenuFormComponent } from './menu-form/menu-form.component';
 import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
+import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
+
 
 export const routes: Routes = [
    {
@@ -28,11 +29,11 @@ export const routes: Routes = [
     component: HomeComponent
  },
 {
-   path:'dashboard-user',
+   path:'user/:id/update',
    component: DashboardUserComponent
 },
  {
-   path:'login',
+   path:'user/login',
    component: LoginMainComponent
  },
  {
@@ -49,11 +50,7 @@ export const routes: Routes = [
    component: UserDetailComponent
 },
  {
-   path:'user/create',
-   component: UserFormComponent
- },
- {
-   path: 'user/:id/update',
+   path:'user/register',
    component: UserFormComponent
  },
  {
@@ -66,14 +63,10 @@ export const routes: Routes = [
 },
 
  {
-   path: 'bookings/:id/detail',
-   component: BookingDetailComponent
-},
-{
    path: 'bookings/:id/update',
    component: BookingFormComponent
-}
-,{
+},
+{
    path: 'bookings/create',
    component: BookingFormComponent
 },
@@ -124,13 +117,12 @@ export const routes: Routes = [
    component: DishFormComponent
 },
 {
-   path: 'dishes/:id/update',
-   component: DishFormComponent
+   path: 'bookings/:id/reserve',
+   component: BookingFormComponent
 },
- 
 {
     path: '**',
     component:NotFoundComponent
     
-},
+}
 ];

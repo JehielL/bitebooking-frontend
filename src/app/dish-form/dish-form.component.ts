@@ -27,6 +27,9 @@ export class DishFormComponent implements OnInit{
     menu: new FormControl(),
    
   });
+
+  menu: Menu | undefined;
+
   constructor(
     private fb: FormBuilder,
     private httpClient: HttpClient,
@@ -39,7 +42,6 @@ export class DishFormComponent implements OnInit{
   dish: Dish | undefined;
   isUpdate: boolean = false;
   menus: Menu[] = [];
-  dishes: Dish[] = []; 
   selectedMenu: Menu | undefined;
 
   
@@ -56,26 +58,31 @@ export class DishFormComponent implements OnInit{
 
     
       this.activatedRoute.params.subscribe(params => {
-        const id = params['id'];
-        if(!id) return;
-  
-        
-   
-  
-        
-        this.httpClient.get<Dish>('http://localhost:8080/dishes/' + id).subscribe(dish => {
-        this.dishForm.reset(dish);
-        this.isUpdate = true;
-        this.dish = dish;
-        this.dishForm.get('menu')?.setValue(dish.menu); 
+
+        // CREACION
+        const menuId = params['menuId'];
+       if (menuId) {
+
+        this.httpClient.get<Menu>('http://localhost:8080/menus/' + menuId).subscribe(menu => {
+          this.menu = menu;
+          }); 
+       }
+    
+       // EDICION
+       const dishId = params['dishId'];
+       if (dishId) {
+
+        this.httpClient.get<Dish>('http://localhost:8080/dishes/' + dishId).subscribe(dish => {
+          this.dish = dish;
+          this.dishForm.reset(dish);
+          this.isUpdate = true;
+          this.menu = dish.menu;
+          }); 
+       }
+
 
             
-        });         
-        });
-        this.dishForm.get('menu')?.valueChanges.subscribe(menu => {
-          this.selectedMenu = menu;
-        });
-
+      });
       
   
 
