@@ -150,9 +150,6 @@
 .list-group-item:hover {
   background-color: #1f1e1d;
 }
-.btn-outline-primary{
-  margin-top: 10px;
-}
 .list-group-item a:visited {
   color: #e78f0a;
 }
