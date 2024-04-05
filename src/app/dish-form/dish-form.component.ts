@@ -14,8 +14,8 @@ import AOS from 'aos';
   templateUrl: './dish-form.component.html',
   styleUrl: './dish-form.component.css'
 })
-export class DishFormComponent implements OnInit{
- 
+export class DishFormComponent implements OnInit {
+
   dishForm = new FormGroup({
     id: new FormControl<number>(0),
     title: new FormControl<string>(''),
@@ -25,73 +25,55 @@ export class DishFormComponent implements OnInit{
     active: new FormControl<boolean>(false),
     alergys: new FormControl<boolean>(false),
     menu: new FormControl(),
-   
   });
 
   menu: Menu | undefined;
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
+  dish: Dish | undefined;
+  isUpdate: boolean = false;
+  selectedMenu: Menu | undefined;
 
   constructor(
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { 
+    private activatedRoute: ActivatedRoute) {
   }
-
-  photoFile: File | undefined;
-  photoPreview: string | undefined;
-  dish: Dish | undefined;
-  isUpdate: boolean = false;
-  menus: Menu[] = [];
-  selectedMenu: Menu | undefined;
 
   
 
-
- 
- 
   ngOnInit(): void {
 
     AOS.init();
-    
-    this.httpClient.get<Menu[]>('http://localhost:8080/menus')
-      .subscribe(menus => this.menus = menus);
-
-    
-      this.activatedRoute.params.subscribe(params => {
-
-        // CREACION
-        const menuId = params['menuId'];
-       if (menuId) {
-
-        this.httpClient.get<Menu>('http://localhost:8080/menus/' + menuId).subscribe(menu => {
-          this.menu = menu;
-          }); 
-       }
-    
-       // EDICION
-       const dishId = params['dishId'];
-       if (dishId) {
-
-        this.httpClient.get<Dish>('http://localhost:8080/dishes/' + dishId).subscribe(dish => {
-          this.dish = dish;
-          this.dishForm.reset(dish);
-          this.isUpdate = true;
-          this.menu = dish.menu;
-          }); 
-       }
 
 
-            
+    this.activatedRoute.params.subscribe(params => {
+
+      // CREACION
+      const id = params['id'];
+      if (!id) return;
+
+      const menuUrl = 'http://localhost:8080/menus/' + id;
+      this.httpClient.get<Menu>(menuUrl).subscribe(m => this.menu = m);
+
+      // EDICION
+
+      this.httpClient.get<Dish>('http://localhost:8080/dishes/' + id).subscribe(dish => {
+        this.dish = dish;
+        this.dishForm.reset(dish);
+        this.dishForm.get('menu')?.setValue(dish.menu);
+        this.isUpdate = true;
+        this.menu = dish.menu;
       });
-      
-  
 
+    });
   }
 
   onFileChange(event: Event) {
     let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
 
-    if(target.files === null || target.files.length == 0){
+    if (target.files === null || target.files.length == 0) {
       return; // no se procesa ningún archivo
     }
 
@@ -118,38 +100,29 @@ export class DishFormComponent implements OnInit{
     formData.append('active', this.dishForm.get('active')?.value?.toString() ?? 'false');
     formData.append('alergys', this.dishForm.get('alergys')?.value?.toString() ?? 'false');
     formData.append('menu', this.dishForm.get('menu')?.value?.id.toString() ?? '0');
-    
 
-   if(this.photoFile) {
+    if (this.photoFile) {
       formData.append("photo", this.photoFile);
     }
 
     if (this.isUpdate) {
-        this.httpClient.put<Dish>('http://localhost:8080/dishes/' + this.dish?.id, formData)
-      .subscribe(dish => this.navigateToList());
+      this.httpClient.put<Dish>('http://localhost:8080/dishes/' + this.dish?.id, formData)
+        .subscribe(dish => this.navigateToList());
     } else {
       this.httpClient.post<Dish>('http://localhost:8080/dishes', formData)
-      .subscribe(dish => this.navigateToList());
+        .subscribe(dish => this.navigateToList());
     }
   }
-  
 
 
   private navigateToList() {
-    this.router.navigate(['/menus']);
-
-   
+    this.router.navigate(['/menus', this.menu?.id, 'detail']);
   }
-  compareObjects(o1: any, o2: any): boolean{
 
-    if (o1 && o2){
+  compareObjects(o1: any, o2: any): boolean {
+    if (o1 && o2) {
       return o1.id == o2.id;
     }
-
     return o1 == o2;
   }
-
-
-  
-
 }
