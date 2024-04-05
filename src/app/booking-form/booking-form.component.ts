@@ -20,6 +20,12 @@ export class BookingFormComponent implements OnInit {
 
   booking: Booking | undefined;
   restaurant: Restaurant | undefined;
+   vipRoom = 0; // precio salon vip.
+  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
+  menus: Menu[] = []; // array de autores para asociar un autor al libro
+  totalPrice: any;
+  extraPrice: any;
+  extraService: any;
   
 
   bookingForm = new FormGroup({
@@ -39,12 +45,7 @@ export class BookingFormComponent implements OnInit {
   });
 
   
-  vipRoom = 0; // precio salon vip.
-  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
-  menus: Menu[] = []; // array de autores para asociar un autor al libro
-  totalPrice: any;
-  extraPrice: any;
-  extraService: any;
+ 
   
   constructor(
     private fb: FormBuilder,
@@ -66,9 +67,9 @@ export class BookingFormComponent implements OnInit {
       const id = params['id'];
       if (!id) return;
 
-      this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
+      
+this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
       .subscribe(restaurants => this.restaurant = restaurants);
-
 
 
       this.httpClient.get<Booking>('http://localhost:8080/bookings/' + id).subscribe(bookingFromBackend => {

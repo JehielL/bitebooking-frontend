@@ -95,7 +95,7 @@ export const routes: Routes = [
    component: MenuListComponent
 },
 {
-   path: 'menus/create',
+   path: 'menus/:id/create',
    component: MenuFormComponent
 
 },
@@ -120,6 +120,7 @@ export const routes: Routes = [
    path: 'bookings/:id/reserve',
    component: BookingFormComponent
 },
+
 {
     path: '**',
     component:NotFoundComponent

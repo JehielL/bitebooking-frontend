@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Menu } from '../Interfaces/menu.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import AOS from 'aos';
 
@@ -14,8 +14,15 @@ import AOS from 'aos';
   styleUrl: './menu-form.component.css'
 })
 export class MenuFormComponent implements OnInit {
-  
-  
+
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
+  menu: Menu | undefined;
+  restaurant: Restaurant | undefined;
+  isUpdate: boolean = false;
+ 
+
+
   menuForm = new FormGroup({
     id: new FormControl(0),
     title: new FormControl(''),
@@ -28,54 +35,52 @@ export class MenuFormComponent implements OnInit {
 
 
   });
-  photoFile: File | undefined;
-  photoPreview: string | undefined;
-  menu: Menu | undefined;
-  isUpdate: boolean = false;
-  restaurants: Restaurant[] = [];
- 
 
-  constructor(private httpClient: HttpClient, 
-    private activatedRoute: ActivatedRoute,
-    private router: Router) 
-    {}
+
+
+  constructor(
+    private fb: FormBuilder,
+    private httpClient: HttpClient,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
 
     AOS.init();
 
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
-      .subscribe(restaurants => this.restaurants = restaurants);
- 
     this.activatedRoute.params.subscribe(params => {
+
+      
       const id = params['id'];
-      if(!id) return;
+      if (!id) return;
+      const restaurantUrl = 'http://localhost:8080/restaurant/' + id;
 
-      
- 
+      this.httpClient.get<Restaurant>(restaurantUrl).subscribe(r => this.restaurant = r);
 
-      
+
       this.httpClient.get<Menu>('http://localhost:8080/menus/' + id).subscribe(menu => {
-      this.menuForm.reset(menu);
-      this.isUpdate = true;
-      this.menuForm.get('restaurant')?.setValue(menu.restaurant); 
-      this.menu = menu;
-          
+        this.menuForm.reset(menu);
+        this.menuForm.get('restaurant')?.setValue(menu.restaurant);
+        this.menu = menu;
+        this.isUpdate = true;  
+          console.log(this.isUpdate);
       });
 
-    
+      
+      
 
-       
-      });
 
-   
-    
+
+
+    });
+
 
   }
   onFileChange(event: Event) {
     let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
 
-    if(target.files === null || target.files.length == 0){
+    if (target.files === null || target.files.length == 0) {
       return; // no se procesa ningún archivo
     }
 
@@ -101,18 +106,19 @@ export class MenuFormComponent implements OnInit {
     formData.append('restaurantType', this.menuForm.get('restaurantType')?.value ?? '');
     formData.append('alergys', this.menuForm.get('alergys')?.value?.toString() ?? 'false');
     formData.append('restaurant', this.menuForm.get('restaurant')?.value?.id.toString() ?? '0');
-    
 
-   if(this.photoFile) {
+
+    if (this.photoFile) {
       formData.append("photo", this.photoFile);
     }
 
     if (this.isUpdate) {
-        this.httpClient.put<Menu>('http://localhost:8080/menus/' + this.menu?.id, formData)
-      .subscribe(menu => this.navigateToList());
+      
+      this.httpClient.put<Menu>('http://localhost:8080/menus/' + menu.id, formData)
+        .subscribe(menu => this.navigateToList());
     } else {
       this.httpClient.post<Menu>('http://localhost:8080/menus', formData)
-      .subscribe(menu => this.navigateToList());
+        .subscribe(menu => this.navigateToList());
     }
   }
 
@@ -120,18 +126,18 @@ export class MenuFormComponent implements OnInit {
   private navigateToList() {
     this.router.navigate(['/menus']);
 
-   
-  }
-  compareObjects(o1: any, o2: any): boolean{
 
-    if (o1 && o2){
+  }
+  compareObjects(o1: any, o2: any): boolean {
+
+    if (o1 && o2) {
       return o1.id == o2.id;
     }
 
     return o1 == o2;
   }
 
-  
-  
+
+
 
 }
