@@ -9,72 +9,63 @@ import AOS from 'aos';
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, RouterLink, FormsModule],
+  imports: [HttpClientModule, ReactiveFormsModule, RouterLink],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit{
 
   users: User[] = [];
-  searchTerm: string = '';
-  router: any;
   collapsed =true;
- 
-  constructor(private httpClient: HttpClient) { }
+  resultadosBusqueda: User[] = [];
+  searchTerm: string = '';
+  maxResultados: number = 5; 
+  minResultados: number = 5;
 
+  constructor(private httpClient: HttpClient){}
+  puedeMostrarMas: boolean = false;
+  
   ngOnInit(): void {
-
     AOS.init();
 
     this.loadUsers();
   }
-
-  loadUsers() {
-    const url = 'http://localhost:8080/user';
-    this.httpClient.get<User[]>(url).subscribe(users => this.users = users);
+  loadUsers(): void {
+    const apiUrl = 'http://localhost:8080/user';
+    this.httpClient.get<User[]>(apiUrl)
+    .subscribe(users => this.users = users);
+      this.users.filter(users =>
+      users.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()));
+  }
+  buscar(termino: string): void {
+    this.searchTerm = termino;
+    this.filtrarResultados();
   }
 
-  searchUsers() {
-    if (this.searchTerm.trim() === '') {
-      // Si el término de búsqueda está vacío, cargar todos los usuarios
-      this.loadUsers();
-    } else {
-      // Si hay un término de búsqueda, realizar la búsqueda
-      const url = `http://localhost:8080/user/search/${this.searchTerm}`;
-      this.httpClient.get<User[]>(url).subscribe(
-        users => {
-          if (users.length === 0) {
-            // Si no se encontraron usuarios, redirigir a la página 'not-found'
-            this.router.navigate(['/not-found']);
-          } else {
-            // Si se encontraron usuarios, actualizar la lista de usuarios
-            this.users = users;
-          }
-        },
-        error => {
-          // Si ocurre un error durante la solicitud HTTP, redirigir a la página 'not-found'
-          this.router.navigate(['/not-found']);
-
-        }
-      );
-    }
+  filtrarResultados(): void {
+    const resultadosFiltrados = this.searchTerm
+      ? this.users.filter(users =>
+          users.firstName.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      : [];
+    this.puedeMostrarMas = resultadosFiltrados.length > this.maxResultados;
+    this.resultadosBusqueda = resultadosFiltrados.slice(0, this.maxResultados);
   }
 
-  resetSearch() {
-    // Restablecer la búsqueda y cargar todos los usuarios
-    this.searchTerm = '';
-    this.loadUsers();
+  mostrarMas(): void {
+    this.maxResultados += 5;
+    this.filtrarResultados();
+  }
+  mostrarMenos(): void {
+    this.maxResultados = Math.max(this.minResultados, this.maxResultados - 5);
+    this.filtrarResultados();
   }
 
-  delete(user: User) {
-    const url = 'http://localhost:8080/user/' + user.id;
-    this.httpClient.delete(url).subscribe(response => {
-      // Volver a cargar los usuarios después de eliminar uno
-      this.loadUsers();
-    })
-  }
+  highlightSearchTerm(name: string, searchTerm: string): string {
+    if (!searchTerm) return name;
 
-
-
+    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
+    return name.replace(regex, `<mark>$1</mark>`);
+  } 
 }
 

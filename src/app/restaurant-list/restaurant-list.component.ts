@@ -30,8 +30,8 @@ export class RestaurantListComponent implements OnInit {
     this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
       this.restaurants = restaurants;
 
-      this.restaurants.filter(restaurant =>
-        restaurant.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+      this.restaurants.filter(restaurants =>
+        restaurants.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
   }
   buscar(termino: string): void {
