@@ -62,6 +62,6 @@ export class RestaurantListComponent implements OnInit {
 
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
-    return name.replace(regex, `<mark>$1</mark>`);
+    return name.replace(regex, `$1`);
   }  
 }

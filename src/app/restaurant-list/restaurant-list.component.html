@@ -3,28 +3,33 @@
     <div class="col">
       <div class="container-fluid"> 
         <h2 class="pb-2 custom-title">Restaurantes</h2>
-        <div class="input-group custom-input-group justify-content-center">
-          <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Buscar Restaurantes ..."
-              aria-label="Buscar" aria-describedby="search-addon" style="max-width: 600px;"
-              (input)="buscar($any($event.target).value)">
+        <div class="search">
+
+          <input type="search" class="form-control form-control-sm rounded custom-input"
+              placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
+              style="max-width: 600px;" (input)="buscar($any($event.target).value)">
+          @if (resultadosBusqueda.length > 0) {
+          <div class="search-container">
+              <ul class="list-group">
+                  @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+                  <li class="list-group-item">
+                      <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
+                          [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{
+                          restaurantes.name }}</a>
+                  </li>
+                  }
+              </ul>
+              @if (puedeMostrarMas) {
+              <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+              }
+              @if (maxResultados > minResultados) {
+              <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+              }
+          </div>
+          }
+
       </div>
-      @if (resultadosBusqueda.length > 0) {
-      <div>
-        <ul class="list-group">
-          @for (restaurantes of resultadosBusqueda; track restaurantes ) {
-          <li class="list-group-item">
-            <a [routerLink]="['/restaurant', restaurantes.id, 'detail']" [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{ restaurantes.name }}</a>
-          </li>
-      }
-        </ul>
-      @if (puedeMostrarMas) {
-          <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
-        }
-        @if (maxResultados > minResultados) {
-          <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
-        }
-      </div>
-  } 
+     
         <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
             @for ( restaurant of restaurants; track restaurant){
             <div class="col">
