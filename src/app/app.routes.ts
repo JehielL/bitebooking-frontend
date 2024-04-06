@@ -63,6 +63,10 @@ export const routes: Routes = [
    component: UserFormComponent
  },
  {
+   path: 'bookings/user/:id',
+   component: BookingListComponent
+ },
+ {
     path: 'bookings',
     component: BookingListComponent
  },
@@ -132,6 +136,10 @@ export const routes: Routes = [
 {
    path: 'bookings/:id/reserve',
    component: BookingFormComponent
+},
+{
+ path: 'menus/create',
+ component: MenuFormComponent
 },
 
 {

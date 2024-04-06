@@ -93,17 +93,73 @@
     width: 100%;
     text-align: center;
 }
-/* esto es lo que modifica los resultados en el filtro, cuidado aqui gente */
+
+/* parte del filtro de busqueda */
+
+
+/* Estilo para el contenedor del desplegable */
+
+.search{
+  margin-left: 200px;
+  width: 60%;
+}
+.search-container {
+  position: absolute;
+  left: 0;
+  z-index: 2000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 42%;
+  margin-left: 390px;
+  border-bottom-left-radius: 20px; 
+  border-bottom-right-radius: 20px; 
+  
+ 
+}
+
+/* Estilo para los elementos de la lista de resultados */
+.search-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-container li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-container li:last-child {
+  border-bottom: none;
+}
+
+/* Estilo para el texto dentro del desplegable */
+.search-container li a {
+  color: black;
+  text-decoration: none;
+}
+.search-container input[type="search"] {
+  outline: none; 
+  text-decoration: none; 
+}
+
 .list-group-item {
+  z-index: 5;
   cursor: pointer;
-  border-bottom: 1px solid #000000; 
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  transition: 0.4s;
 }
 .list-group-item:hover {
-  background-color: #db740e;
-}
-.btn-outline-primary{
-  margin-top: 10px;
+  background-color: #1f1e1d;
+  color: white;
 }
 .list-group-item a:visited {
   color: #e78f0a;
+}
+::ng-deep .search-container ::selection {
+  background-color: transparent;
+  color: inherit;
 }

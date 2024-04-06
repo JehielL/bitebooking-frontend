@@ -50,6 +50,8 @@ export class MenuDetailComponent implements OnInit {
       const menuUrl = 'http://localhost:8080/menus/' + id;
       const ratingsUrl = 'http://localhost:8080/menus/filter-by-menu/' + id;
       const userUrl = 'http://localhost:8080/user/' + id;
+      
+      
 
       this.httpClient.get<Menu>(menuUrl).subscribe(m => this.menu = m);
       this.httpClient.get<Rating[]>(ratingsUrl).subscribe(ratings => this.ratings = ratings);

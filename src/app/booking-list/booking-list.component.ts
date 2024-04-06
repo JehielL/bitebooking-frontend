@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../Interfaces/booking.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { User } from '../Interfaces/user.model';
 
 @Component({
   selector: 'app-booking-list',
@@ -18,15 +19,34 @@ export class BookingListComponent implements OnInit {
   bookings: Booking[] = [];
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
+  users: User[] = [];
+  booking: Booking | undefined;
+
 
   constructor(
     private httpClient: HttpClient,
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService,
+    private activedRoute: ActivatedRoute,
+  ) {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     console.log(this.isAdmin);
-    }
+  }
 
   ngOnInit(): void {
+
+    this.activedRoute.params.subscribe(params => {
+      const id = params['id'];
+      if (!id) return;
+      const userUrl = 'http://localhost:8080/user/' + id;
+      console.log(id);
+
+      this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
+
+      const url = 'http://localhost:8080/bookings/filter-by-user/' + id;
+      this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
+
+
+    });
 
     this.loadBookings();
   }
@@ -43,8 +63,7 @@ export class BookingListComponent implements OnInit {
 
   private loadBookings() {
 
-    const url = 'http://localhost:8080/bookings';
-    this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
+
   }
 
   hideDeletedBookingMessage() {
