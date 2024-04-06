@@ -30,6 +30,10 @@ export const routes: Routes = [
     component: HomeComponent
  },
  {
+   path: 'home-logout',
+   component: HomeSinLogComponent
+ },
+ {
    path: 'bitebooking',
    component: HomeSinLogComponent
 },
