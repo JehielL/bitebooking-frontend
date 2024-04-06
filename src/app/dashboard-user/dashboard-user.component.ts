@@ -1,8 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Role, User } from '../Interfaces/user.model';
+import {  ReactiveFormsModule} from '@angular/forms';
+import { ActivatedRoute,  RouterLink } from '@angular/router';
+import { User } from '../Interfaces/user.model';
 
 import Aos from 'aos';
 
