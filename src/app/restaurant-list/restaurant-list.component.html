@@ -3,32 +3,53 @@
     <div class="col">
       <div class="container-fluid"> 
         <h2 class="pb-2 custom-title">Restaurantes</h2>
-        <input type="text" class="form-control" placeholder="Buscar restaurantes..." formControlName="searchTerm">
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-          @for (restaurant of filteredRestaurants; track restaurant.name) {
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
-             [style.background-image]="'url('+ restaurant.imageUrl +')'" [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto">
-                    <a [routerLink]="['/bookings',restaurant.id, 'reserve']"> 
-                      <i class="bi bi-calendar-check-fill fs-1"></i>
-                    </a>
-                </li>
-                  <li class="d-flex align-items-center me-3">
-                    <a class="bi me-2" width="1em" height="1em"><i class="bi bi-telephone-fill"></i></a>
-                    <small>{{restaurant.phone}}</small>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <a class="bi me-2" width="1em" height="1em"><i class="bi bi-star-fill"></i></a>
-                    <small>{{restaurant.averageRating}}</small>
-                </ul>
-              </div>  
-            </div>
-          </div>
+        <div class="input-group custom-input-group justify-content-center">
+          <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Buscar Restaurantes ..."
+              aria-label="Buscar" aria-describedby="search-addon" style="max-width: 600px;"
+              (input)="buscar($any($event.target).value)">
+      </div>
+      @if (resultadosBusqueda.length > 0) {
+      <div>
+        <ul class="list-group">
+          @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+          <li class="list-group-item">
+            <a [routerLink]="['/restaurant', restaurantes.id, 'detail']" [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{ restaurantes.name }}</a>
+          </li>
+      }
+        </ul>
+      @if (puedeMostrarMas) {
+          <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
         }
+        @if (maxResultados > minResultados) {
+          <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+        }
+      </div>
+  } 
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            @for ( restaurant of restaurants; track restaurant){
+            <div class="col">
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
+               [style.background-image]="'url('+ restaurant.imageUrl +')'" [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                  <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto">
+                      <a [routerLink]="['/bookings',restaurant.id, 'reserve']"> 
+                        <i class="bi bi-calendar-check-fill fs-1"></i>
+                      </a>
+                  </li>
+                    <li class="d-flex align-items-center me-3">
+                      <a class="bi me-2" width="1em" height="1em"><i class="bi bi-telephone-fill"></i></a>
+                      <small>{{restaurant.phone}}</small>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <a class="bi me-2" width="1em" height="1em"><i class="bi bi-star-fill"></i></a>
+                      <small>{{restaurant.averageRating}}</small>
+                  </ul>
+                </div>  
+              </div>
+            </div>
+          }
         </div>
       </div>
     </div>

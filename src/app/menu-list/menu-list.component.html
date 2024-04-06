@@ -1,5 +1,27 @@
 <div class="container px-4 py-5 custom-background" id="custom-cards">
   <h2 class="pb-2 custom-title">Menús Favoritos.</h2>
+    
+    <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Buscar Menus ..."
+      aria-label="Buscar" aria-describedby="search-addon" style="max-width: 1100px;"
+      (input)="buscar($any($event.target).value)">
+      
+      @if (resultadosBusqueda.length > 0) {
+      <div>
+        <ul class="list-group">
+          @for (menu of resultadosBusqueda; track menu) {
+          <li class="list-group-item">
+            <a [routerLink]="['/menus', menu.id, 'detail']" [innerHTML]="highlightSearchTerm(menu.title, searchTerm)">{{ menu.title }}</a>
+          </li>
+      }
+        </ul>
+      @if (puedeMostrarMas) {
+          <button class="btn btn-outline-dark" (click)="mostrarMas()">Mostrar Más ..</button>
+        }
+        @if (maxResultados > minResultados) {
+          <button class="btn btn-outline-dark" (click)="mostrarMenos()">Mostrar Menos</button>
+        }
+      </div>
+  } 
   <div class="horizontal-bars"></div>
 </div>
 
@@ -16,7 +38,7 @@
           <ul class="d-flex list-unstyled mt-auto">
             <li class="me-auto menu-badge">
               <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
-                {{menu.restaurantType}}
+                {{getRestaurantType(menu.restaurantType)}}
                 
               </a>
             </li>

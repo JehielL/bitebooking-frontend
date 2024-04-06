@@ -1,8 +1,9 @@
 import {HttpClient, HttpClientModule } from '@angular/common/http';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Role, User } from '../Interfaces/user.model';
+import { User } from '../Interfaces/user.model';
 import { ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Role } from '../Interfaces/role.model';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class UserFormComponent{
 
   
   save(){
-    const user: User = this.registerUserForm.value as User;
+    const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
       const url = 'http://localhost:8080/user';
       this.httpClient.post<User>(url,user).subscribe(backendUser =>{

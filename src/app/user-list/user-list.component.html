@@ -14,11 +14,28 @@ aria-label="Toggle navigation"
 <div class="container text-center" style="border-radius: 15px;">
   <div class="container text-center cajitas">
     <div class="col-sm-8" style="margin-left: -95px; display: contents;">
-      <input type="search" class="busqueda" [(ngModel)]="searchTerm" placeholder="Usuarios">
-      <button class="btn btn-outline-dark " (click)="searchUsers()">Buscar</button>
+      <input type="search" class="buscar"placeholder="Buscar Usuarios ..."
+              (input)="buscar($any($event.target).value)">
+      </div>
+      @if (resultadosBusqueda.length > 0) {
+      <div>
+        <ul class="list-group">
+          @for (user of resultadosBusqueda; track user ) {
+          <li class="list-group-item">
+            <a [routerLink]="['/user', user.id, 'detail']" [innerHTML]="highlightSearchTerm(user.firstName, searchTerm)">{{user.firstName }}</a>
+          </li>
+      }
+        </ul>
+      @if (puedeMostrarMas) {
+          <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+        }
+        @if (maxResultados > minResultados) {
+          <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+        }
+      </div>
+  } 
     </div>
   </div>
-</div>
 
   <div  class="row row-cols-1 row-cols-lg-5 g-1 g-lg-3 cajaMosaico" style="padding: 19px; padding-bottom: 30px;">
     @for (user of users; track user.id)
@@ -35,7 +52,7 @@ aria-label="Toggle navigation"
             <li><a class="dropdown-item" href="#">denunciar</a></li>
           </ul>
         </div>
-        <img src="{{user.imgUser}}" class="custom-picture"  [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
+        <img [src]="user.imgUser" class="custom-picture"  [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
         <div style="font-size: 20px; text-align: center;" class="fw-bold  ">{{user.firstName}} {{user.lastName}}</div>
         <div class="col" style="padding-left: 8px ;">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
