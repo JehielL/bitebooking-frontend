@@ -67,11 +67,11 @@
     <div class="col-lg-4 custom-col">
       @if (photoPreview) {
       <h2 class="my-5 text-center">Foto seleccionada</h2>
-      <img class="img-fluid" [src]="photoPreview">
+      <img class="img-fluid" alt="imgdishpre" [src]="photoPreview">
       }
       @if (!photoPreview && dish?.imgDish) {
       <h2 class="my-5">Foto de portada</h2>
-      <img class="img-fluid" [src]="'http://localhost:8080/files/' + dish?.imgDish">
+      <img class="img-fluid" alt="imgdish" [src]="'http://localhost:8080/files/' + dish?.imgDish">
       }
     </div>
   </div>

@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ActivatedRoute,RouterLink } from '@angular/router';
 import { User } from '../Interfaces/user.model';
-import AOS from 'aos';
-
+import Aos from 'aos';
 @Component({
   selector: 'app-dashboard-user',
   standalone: true,
@@ -49,38 +48,37 @@ export class DashboardUserComponent implements OnInit {
 
     this.httpClient.get<User>(url).subscribe(b => this.users = b);
     })
-  }
-
-  
-
-
-  save(){
-    const user: User = this.registerUserForm.value as unknown as User;
-    console.log(user)
-
     
-      const url = 'http://localhost:8080/user/'+ user.id;
-      this.httpClient.put<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']);
-      });
-    
-  }
-
-  onFileChange(event: Event) {
-    let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
-
-    if (target.files === null || target.files.length == 0) {
-      return; // no se procesa ningún archivo
-    }
-
-    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()
-
-    // OPCIONAL: PREVISUALIZAR LA IMAGEN POR PANTALLA
-    let reader = new FileReader();
-    reader.onload = event => this.photoPreview = reader.result as string;
-    reader.readAsDataURL(this.photoFile);
-  }
-
+  })
 
 }
+save(){
+  const user: User = this.registerUserForm.value as unknown as User;
+  console.log(user)
+
+  
+    const url = 'http://localhost:8080/user/'+ user.id;
+    this.httpClient.put<User>(url,user).subscribe(backendUser =>{
+      this.router.navigate(['/user',backendUser.id,'detail']);
+    });
+  
+}
+
+onFileChange(event: Event) {
+  let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
+
+  if(target.files === null || target.files.length == 0){
+    return; // no se procesa ningún archivo
+  }
+
+  this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()
+
+  // OPCIONAL: PREVISUALIZAR LA IMAGEN POR PANTALLA
+  let reader = new FileReader();
+  reader.onload = event => this.photoPreview = reader.result as string;
+  reader.readAsDataURL(this.photoFile);
+}
+
+}
+
 
