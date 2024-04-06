@@ -19,7 +19,7 @@ import { log } from 'console';
 })
 export class RestaurantFromComponent implements OnInit {
   restaurants: Restaurant |undefined;
-  restaurantTypes = Object.values(RestaurantType);
+ 
   photoFile: File | undefined;
   photoPreview: string | undefined;
 
@@ -28,7 +28,7 @@ export class RestaurantFromComponent implements OnInit {
     name: new FormControl(''),
     restaurantTypes:new FormControl(RestaurantType.BAR),
     imageUrl: new FormControl(),
-    //location: new FormControl(),
+    
     location:this.fb.group({
       id:[0],
       address:[''],
@@ -37,8 +37,8 @@ export class RestaurantFromComponent implements OnInit {
       number:[0]
     }),
     phone: new FormControl(''), 
-    openingTime: new FormControl(new Date()),
-    closingTime: new FormControl(new Date()),  
+    //openingTime: new FormControl(new Date()),
+    //closingTime: new FormControl(new Date()),  
     status: new FormControl(false)
   });
 
@@ -53,31 +53,24 @@ export class RestaurantFromComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant').
-    subscribe(restaurantBacken => {
-      console.log(restaurantBacken);
-      
-     });
+    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
+    .subscribe(restaurantBacken => restaurantBacken = restaurantBacken );
 
     this.activatedRoute.params.subscribe(params=>{
       const id = params['id'];
       if(!id) return;
+
+
+
       this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id).subscribe(restaurantBacken =>{
-        this.restaurantFrom.reset({
-          id: restaurantBacken.id,
-          name:restaurantBacken.name, 
-          restaurantTypes:restaurantBacken.restaurantType,
-          location: restaurantBacken.location,  
-          imageUrl: restaurantBacken.imageUrl,  
-          phone: restaurantBacken.phone,
-          openingTime: restaurantBacken.openingTime ,
-          closingTime: restaurantBacken.closingTime,
-          status: restaurantBacken.status,
-        });
+        this.restaurantFrom.reset(restaurantBacken);
         this.isUpdate = true;
+        this.restaurants = restaurantBacken;
+        
       });
     });
   }
+
 
   onFileChange(event: Event) {
   console.log(event);
@@ -86,40 +79,59 @@ export class RestaurantFromComponent implements OnInit {
     if(target.files === null || target.files.length == 0){
       return; // no se procesa ningún archivo
     }
-    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()   
+    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()  
+
+    // OPCIONAL: PREVISUALIZAR LA IMAGEN POR PANTALLA
+    let reader = new FileReader();
+    reader.onload = event => this.photoPreview = reader.result as string;
+    reader.readAsDataURL(this.photoFile); 
   }
 
 
   save () {
     const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
-    //const restaurantBacken: Restaurant = {this.restaurantFrom.value,restaurantTypes: RestaurantType[this.restaurantFrom.value.restaurantTypes]};
-    console.log(this.restaurantFrom.value);
-
+  
     let formData =new FormData();
+    formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
+    formData.append('name', this.restaurantFrom.get('name')?.value?.toString() ?? '');
+    formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
+    formData.append('location', this.restaurantFrom.get('location')?.value?.toString() ?? '');
     formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
-    
+    formData.append('phone', this.restaurantFrom.get('phone')?.value?? '0');
+    //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
+    //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
+    formData.append('status', this.restaurantFrom.get('status')?.value?.toString() ?? '');
+
 
     if(this.photoFile) {
       formData.append("imageUrl", this.photoFile);
     }
 
-    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant',formData).subscribe(filebacken => filebacken =filebacken);
+    
     
     if (this.isUpdate) {
-    const url = 'http://localhost:8080/restaurant/' + restaurantBacken.id;
     
-    this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
-    });
+    this.httpClient.put<Restaurant>('http://localhost:8080/restaurant/'+ this.restaurants?.id, formData).subscribe(restaurantBacken =>
+    this.navigateToList());
     
     }else {
-    const url = 'http://localhost:8080/restaurant';
-    this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
-    this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
-    });
+    
+    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant/', formData).subscribe(restaurantBacken =>
+    this.navigateToList());
     }
   }
 
-  
+  private navigateToList(){
+    //this.router.navigate(['/restaurant/' +id, 'detail']);
+  }
+
+  compareObjects(o1: any, o2: any): boolean{
+
+    if (o1 && o2){
+      return o1.id == o2.id;
+    }
+
+    return o1 == o2;
+  }
 
 }
