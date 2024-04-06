@@ -1,13 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { User } from '../Interfaces/user.model';
 import Aos from 'aos';
 
 @Component({
   selector: 'app-dashboard-user',
+  standalone: true,
   templateUrl: './dashboard-user.component.html',
+  imports: [HttpClientModule, RouterLink, ReactiveFormsModule],
   styleUrls: ['./dashboard-user.component.css']
 })
 export class DashboardUserComponent implements OnInit {

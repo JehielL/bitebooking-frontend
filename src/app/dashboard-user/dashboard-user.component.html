@@ -13,7 +13,10 @@
    @if (users) {
     <div class="row g-5">
       <div class="col-md-5 col-lg-4 order-md-last">
-        <img src="{{users.imgUser}}" class="custom-picture"  [routerLink]="['/user', users.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
+        <img src="{{users.imgUser}}" class="custom-picture"  style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
+        <a [routerLink]="['/user', users.id, 'detail']" style="cursor: pointer; margin-left: 25px;">
+          <img src="{{users.imgUser}}" class="custom-picture" alt="logo" height="80" width="80">
+        </a>
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-primary">Tus preferencias</span>
           <span class="badge bg-primary rounded-pill">3</span>
