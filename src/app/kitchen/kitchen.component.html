@@ -1,0 +1,22 @@
+<div class="container-cocinas">
+    <div class="header-cocinas">
+      <h1>Cocinas</h1>
+      <button class="close-button">X</button>
+    </div>
+  
+    <div class="listado-cocinas">
+        @for (grupo of cocinasPorLetra; track grupo) {
+      <section>
+        <h2>{{ grupo.letra }}</h2>
+        <ul>
+            @for (cocina of grupo.cocinas; track cocina) {
+          <li>
+            {{ cocina.nombre }}
+          </li>
+        }
+        </ul>
+      </section>
+    }
+    </div>
+  </div>
+  
