@@ -6,18 +6,22 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { RestaurantLocation } from '../Interfaces/restaurantLocation.model';
 import { __values } from 'tslib';
+import { DatePipe } from '@angular/common';
+import { log } from 'console';
 
 
 @Component({
   selector: 'app-restaurant-from',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule,RouterLink],
+  imports: [ReactiveFormsModule, HttpClientModule,RouterLink,DatePipe],
   templateUrl: './restaurant-from.component.html',
   styleUrl: './restaurant-from.component.css'
 })
 export class RestaurantFromComponent implements OnInit {
-  restaurants: Restaurant[] = [];
+  restaurants: Restaurant |undefined;
   restaurantTypes = Object.values(RestaurantType);
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
 
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
@@ -33,8 +37,8 @@ export class RestaurantFromComponent implements OnInit {
       number:[0]
     }),
     phone: new FormControl(''), 
-    openingTime: new FormControl(new Date),
-    closingTime: new FormControl(new Date),  
+    openingTime: new FormControl(new Date()),
+    closingTime: new FormControl(new Date()),  
     status: new FormControl(false)
   });
 
@@ -75,12 +79,31 @@ export class RestaurantFromComponent implements OnInit {
     });
   }
 
+  onFileChange(event: Event) {
+  console.log(event);
+    let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
+
+    if(target.files === null || target.files.length == 0){
+      return; // no se procesa ningún archivo
+    }
+    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()   
+  }
+
 
   save () {
     const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
     //const restaurantBacken: Restaurant = {this.restaurantFrom.value,restaurantTypes: RestaurantType[this.restaurantFrom.value.restaurantTypes]};
     console.log(this.restaurantFrom.value);
-    
+
+    let formData =new FormData();
+    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
+   
+
+    if(this.photoFile) {
+      formData.append("imageUrl", this.photoFile);
+    }
+
+    this.httpClient.post
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurant/' + restaurantBacken.id;
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
@@ -95,5 +118,6 @@ export class RestaurantFromComponent implements OnInit {
     }
   }
 
+  
 
 }
