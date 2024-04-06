@@ -6,19 +6,16 @@
 
 
       <div id="formdiv" class=" text-center">
-        <form [formGroup]="loginform" (ngSubmit)="save()">
+        <form [formGroup]="loginForm" (ngSubmit)="save()">
 
           <div
             style="display: grid; place-items: center;font-family:Noto Sans, sans-serif; font-weight: 400; font-style: normal;">
             <h1 style="margin-top: 20px;">Iniciar sesion</h1>
           </div>
 
-          <div class="mb-3" style="display: grid; place-items: center;">
-            <div class="coolinput">
-              <div><label for="input" class="text">usuario</label></div>
-              <input type="text" style="font-family:Noto Sans, sans-serif; font-weight: 400; font-style: normal;"
-                formControlName="username" class="input">
-            </div>
+          <div class="form-floating">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+            <label for="email">Email address</label>
           </div>
 
           <div class="mb-3">

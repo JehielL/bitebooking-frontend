@@ -54,3 +54,7 @@ width: 40px;
     }
  
   }
+
+  .custom-picture{
+    border-radius: 99999999px;
+  }

@@ -6,7 +6,7 @@ export interface Restaurant {
     id: number;
     name: string;
     location: RestaurantLocation;
-    phone: number;
+    phone: string;
     restaurantType: RestaurantType;
     description: string;
     openingTime: Date;

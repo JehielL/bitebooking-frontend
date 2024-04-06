@@ -3,7 +3,6 @@
     background-color: #f8f9fa;
     border-radius: .25rem;
   }
-  /* Tamaño uniforme : Cuidado aqui */
 .carousel-item {
   display: flex;
   justify-content: center;
@@ -15,8 +14,6 @@
   border-image-width: 100px;
   height: 100%;
 }
-
-/* la misma altura */
 .card-img-top {
   height: 200px;
   object-fit: cover;
@@ -30,10 +27,9 @@
 
 .card-title,
 .card-text {
-  flex-grow: 1; /* Esto permite que el título y el texto ocupen el espacio disponible */
+  flex-grow: 1; 
 }
 
-/* un capricho para que los precios esten siempre debajo */
 .card-price {
   margin-top: auto;
 }
@@ -44,7 +40,6 @@
   object-fit: cover;
   width: 200%;
 }
-/*esto de los boton de actualizar restaurant  y crear menu*/
 .custom-btn {
   
   font-size: 15px;

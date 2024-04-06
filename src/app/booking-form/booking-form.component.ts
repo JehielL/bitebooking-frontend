@@ -6,19 +6,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Menu } from '../Interfaces/menu.model';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CurrencyPipe],
+  imports: [ReactiveFormsModule, HttpClientModule, CurrencyPipe,DatePipe],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent implements OnInit {
 
   booking: Booking | undefined;
+  restaurant: Restaurant | undefined;
+   vipRoom = 0; // precio salon vip.
+  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
+  menus: Menu[] = []; // array de autores para asociar un autor al libro
+  totalPrice: any;
+  extraPrice: any;
+  extraService: any;
   
 
   bookingForm = new FormGroup({
@@ -38,13 +45,7 @@ export class BookingFormComponent implements OnInit {
   });
 
   
-  vipRoom = 0; // precio salon vip.
-  isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
-  menus: Menu[] = []; // array de autores para asociar un autor al libro
-  restaurants: Restaurant[] = [];
-  totalPrice: any;
-  extraPrice: any;
-  extraService: any;
+ 
   
   constructor(
     private fb: FormBuilder,
@@ -57,18 +58,18 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.calculatePrice();
-    // cargar autores de backend para el selector de autores en el formulario
-    this.httpClient.get<Menu[]>('http://localhost:8080/menus')
-      .subscribe(menus => this.menus = menus);
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
-      .subscribe(restaurants => this.restaurants = restaurants);
+  
+   
+    
 
     this.activatedRoute.params.subscribe(params => {
       
       const id = params['id'];
       if (!id) return;
 
+      
+this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
+      .subscribe(restaurants => this.restaurant = restaurants);
 
 
       this.httpClient.get<Booking>('http://localhost:8080/bookings/' + id).subscribe(bookingFromBackend => {
@@ -107,32 +108,7 @@ export class BookingFormComponent implements OnInit {
 
     return o1 == o2;
   }
-  calculatePrice() {
-    let numUsers = this.bookingForm.get('numUsers')?.value;
-    let price = this.bookingForm.get('price')?.value;
-    let discount = this.bookingForm.get('discount')?.value;
-  
-  
-    // Verifica que todos los valores necesarios estén presentes
-    if (!numUsers || !price || !discount) {
-      return;
-    }
-  
-    numUsers = Number(numUsers);
-    discount = Number(discount);
-  
-    // Calcula el precio total sumando el precio por persona y los extras
-    const totalPrice = this.totalPrice = numUsers * price 
-
-
-    if (this.bookingForm.get('isPremium')?.value){
-      this.vipRoom = 4.99;
-      this.totalPrice += this.vipRoom;
-    } else {
-      this.vipRoom = 0;
-    }
-
-  }
+ 
 
   save() {
    

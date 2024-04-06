@@ -11,4 +11,25 @@
     background-color: rgba(0, 0, 0, 0.529);
     border-color: black;
   }
+  @media (max-width: 576px) {
+
+    .btn-secondary {
+      margin-top: 10px;
+      width: 100px;
+      text-align: center;
+      text-align: center;
+      margin-left: 40%;
+    }
+  }
   
+  .btn-primary {
+    background: linear-gradient(to right, #007bff, #b30092); /* Degradado de izquierda a derecha */
+    border: none; /* Eliminar borde */
+    transition: background-position 0.3s ease; /* Transición suave */
+    background-size: 200% auto; /* Tamaño del degradado */
+    color: white; /* Color del texto */
+  }
+  
+  .btn-primary:hover {
+    background-position: right center; /* Desplazar el degradado hacia la derecha al pasar el mouse */
+  }

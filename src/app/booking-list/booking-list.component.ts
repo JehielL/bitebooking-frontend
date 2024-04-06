@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-booking-list',
@@ -16,8 +17,14 @@ export class BookingListComponent implements OnInit {
 
   bookings: Booking[] = [];
   showDeleteBookingMessage: boolean = false;
+  isAdmin = false;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private authService: AuthenticationService) {
+    this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    console.log(this.isAdmin);
+    }
 
   ngOnInit(): void {
 
@@ -44,4 +51,7 @@ export class BookingListComponent implements OnInit {
 
     this.showDeleteBookingMessage = false;
   }
+
+
+
 }

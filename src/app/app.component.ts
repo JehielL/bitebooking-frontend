@@ -14,12 +14,17 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent, ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
 
+
+
+  title = 'Mi Aplicación Angular'; // Define la propiedad title aquí
+
+  
 
 
 

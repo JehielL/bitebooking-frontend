@@ -18,6 +18,7 @@ import { DishFormComponent } from './dish-form/dish-form.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HomeSinLogComponent } from './home-sin-log/home-sin-log.component';
 
+
 export const routes: Routes = [
    {
     path: '',
@@ -33,11 +34,11 @@ export const routes: Routes = [
    component: HomeSinLogComponent
 },
 {
-   path:'dashboard',
+   path:'user/:id/update',
    component: DashboardUserComponent
 },
  {
-   path:'login',
+   path:'user/login',
    component: LoginMainComponent
  },
  {
@@ -54,11 +55,7 @@ export const routes: Routes = [
    component: UserDetailComponent
 },
  {
-   path:'user/create',
-   component: UserFormComponent
- },
- {
-   path: 'user/:id/update',
+   path:'user/register',
    component: UserFormComponent
  },
  {
@@ -71,14 +68,10 @@ export const routes: Routes = [
 },
 
  {
-   path: 'bookings/:id/detail',
-   component: BookingDetailComponent
-},
-{
    path: 'bookings/:id/update',
    component: BookingFormComponent
-}
-,{
+},
+{
    path: 'bookings/create',
    component: BookingFormComponent
 },
@@ -107,7 +100,7 @@ export const routes: Routes = [
    component: MenuListComponent
 },
 {
-   path: 'menus/create',
+   path: 'menus/:id/create',
    component: MenuFormComponent
 
 },
@@ -129,13 +122,13 @@ export const routes: Routes = [
    component: DishFormComponent
 },
 {
-   path: 'dishes/:id/update',
-   component: DishFormComponent
+   path: 'bookings/:id/reserve',
+   component: BookingFormComponent
 },
- 
+
 {
     path: '**',
     component:NotFoundComponent
     
-},
+}
 ];

@@ -26,7 +26,7 @@ aria-label="Toggle navigation"
     <div  data-aos="fade-up" data-aos-delay="500" class="col LASCAR ">
       <div class="p-5 mb-5 cartitauser">
         <div class="dropdown">
-          <button class="btn btn-link p-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" style="float: inline-end;" aria-expanded="false">
+          <button class="btn btn-link"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" style="float: right" aria-expanded="false">
             <i class="bi bi-three-dots-vertical" style="font-size: 1.5rem; color: black;"></i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -35,8 +35,8 @@ aria-label="Toggle navigation"
             <li><a class="dropdown-item" href="#">denunciar</a></li>
           </ul>
         </div>
-        <img src="/assets/img/logo_bitebooking.png"   [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" width="100" >
-        <div style="font-size: 20px;" class="fw-bold">{{user.lastName}}</div>
+        <img src="{{user.imgUser}}" class="custom-picture"  [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
+        <div style="font-size: 20px; text-align: center;" class="fw-bold  ">{{user.firstName}} {{user.lastName}}</div>
         <div class="col" style="padding-left: 8px ;">
           <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
           <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>

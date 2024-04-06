@@ -8,10 +8,27 @@
                     <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
                 </div>
                 <div class="input-group custom-input-group justify-content-center">
-                    <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Search"
-                        aria-label="Search" aria-describedby="search-addon" style="max-width: 600px;" />
-                    <button type="button" class="btn btn-outline-light" data-mdb-ripple-init>Buscar</button>
+                    <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Buscar Restaurantes ..."
+                        aria-label="Buscar" aria-describedby="search-addon" style="max-width: 600px;"
+                        (input)="buscar($any($event.target).value)">
                 </div>
+                @if (resultadosBusqueda.length > 0) {
+                <div>
+                  <ul class="list-group">
+                    @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+                    <li class="list-group-item">
+                      <a [routerLink]="['/restaurant', restaurantes.id, 'detail']" [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{ restaurantes.name }}</a>
+                    </li>
+                }
+                  </ul>
+                @if (puedeMostrarMas) {
+                    <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+                  }
+                  @if (maxResultados > minResultados) {
+                    <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+                  }
+                </div>
+            }   
                 <div class="letters">
                     <h2>Categorias</h2>
                 </div>
@@ -40,7 +57,7 @@
                 </div>
 
                 <div class="category">
-                    <a href="https://formacion.fundacionadecco.org/courses/control-de-versiones-con-git-java-ed1">
+                    <a routerLink="/">
                         <i class="bi bi-shop icon"></i>
                         <p>Cocina</p>
                     </a>
