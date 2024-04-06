@@ -13,15 +13,25 @@ import Aos from 'aos';
 export class DashboardUserComponent implements OnInit {
   photoFile: File | undefined;
   photoPreview: string | undefined;
-  registerUserForm: FormGroup; // Define registerUserForm como un FormGroup
-  users: User;
+  users: User | undefined;
+  registerUserForm: FormGroup;
 
   constructor(
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder // Inyecta FormBuilder en el constructor
-  ) { }
+    private formBuilder: FormBuilder
+  ) {
+    this.registerUserForm = this.formBuilder.group({
+      id: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: [''],
+      phone: [''],
+      imgUser: ['']
+    });
+  }
+
 
   ngOnInit(): void {
     Aos.init();
