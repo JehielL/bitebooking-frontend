@@ -97,20 +97,22 @@ export class RestaurantFromComponent implements OnInit {
 
     let formData =new FormData();
     formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
-   
+    
 
     if(this.photoFile) {
       formData.append("imageUrl", this.photoFile);
     }
 
-    this.httpClient.post
+    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant',formData).subscribe(filebacken => filebacken =filebacken);
+    
     if (this.isUpdate) {
     const url = 'http://localhost:8080/restaurant/' + restaurantBacken.id;
+    
     this.httpClient.put<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
     this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
     });
     
-    } else {
+    }else {
     const url = 'http://localhost:8080/restaurant';
     this.httpClient.post<Restaurant>(url, restaurantBacken).subscribe(restaurantBacken => {
     this.router.navigate(['/restaurant/', restaurantBacken.id, 'detail']);
