@@ -36,3 +36,5 @@ export class NavbarComponent {
     this.router.navigate(['user/login']);
   }
 }
+
+// http://localhost:8080/bookings/current;

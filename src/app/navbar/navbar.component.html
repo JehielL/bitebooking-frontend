@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <a routerLink="/home">
-      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 80px;">
+      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 100px;">
     </a>
     <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
       aria-label="Toggle navigation" (click)="collapsed = !collapsed">
@@ -43,6 +43,8 @@
         
 
         
+
+        
            
           
         @if (isAdmin) {
@@ -65,6 +67,18 @@
   
   
         }
+        <li class="nav-item" ngbDropdown>
+          <a class="nav-link" id="navbarDropdown2" role="button" ngbDropdownToggle>
+            <i class="nav-icon bi bi-fire"></i> Quienes somos
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+            <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()" routerLink="/about-us">Sobre nosotros.</a>
+            <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Sobre el proyecto.</a>
+           
+          </div>
+        </li>
+        
+        
           
 
 

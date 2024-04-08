@@ -31,5 +31,20 @@
   }
   
   .btn-primary:hover {
-    background-position: right center; /* Desplazar el degradado hacia la derecha al pasar el mouse */
+    background-position: right center; 
+  }
+  
+  @keyframes fireAnimation {
+    0% { color: #FF5733; } /* Color inicial */
+    50% { color: #FFD700; } /* Color intermedio */
+    100% { color: #FF5733; } /* Color final */
+  }
+  
+
+  .bi-fire{
+
+    animation: fireAnimation 3s infinite; /* Duración de la animación */
+
+
+
   }
