@@ -21,6 +21,7 @@ export class BookingListComponent implements OnInit {
   isAdmin = false;
   users: User[] = [];
   booking: Booking | undefined;
+  userId: string | null = null;
 
 
   constructor(
@@ -29,7 +30,10 @@ export class BookingListComponent implements OnInit {
     private activedRoute: ActivatedRoute,
   ) {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    this.authService.userId.subscribe(userId => this.userId = userId);
+
     console.log(this.isAdmin);
+    console.log(this.userId);
   }
 
   ngOnInit(): void {

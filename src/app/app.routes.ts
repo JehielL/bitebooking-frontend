@@ -17,6 +17,7 @@ import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HomeSinLogComponent } from './home-sin-log/home-sin-log.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 export const routes: Routes = [
@@ -140,6 +141,11 @@ export const routes: Routes = [
 {
  path: 'menus/create',
  component: MenuFormComponent
+},
+{
+   path: 'about-us',
+   component: AboutUsComponent
+
 },
 
 {

@@ -22,7 +22,7 @@ export class AppComponent {
 
 
 
-  title = 'Mi Aplicación Angular'; // Define la propiedad title aquí
+  title = 'Bite booking app'; 
 
   
 
