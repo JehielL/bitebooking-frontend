@@ -14,7 +14,6 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
   resultadosBusqueda: Restaurant[] = [];
-  restaurantes: any[] = [];
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
@@ -29,17 +28,16 @@ export class RestaurantListComponent implements OnInit {
       if (tipoCocina) {
         this.filtrarRestaurantesPorTipoCocina(tipoCocina);
       } else {
-        this.obtenerTodosLosRestaurantes();
+        this.loadRestaurantsDirectly();
       }
     });
   }
 
-  filtrarRestaurantesPorTipoCocina(tipoCocina: string) {
-    this.restaurantes = this.restaurants.filter(restaurant => restaurant.restaurantType === tipoCocina);
-  }
-
-  obtenerTodosLosRestaurantes() {
-    this.restaurantes = [...this.restaurants];
+  filtrarRestaurantesPorTipoCocina(tipoCocina: string): void {
+    const url = `http://localhost:8080/restaurant-list/${tipoCocina}`;
+    this.httpClient.get<Restaurant[]>(url).subscribe(restaurants => {
+      this.restaurants = restaurants;
+    }); 
   }
 
   loadRestaurantsDirectly() {
