@@ -1,22 +1,12 @@
 <div class="container-cocinas">
-    <div class="header-cocinas">
-      <h1>Cocinas</h1>
-      <button class="close-button">X</button>
-    </div>
-  
-    <div class="listado-cocinas">
-        @for (grupo of cocinasPorLetra; track grupo) {
-      <section>
-        <h2>{{ grupo.letra }}</h2>
-        <ul>
-            @for (cocina of grupo.cocinas; track cocina) {
-          <li>
-            {{ cocina.nombre }}
-          </li>
-        }
-        </ul>
-      </section>
-    }
-    </div>
-  </div>
-  
+  <ng-container *ngFor="let grupo of cocinasPorLetra | keyvalue">
+    <section>
+      <h2>{{ grupo.key }}</h2>
+      <ul>
+        <li *ngFor="let cocina of grupo.value" (click)="navegarATipoCocina(cocina.nombre)" style="cursor: pointer;">
+          {{ cocina.nombre }}
+        </li>
+      </ul>
+    </section>
+  </ng-container>
+</div>

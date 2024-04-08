@@ -14,8 +14,8 @@
                   @for (restaurantes of resultadosBusqueda; track restaurantes ) {
                   <li class="list-group-item">
                       <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
-                          [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{
-                          restaurantes.name }}</a>
+                          [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">
+                          {{restaurantes.name }}</a>
                   </li>
                   }
               </ul>

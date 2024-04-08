@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -14,15 +14,32 @@ import { RouterLink } from '@angular/router';
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
   resultadosBusqueda: Restaurant[] = [];
+  restaurantes: any[] = [];
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private activatedRoute: ActivatedRoute) {}
   puedeMostrarMas: boolean = false;
 
   ngOnInit(): void {
-    this.loadRestaurantsDirectly();
+    this.activatedRoute.params.subscribe(params => {
+      const tipoCocina = params['tipoCocina'];
+      if (tipoCocina) {
+        this.filtrarRestaurantesPorTipoCocina(tipoCocina);
+      } else {
+        this.obtenerTodosLosRestaurantes();
+      }
+    });
+  }
+
+  filtrarRestaurantesPorTipoCocina(tipoCocina: string) {
+    this.restaurantes = this.restaurants.filter(restaurant => restaurant.restaurantType === tipoCocina);
+  }
+
+  obtenerTodosLosRestaurantes() {
+    this.restaurantes = [...this.restaurants];
   }
 
   loadRestaurantsDirectly() {

@@ -146,6 +146,10 @@ export const routes: Routes = [
    path: 'kitchen',
    component: KitchenComponent
 },
+{
+   path: 'restaurant-list/:tipoCocina',
+   component: RestaurantListComponent
+},
 
 {
     path: '**',
