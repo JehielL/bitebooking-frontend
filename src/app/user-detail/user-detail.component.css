@@ -4,3 +4,13 @@ img{
     margin: 4px ;
     box-shadow: 5px 10px 15px rgba(3, 3, 3, 0.2);
 }
+
+@keyframes fireAnimation {
+    0% { color: #4b0f4a; } /* Color inicial */
+    50% { color: #4394ab; } /* Color intermedio */
+    100% { color: #4b0f4a; } /* Color final */
+  }
+
+.custom-name {
+    animation: fireAnimation 3s infinite;
+  }

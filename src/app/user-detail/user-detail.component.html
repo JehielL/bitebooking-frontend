@@ -8,16 +8,16 @@
  
   </div>
 
-  <div class="p-3 mb-2 bg-body-tertiary rounded-3">
+  <div class="p-3 mb-2 bg-body-terx tiary rounded-3">
   @if (users) {
       <div class="container-fluid" data-aos="fade-left" data-aos-delay="500">
         <div class="raw">
           
-        <div class=" img col-6 float-end  text-center "><img src="{{users.imgUser}}"  height="250" alt="" ></div>  
+        <div  class=" img col-6 float-end  text-center "><img data-aos="flip-down" data-aos-delay="500"    src="{{users.imgUser}}"  height="250" alt="" ></div>  
              
         <div class="col-6">
           <ul class="list-group mb-4">
-            <h2>User Profile</h2>
+            <h2 class="custom-name" >Perfil del usuario</h2>
             <li class="list-group-item">{{users.firstName}}&nbsp;{{users.lastName}}</li>
             <li class="list-group-item">{{users.phone}}</li>
             <li class="list-group-item">{{users.email}}</li>
