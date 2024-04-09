@@ -1,28 +1,45 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
   styleUrls: ['./restaurant-list.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink,HttpClientModule,FormsModule]
+  imports: [ReactiveFormsModule,RouterLink,FormsModule]
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
   resultadosBusqueda: Restaurant[] = [];
+  restaurantType = RestaurantType;
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private activatedRoute: ActivatedRoute) {}
   puedeMostrarMas: boolean = false;
 
   ngOnInit(): void {
-    this.loadRestaurantsDirectly();
+    this.activatedRoute.params.subscribe(params => {
+      const tipoCocina = params['tipoCocina'];
+      if (tipoCocina) {
+        this.filtrarRestaurantesPorTipoCocina(tipoCocina);
+      } else {
+        this.loadRestaurantsDirectly();
+      }
+    });
+  }
+
+  filtrarRestaurantesPorTipoCocina(tipoCocina: string): void {
+    const url = `http://localhost:8080/restaurant-list/${tipoCocina}`;
+    this.httpClient.get<Restaurant[]>(url).subscribe(restaurants => {
+      this.restaurants = restaurants;
+    }); 
   }
 
   loadRestaurantsDirectly() {
@@ -63,5 +80,10 @@ export class RestaurantListComponent implements OnInit {
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
     return name.replace(regex, `$1`);
-  }  
+  } 
+  getRestaurantType(type?: RestaurantType): string {
+    if (type === undefined) return 'No especificado';
+    const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
+    return typeAsString;
+  }
 }

@@ -12,7 +12,7 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CurrencyPipe,DatePipe],
+  imports: [ReactiveFormsModule, CurrencyPipe,DatePipe],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })

@@ -8,7 +8,7 @@ import AOS from 'aos';
 @Component({
   selector: 'app-user-detail',
   standalone: true,
-  imports: [RouterLink, HttpClientModule, ReactiveFormsModule, NgbAlertModule ],
+  imports: [RouterLink, ReactiveFormsModule, NgbAlertModule ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })

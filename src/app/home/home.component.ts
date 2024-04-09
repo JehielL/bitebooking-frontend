@@ -9,7 +9,7 @@ import { CarruselComponent } from '../carrusel/carrusel.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [HttpClientModule,RouterLink,CarruselComponent],
+  imports: [RouterLink,CarruselComponent],
 })
 export class HomeComponent implements OnInit {
   restaurants: Restaurant[] = [];

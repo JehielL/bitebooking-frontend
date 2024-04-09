@@ -9,7 +9,7 @@ import Aos from 'aos';
   selector: 'app-dashboard-user',
   standalone: true,
   templateUrl: './dashboard-user.component.html',
-  imports: [HttpClientModule, RouterLink, ReactiveFormsModule],
+  imports: [ RouterLink, ReactiveFormsModule],
   styleUrls: ['./dashboard-user.component.css']
 })
 export class DashboardUserComponent implements OnInit {

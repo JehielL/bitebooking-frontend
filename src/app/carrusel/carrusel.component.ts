@@ -8,7 +8,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 @Component({
   selector: 'app-carrusel',
   standalone: true,
-  imports: [HttpClientModule,RouterLink, NgbCarouselModule],
+  imports: [RouterLink, NgbCarouselModule],
   templateUrl: './carrusel.component.html',
   styleUrls: ['./carrusel.component.css'] 
 })

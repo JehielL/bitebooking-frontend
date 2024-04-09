@@ -14,7 +14,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 @Component({
   selector: 'app-menu-detail',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, DatePipe, NgbAccordionModule, NgbAlert, NgbRatingModule, ReactiveFormsModule],
+  imports: [ RouterLink, DatePipe, NgbAccordionModule, NgbAlert, NgbRatingModule, ReactiveFormsModule],
   templateUrl: './menu-detail.component.html',
   styleUrl: './menu-detail.component.css'
 })

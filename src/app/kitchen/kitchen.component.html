@@ -1,0 +1,15 @@
+<div class="container-cocinas">
+  <h1>Tipos de cocina</h1>
+  @for (letra of objectKeys(cocinasPorLetra); track $index) {
+  <section class="cocinas-letra">
+    <h2>{{letra}}</h2>
+    <ul>
+      @for (cocina of cocinasPorLetra[letra]; track cocinasPorLetra) {
+      <li (click)="navegarATipoCocina(cocina)" style="cursor: pointer;">
+        {{ cocina }}
+      </li>
+    }
+    </ul>
+  </section>
+}
+</div>

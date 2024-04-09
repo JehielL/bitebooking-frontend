@@ -157,7 +157,7 @@
   color: white;
 }
 .list-group-item a:visited {
-  color: #e78f0a;
+  color: #0ae71c;
 }
 ::ng-deep .search-container ::selection {
   background-color: transparent;

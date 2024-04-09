@@ -17,7 +17,10 @@ import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HomeSinLogComponent } from './home-sin-log/home-sin-log.component';
+import { KitchenComponent } from './kitchen/kitchen.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { userRoleGuard } from './authentication/user-role.guard';
+
 
 
 export const routes: Routes = [
@@ -86,15 +89,12 @@ export const routes: Routes = [
 },
 {
    path:'restaurant-from',
-   component: RestaurantFromComponent
+   component: RestaurantFromComponent,
+   canActivate: [userRoleGuard]
  },
 {
    path:'restaurant-list',
    component: RestaurantListComponent
- },
- {
-   path:'restaurant/detail',
-   component: RestaurantDetailComponent
  },
 {
    path:'restaurant/:id/detail',
@@ -102,7 +102,8 @@ export const routes: Routes = [
  },
  {
    path:'restaurant/:id/update',
-   component:RestaurantFromComponent
+   component:RestaurantFromComponent,
+   canActivate: [userRoleGuard]
  },
  {
    path: 'menus',
@@ -110,12 +111,14 @@ export const routes: Routes = [
 },
 {
    path: 'menus/:id/create',
-   component: MenuFormComponent
+   component: MenuFormComponent,
+   canActivate: [userRoleGuard]
 
 },
 {
    path: 'menus/:id/update',
-   component: MenuFormComponent
+   component: MenuFormComponent,
+   canActivate: [userRoleGuard]
 
 },
 {
@@ -124,15 +127,18 @@ export const routes: Routes = [
 },
 {
    path: 'dishes/create',
-   component: DishFormComponent
+   component: DishFormComponent,
+   canActivate: [userRoleGuard]
 },
 {
    path: 'dishes/:id/create',
-   component: DishFormComponent
+   component: DishFormComponent,
+   canActivate: [userRoleGuard]
 },
 {
    path: 'dishes/:id/update',
-   component: DishFormComponent
+   component: DishFormComponent,
+   canActivate: [userRoleGuard]
 },
 {
    path: 'bookings/:id/reserve',
@@ -140,17 +146,24 @@ export const routes: Routes = [
 },
 {
  path: 'menus/create',
- component: MenuFormComponent
+ component: MenuFormComponent,
+ canActivate: [userRoleGuard]
+},
+{
+   path: 'kitchen',
+   component: KitchenComponent
+},
+{
+   path: 'restaurant-list/:tipoCocina',
+   component: RestaurantListComponent
 },
 {
    path: 'about-us',
    component: AboutUsComponent
 
 },
-
 {
     path: '**',
     component:NotFoundComponent
-    
 }
 ];

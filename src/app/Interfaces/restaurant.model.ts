@@ -2,7 +2,6 @@ import { RestaurantLocation } from "./restaurantLocation.model";
 import { RestaurantType } from "./restaurantType.model";
 
 export interface Restaurant {
-
     id: number;
     name: string;
     location: RestaurantLocation;
