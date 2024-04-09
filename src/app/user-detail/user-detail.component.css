@@ -14,3 +14,115 @@ img{
 .custom-name {
     animation: fireAnimation 3s infinite;
   }
+
+  /* la cuestion de la sidebar */
+
+  /* .sidebar {
+    position: fixed;
+    right: 250px;
+    width: 250px;
+    height: 100%;
+    background: rgba(48, 43, 43, 0.76) ;
+    transition: all .5s ease;
+    z-index: 2;
+
+}
+
+.sidebar header {
+   
+    font-size: 22px ;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    background: rgb(20, 20, 20);
+    user-select: none;
+    z-index: 1;
+
+}
+
+.sidebar ul a{
+    padding-left: 50px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    border-top
+    : 1px solid rgba(255,255,255,1);
+    border: 1px solid rgb(0, 0, 0);
+    transition: .4s;
+    display: flex;
+   z-index: 1;
+}
+
+ul li:hover a{
+    padding-left: 150px;
+    z-index: 1;
+    
+}
+
+.sidebar ul a i {
+    margin-right: 16px;
+    z-index: 1;
+
+
+
+}
+
+#check {
+ display: none;
+ z-index: 2;
+}
+
+label #btn, label #canc {
+    position: absolute;
+    cursor: pointer;
+    background-color:rgba(26, 26, 26, 0.648);
+    border-radius: 2px;
+    z-index: 1;
+
+
+}
+label #btn{
+    left: 25px;
+    top: 15px;
+    font-size: 35px;
+    color: white;
+    padding: 6px 8px;
+    transition: all .5s;
+    position: fixed;
+    z-index:2;
+}
+
+label #canc {
+    z-index: 1111;
+    left: -195px;
+    top: 17px;
+    font-size: 30px;
+    color: white;
+    padding: 3px 9px;
+    transition: all .5s ease;
+    position: fixed;
+    z-index: 3;
+
+}
+
+#check:checked ~ .sidebar{
+
+left: 0;
+}
+
+#check:checked ~ label #btn{
+
+    left: 250px;
+    opacity: 0;
+    pointer-events: none;
+    }
+
+    #check:checked ~ label #canc{
+
+        left: 195px;
+       
+        } */
