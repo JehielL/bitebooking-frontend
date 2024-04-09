@@ -15,7 +15,7 @@ import Aos from 'aos';
 export class DashboardUserComponent implements OnInit {
   photoFile: File | undefined;
   photoPreview: string | undefined;
-  users: User | undefined;
+  users: User[] = [];
   registerUserForm: FormGroup;
 
   constructor(
@@ -50,7 +50,7 @@ export class DashboardUserComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
-      this.httpClient.get<User>('http://localhost:8080/user/' + id).subscribe(userbacken => {
+      this.httpClient.get<User[]>('http://localhost:8080/user/' + id).subscribe(userbacken => {
         this.registerUserForm.patchValue({
           id: userbacken.id,
           firstName: userbacken.firstName,
