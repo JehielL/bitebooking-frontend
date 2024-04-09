@@ -4,10 +4,10 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
-import { RestaurantLocation } from '../Interfaces/restaurantLocation.model';
 import { __values } from 'tslib';
 import { DatePipe } from '@angular/common';
-import { log } from 'console';
+import { appConfig } from '../app.config';
+
 
 
 @Component({
@@ -19,30 +19,26 @@ import { log } from 'console';
 })
 export class RestaurantFromComponent implements OnInit {
   restaurants: Restaurant |undefined;
- 
+  isUpdate: boolean = false;
   photoFile: File | undefined;
   photoPreview: string | undefined;
 
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
+    phone: new FormControl(''), 
     restaurantTypes:new FormControl(RestaurantType.BAR),
     imageUrl: new FormControl(),
-    
-    location:this.fb.group({
-      id:[0],
-      address:[''],
-      city: [''],
-      postalCode:[''],
-      number:[0]
-    }),
-    phone: new FormControl(''), 
-    //openingTime: new FormControl(new Date()),
-    //closingTime: new FormControl(new Date()),  
-    status: new FormControl(false)
+    openingTime: new FormControl(new Date()),
+    closingTime: new FormControl(new Date()),  
+    status: new FormControl(false),
+    city:new FormControl(''),
+    address:new FormControl(''),
+    number:new FormControl(''),
+    postalCode:new FormControl(''),
   });
 
-  isUpdate: boolean = false;
+  
    
   constructor( private httpClient: HttpClient,
                private fb: FormBuilder,
@@ -93,16 +89,18 @@ export class RestaurantFromComponent implements OnInit {
   
     let formData =new FormData();
     formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
-    formData.append('name', this.restaurantFrom.get('name')?.value?.toString() ?? '');
+    formData.append('name', this.restaurantFrom.get('name')?.value?? '');
     formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
-    formData.append('location', this.restaurantFrom.get('location')?.value?.toString() ?? '');
     formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
     formData.append('phone', this.restaurantFrom.get('phone')?.value?? '0');
     //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
     //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
     formData.append('status', this.restaurantFrom.get('status')?.value?.toString() ?? '');
-
-
+    formData.append('city', this.restaurantFrom.get('city')?.value?? '');
+    formData.append('address', this.restaurantFrom.get('address')?.value?? '');
+    formData.append('number', this.restaurantFrom.get('number')?.value?? '');
+    formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value?? '');
+    
     if(this.photoFile) {
       formData.append("imageUrl", this.photoFile);
     }
