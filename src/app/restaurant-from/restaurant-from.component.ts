@@ -102,7 +102,7 @@ export class RestaurantFromComponent implements OnInit {
     formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value?? '');
     
     if(this.photoFile) {
-      formData.append("imageUrl", this.photoFile);
+      formData.append("photo", this.photoFile);
     }
 
     
@@ -110,18 +110,16 @@ export class RestaurantFromComponent implements OnInit {
     if (this.isUpdate) {
     
     this.httpClient.put<Restaurant>('http://localhost:8080/restaurant/'+ this.restaurants?.id, formData).subscribe(restaurantBacken =>
-    this.navigateToList());
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']));
     
     }else {
     
-    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant/', formData).subscribe(restaurantBacken =>
-    this.navigateToList());
+    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant', formData).subscribe(restaurantBacken =>
+    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']));
     }
   }
 
-  private navigateToList(){
-    //this.router.navigate(['/restaurant/' +id, 'detail']);
-  }
+  
 
   compareObjects(o1: any, o2: any): boolean{
 
