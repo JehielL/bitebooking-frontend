@@ -9,7 +9,7 @@ import AOS from 'aos';
 @Component({
   selector: 'app-menu-form',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './menu-form.component.html',
   styleUrl: './menu-form.component.css'
 })

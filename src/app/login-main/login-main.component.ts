@@ -13,7 +13,7 @@ import { FooterComponent } from '../footer/footer.component';
     standalone: true,
     templateUrl: './login-main.component.html',
     styleUrl: './login-main.component.css',
-    imports: [RouterLink, FooterComponent, ReactiveFormsModule,HttpClientModule]
+    imports: [RouterLink, FooterComponent, ReactiveFormsModule, HttpClientModule]
 })
 export class LoginMainComponent {
 

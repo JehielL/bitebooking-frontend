@@ -9,7 +9,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
   templateUrl: './restaurant-list.component.html',
   styleUrls: ['./restaurant-list.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink,HttpClientModule,FormsModule]
+  imports: [ReactiveFormsModule,RouterLink,FormsModule]
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];

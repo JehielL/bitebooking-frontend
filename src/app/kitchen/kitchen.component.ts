@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgFor } from '@angular/common';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 @Component({
@@ -8,7 +7,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
   templateUrl: './kitchen.component.html',
   styleUrls: ['./kitchen.component.css'],
   standalone: true,
-  imports: [NgFor]
+  imports: []
 })
 export class KitchenComponent {
   cocinasPorLetra: { [letra: string]: string[] } = {};

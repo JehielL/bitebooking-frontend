@@ -9,7 +9,7 @@ import { Menu } from '../Interfaces/menu.model';
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
-  imports: [RouterLink, HttpClientModule, DatePipe],
+  imports: [RouterLink, DatePipe],
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.css']
 })

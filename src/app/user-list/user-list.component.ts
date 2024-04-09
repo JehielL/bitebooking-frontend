@@ -9,7 +9,7 @@ import AOS from 'aos';
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })

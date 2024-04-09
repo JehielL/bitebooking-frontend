@@ -11,7 +11,7 @@ import { __values } from 'tslib';
 @Component({
   selector: 'app-restaurant-from',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './restaurant-from.component.html',
   styleUrl: './restaurant-from.component.css'
 })
