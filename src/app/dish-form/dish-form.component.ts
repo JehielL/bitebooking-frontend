@@ -10,7 +10,7 @@ import AOS from 'aos';
 @Component({
   selector: 'app-dish-form',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './dish-form.component.html',
   styleUrl: './dish-form.component.css'
 })

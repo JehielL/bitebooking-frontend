@@ -3,17 +3,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 @Component({
   selector: 'app-restaurant-list',
   templateUrl: './restaurant-list.component.html',
   styleUrls: ['./restaurant-list.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule,RouterLink,HttpClientModule,FormsModule]
+  imports: [ReactiveFormsModule,RouterLink,FormsModule]
 })
 export class RestaurantListComponent implements OnInit {
   restaurants: Restaurant[] = [];
   resultadosBusqueda: Restaurant[] = [];
+  restaurantType = RestaurantType;
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
@@ -78,5 +80,10 @@ export class RestaurantListComponent implements OnInit {
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
     return name.replace(regex, `$1`);
-  }  
+  } 
+  getRestaurantType(type?: RestaurantType): string {
+    if (type === undefined) return 'No especificado';
+    const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
+    return typeAsString;
+  }
 }

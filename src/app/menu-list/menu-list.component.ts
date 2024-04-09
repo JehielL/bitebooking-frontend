@@ -7,7 +7,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 @Component({
   selector: 'app-menu-list',
   standalone: true,
-  imports: [RouterLink, HttpClientModule],
+  imports: [RouterLink],
   templateUrl: './menu-list.component.html',
   styleUrl: './menu-list.component.css'
 })
