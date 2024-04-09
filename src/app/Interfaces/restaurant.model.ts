@@ -1,10 +1,9 @@
-import { RestaurantLocation } from "./restaurantLocation.model";
+
 import { RestaurantType } from "./restaurantType.model";
 
 export interface Restaurant {
     id: number;
     name: string;
-    location: RestaurantLocation;
     phone: string;
     restaurantType: RestaurantType;
     description: string;
@@ -13,6 +12,10 @@ export interface Restaurant {
     averageRating: number;
     imageUrl: string;
     status: boolean;
+    city:string;
+    address:string;
+    number:string;
+    postalCode:string;
   }
 
 

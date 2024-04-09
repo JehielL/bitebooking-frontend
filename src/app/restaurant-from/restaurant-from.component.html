@@ -4,7 +4,19 @@
   <div class="row">
    <div class="col-lg-6 col-md-6 col-sm-12 img-fluid ">   
      <img class="imagenLogo" style="opacity: 0.5; display: grid; place-items: center;" src="./assets/img/logo_bitebooking.png" alt="login">
-   </div> 
+     <div class="col-lg-4">
+      
+      @if (photoPreview) {
+        <h2 class="my-5">Previsualización foto</h2>
+        <img class="img-fluid" [src]="photoPreview">
+      }
+      @if (!photoPreview && restaurants?.imageUrl) {
+        <h2 class="my-5">Previsualización foto</h2>
+        <img class="img-fluid" [src]="'http://localhost:8080/files/' + restaurants?.imageUrl">
+      }
+     
+    </div>
+    </div> 
  
    <div class="col-6 mb-3 ">
     
@@ -36,9 +48,36 @@
      <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 20px;">
        
          <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
-             @for (type of restaurantTypes; track type) {
-                 <option [value]="type">{{ type }}</option>
-             }
+          <option value="JAPANESE_FOOD">Japones</option>
+          <option value="THAI_FOOD">Thai Food</option>
+          <option value="SPAIN_FOOD">Gastronomía Española</option>
+          <option value="CHINESE_FOOD">Comida China</option>
+          <option value="BRUNCH">Brunch</option>
+          <option value="COFFEE_STORE">Cafetería</option>
+          <option value="BAR">Bar & Mixology</option>
+          <option value="VIETNAM_FOOD">Vietnamita</option>
+          <option value="FRENCH_FOOD">Gastronomía Francesa</option>
+          <option value="TEX_MEX_FOOD">Tex Mex Food</option>
+          <option value="KOREAN_FOOD">Koreana</option>
+          <option value="VEGAN_FOOD">Vegan</option>
+          <option value="AMERICAN_FOOD">Americana</option>
+          <option value="GERMAN_FOOD">Bavarian Food</option>
+          <option value="PORTUGUESE_FOOD">Gastronomía Portugues</option>
+          <option value="FUSION_FOOD">Fusion & Molecular</option>
+          <option value="GREEK_FOOD">Griega</option>
+          <option value="INDIAN_FOOD">Comida Hindí</option>
+          <option value="PERUVIAN_FOOD">Gastronomía Peruana</option>
+          <option value="CANADIAN_FOOD">Canadiense</option>
+          <option value="DOMINICAN_FOOD">Dominicana</option>
+          <option value="BALKAN_FOOD">Europea</option>
+          <option value="GEORGIAN_FOOD">Gergian Food</option>
+          <option value="ARABIAN_FOOD">Gastronomía Arabe</option>
+          <option value="MARRAKECH_FOOD">Marrakech</option>
+          <option value="ASIAN_FOOD">Asiatica</option>
+          <option value="AFRICAN_FOOD">Gastronomía Africana</option>
+          <option value="MAGHREB_FOOD"></option>
+          <option value="CARIBBEAN_FOOD">Caribeña</option>
+
          </select>
          <label for="RestaurantType">Restaurant Type</label>
      </div>
@@ -60,30 +99,35 @@
          </label>
        </div> 
  
-       <div class="coolinput form-floating mb-3" formGroupName="location">
-         <input type="text" class="form-control" id="address" placeholder="locationAddress" formControlName="address">
-         <label for="address">Location address</label>  
+       <div class="coolinput form-floating mb-3" >
+         <input type="text" class="form-control" id="address" placeholder="address" formControlName="address">
+         <label for="address">Address</label>  
      </div>
  
-     <input type="hidden" formControlName="imageUrl">
+     
  
-     <div class="coolinput form-floating mb-3" formGroupName="location">
+     <div class="coolinput form-floating mb-3" >
          <input type="text" class="form-control" id="locationCity" placeholder="city" formControlName="city">
-         <label for="locationCity">Location city</label>  
+         <label for="locationCity">City</label>  
      </div>
-     <div class="coolinput form-floating mb-3" formGroupName="location">
-       <input type="number" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
+     <div class="coolinput form-floating mb-3" >
+       <input type="text" class="form-control" id="postalCode" placeholder="postalCode" formControlName="postalCode">
        <label for="postalCode">CP</label>  
      </div>
-     <div class="coolinput col-3 form-floating mb-3" formGroupName="location">
-       <input type="number" class="form-control" id="number" placeholder="number" formControlName="number">
+     <div class="coolinput col-3 form-floating mb-3" >
+       <input type="text" class="form-control" id="number" placeholder="number" formControlName="number">
        <label for="number">Nº</label>  
+     </div>
+
+     <div class="coolinput input-group ">
+      <input type="file" class="form-control mb-3" id="imageUrl" (change)="onFileChange($event)">
      </div>
     
        @if (restaurantFrom.invalid) {
          <small class="text-danger mb-3">Complete the Required Fields</small>
          }
        <div class="mb-3 text-end">
+
          @if (isUpdate) {
            <button class="custom-btn" type="submit" >Update</button>
          }@else { 
