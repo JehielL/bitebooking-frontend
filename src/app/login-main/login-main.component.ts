@@ -39,7 +39,7 @@ export class LoginMainComponent {
         this.httpClient.post<Token>(url, login).subscribe(response => {
           console.log(response.token);
           this.authService.saveToken(response.token);
-          this.router.navigate(['/menus']);
+          this.router.navigate(['/home']);
         });
     
     

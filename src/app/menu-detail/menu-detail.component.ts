@@ -9,6 +9,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Rating } from '../Interfaces/rating.model';
 import { User } from '../Interfaces/user.model';
 import { AuthenticationService } from '../authentication/authentication.service';
+import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 
 @Component({
@@ -19,7 +20,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
   styleUrl: './menu-detail.component.css'
 })
 export class MenuDetailComponent implements OnInit {
-
+  restaurantType = RestaurantType;
   menu: Menu | undefined;
   user: User | undefined;
   isAdmin = false;
@@ -86,5 +87,10 @@ export class MenuDetailComponent implements OnInit {
       this.ratingForm.reset();
       this.ratings.push(savedRating);
     });
+  }
+  getRestaurantType(type?: RestaurantType): string {
+    if (type === undefined) return 'No especificado';
+    const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
+    return typeAsString;
   }
 }
