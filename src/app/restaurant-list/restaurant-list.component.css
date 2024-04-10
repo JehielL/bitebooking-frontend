@@ -141,16 +141,13 @@
   margin-right: 8px; 
 }
 @keyframes fireAnimation {
-  0% { color: #FF5733; } /* Color inicial */
+  0% { color: #f12d01; } /* Color inicial */
   50% { color: #FFD700; } /* Color intermedio */
-  100% { color: #FF5733; } /* Color final */
+  100% { color: #ff2f00; } /* Color final */
 }
 
 
-.bi-fire{
 
-  animation: fireAnimation 3s infinite; /* Duración de la animación */
-
-
-
+.bi-telephone-fill, .bi-star-fill, .bi-fire {
+  animation: fireAnimation 3s infinite;
 }
