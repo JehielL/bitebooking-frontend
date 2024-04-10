@@ -1,16 +1,16 @@
 <div class="container my-5 p-3 bg-white shadow-sm rounded">
   <div class="row">
     <div class="col-md-6 mb-3 mb-md-0">
-      <img [src]="restaurant?.imageUrl" [alt]="restaurant?.name" class="img-fluid rounded">
-      <!-- @if (restaurant?.imageUrl?.startsWith('http')) {
-         Si es url externa entonces ya trae la ruta completa absoluta esto es u comentario
-        <img class="" [src]="restaurant?.imageUrl" alt="">
+      
+       @if (restaurant?.imageUrl?.startsWith('http')) {
+        
+        <img class="" [src]="restaurant?.imageUrl" alt="" class="img-fluid rounded">
       }
       @else{
-         Si es url interna entonces hay que añadir delante del localhost:8080/files  esto es u comentario
-        <img class="" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" alt="">
+        
+        <img class="" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" alt="" class="img-fluid rounded">
   
-      }-->
+      }
     </div>
     <div class="col-md-6">
       <h1 class="h2">{{restaurant?.name}}</h1>
