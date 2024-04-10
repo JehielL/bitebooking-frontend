@@ -40,17 +40,26 @@
                   <ul class="d-flex list-unstyled mt-auto">
                     <li class="me-auto">
                       <a [routerLink]="['/bookings',restaurant.id, 'reserve']"> 
-                        <i class="bi bi-calendar-check-fill fs-1"></i>
+                        <small class="bi bi-calendar-check-fill fs-1"></small>
                       </a>
                   </li>
-                    <li class="d-flex align-items-center me-3">
-                      <a class="bi me-2" width="1em" height="1em"><i class="bi bi-telephone-fill"></i></a>
-                      <small>{{restaurant.phone}}</small>
+                    <li class="d-flex align-items-center">
+                      <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill">{{restaurant.phone}}</small></a>
+                      
                     </li>
                     <li class="d-flex align-items-center">
-                      <a class="bi me-2" width="1em" height="1em"><i class="bi bi-star-fill"></i></a>
-                      <small>{{restaurant.averageRating}}</small>
-                      <small>{{getRestaurantType(restaurant.restaurantType)}}</small>
+                      <a class="bi me-2" width="1em" height="1em">
+                        <small class="bi bi-star-fill">{{restaurant.averageRating}}</small>
+                        
+                    </a>
+                      
+                    </li>
+                    <li>
+                      <a class="d-flex align-items-center">
+                        <small class="nav-icon bi bi-fire"></small>
+                        {{getRestaurantType(restaurant.restaurantType)}}
+                      </a>
+                    </li>
                   </ul>
                 </div>  
               </div>
