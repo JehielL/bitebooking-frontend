@@ -1,3 +1,4 @@
+@if (isLoggedin) {
 <div class="text-center container-fluid img-welcome">
     <div class="overlay"></div>
     <div class="content">
@@ -102,3 +103,6 @@
 
 
 </div>
+}@else {
+    <app-home-sin-log></app-home-sin-log>
+}
