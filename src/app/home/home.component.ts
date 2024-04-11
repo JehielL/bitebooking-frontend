@@ -6,13 +6,14 @@ import { CarruselComponent } from '../carrusel/carrusel.component';
 import { User } from '../Interfaces/user.model';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
+import { KitchenComponent } from '../kitchen/kitchen.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [RouterLink,CarruselComponent,HomeSinLogComponent],
+  imports: [RouterLink,CarruselComponent,HomeSinLogComponent, KitchenComponent],
 })
 export class HomeComponent implements OnInit {
   restaurants: Restaurant[] = [];
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit {
   isAdmin = false;
   user: User | undefined;
   authService: AuthenticationService | undefined;
+  
 
   constructor(private httpClient: HttpClient, authService: AuthenticationService, router: Router) {
     this.authService = authService;
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit {
     }
   }
   puedeMostrarMas: boolean = false;
-
+  showCocinasDropdown: boolean = false;
   
   ngOnInit(): void {
     this.loadRestaurants();
@@ -81,5 +83,8 @@ export class HomeComponent implements OnInit {
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
     return name.replace(regex, '$1');
+  }
+  toggleCocinasDropdown() {
+    this.showCocinasDropdown = !this.showCocinasDropdown;
   }
 }

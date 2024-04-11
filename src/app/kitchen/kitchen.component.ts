@@ -10,28 +10,14 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
   imports: []
 })
 export class KitchenComponent {
-  cocinasPorLetra: { [letra: string]: string[] } = {};
-  objectKeys = Object.keys;
+  todasLasCocinas: string[] = [];
 
   constructor(private router: Router) {
-    this.prepararCocinasPorLetra();
+    this.prepararTodasLasCocinas();
   }
 
-  prepararCocinasPorLetra() {
-    
-    const tiposCocina = Object.values(RestaurantType);
-    
-    tiposCocina.forEach((nombreCocina) => {
-      const letra = nombreCocina[0].toUpperCase();
-      if (!this.cocinasPorLetra[letra]) {
-        this.cocinasPorLetra[letra] = [];
-      }
-      this.cocinasPorLetra[letra].push(nombreCocina);
-    });
-
-    for (const letra in this.cocinasPorLetra) {
-      this.cocinasPorLetra[letra].sort();
-    }
+  prepararTodasLasCocinas() {
+    this.todasLasCocinas = Object.values(RestaurantType);
   }
 
   navegarATipoCocina(nombreCocina: string) {
