@@ -150,21 +150,12 @@ export const routes: Routes = [
  canActivate: [userRoleGuard]
 },
 {
-   path: 'kitchen',
-   component: KitchenComponent
-},
-{
    path: 'restaurant-list/:tipoCocina',
    component: RestaurantListComponent
 },
 {
    path: 'about-us',
    component: AboutUsComponent
-
-},
-{
-   path: 'homesinlog',
-   component: HomeSinLogComponent
 
 },
 {
