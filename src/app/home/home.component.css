@@ -114,7 +114,7 @@
   overflow-y: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-left: 400px;
-  width: 42%;
+  width: 30%;
   border-bottom-left-radius: 20px; 
   border-bottom-right-radius: 20px; 
 
@@ -135,7 +135,7 @@
   border-bottom: none;
 }
 
-/* Estilo para el texto dentro del desplegable */
+/* Estilo para el texto dentro del desplegable de tipo de cocinas*/
 .search-container li a {
   color: black;
   text-decoration: none;
@@ -162,7 +162,4 @@
 ::ng-deep .search-container ::selection {
   background-color: transparent;
   color: inherit;
-}
-.btn-primary {
-  margin-bottom: 10px; 
 }

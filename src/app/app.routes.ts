@@ -17,7 +17,6 @@ import { MenuDetailComponent } from './menu-detail/menu-detail.component';
 import { DishFormComponent } from './dish-form/dish-form.component';
 import { DashboardUserComponent } from './dashboard-user/dashboard-user.component';
 import { HomeSinLogComponent } from './home-sin-log/home-sin-log.component';
-import { KitchenComponent } from './kitchen/kitchen.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { userRoleGuard } from './authentication/user-role.guard';
 
