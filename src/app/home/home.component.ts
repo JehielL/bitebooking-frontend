@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Restaurant } from '../Interfaces/restaurant.model'; 
 import { Router, RouterLink } from '@angular/router';
@@ -7,13 +7,14 @@ import { User } from '../Interfaces/user.model';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
 import { KitchenComponent } from '../kitchen/kitchen.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [RouterLink,CarruselComponent,HomeSinLogComponent, KitchenComponent],
+  imports: [RouterLink,CarruselComponent,HomeSinLogComponent, KitchenComponent, CommonModule],
 })
 export class HomeComponent implements OnInit {
   restaurants: Restaurant[] = [];
@@ -43,8 +44,20 @@ export class HomeComponent implements OnInit {
   puedeMostrarMas: boolean = false;
   showCocinasDropdown: boolean = false;
   
+  currentBackgroundIndex = 0;
+  upcomingBackgroundIndex: number = 1;
+
+  backgroundImages = [
+    'https://i.ibb.co/h7pR39B/restaurante-madrid.jpg',
+    'https://i.ibb.co/ZxDKXcg/PTM2MDoq.jpg',
+    'https://i.ibb.co/wz8hFnr/Ml-BKU0p-KTTQuan-Bn.jpg',
+    'https://i.ibb.co/F8cg23f/a-Xpl-PTY0-MDoq.jpg',
+    'https://i.ibb.co/9q4N7q7/restaurante-5.jpg',
+  ];
+  
   ngOnInit(): void {
     this.loadRestaurants();
+    this.startBackgroundSequence();
   }
 
   loadRestaurants() {
@@ -86,5 +99,28 @@ export class HomeComponent implements OnInit {
   }
   toggleCocinasDropdown() {
     this.showCocinasDropdown = !this.showCocinasDropdown;
+  }
+  startBackgroundSequence() {
+    setInterval(() => {
+      this.upcomingBackgroundIndex = (this.currentBackgroundIndex + 1) % this.backgroundImages.length;
+      this.fadeTransition();
+    }, 10000); // Cambia cada 10 segundos
+  }
+  fadeTransition() {
+    const currentImgElement = document.querySelector('.img-welcome .background-image:not(.upcoming)') as HTMLElement;
+    const upcomingImgElement = document.querySelector('.img-welcome .background-image.upcoming') as HTMLElement;
+
+    upcomingImgElement.style.opacity = '1'; // Hace visible la nueva imagen
+    setTimeout(() => {
+      this.currentBackgroundIndex = this.upcomingBackgroundIndex;
+      currentImgElement.style.backgroundImage = `url('${this.getCurrentImage()}')`;
+      upcomingImgElement.style.opacity = '0'; // Restablece la opacidad para la próxima imagen
+    }, 2000); // Debe coincidir con la duración de la transición de opacidad
+  }
+  getCurrentImage(): string {
+    return this.backgroundImages[this.currentBackgroundIndex];
+  }
+  getUpcomingImage() {
+    return this.backgroundImages[this.upcomingBackgroundIndex];
   }
 }

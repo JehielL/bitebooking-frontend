@@ -1,5 +1,9 @@
-@if (isLoggedin) {
-<div class="text-center container-fluid img-welcome">
+@if (isLoggedin) {   
+<div class="img-welcome">
+    <div class="background-image" [ngStyle]="{'background-image': 'url(' + getCurrentImage() + ')'}"></div>
+    <div class="background-image upcoming" [ngStyle]="{'background-image': 'url(' + getUpcomingImage() + ')'}"></div>
+
+<div class="text-center container-fluid">
     <div class="overlay"></div>
     <div class="content">
         <div class="skills-container">
@@ -8,6 +12,7 @@
                 <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
             </div>
             <div class="input-group custom-input-group justify-content-center">
+
                 <!-- Seccion de la busqueda para los tipos de cocinas -->
             <div style="max-width: 10%;">  
                 <button class="btn btn-outline-light" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
@@ -90,10 +95,6 @@
                     <p>Mas ...</p>
                 </a>
             </div>
-
-
-
-
         </div>
         <div class="container-fluid">
             <h1 class="letters">Mas populares.</h1>
@@ -102,7 +103,7 @@
 
     </div>
 
-
+</div>
 </div>
 }@else {
     <app-home-sin-log></app-home-sin-log>

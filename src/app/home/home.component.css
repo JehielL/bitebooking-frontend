@@ -51,39 +51,42 @@
   a {
     pointer-events: auto;
     text-decoration: none;
-    
-
   }
 
-
-  
-  .img-welcome {
-    position: relative;
-    background-image: url(https://img.freepik.com/free-photo/tabletop-looking-out-empty-restaurant_23-2147701293.jpg);
+  .img-welcome .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-size: cover;
-    background-position: center;
-
-}
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: opacity 2s ease-in-out; /* 2 segundos de transición suave */
+    z-index: -1;
+    padding-bottom: 100px;
+  }
+  
+  .img-welcome .background-image.upcoming {
+    opacity: 0; /* Inicia invisible */
+  }
 
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1; 
 }
-
-.content {
+  
+  .content{
     position: relative;
-    z-index: 2; 
-}
-.content {
-  min-height: calc(100% - 10px); 
-  padding-bottom: 10px; 
-  position: relative;
-}
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+   
+  }
+  
+
 .letters{
     font-family: roboto;
     color: white;
