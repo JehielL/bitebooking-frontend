@@ -99,8 +99,7 @@ export const routes: Routes = [
  },
 {
    path:'restaurant/:id/detail',
-   component: RestaurantDetailComponent,
-   canActivate: [userRoleGuard]
+   component: RestaurantDetailComponent
  },
  {
    path:'restaurant/:id/update',

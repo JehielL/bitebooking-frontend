@@ -177,3 +177,33 @@
   .our h5{
     font-size:20px;
   }
+  @media (max-width: 768px) {
+    .home-side-text {
+      max-width: 100%;
+      margin: 0 10%;
+      text-align: center;
+    }
+  
+    .home-side-text h1 {
+      font-size: 24px; 
+    }
+  
+    .home-side-text p {
+      font-size: 16px; 
+    }
+  
+    .home-container {
+      flex-direction: column; 
+      padding: 20px;
+    }
+  
+    .book-now-button {
+      font-size: 24px;
+      padding: 5px 10px;
+    }
+  
+    .video-background .Video {
+      display: none;
+    }
+  }
+  
