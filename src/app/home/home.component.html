@@ -1,3 +1,4 @@
+@if (isLoggedin) {
 <div class="text-center container-fluid img-welcome">
     <div class="overlay"></div>
     <div class="content">
@@ -6,11 +7,16 @@
                 <h1>Bite booking</h1>
                 <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
             </div>
+                <div>
+                    <button class="btn btn-primary" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
+                    @if (showCocinasDropdown) {
+                    <div>
+                        <app-kitchen></app-kitchen>
+                    </div>
+                }
+                </div>
             <div class="input-group custom-input-group justify-content-center">
-
-                
-<div class="search">
-
+               <div class="search">
                     <input type="search" class="form-control form-control-sm rounded custom-input"
                         placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
                         style="max-width: 600px;" (input)="buscar($any($event.target).value)">
@@ -63,13 +69,6 @@
                     <p>Zona</p>
                 </a>
             </div>
-
-            <div class="category">
-                <a routerLink="/kitchen">
-                    <i class="bi bi-shop icon"></i>
-                    <p>Cocina</p>
-                </a>
-            </div>
             <div class="category">
                 <a href="https://formacion.fundacionadecco.org/courses/control-de-versiones-con-git-java-ed1">
                     <i class="bi bi-egg-fried icon"></i>
@@ -102,3 +101,6 @@
 
 
 </div>
+}@else {
+    <app-home-sin-log></app-home-sin-log>
+}

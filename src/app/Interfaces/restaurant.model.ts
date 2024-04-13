@@ -9,13 +9,13 @@ export interface Restaurant {
     description: string;
     openingTime: Date;
     closingTime: Date;
-    averageRating: number;
-    imageUrl: string;
     status: boolean;
-    city:string;
-    address:string;
-    number:string;
-    postalCode:string;
+    imageUrl: string;
+    city: string;
+    address:  string;
+    number: string;
+    postalCode: string;
+    averageRating: number;
   }
 
 

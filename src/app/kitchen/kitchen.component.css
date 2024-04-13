@@ -1,54 +1,86 @@
-.container-cocinas {
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header-cocinas {
-    background: rgba(132, 132, 132, 0.542);
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-  }
-  
-  .header-cocinas h1 {
-    color: aqua;
-    margin: 0;
-    flex: 1; /* Permite que el h1 ocupe todo el espacio disponible para centrarse */
-    text-align: center; /* Asegura que el texto dentro de h1 esté centrado */
-  }
-  
-  .close-button {
-    border: none;
-    background: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .listado-cocinas {
-    padding: 20px;
-  }
-  
-  .listado-cocinas h2 {
-    margin: 20px 0 10px;
-  }
-  
-  .listado-cocinas ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .listado-cocinas li {
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .listado-cocinas li:last-child {
-    border-bottom: none;
-  }
-  
+/* .letra-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background-color: #eee;
+} */
+/* Estilo del contenedor principal para el desplegable de tipos de cocina */
+.cocinas-container {
+  position: relative;
+  max-width: 600px; /* Ajusta según el ancho de tu sitio o contenedor padre */
+  margin: 20px auto; /* Centra el contenedor si es necesario */
+}
+
+/* Estilo del botón que activa el desplegable */
+.btn-toggle {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Color de fondo del botón */
+  color: white; /* Color del texto del botón */
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra suave para el botón */
+  transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+
+.btn-toggle:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo del listado de tipos de cocina */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  max-height: 300px; /* Altura máxima antes de mostrar el scroll */
+  overflow-y: auto; /* Muestra un scrollbar si el contenido excede la altura máxima */
+  border-radius: 0 0 5px 5px; /* Bordes redondeados en la parte inferior */
+  z-index: 100; /* Asegura que la lista se muestre sobre otros contenidos */
+}
+
+/* Estilo para cada elemento de la lista */
+li {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee; /* Línea divisoria sutil entre elementos */
+  transition: background-color 0.3s ease; /* Transición suave para el hover */
+}
+
+li:last-child {
+  border-bottom: none; /* Elimina la línea divisoria del último elemento */
+}
+
+li:hover {
+  background-color: #f0f0f0; /* Color de fondo al pasar el mouse */
+}
+
+/* Ajustes para mejorar la accesibilidad y visibilidad del cursor */
+li {
+  cursor: pointer;
+}

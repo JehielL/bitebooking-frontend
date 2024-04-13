@@ -116,3 +116,38 @@
   background-color: transparent;
   color: inherit;
 }
+
+.card .list-unstyled {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.card .list-unstyled li {
+  display: flex;
+  align-items: center;
+}
+
+.card .list-unstyled li a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block; 
+  max-width: 150px; 
+}
+
+.card .list-unstyled li i {
+  flex-shrink: 0; 
+  margin-right: 8px; 
+}
+@keyframes fireAnimation {
+  0% { color: #f12d01; } /* Color inicial */
+  50% { color: #FFD700; } /* Color intermedio */
+  100% { color: #ff2f00; } /* Color final */
+}
+
+
+
+.bi-telephone-fill, .bi-star-fill, .bi-fire {
+  animation: fireAnimation 3s infinite;
+}

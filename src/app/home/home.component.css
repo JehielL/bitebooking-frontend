@@ -102,6 +102,7 @@
 .search{
   margin-left: 200px;
   width: 60%;
+  
 }
 .search-container {
   position: absolute;
@@ -112,12 +113,11 @@
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 400px;
   width: 42%;
-  margin-left: 390px;
   border-bottom-left-radius: 20px; 
   border-bottom-right-radius: 20px; 
-  
- 
+
 }
 
 /* Estilo para los elementos de la lista de resultados */
@@ -162,4 +162,7 @@
 ::ng-deep .search-container ::selection {
   background-color: transparent;
   color: inherit;
+}
+.btn-primary {
+  margin-bottom: 10px; 
 }

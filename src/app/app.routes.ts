@@ -163,6 +163,11 @@ export const routes: Routes = [
 
 },
 {
+   path: 'homesinlog',
+   component: HomeSinLogComponent
+
+},
+{
     path: '**',
     component:NotFoundComponent
 }

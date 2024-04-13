@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Restaurant } from '../Interfaces/restaurant.model'; 
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CarruselComponent } from '../carrusel/carrusel.component';
+import { User } from '../Interfaces/user.model';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
+import { KitchenComponent } from '../kitchen/kitchen.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [RouterLink,CarruselComponent],
+  imports: [RouterLink,CarruselComponent,HomeSinLogComponent, KitchenComponent],
 })
 export class HomeComponent implements OnInit {
   restaurants: Restaurant[] = [];
@@ -18,9 +22,27 @@ export class HomeComponent implements OnInit {
   maxResultados: number = 5; 
   minResultados: number = 5;
 
-  constructor(private httpClient: HttpClient) {}
-  puedeMostrarMas: boolean = false;
+  userId: string | null = null;
+  isLoggedin = false;
+  collapsed = true;
+  userEmail = '';
+  isAdmin = false;
+  user: User | undefined;
+  authService: AuthenticationService | undefined;
+  
 
+  constructor(private httpClient: HttpClient, authService: AuthenticationService, router: Router) {
+    this.authService = authService;
+    if (this.authService) {
+      this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+      this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+      this.authService.userId.subscribe(userId => this.userId = userId);
+    }
+  }
+  puedeMostrarMas: boolean = false;
+  showCocinasDropdown: boolean = false;
+  
   ngOnInit(): void {
     this.loadRestaurants();
   }
@@ -61,5 +83,8 @@ export class HomeComponent implements OnInit {
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
     return name.replace(regex, '$1');
+  }
+  toggleCocinasDropdown() {
+    this.showCocinasDropdown = !this.showCocinasDropdown;
   }
 }
