@@ -30,7 +30,6 @@ export class HomeSinLogComponent {
     'https://i.ibb.co/ZxDKXcg/PTM2MDoq.jpg',
     'https://i.ibb.co/wz8hFnr/Ml-BKU0p-KTTQuan-Bn.jpg',
     'https://i.ibb.co/F8cg23f/a-Xpl-PTY0-MDoq.jpg',
-    'https://i.ibb.co/9q4N7q7/restaurante-5.jpg',
   ];
   
   ngOnInit(): void {
