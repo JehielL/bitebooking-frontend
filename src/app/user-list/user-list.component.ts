@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import {  RouterLink } from '@angular/router';
 import { User} from '../Interfaces/user.model';
 import { __param } from 'tslib';
 import AOS from 'aos';
@@ -65,7 +65,7 @@ export class UserListComponent implements OnInit{
 
     const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${escapedSearchTerm})`, 'gi');
-    return name.replace(regex, `<mark>$1</mark>`);
+    return name.replace(regex, `$1`);
   } 
 }
 

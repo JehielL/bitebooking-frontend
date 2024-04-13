@@ -3,19 +3,17 @@
     <a routerLink="/home">
       <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 100px;">
     </a>
+
+    <div class="loader">
+      <div data-glitch="BiteBooking" class="glitch">BiteBooking</div>
+   </div>
     <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
       aria-label="Toggle navigation" (click)="collapsed = !collapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-
-
     <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
-
-
       <ul class="navbar-nav ms-auto">
-
-
         <li class="nav-item" ngbDropdown>
           <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button"><i
               class="bi bi-calendar-check-fill"></i> Reservas</a>
@@ -24,8 +22,10 @@
             <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]" (click)="$event.preventDefault()">Mis Reservas</a>
           </div>
         </li>
-        @if (isLoggedin) {
 
+        <!-- Asegúrate de incluir los elementos del menú de navegación adecuadamente -->
+
+        @if (isLoggedin) {
           <li class="nav-item " ngbDropdown>
             <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
               Usuario</a>
@@ -39,16 +39,10 @@
             </div>
           </li>
         }
-
         
+        <!-- Otros elementos del menú de navegación aquí -->
 
-        
-
-        
-           
-          
         @if (isAdmin) {
-
           <li class="nav-item " ngbDropdown>
             <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
               Administración</a>
@@ -59,14 +53,12 @@
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
-  
-              
-  
             </div>
-         
-  
-  
+          </li>
         }
+
+        <!-- Más elementos del menú de navegación aquí -->
+
         <li class="nav-item" ngbDropdown>
           <a class="nav-link" id="navbarDropdown2" role="button" ngbDropdownToggle>
             <i class="nav-icon bi bi-fire"></i> Quienes somos
@@ -74,39 +66,28 @@
           <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
             <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()" routerLink="/about-us">Sobre nosotros.</a>
             <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Sobre el proyecto.</a>
-           
           </div>
         </li>
-        
-        
-          
-
-
 
       </ul>
 
-     
+      <!-- Botones de usuario aquí -->
       @if (userEmail) {
-        
-        <button class="btn btn-outline-light me-2 ">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
+        <button class="btn btn-outline-light custom-btn">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
       }
 
       @if (isLoggedin) {
-        <button routerLink="" type="button" class="btn btn-primary" (click)="logout()" >
-          <i class="bi bi-box-arrow-right"></i>
+        <button routerLink="" type="button" class="btn btn-primary ms-2" (click)="logout()" >
+          <i class="bi bi-box-arrow-right" ></i>
           Logout</button>
-
-
-
       } @else {
-
         <button routerLink="user/login" type="button" class="btn btn-secondary"  >
           <i class="bi bi-box-arrow-left ms-2"></i>
           Login</button>
-
         <button routerLink="/user/register" type="button" class="btn btn-secondary" >
-          <i class="bi bi-person-fill-add p-1"></i>Registrate</button>
+          <i class="bi bi-person-fill-add p-1 ms-2"></i>Registrate</button>
       }
+
     </div>
   </div>
 </nav>

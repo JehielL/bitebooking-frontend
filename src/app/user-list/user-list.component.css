@@ -1,60 +1,277 @@
-
-
-.cajitas div{
-    height: 50px;
-   
-
-}
-.cajitas div input{
-    height: 50px;
-    width: 500px;
-    border-radius: 15px;
-    margin-top: 10px;
-}
-.cajitas div button{
-    
-    height: 50px;
-    border-radius: 25px;
-    transition: 0.5s;
-    margin-left: 20px;
-}
-.cartitauser {
-    border-radius: 15px ;
-    box-shadow: 0px 5px 10px rgba(0,0,0, .8);
-}
-.cartitauser button {
-margin: 3px;
-height: 40px;
-width: 40px;
-
-}
-.cartitauser img:hover{
-    transform: scale(1.5);
-    filter: drop-shadow(
-        0 0 5px rgba(0,0,0, .8)
-      );
-
-}
-
-.cartitauser img{
-    transition: transform 0.2s, box-shadow 0.2s;
-    
-
-}
-
-.custom-row{
-    
+.card {
+    position: relative;
+    max-width: 300px; 
+    height: 260px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    margin: auto;
+    margin-bottom: 20px;
+    margin-right: 30px; 
+    margin-left: 15px;
+  }
+  .row {
+    --bs-gutter-x: 0; 
+    --bs-gutter-y: 0; 
+  
+}
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    width: 104%; 
+    height: 104%; 
+    border-radius: 8px; 
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
+    transform: translate3d(0, 0, 0) scale(0.80);
+    filter: blur(40px);
+  }
+  
+  .card:hover::after {
+    filter: blur(40px);
+  }
+  
+  .card:hover::before {
+    transform: rotate(-90deg) scaleX(1) scaleY(1.08); /* Ajustado para una apariencia más proporcionada */
+  }
+  
+  .custom-picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .custom-picture:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 5px rgba(0,0,0, .8));
+  }
+  
+
+  
+  .wrapper {
+    --font-color-dark: #323232;
+    --font-color-light: #fff;
+    --bg-color: #fff;
+    --main-color: #08f5e9dc;
+    --secondary-color: #505050;
+    position: relative;
+    width: 100% + 20px;
+    height: 36px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--main-color);
+    border-radius: 34px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 4px 4px var(--main-color);
+  }
+  
+  .option {
+    margin-right: 5px;
+    width: calc(33.33% - 5px); /* Cambiado para que las opciones se distribuyan uniformemente */
+    height: 28px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    border-radius: 34px;
+    transition: 0.25s cubic-bezier(0, 0, 0, 1);
+  }
+  
+  .option:last-child {
+    margin-right: 0; /* Cambiado para que no haya margen a la derecha del último elemento */
+  }
+  
+  .option:hover {
+    background-color: var(--secondary-color);
+  }
+  
+  .option:hover .span {
+    color: var(--font-color-light);
+  }
+  
+  .input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    appearance: none;
+    cursor: pointer;
+  }
+  
+  .btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card .name-container {
+    max-width: 100%; 
+    margin: 0 auto;
+    white-space: normal; 
+    font-size: 20px; 
+    text-align: center;
+    font-weight: bold; 
+}
+  
+  section {
+    background-color: black;
+  }
+  .custom-title{
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 30px;
+   
+  }
+
+ 
+  /* responsive */
+
+  @media only screen and (max-width: 600px) {
+    .card {
+      max-width: 100%; /* Ocupa el ancho completo */
+      height: auto; /* Ajusta la altura automáticamente */
+      margin: 0 auto 20px; /* Centra y agrega margen inferior */
+    }
+  
+    .custom-picture {
+      max-width: 50%; /* Imagen más pequeña */
+    }
+  
+   .search{
+
+  margin-bottom: 20px;
+  
+ 
+  
+ 
+  
+}
+.search-container{
+  position: absolute;
+  left: 0;
+  z-index: 2000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 30%;
+  width: 20%;
+  border-bottom-left-radius: 20px; 
+  border-bottom-right-radius: 20px; 
 
 }
 
-@media screen and (min-width: 671.5) and (min-height: 125.12) and (max-width: 671.5) and (max-height: 125.12)  {
-    .LASCAR {
-        align-items: center;
+  
+    .wrapper {
+      width: 100%; /* Ocupa el ancho completo */
     }
- 
+  
+    .option {
+      width: calc(50% - 5px); /* Opciones en dos columnas */
+    }
+    .row {
+      --bs-gutter-x: 0; 
+      --bs-gutter-y: 0; 
+    
   }
+}
 
-  .custom-picture{
-    border-radius: 99999999px;
-  }
+.search{
+
+  margin-bottom: 20px;
+  margin-left: 30%;
+  
+ 
+  
+}
+.search-container{
+  position: absolute;
+  left: 0;
+  z-index: 2000;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 30%;
+  width: 20%;
+  border-bottom-left-radius: 20px; 
+  border-bottom-right-radius: 20px; 
+
+}
+
+/* Estilo para los elementos de la lista de resultados */
+.search-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.search-container li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-container li:last-child {
+  border-bottom: none;
+}
+
+/* Estilo para el texto dentro del desplegable */
+.search-container li a {
+  color: black;
+  text-decoration: none;
+}
+.search-container input[type="search"] {
+  outline: none; 
+  text-decoration: none; 
+}
+
+.list-group-item {
+  z-index: 5;
+  cursor: pointer;
+  border-bottom: 1px solid #000000;
+  text-decoration: none;
+  transition: 0.4s;
+}
+.list-group-item:hover {
+  background-color: #1f1e1d;
+  color: white;
+}
+
+.btn-primary {
+  margin-bottom: 10px; 
+}
+.card .name-container {
+  max-width: 100%; 
+  margin: 0 auto;
+  white-space: normal; 
+  font-size: 20px; 
+  text-align: center;
+  font-weight: bold; 
+}
