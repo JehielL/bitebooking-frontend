@@ -74,7 +74,7 @@
   z-index: -1; 
 }
 
-.mivideo {
+.myvideo {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -96,7 +96,7 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.contenedor{
+.container{
     padding: 30px 30px 20px 0px;
     display: flex;
     align-items: center;
@@ -127,13 +127,13 @@
     font-size: 18px;
 }
 
-.primeraImagen {
+.first-image {
     object-fit: contain;
     border:none;
     padding:40px;   
 }
 
-.cardChef {
+.card {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -142,29 +142,6 @@
     border:none;
     gap:55px;
  }
-
-
-.cardChef img{
-    width:550px;
-    height:300px;
-}
-
-.nuestroChef {
-    font-family: 'Satisfy', 'cursive';
-    font-size:35px;
-}
-
-
-.textoChef {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    text-align: justify;
-}
-
-.fotoChef img{
-    object-fit: contain;
-    padding:40px;
-}
 
 .carousel-item button{
     font-family: 'Satisfy';
@@ -194,10 +171,9 @@
     margin-top:6px;
     text-align: center;
   }
-
-  .resumenChef {
-    width:35vw;
+  .our{
+    font-size:20px;
   }
-  .resumenChef h5 {
-    font-size:50px;
+  .our h5{
+    font-size:20px;
   }
