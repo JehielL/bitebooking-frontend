@@ -94,11 +94,13 @@ export const routes: Routes = [
  },
 {
    path:'restaurant-list',
-   component: RestaurantListComponent
+   component: RestaurantListComponent,
+   canActivate: [userRoleGuard]
  },
 {
    path:'restaurant/:id/detail',
-   component: RestaurantDetailComponent
+   component: RestaurantDetailComponent,
+   canActivate: [userRoleGuard]
  },
  {
    path:'restaurant/:id/update',
