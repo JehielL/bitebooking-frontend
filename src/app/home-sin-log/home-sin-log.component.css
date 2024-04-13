@@ -1,0 +1,203 @@
+.img-welcome .background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: opacity 2s ease-in-out; 
+    z-index: -1;
+    padding-bottom: 100px;
+  }
+  
+  .img-welcome .background-image.upcoming {
+    opacity: 0; 
+  }
+
+.home-container {
+  position: relative;
+  color: white;
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.home-side-text {
+  max-width: 300px; 
+  margin-left: 5%;
+}
+
+.home-side-text h1 {
+  font-size: 50px;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.home-side-text p {
+  margin-bottom: 0.5em;
+}
+
+
+.home-container {
+  display: flex;
+  width: 100%;
+}
+
+.home-side-text, .home-carousel {
+  flex: 1; 
+  padding: 20px; 
+}
+
+
+.card {
+    width:100%;
+    margin:0;
+    padding:0;
+}
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ajusta la altura según necesites */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca el video detrás del contenido */
+}
+
+.mivideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que el video cubra el área sin distorsionarse */
+}
+
+.book-now-button {
+  font-family: 'Satisfy', cursive;
+  font-size: 40px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semitransparente para mejorar la visibilidad sobre el video */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  z-index: 1; /* Asegura que el botón esté sobre el video */
+}
+
+.book-now-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.contenedor{
+    padding: 30px 30px 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.miTarjeta img{
+    max-height: 200px;
+
+}
+
+.img1{
+    height: 100%;
+    max-height: 300px;
+}
+
+.card-text{
+    text-align: justify;
+}
+
+.chef {
+  font-family: 'Satisfy', 'cursive';
+  font-size:50px;
+}
+
+.italiana {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+
+.primeraImagen {
+    object-fit: contain;
+    border:none;
+    padding:40px;   
+}
+
+.cardChef {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 60px 70px 0px;
+    border:none;
+    gap:55px;
+ }
+
+
+.cardChef img{
+    width:550px;
+    height:300px;
+}
+
+.nuestroChef {
+    font-family: 'Satisfy', 'cursive';
+    font-size:35px;
+}
+
+
+.textoChef {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    text-align: justify;
+}
+
+.fotoChef img{
+    object-fit: contain;
+    padding:40px;
+}
+
+.carousel-item button{
+    font-family: 'Satisfy';
+    font-size: 40px;
+    background-color:transparent;
+    color: black;
+    position: absolute;
+    width: 20%;
+    padding: 5px;
+    bottom: 50%;
+    left: 40%;
+    font-weight: bolder;
+    border: 5px solid black;
+    background: linear-gradient(0 0 0/.5);
+    transition: all 500ms ease;
+    z-index: 0;
+    cursor: pointer;
+}
+
+.carousel-item button:hover {
+    box-shadow: 0 0 10px #151515, 0 0 20px #050505, 0 0 20px #020202;
+    color: #f1eeee;
+    background-color: black;
+  }
+
+  .carousel-item p{
+    margin-top:6px;
+    text-align: center;
+  }
+
+  .resumenChef {
+    width:35vw;
+  }
+  .resumenChef h5 {
+    font-size:50px;
+  }
