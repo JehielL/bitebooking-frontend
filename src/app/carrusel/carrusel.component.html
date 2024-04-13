@@ -1,14 +1,16 @@
-<ngb-carousel [interval]="carruselIntervalo">
-    @for (restaurant of restaurants; track restaurant.id) {
-    <ng-template ngbSlide>
-        <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
-            <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
-            <div class="card-body">
-                <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
-                <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
+    <ngb-carousel [interval]="carruselIntervalo">
+        @for (restaurant of restaurants; track restaurant.id) {
+        <ng-template ngbSlide>
+            <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
+                <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{restaurant.name}}</h5>
+                    <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
+                    <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
+                </div>
             </div>
-        </div>
-    </ng-template>
-}
-</ngb-carousel>
+        </ng-template>
+    }
+    </ngb-carousel>
+
+   

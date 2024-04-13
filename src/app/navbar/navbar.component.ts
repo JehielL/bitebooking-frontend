@@ -33,7 +33,7 @@ export class NavbarComponent {
   logout() {
 
     this.authService.removeToken();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home-logout']);
   }
 }
 

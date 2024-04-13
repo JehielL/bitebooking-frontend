@@ -1,198 +1,86 @@
+@if (isLoggedin) {   
+ 
+  <div class="img-welcome">
+      <div class="background-image" [ngStyle]="{'background-image': 'url(' + getCurrentImage() + ')'}"></div>
+      <div class="background-image upcoming" [ngStyle]="{'background-image': 'url(' + getUpcomingImage() + ')'}"></div>
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">Cover</h3>
-    </div>
-  </header>
-
-  <main class="px-3">
-    <h1>Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white">Learn more</a>
-    </p>
-  </main>
-
-
+      <div class="home-container">
+          <div class="home-side-text">
+              <h1>BITE BOOKING</h1>
+              <p>Restaurant Html Template</p>
+          </div>
+          <div class="home-carousel">
+              <app-carrusel></app-carrusel>
+          </div>
+      </div>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+<div class="carousel-inner">
+  <div class="carousel-item active" data-bs-interval="10000">
+    <section class="contenedor">
+      <div class="card border border-0" style="width: 40rem;">
+        <div class="card-body d-none d-md-block">
+          <h5 class="card-title chef">Nosotros</h5>
+          <p class="card-text italiana">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab sint praesentium illo,
+               magnam eveniet esse architecto ducimus, veniam quasi eaque maiores ex velit ipsam dolorum est fuga
+                voluptatum ad? Porro!</p>
+        </div>
+      </div>
+    
+      <div class="card primeraImagen" style="width: 30rem;">
+        <img class="img-fluid img1 d-none d-md-block"
+          src="https://tvazteca.brightspotcdn.com/dims4/default/bb1a31b/2147483647/strip/true/crop/850x850+350+0/resize/928x928!/format/jpg/quality/80/?url=http%3A%2F%2Ftv-azteca-brightspot.s3.amazonaws.com%2F23%2F09%2Faf6c24d94d5c9b50fd61aeba3492%2Frestaurantes-italianos-en-cdmx.jpg">
+      </div>
+    </section>
+  </div>
+  <div class="carousel-item">
+    <section class="cardChef" >
+      <img src="https://i.ibb.co/R40fgJn/bm-Ff-MTguan-Bn.jpg" class="card-img-top ps-0 d-none d-md-block"
+        alt="Imagen de nuestro equipo">
+        <div class="resumenChef d-none d-md-block">
+        <h5 class="card-title nuestroChef">Nuestro equipo</h5>
+        <p class="card-text textoChef">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Illum fugiat ab rem obcaecati. Perspiciatis rem in fugit consequuntur? Possimus, veritatis rem ex aut tempora repellendus! Dolore optio accusantium blanditiis repellendus!</p>
+        </div>
+  </section>
+  </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
 </div>
 
-<main>
-  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-    <div class="col-md-6 p-lg-5 mx-auto my-5">
-      <h1 class="display-3 fw-bold">Bite Booking</h1>
-      <h3 class="fw-normal text-muted mb-3">Date el gusto de reservar de la mejor manera</h3>
-      <div class="d-flex gap-3 justify-content-center lead fw-normal">
-        <a class="icon-link" href="#">
-          Leer mas
-          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-        <a class="icon-link" routerLink="/restaurant-from">
-          Booking
-          <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-        </a>
-      </div>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+<div class="video-background">
+<div class="Video">
+  <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" class="mivideo">
+    <source src="http://localhost:4200/assets/video.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Botón "Book Now" sobre el fondo de video -->
+<button class="book-now-button">Book Now</button>
+</div>
+
+         
+</div>
+<section class="contenedor">
+  <div class="card border border-0" style="width: 40rem;">
+   
   </div>
 
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
-
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="text-bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
-
- 
-
- 
-</main>
-
-
+  <div class="card primeraImagen" style="width: 30rem;">
     
-
-
-
-<body>
-  <div class="nav-scroller py-1 mb-3 border-bottom">
-    <nav class="nav nav-underline justify-content-between">
-     <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">      
-      <img src="/assets/img/logo_bitebooking.png" width="55" height="60" alt="">  
-    </nav>
   </div>
+</section>
+  
+}@else {
+  <app-home-sin-log></app-home-sin-log>
+}
 
-
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
-    <div class="col-lg-6 px-0">
-      <h1 class="display-4 fst-italic">Conocenos un poco</h1>
-      <p class="lead my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quisquam a quasi molestias soluta dolore laudantium, ex magnam adipisci ipsum. Dolor alias rerum reprehenderit eius voluptatem perspiciatis, facere cum aliquam!</p>
-    </div>
-  </div>
-
-  <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <h3 class="mb-0">Quienes somos?</h3>
-          <div class="mb-1 text-body-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione i</div>
-          <p class="card-text mb-auto">Lorem ipsum, dolor placeat fugiat, voluptate quos adipisci delectus deserunt nihil magni debitis.</p>
-          <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-            <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-          </a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder:   " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6">
-        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-          <div class="col p-4 d-flex flex-column position-static">
-            <h3 class="mb-0">Que hacemos?</h3>
-            <div class="mb-1 text-body-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione i</div>
-            <p class="card-text mb-auto">Lorem ipsum, dolor placeat fugiat, voluptate quos adipisci delectus deserunt nihil magni debitis.</p>
-            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-              <svg class="bi"><use xlink:href="#chevron-right"></use></svg>
-            </a>
-          </div>
-          <div class="col-auto d-none d-lg-block">
-            <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder:   " preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></svg>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <div class="row g-5">
-    <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        el verdadero gusto del booking
-      </h3>
-
-    
-
-    </div>
-
-    <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4 mb-3 bg-body-tertiary rounded">
-          <h4 class="fst-italic">detalles</h4>
-          <p class="mb-0">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim harum iusto, fuga maiores, eos accusamus expedita suscipit quisquam impedit alias ad blanditiis hic dolorum commodi quibusdam saepe placeat odit inventore.</p>
-        </div>
-
-        <div>
-          <h4 class="fst-italic">hola</h4>
-          <ul class="list-unstyled">
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">ojitos chiquititos jugó contigo</h6>
-                  <small class="text-body-secondary">te compro tu novia</small>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">awo awo, dimelo lider</h6>
-                  <small class="text-body-secondary">texto para rellenar </small>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">er diablo</h6>
-                  <small class="text-body-secondary">aqui claramente van a ir fotos de restaurants</small>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</main>
 
 
     
