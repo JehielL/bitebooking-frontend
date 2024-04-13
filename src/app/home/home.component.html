@@ -1,5 +1,106 @@
-@if (isLoggedin) {   
-
-}@else {
-    <app-home-sin-log></app-home-sin-log>
-}
+@if (isLoggedin) {
+    <div class="text-center container-fluid img-welcome">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="skills-container">
+                <div class="letters">
+                    <h1>Bite booking</h1>
+                    <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
+                </div>
+                    <div>
+                        <button class="btn btn-primary" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
+                        @if (showCocinasDropdown) {
+                        <div>
+                            <app-kitchen></app-kitchen>
+                        </div>
+                    }
+                    </div>
+                <div class="input-group custom-input-group justify-content-center">
+                   <div class="search">
+                        <input type="search" class="form-control form-control-sm rounded custom-input"
+                            placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
+                            style="max-width: 600px;" (input)="buscar($any($event.target).value)">
+                        @if (resultadosBusqueda.length > 0) {
+                        <div class="search-container">
+                            <ul class="list-group">
+                                @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+                                <li class="list-group-item">
+                                    <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
+                                        [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{
+                                        restaurantes.name }}</a>
+                                </li>
+                                }
+                            </ul>
+                            @if (puedeMostrarMas) {
+                            <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+                            }
+                            @if (maxResultados > minResultados) {
+                            <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+                            }
+                        </div>
+                        }
+    
+                    </div>
+                </div>
+    
+                <div class="letters">
+                    <h2>Categorias</h2>
+                </div>
+                <div class="category">
+                    <a href="https://html.spec.whatwg.org/multipage/">
+                        <i class="fa-solid fa-ranking-star"></i>
+                        <i class="icon bi bi-star"></i>
+                        <p>Ranking</p>
+    
+                    </a>
+                </div>
+    
+                <div class="category">
+                    <a href="https://www.w3.org/Style/CSS/Overview.en.html">
+                        <i class="icon bi bi-percent"></i>
+                        <p>Descuentos</p>
+                    </a>
+                </div>
+    
+                <div class="category">
+                    <a href="https://formacion.fundacionadecco.org/courses/fundamentos-de-programacion-java-ed1">
+    
+                        <i class="bi bi-geo-alt icon"></i>
+                        <p>Zona</p>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="https://formacion.fundacionadecco.org/courses/control-de-versiones-con-git-java-ed1">
+                        <i class="bi bi-egg-fried icon"></i>
+                        <p>Brunch</p>
+                    </a>
+                </div>
+                <div class="category">
+                    <a routerLink="/restaurant-list">
+                        <i class="bi bi-search-heart icon"></i>
+                        <p>Restaurantes</p>
+                    </a>
+                </div>
+                <div class="category">
+                    <a routerLink="">
+                        <i class="bi bi-search-heart icon"></i>
+                        <p>Mas ...</p>
+                    </a>
+                </div>
+    
+    
+    
+    
+            </div>
+            <div class="container-fluid">
+                <h1 class="letters">Mas populares.</h1>
+                <app-carrusel></app-carrusel>
+            </div>
+    
+        </div>
+    
+    
+    </div>
+    }@else {
+        <app-home-sin-log></app-home-sin-log>
+    }
