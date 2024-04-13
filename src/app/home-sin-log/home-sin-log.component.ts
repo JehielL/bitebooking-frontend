@@ -49,18 +49,18 @@ export class HomeSinLogComponent {
     setInterval(() => {
       this.upcomingBackgroundIndex = (this.currentBackgroundIndex + 1) % this.backgroundImages.length;
       this.fadeTransition();
-    }, 10000); // Cambia cada 10 segundos
+    }, 10000); 
   }
   fadeTransition() {
     const currentImgElement = document.querySelector('.img-welcome .background-image:not(.upcoming)') as HTMLElement;
     const upcomingImgElement = document.querySelector('.img-welcome .background-image.upcoming') as HTMLElement;
 
-    upcomingImgElement.style.opacity = '1'; // Hace visible la nueva imagen
+    upcomingImgElement.style.opacity = '1';
     setTimeout(() => {
       this.currentBackgroundIndex = this.upcomingBackgroundIndex;
       currentImgElement.style.backgroundImage = `url('${this.getCurrentImage()}')`;
-      upcomingImgElement.style.opacity = '0'; // Restablece la opacidad para la próxima imagen
-    }, 2000); // Debe coincidir con la duración de la transición de opacidad
+      upcomingImgElement.style.opacity = '0';
+    }, 2000); 
   }
   getCurrentImage(): string {
     return this.backgroundImages[this.currentBackgroundIndex];

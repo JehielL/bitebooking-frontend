@@ -58,7 +58,7 @@
 .video-background {
   position: relative;
   width: 100%;
-  height: 100vh; /* Ajusta la altura según necesites */
+  height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -71,25 +71,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Coloca el video detrás del contenido */
+  z-index: -1; 
 }
 
 .mivideo {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que el video cubra el área sin distorsionarse */
+  object-fit: cover;
 }
 
 .book-now-button {
   font-family: 'Satisfy', cursive;
   font-size: 40px;
-  background-color: rgba(0, 0, 0, 0.5); /* Semitransparente para mejorar la visibilidad sobre el video */
+  background-color: rgba(0, 0, 0, 0.5); 
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   transition: background-color 0.5s ease;
-  z-index: 1; /* Asegura que el botón esté sobre el video */
+  z-index: 1; 
 }
 
 .book-now-button:hover {
