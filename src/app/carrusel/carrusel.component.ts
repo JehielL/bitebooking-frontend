@@ -4,6 +4,9 @@ import { Restaurant } from '../Interfaces/restaurant.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
+import { User } from '../Interfaces/user.model';
+import { AuthenticationService } from '../authentication/authentication.service';
+
 
 @Component({
   selector: 'app-carrusel',
@@ -17,7 +20,23 @@ export class CarruselComponent implements OnInit {
   restaurantType = RestaurantType;
   carruselIntervalo = 2000;
 
-  constructor(private httpClient: HttpClient) {}
+  userId: string | null = null;
+  isLoggedin = false;
+  collapsed = true;
+  userEmail = '';
+  isAdmin = false;
+  user: User | undefined;
+  authService: AuthenticationService | undefined;
+
+  constructor(private httpClient: HttpClient, authService: AuthenticationService) {
+    this.authService = authService;
+    if (this.authService) {
+      this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+      this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+      this.authService.userId.subscribe(userId => this.userId = userId);
+    }
+  }
 
   ngOnInit(): void {
     this.loadRestaurantsDirectly1();

@@ -6,7 +6,11 @@
             <div class="card-body">
                 <h5 class="card-title">{{restaurant.name}}</h5>
                 <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
+                @if (isLoggedin) {
                 <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
+            }@else {
+                <a [routerLink]="['/user/login']" class="btn btn-outline-dark">Reservar</a>
+            }
             </div>
         </div>
     </ng-template>
