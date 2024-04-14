@@ -1,8 +1,4 @@
 
-
-
-
-
  #formdiv{
    
     background-color: white;
@@ -24,6 +20,7 @@
     width: fit-content;
   }
   
+  
   .coolinput input[type=text].input {
     padding: 10px 50px;
     font-size: 0.95rem;
@@ -31,6 +28,15 @@
     border-radius: 4px;
     background: white;
   }
+
+  .coolinput input[type=text].input {
+    padding: 10px 50px;
+    font-size: 0.95rem;
+    border: 2px #4b0f4a solid;
+    border-radius: 4px;
+    background: white;
+  }
+
   
   .coolinput input[type=text].input:focus {
     outline: none;
@@ -132,4 +138,25 @@ a {
   .columnaDER {
       width: 100%; /* Ajusta la columna derecha para ocupar todo el ancho */
   }
+}
+
+.password label.password {
+  font-size: 1rem;
+  color: black;
+  font-weight: 650;
+  position: relative;
+  top: 0.5rem;
+  padding: 0 3px;
+  background:white;
+  font-family: Noto Sans, sans-serif; font-weight: 400; font-style: normal;
+  width: fit-content;
+}
+
+
+.password input[type=password].input {
+  padding: 10px 50px;
+  font-size: 0.95rem;
+  border: 2px #4b0f4a solid;
+  border-radius: 4px;
+  background: white;
 }

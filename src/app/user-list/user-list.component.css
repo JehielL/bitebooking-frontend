@@ -130,12 +130,14 @@
   }
 
   .card .name-container {
-    max-width: 100%; 
+    max-width: 80%; 
     margin: 0 auto;
     white-space: normal; 
     font-size: 20px; 
     text-align: center;
     font-weight: bold; 
+    overflow: hidden;
+    max-height: 60px;
 }
   
   section {

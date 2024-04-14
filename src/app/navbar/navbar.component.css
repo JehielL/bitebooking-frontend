@@ -6,8 +6,39 @@
   background-size: 200% auto;
   color: white;
 }
+.btn-login {
+  background: linear-gradient(to right, #b30092, #009bb3);
+  border: none;
+  transition: background-position 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background-size: 200% auto;
+  color: white;
+}
+.btn-primary:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
 
-/* Reducción del tamaño de los iconos */
+.btn-login:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
+
+.btn-register {
+  background: linear-gradient(to right, #009bb3, #4ed851);
+  border: none;
+  transition: background-position 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  background-size: 200% auto;
+  color: white;
+ 
+}
+.btn-register:hover {
+  background-position: right center; 
+  transform: scale(1.05); 
+}
+
+
+
+
 .bi {
   font-size: 1rem;
 }
@@ -32,7 +63,11 @@
   50% { color: #FFD700; }
   100% { color: #FF5733; }
 }
-
+@keyframes registerAnimation {
+  0% { color: #ffffff; }
+  50% { color: #000000; }
+  100% { color: #ffffff; }
+}
 .bi-fire {
   animation: fireAnimation 3s infinite;
 }
@@ -63,13 +98,13 @@
 }
 
 .glitch:before {
-  animation: glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
   color: #00ccff;
   z-index: -1;
 }
 
 .glitch:after {
-  animation: glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
   color: #9c00e5;
   z-index: -2;
 }

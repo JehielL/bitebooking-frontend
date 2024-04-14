@@ -1,66 +1,60 @@
-  <div class="row">
-    <div class="col-lg-6 col-md-6 d-none d-md-block img-fluid columnaIZQ">
-      <img style="opacity: 0.5; "  src="./assets/img/logo_bitebooking.png" alt="login">
-    </div>
-    <div class="col-lg-6 col-md-6 pl-0 columnaDER">
+<div class="row">
+  <div class="col-lg-6 col-md-6 d-none d-md-block img-fluid columnaIZQ">
+    <img style="opacity: 0.5; " src="./assets/img/logo_bitebooking.png" alt="login">
+  </div>
+  <div class="col-lg-6 col-md-6 pl-0 columnaDER">
 
 
-      <div id="formdiv" class=" text-center">
-        <form [formGroup]="loginForm" (ngSubmit)="save()">
+    <div id="formdiv" class=" text-center">
+      <form [formGroup]="loginForm" (ngSubmit)="save()">
 
-          <div
-            style="display: grid; place-items: center;font-family:Noto Sans, sans-serif; font-weight: 400; font-style: normal;">
-            <h1 style="margin-top: 20px;">Iniciar sesion</h1>
-          </div>
-
-          <div class="coolinput">
-            <div> <label for="input" class="text">Email address</label></div>            
-            <input type="text" name="email" class="input" id="email" placeholder="name@example.com" formControlName="email">
-           
-            
-          </div>
-
-          <div class="mb-3">
-            <div class="coolinput">
-              <div><label for="input" class="text">contraseña</label></div>
-              <input type="text" name="password" formControlName="password" class="input">
-
-
-              <div><label for="input" class="text">haz olvidado tu <a style="color:black;" class="contr"
-                    href="#">contraseña?</a></label></div>
-            </div>
-
-            <div class="mb-3 form-check">
-              <label class="form-check-label" for="exampleCheck1" style="margin-top: 10px;">recuerdame <input
-                  type="checkbox" class="form-check-input" id="exampleCheck1"></label>
-            </div>
-
-            <button class="custom-btn" type="submit">iniciar sesion</button>
-          </div>
-
-
-        </form>
-        <div>
-          <h5>¿No tienes una cuenta aun?</h5>
-          <h4><a style="color: #4b0f4a;" routerLink="/user/create">Registrarse!</a></h4>
+        <div
+          style="display: grid; place-items: center;font-family:Noto Sans, sans-serif; font-weight: 400; font-style: normal;">
+          <h1 style="margin-top: 20px;">Iniciar sesion</h1>
         </div>
-        <div>
-          <ul>
-            <li><a href="#"><i class="fab fa-instagram instagram"></i> </a></li>
-            <li><a href="#"><i class="fab fa-google google"></i> </a></li>
-            <li><a href="#"><i class="fab fa-facebook facebook"></i> </a></li>
-          </ul>
+
+        <div class="coolinput">
+          <div> <label for="input" class="text">Email address</label></div>
+          <input type="text" name="email" class="input" id="email" placeholder="name@example.com"
+            formControlName="email">
+
+
         </div>
+
+        <div class="mb-3">
+          <div class="password">
+            <div><label for="input" class="password">contraseña</label></div>
+            <input type="password" name="password" formControlName="password" class="input">
+
+
+            <div><label for="input" class="text">haz olvidado tu <a style="color:black;" class="contr"
+                  href="#">contraseña?</a></label></div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <label class="form-check-label" for="exampleCheck1" style="margin-top: 10px;">recuerdame <input
+                type="checkbox" class="form-check-input" id="exampleCheck1"></label>
+          </div>
+
+          <button class="custom-btn" type="submit">iniciar sesion</button>
+        </div>
+
+
+      </form>
+      <div>
+        <h5>¿No tienes una cuenta aun?</h5>
+        <h4><a style="color: #4b0f4a;" routerLink="/user/create">Registrarse!</a></h4>
+      </div>
+      <div>
+        <ul>
+          <li><a href="#"><i class="fab fa-instagram instagram"></i> </a></li>
+          <li><a href="#"><i class="fab fa-google google"></i> </a></li>
+          <li><a href="#"><i class="fab fa-facebook facebook"></i> </a></li>
+        </ul>
       </div>
     </div>
-
-
-
   </div>
 
 
 
-
-
-
-
+</div>
