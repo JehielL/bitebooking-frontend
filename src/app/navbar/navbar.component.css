@@ -1,50 +1,104 @@
-.btn-secondary {
-    background-color: rgba(132, 132, 132, 0.542);
-    border-color: rgba(132, 132, 132, 0.542);
-    height: 40px;
-    margin-right: 10px;
-    border-radius: 40px;
-    transition: background-color 0.5s ease, border-color 0.5s ease;
+/* Estilos específicos para el botón primario */
+.btn-primary {
+  background: linear-gradient(to right, #007bff, #b30092);
+  border: none;
+  transition: background-position 0.3s ease;
+  background-size: 200% auto;
+  color: white;
+}
+
+/* Reducción del tamaño de los iconos */
+.bi {
+  font-size: 1rem;
+}
+
+/* Cambio de la dirección de la lista de navegación en dispositivos pequeños */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
   
-  .btn-secondary:hover {
-    background-color: rgba(0, 0, 0, 0.529);
-    border-color: black;
+  /* Ajuste del padding del navbar en pantallas pequeñas */
+  .navbar {
+    padding-right: 15px;
+    padding-left: 15px;
   }
-  @media (max-width: 576px) {
+}
 
-    .btn-secondary {
-      margin-top: 10px;
-      width: 100px;
-      text-align: center;
-      text-align: center;
-      margin-left: 40%;
-    }
+/* Animación para el icono bi-fire */
+@keyframes fireAnimation {
+  0% { color: #FF5733; }
+  50% { color: #FFD700; }
+  100% { color: #FF5733; }
+}
+
+.bi-fire {
+  animation: fireAnimation 3s infinite;
+}
+
+/* Estilos adicionales para el botón primario en el hover */
+.btn-primary:hover {
+  background-position: right center; 
+}
+.glitch {
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 5px;
+  z-index: 1;
+  animation: shift 3s ease-in-out infinite alternate;
+}
+
+.glitch:before,
+.glitch:after {
+  display: block;
+  content: attr(data-glitch);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitch:before {
+  animation: glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ccff;
+  z-index: -1;
+}
+
+.glitch:after {
+  animation: glitch 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+  color: #9c00e5;
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
   }
-  
-  .btn-primary {
-    background: linear-gradient(to right, #007bff, #b30092); /* Degradado de izquierda a derecha */
-    border: none; /* Eliminar borde */
-    transition: background-position 0.3s ease; /* Transición suave */
-    background-size: 200% auto; /* Tamaño del degradado */
-    color: white; /* Color del texto */
+
+  20% {
+    transform: translate(-3px, 3px);
   }
-  
-  .btn-primary:hover {
-    background-position: right center; 
+
+  40% {
+    transform: translate(-3px, -3px);
   }
-  
-  @keyframes fireAnimation {
-    0% { color: #FF5733; } /* Color inicial */
-    50% { color: #FFD700; } /* Color intermedio */
-    100% { color: #FF5733; } /* Color final */
+
+  60% {
+    transform: translate(3px, 3px);
   }
-  
 
-  .bi-fire{
-
-    animation: fireAnimation 3s infinite; /* Duración de la animación */
-
-
-
+  80% {
+    transform: translate(3px, -3px);
   }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+
+

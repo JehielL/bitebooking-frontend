@@ -1,65 +1,82 @@
-<button
-class="navbar-toggler"
-type="button"
-aria-controls="navbarContent"
-[attr.aria-expanded]="!collapsed"
-aria-label="Toggle navigation"
-(click)="collapsed = !collapsed"
->
-<span class="navbar-toggler-icon"></span>
-</button>
+<section>
+  <div class="container-fluid">
 
-  <h1 style="text-align: center;" class="display-5 mt-3 fw-bold">Listado de usuarios</h1>
+    <div class="row">
+      <h1 style="text-align: center;" class="custom-title">Listado de usuarios</h1>
+    </div>
 
-<div class="container text-center" style="border-radius: 15px;">
-  <div class="container text-center cajitas">
-    <div class="col-sm-8" style="margin-left: -95px; display: contents;">
-      <input type="search" class="buscar"placeholder="Buscar Usuarios ..."
-              (input)="buscar($any($event.target).value)">
+      <div class="search">
+        <input type="search" class="form-control form-control-sm rounded" placeholder="Buscar usuario"
+          aria-describedby="search-addon" style="max-width: 600px;" (input)="buscar($any($event.target).value)">
       </div>
       @if (resultadosBusqueda.length > 0) {
-      <div>
+      <div class="search-container">
         <ul class="list-group">
           @for (user of resultadosBusqueda; track user ) {
           <li class="list-group-item">
-            <a [routerLink]="['/user', user.id, 'detail']" [innerHTML]="highlightSearchTerm(user.firstName, searchTerm)">{{user.firstName }}</a>
+            <a [routerLink]="['/restaurant', user.id, 'detail']"
+              [innerHTML]="highlightSearchTerm(user.firstName, searchTerm)">{{
+              user.firstName }}</a>
           </li>
-      }
+          }
         </ul>
-      @if (puedeMostrarMas) {
-          <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+        @if (puedeMostrarMas) {
+        <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
         }
         @if (maxResultados > minResultados) {
-          <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+        <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
         }
       </div>
-  } 
-    </div>
+      }
+
+    
   </div>
 
-  <div  class="row row-cols-1 row-cols-lg-5 g-1 g-lg-3 cajaMosaico" style="padding: 19px; padding-bottom: 30px;">
-    @for (user of users; track user.id)
-    {
-    <div  data-aos="fade-up" data-aos-delay="500" class="col LASCAR ">
-      <div class="p-5 mb-5 cartitauser">
-        <div class="dropdown">
-          <button class="btn btn-link"  type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" style="float: right" aria-expanded="false">
-            <i class="bi bi-three-dots-vertical" style="font-size: 1.5rem; color: black;"></i>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" [routerLink]="['/user', user.id, 'detail']">ver perfil</a></li>
-            <li><a class="dropdown-item" href="#">Eliminar</a></li>
-            <li><a class="dropdown-item" href="#">denunciar</a></li>
-          </ul>
-        </div>
-        <img [src]="user.imgUser" class="custom-picture"  [routerLink]="['/user', user.id, 'detail']" style="cursor: pointer; margin-left: 25px;" alt="logo" height="80" width="80" >
-        <div style="font-size: 20px; text-align: center;" class="fw-bold  ">{{user.firstName}} {{user.lastName}}</div>
-        <div class="col" style="padding-left: 8px ;">
-          <button class="btn btn-outline-dark"><i class="bi bi-at"></i></button>
-          <button class="btn btn-outline-dark"><i class="bi bi-telephone"></i></button>
-          <button class="btn btn-outline-dark"><i class="bi bi-chat-square-dots"></i></button>
+
+  <div class="container-fluid mt-3">
+    <div class="row">
+      @for (user of users; track user.id)
+      {
+      <div data-aos="fade-up" data-aos-delay="500" class="col LASCAR">
+        <div class="p-5 mb-5 card">
+          <div class="dropdown" style="position: absolute; top: 10px; right: 10px;">
+            <button class="btn btn-link" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-three-dots-vertical" style="font-size: 1.5rem; color: rgb(255, 255, 255);"></i>
+            </button>
+          </div>
+          <div class="custom-picture" style="text-align: center;">
+            <img [src]="user.imgUser" class="custom-picture" [routerLink]="['/user', user.id, 'detail']"
+              style="cursor: pointer; margin: 0 auto;" alt="logo" height="80" width="80">
+          </div>
+          <div style="font-size: 20px; text-align: center;" class="fw-bold">
+            <div class="name-container">
+              {{user.firstName}} {{user.lastName}}
+            </div>
+          </div>
+          <div class="col" style="padding-left: 8px; text-align: center;">
+            <div class="wrapper mt-3">
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-person-plus-fill"></i>
+
+                </div>
+              </div>
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-chat-square-dots"></i>
+                </div>
+              </div>
+              <div class="option">
+                <div class="btn">
+                  <i class="bi bi-heart"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      }
     </div>
-    }
   </div>
+</section>
