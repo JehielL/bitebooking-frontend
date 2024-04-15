@@ -3,7 +3,7 @@ main{
 }
 .btn-retroceder {
     position: fixed;
-    top: 20px;
+    top: 120px;
     left: 20px;
     z-index: 1000;
     background-color: #ffffff;

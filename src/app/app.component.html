@@ -2,17 +2,17 @@
 
 
 <main >
-    @if (mostrarBotonRetroceso) {
-    <button (click)="retroceder()" class="btn-retroceder">
-        <i class="bi bi-chevron-bar-left"></i>
-    </button>
-}
+
     
     
 <router-outlet></router-outlet>
     
 </main>
 
-
+@if (mostrarBotonRetroceso) {
+    <button (click)="retroceder()" class="btn-retroceder">
+        <i class="bi bi-chevron-bar-left"></i>
+    </button>
+}
 
 <app-footer ></app-footer>
