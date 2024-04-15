@@ -307,7 +307,7 @@ h2 .custom-name {
   animation: fireAnimation 3s infinite !important;
   text-align: center;
 }
-
+  
 
 .horizontal-bars {
   width: 100%;
@@ -418,6 +418,11 @@ h2 .custom-name {
   position: relative;
   -webkit-animation: bounce05 var(--duration) linear infinite;
   animation: bounce05 var(--duration) linear infinite;
+}
+.col-typewriter{
+  margin-top: 5%;
+  padding: 20px;
+ 
 }
 
 .typewriter .slide {

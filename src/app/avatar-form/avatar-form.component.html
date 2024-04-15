@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+
+        <h1 class="my-5">Avatar de perfil</h1>
+
+        <form >
+
+          <input type="hidden" formControlName="id">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control"
+            id="title" formControlName="title">
+            <label for="title">Titulo del menu</label>
+          </div>
+
+          <div class="input-group">
+            <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
+            <button class="btn btn-outline-secondary" type="button" id="photoBtn">Button</button>
+          </div>
+
+          <button class="w-100 btn btn-primary btn-lg mb-5 mt-5" type="button">Guardar</button>
+
+        </form>
+
+      </div>
+      <div class="col-lg-4">
+
+        @if (photoPreview) {
+          <h2 class="my-5">Nuevo avatar</h2>
+          <img class="img-fluid" [src]="photoPreview">
+        }
+        @if (!photoPreview && user?.imgUser) {
+          <h2 class="my-5">Avatar existente</h2>
+          <img class="img-fluid" [src]="'http://localhost:8080/files/' + user?.imgUser">
+        }
+
+      </div>
+    </div>
+  </div>

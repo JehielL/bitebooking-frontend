@@ -16,7 +16,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
 export class BookingDetailComponent implements OnInit {
 
   booking: Booking | undefined;
-  bookings: Booking[] = [];
+
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
 
@@ -49,7 +49,7 @@ export class BookingDetailComponent implements OnInit {
 
   private loadBookings() {
     const url = 'http://localhost:8080/bookings';
-    this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
+    this.httpClient.get<Booking>(url).subscribe(bookings => this.booking = bookings);
   }
 
   hideDeletedBookingMessage() {

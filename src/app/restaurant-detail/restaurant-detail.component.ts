@@ -15,6 +15,7 @@ import { Menu } from '../Interfaces/menu.model';
 })
 export class RestaurantDetailComponent implements OnInit {
   Menus: Menu[] = [];
+  menu: Menu | undefined;
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
   restaurantType = RestaurantType;

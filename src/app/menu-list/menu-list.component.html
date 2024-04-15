@@ -33,27 +33,63 @@
 <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
   @for (menu of menus; track menu.id) {
     <div class="col">
-      <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'">
+      
+
+      <div class="container">
+        @if (menu.imgMenu.startsWith('http')) {
+            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'">
        
-          <img class="card-img" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
+     
         
         
-        <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
-          <ul class="d-flex list-unstyled mt-auto">
-            <li class="me-auto menu-badge">
-              <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
-                {{getRestaurantType(menu.restaurantType)}}
-                
-              </a>
-            </li>
-            <li class="d-flex align-items-center">
-              <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
-                <i class="bi bi-arrow-right ms-2"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
+        
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto menu-badge">
+                    <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
+                      {{getRestaurantType(menu.restaurantType)}}
+                      
+                    </a>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
+                      <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            }
+            @else{
+                 <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image" >
+       
+              
+              <img [src]="'http://localhost:8080/files/' + menu.imgMenu" alt=""> 
+        
+        
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
+                <ul class="d-flex list-unstyled mt-auto">
+                  <li class="me-auto menu-badge">
+                    <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
+                      {{getRestaurantType(menu.restaurantType)}}
+                      
+                    </a>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
+                      <i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+            
+            }
       </div>
     </div>
   }

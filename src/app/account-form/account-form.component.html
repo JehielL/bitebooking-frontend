@@ -1,0 +1,170 @@
+@if (user) {
+
+<div class="main-content ">
+
+    <!-- Page content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 mt-5">
+                <div class="form-container">
+
+                    <div class="rank">
+                        <h3 class="bi ms-2"> Role: {{user.role}} <i class="bi bi-star"></i></h3>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <div class="card-profile-image mt-5 text-center">
+                            <img [src]="user.imgUser" class="rounded-circle">
+                        </div>
+
+                    </div>
+                    <div class="buttons">
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="btn btn-sm btn-info">Conectar</a>
+                        </div>
+                        <div class="card-profile-stats d-flex justify-content-center">
+                            <div>
+                                <span class="heading">22</span>
+                                <span class="description">Favs </span>
+                            </div>
+                            <div>
+                                <span class="heading">10</span>
+                                <span class="description">Fotos</span>
+                            </div>
+                            <div>
+                                <span class="heading">89</span>
+                                <span class="description">Comentarios</span>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="custom-name">
+                                {{user.firstName}} {{user.lastName}}<span class="font-weight-light">, 27</span>
+                            </h3>
+                            <div class="h5 font-weight-300">
+                                <i class="ni location_pin mr-2"></i>Madrid, España
+                            </div>
+                            <div class="h5 mt-4">
+                                <i class="ni business_briefcase-24 mr-2"></i>Software Developer.
+                            </div>
+                            <div>
+                                <i class="ni education_hat mr-2"></i>Fundación Adecco.
+                            </div>
+                            <hr class="my-4">
+                            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
+                                and records all of his own music.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow mt-5">
+                    <div class="card-header border-0">
+                        <div class="row align-items-center ">
+                            <div class="col-8">
+                                <h3 class="mb-0">Mi cuenta </h3>
+                            </div>
+                            <div class="col-4 text-right">
+                                <a href="#!" class="btn btn-sm btn-primary">Configuración</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body ">
+                        <form [formGroup]="userForm" (ngSubmit)="save()">
+                            <h3 class=" mb-4">Información de usuario.</h3>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="firstName">Nombre</label>
+                                            <input type="text" class="form-control" id="firstName"
+                                                formControlName="firstName">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="lastName">Apellido</label>
+                                            <input type="text" class="form-control" id="lastName"
+                                                formControlName="lastName">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="email">Email</label>
+                                            <input type="email" class="form-control" id="email" formControlName="email">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <hr class="my-4">
+                            <!-- Address -->
+                            <h3 class="heading-small mb-4">Información de contacto.</h3>
+                            <div class="pl-lg-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-address">Dirección</label>
+                                            <input id="input-address" class="form-control form-control-alternative"
+                                                placeholder="Home Address"
+                                                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-city">Ciudad</label>
+                                            <input type="text" id="input-city"
+                                                class="form-control form-control-alternative" placeholder="City"
+                                                value="New York">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="input-country">País</label>
+                                            <input type="text" id="input-country"
+                                                class="form-control form-control-alternative" placeholder="Country"
+                                                value="United States">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">  
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="input-country">Codigo postal</label>
+                                            <input type="number" id="input-postal-code"
+                                                class="form-control form-control-alternative" placeholder="Postal code">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-4">
+                            <!-- Description -->
+                           
+                            <div class="pl-lg-4">
+                                <div class="form-group focused">
+                                    <label>Sobre mí</label>
+                                    <textarea rows="4" class="form-control form-control-alternative"
+                                        placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                                </div>
+                            </div>
+
+                            <div class="button">
+                                <button class="btn btn-primary rounded" type="submit">Actualizar</button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+}

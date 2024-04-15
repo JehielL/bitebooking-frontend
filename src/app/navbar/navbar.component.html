@@ -73,11 +73,11 @@
 
       <!-- Botones de usuario aquí -->
       @if (userEmail) {
-        <button class="btn btn-outline-light custom-btn">  <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
+        <button class="btn btn-outline-light custom-btn" routerLink="users/account">   <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
       }
 
       @if (isLoggedin) {
-        <button routerLink="" type="button" class="btn btn-primary ms-2" (click)="logout()" >
+        <button routerLink="" type="button" class="btn btn-primary ms-2" (click)="logout()"  >
           <i class="bi bi-box-arrow-right" ></i>
           Logout</button>
       } @else {

@@ -56,7 +56,7 @@ export class UserFormComponent{
   save(){
     const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
-      const url = 'http://localhost:8080/user';
+      const url = 'http://localhost:8080/users/';
       this.httpClient.post<User>(url,user).subscribe(backendUser =>{
         this.router.navigate(['/user',backendUser.id,'detail']); 
       });    
