@@ -6,7 +6,7 @@ main{
     top: 120px;
     left: 20px;
     z-index: 1000;
-    background-color: #ffffff;
+    background-color: #0fdceb;
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -15,7 +15,7 @@ main{
 }
 
 .btn-retroceder:hover {
-    background-color: #f0f0f0;
+    background-color: #04686b;
 }
 
 .bi-chevron-bar-left {
