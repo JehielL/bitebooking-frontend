@@ -111,9 +111,11 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
  
 
   save() {
-   
+    if (!this.restaurant)
+    return;
+  
     const booking: Booking = this.bookingForm.value as Booking;
-
+    booking.restaurant = this.restaurant;
 
     if (this.isUpdate) {
       const url = 'http://localhost:8080/bookings/' + booking.id;
