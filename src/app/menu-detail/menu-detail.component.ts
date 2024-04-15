@@ -8,7 +8,7 @@ import { Dish } from '../Interfaces/dish.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Rating } from '../Interfaces/rating.model';
 import { User } from '../Interfaces/user.model';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 
 

@@ -5,7 +5,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { User } from '../Interfaces/user.model';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({

@@ -4,7 +4,7 @@ import { Restaurant } from '../Interfaces/restaurant.model';
 import { Router, RouterLink } from '@angular/router';
 import { CarruselComponent } from '../carrusel/carrusel.component';
 import { User } from '../Interfaces/user.model';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
 import { KitchenComponent } from '../kitchen/kitchen.component';
 
@@ -13,7 +13,7 @@ import { KitchenComponent } from '../kitchen/kitchen.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   standalone: true,
-  imports: [RouterLink,CarruselComponent,HomeSinLogComponent, KitchenComponent],
+  imports: [CarruselComponent, HomeSinLogComponent, KitchenComponent, RouterLink],
 })
 export class HomeComponent implements OnInit {
   restaurants: Restaurant[] = [];

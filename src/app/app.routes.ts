@@ -19,7 +19,7 @@ import { DashboardUserComponent } from './dashboard-user/dashboard-user.componen
 import { HomeSinLogComponent } from './home-sin-log/home-sin-log.component';
 import { KitchenComponent } from './kitchen/kitchen.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { userRoleGuard } from './authentication/user-role.guard';
+import { userRoleGuard } from './services/user-role.guard';
 import { AvatarFormComponent } from './avatar-form/avatar-form.component';
 import { AccountFormComponent } from './account-form/account-form.component';
 
@@ -96,8 +96,7 @@ export const routes: Routes = [
  },
 {
    path:'restaurant-list',
-   component: RestaurantListComponent,
-   canActivate: [userRoleGuard]
+   component: RestaurantListComponent
  },
 {
    path:'restaurant/:id/detail',

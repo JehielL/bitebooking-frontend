@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 import { Restaurant } from "../Interfaces/restaurant.model";
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { Menu } from '../Interfaces/menu.model';
+import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../Interfaces/user.model';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -22,10 +24,25 @@ export class RestaurantDetailComponent implements OnInit {
   restaurants: Restaurant[] = [];
   recommendedRestaurants: Restaurant[] = [];
 
+  userId: string | null = null;
+  isLoggedin = false;
+  collapsed = true;
+  userEmail = '';
+  isAdmin = false;
+  user: User | undefined;
+  authService: AuthenticationService | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private httpClient: HttpClient
-  ) {}
+    private httpClient: HttpClient,authService: AuthenticationService  ) {
+      this.authService = authService;
+      if (this.authService) {
+        this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+        this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
+        this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+        this.authService.userId.subscribe(userId => this.userId = userId);
+      }
+    }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {

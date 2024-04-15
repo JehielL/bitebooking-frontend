@@ -58,11 +58,12 @@
   }
   </div>
 </div>
-
+@if (isLoggedin && isAdmin) {
 <div>
   <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
   <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi restaurante</button>
 </div>
+}
 
   <div class="recommendation-section py-4">
     <h2 class="h5 mb-3">Recomendaciones de Restaurantes</h2>
