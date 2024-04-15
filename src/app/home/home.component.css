@@ -8,6 +8,7 @@
     margin-bottom: 80px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     position: relative;
+    align-items: center;
   }
   
   .category {
@@ -90,8 +91,9 @@ z-index: -1;
     text-align: center;
 }
 .search{
-  margin-left: 200px;
-  width: 60%;
+  width: 80%;
+  max-width: 760px;
+  margin: 0 auto;
   
 }
 .search-container {
@@ -103,8 +105,8 @@ z-index: -1;
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-left: 440px;
-  width: 42%;
+  margin-left: 25%;
+  width: 50%;
   border-bottom-left-radius: 20px; 
   border-bottom-right-radius: 20px; 
 
