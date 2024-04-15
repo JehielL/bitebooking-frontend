@@ -1,4 +1,4 @@
-<ngb-carousel [interval]="carruselIntervalo">
+<ngb-carousel [interval]="carruselIntervalo" [showNavigationIndicators]="false">
     @for (restaurant of restaurants; track restaurant.id) {
     <ng-template ngbSlide>
         <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
