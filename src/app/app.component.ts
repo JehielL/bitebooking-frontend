@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { BookingDetailComponent } from './booking-detail/booking-detail.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
+import { Location } from '@angular/common';
 
 
 
@@ -20,12 +21,18 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 })
 export class AppComponent {
 
+  mostrarBotonRetroceso: boolean = false;
 
+  constructor(private location: Location, private router: Router) {
+    this.router.events.subscribe(() =>{
+      this.mostrarBotonRetroceso = this.router.url !== '/home';
+    });
+  }
 
-  title = 'Bite booking app'; 
+  retroceder(): void {
+    this.location.back();
+  }
 
-  
-
-
+  title = 'Bite booking app';   
 
 }

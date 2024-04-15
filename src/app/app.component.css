@@ -1,3 +1,24 @@
 main{
     padding: 0px;
 }
+.btn-retroceder {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-retroceder:hover {
+    background-color: #f0f0f0;
+}
+
+.bi-chevron-bar-left {
+    font-size: 24px;
+    color: #333;
+}
