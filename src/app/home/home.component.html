@@ -11,19 +11,11 @@
                 <h1>Bite booking</h1>
                 <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
             </div>
-                <div>
-                    <button class="btn btn-primary" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
-                    @if (showCocinasDropdown) {
-                    <div>
-                        <app-kitchen></app-kitchen>
-                    </div>
-                }
-                </div>
             <div class="input-group custom-input-group justify-content-center">
                <div class="search">
                     <input type="search" class="form-control form-control-sm rounded custom-input"
                         placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
-                        style="max-width: 600px;" (input)="buscar($any($event.target).value)">
+                        style="max-width: 760px;" (input)="buscar($any($event.target).value)">
                     @if (resultadosBusqueda.length > 0) {
                     <div class="search-container">
                         <ul class="list-group">
@@ -43,10 +35,15 @@
                         }
                     </div>
                     }
+                    
+                    <button class="btn btn-like dropdown-toggle type-kitchen" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
+                    @if (showCocinasDropdown) { 
+           
+                    <app-kitchen></app-kitchen>
+                    }
 
                 </div>
             </div>
-
             <div class="letters">
                 <h2>Categorias</h2>
             </div>
@@ -74,30 +71,14 @@
                 </a>
             </div>
             <div class="category">
-                <a href="https://formacion.fundacionadecco.org/courses/control-de-versiones-con-git-java-ed1">
-                    <i class="bi bi-egg-fried icon"></i>
-                    <p>Brunch</p>
-                </a>
-            </div>
-            <div class="category">
                 <a routerLink="/restaurant-list">
-                    <i class="bi bi-search-heart icon"></i>
+                    <i class="bi bi-shop icon"></i>
                     <p>Restaurantes</p>
                 </a>
             </div>
-            <div class="category">
-                <a routerLink="">
-                    <i class="bi bi-search-heart icon"></i>
-                    <p>Mas ...</p>
-                </a>
-            </div>
-
-
-
-
         </div>
         <div class="container-fluid">
-            <h1 class="letters">Mas populares.</h1>
+            <h1 class="letters">Hecha un vistazo a nuestros restaurantes.</h1>
             <app-carrusel></app-carrusel>
         </div>
 
