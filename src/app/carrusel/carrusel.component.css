@@ -19,7 +19,7 @@
 /* Efecto al pasar el mouse sobre la tarjeta */
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 12px 16px rgb(1, 225, 255);
+  box-shadow: 0 12px 16px rgb(255, 255, 255);
 }
 
 /* Imagen de la tarjeta */

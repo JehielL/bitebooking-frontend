@@ -18,6 +18,7 @@
     margin-top: 15px;
     padding: 20px;
     border: 2px solid rgba(253, 253, 253, 0.986);
+    box-shadow: 0 4px 8px rgb(255, 254, 254);
     border-radius: 20px;
     width: 150px;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -27,9 +28,8 @@
   
   .category:hover {
     transform: scale(1.2);
-    box-shadow: 0 12px 8px rgb(1, 225, 255);
     background-color: rgba(255, 255, 255, 0.1); 
-    color: rgb(1, 225, 255);
+    box-shadow: 0 12px 16px rgb(255, 255, 255);
   }
   
   .category p, .category .icon, .category .svg-inline--fa {
@@ -54,10 +54,10 @@ z-index: -1;
 }
 
   
-  .img-welcome {
-    position: relative;
-    background-size: cover;
-    background-position: center;
+.img-welcome {
+  position: relative;
+  background-size: cover;
+  background-position: center;
 
 }
 
@@ -89,12 +89,6 @@ z-index: -1;
     width: 100%;
     text-align: center;
 }
-
-/* parte del filtro de busqueda */
-
-
-/* Estilo para el contenedor del desplegable */
-
 .search{
   margin-left: 200px;
   width: 60%;
@@ -116,7 +110,6 @@ z-index: -1;
 
 }
 
-/* Estilo para los elementos de la lista de resultados */
 .search-container ul {
   list-style: none;
   padding: 0;
@@ -131,7 +124,7 @@ z-index: -1;
   border-bottom: none;
 }
 
-/* Estilo para el texto dentro del desplegable */
+
 .search-container li a {
   color: black;
   text-decoration: none;
