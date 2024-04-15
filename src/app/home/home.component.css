@@ -54,12 +54,20 @@
     
 
   }
-
+.myvideo{
+position: absolute;
+background-attachment: fixed;
+width: 100%;
+left: 0;
+top: 0;
+height: 100%;
+object-fit: cover;
+z-index: -1;
+}
 
   
   .img-welcome {
     position: relative;
-    background-image: url(https://img.freepik.com/free-photo/tabletop-looking-out-empty-restaurant_23-2147701293.jpg);
     background-size: cover;
     background-position: center;
 
