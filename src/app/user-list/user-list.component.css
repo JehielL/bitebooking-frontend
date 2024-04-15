@@ -19,31 +19,40 @@
     --bs-gutter-y: 0; 
   
 }
-  
-  .card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    left: -5px;
-    margin: auto;
-    width: 104%; 
-    height: 104%; 
-    border-radius: 8px; 
-    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100%);
-    z-index: -10;
-    pointer-events: none;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card::after {
-    content: "";
-    z-index: -1;
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100%);
-    transform: translate3d(0, 0, 0) scale(0.80);
-    filter: blur(40px);
-  }
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -5px;
+  margin: auto;
+  width: 104%; 
+  height: 104%; 
+  border-radius: 8px; 
+  background: linear-gradient(-45deg, #70A0AF 0%,#a663cc 50%, #0fdceb 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #ff5833b6 0%,#ffd900bb 50%rgba(255, 88, 51, 0.805)33 100%);
+  transform: translate3d(0, 0, 0) scale(0.80);
+  filter: blur(30px);
+}
+
+@keyframes fireAnimation {
+  0% { color: #FF5733; }
+  50% { color: #FFD700; }
+  100% { color: #FF5733; }
+}
+
+.card::before, .card::after {
+  animation: fireAnimation 3s infinite;
+}
   
   .card:hover::after {
     filter: blur(40px);
@@ -74,7 +83,7 @@
     --font-color-dark: #323232;
     --font-color-light: #fff;
     --bg-color: #fff;
-    --main-color: #08f5e9dc;
+    --main-color: #a663cc  ;
     --secondary-color: #505050;
     position: relative;
     width: 100% + 20px;
