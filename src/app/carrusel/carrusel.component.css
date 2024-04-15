@@ -9,16 +9,17 @@
 .card {
   max-width: 600px;
   margin: 20px auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgb(255, 254, 254);
   border-radius: 0.75rem;
   overflow: hidden;
   transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out;
+  background-color: transparent;
 }
 
 /* Efecto al pasar el mouse sobre la tarjeta */
 .card:hover {
   transform: scale(1.05);
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 16px rgb(1, 225, 255);
 }
 
 /* Imagen de la tarjeta */
@@ -44,24 +45,26 @@
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+  text-shadow: 0 .125rem .25rem rgba(252, 249, 249, 0.959);
+  color: #fcfdfd;
 }
 
 /* Texto de la tarjeta */
 .card-text {
   font-size: 1rem;
-  text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+  text-shadow: 0 .125rem .25rem rgba(253, 251, 251, 0.25);
+  color: #fcfdfd;
 }
 
 /* Botón de la tarjeta */
 .btn-outline-dark {
-  border-color: #343a40;
-  color: #343a40;
+  border-color: #ffffff;
+  color: #fcfdfd;
   transition: all 0.3s ease-in-out;
 }
 
 /* Efecto al pasar el mouse sobre el botón de la tarjeta */
 .btn-outline-dark:hover {
-  background-color: #343a40;
+  background-color: rgb(1, 225, 255);
   color: #fff;
 }

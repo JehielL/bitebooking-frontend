@@ -27,9 +27,9 @@
   
   .category:hover {
     transform: scale(1.2);
-    box-shadow: 0 12px 8px rgba(0, 0, 0, 0.611);
+    box-shadow: 0 12px 8px rgb(1, 225, 255);
     background-color: rgba(255, 255, 255, 0.1); 
-    color: #FFFFFF;
+    color: rgb(1, 225, 255);
   }
   
   .category p, .category .icon, .category .svg-inline--fa {
