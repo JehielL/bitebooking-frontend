@@ -1,11 +1,10 @@
-/* Estilos básicos para el carrusel */
+
 .ngb-carousel .carousel-inner {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Estilos de la tarjeta dentro del carrusel */
 .card {
   max-width: 600px;
   margin: 20px auto;
@@ -16,54 +15,49 @@
   background-color: transparent;
 }
 
-/* Efecto al pasar el mouse sobre la tarjeta */
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 16px rgb(255, 255, 255);
 }
 
-/* Imagen de la tarjeta */
+
 .card-img-top {
   width: 100%;
-  height: 240px; /* Altura fija para todas las imágenes */
-  object-fit: cover; /* Asegura que la imagen cubra todo el espacio asignado */
+  height: 240px; 
+  object-fit: cover; 
   transition: filter 0.5s ease-in-out;
 }
 
-/* Efecto al pasar el mouse sobre la imagen de la tarjeta */
+
 .card-img-top:hover {
   filter: grayscale(0);
 }
 
-/* Cuerpo de la tarjeta */
 .card-body {
   padding: 1rem;
-  background-color: transparent; /* Fondo con algo de transparencia */
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Título de la tarjeta */
 .card-title {
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
-  text-shadow: 0 .125rem .25rem rgba(252, 249, 249, 0.959);
+  text-shadow: 0 .125rem .25rem rgba(255, 255, 255, 0.959);
   color: #fcfdfd;
 }
 
-/* Texto de la tarjeta */
 .card-text {
   font-size: 1rem;
-  text-shadow: 0 .125rem .25rem rgba(253, 251, 251, 0.25);
+  text-shadow: 0 .125rem .25rem rgb(255, 254, 254);
   color: #fcfdfd;
 }
 
-/* Botón de la tarjeta */
+
 .btn-outline-dark {
   border-color: #ffffff;
   color: #fcfdfd;
   transition: all 0.3s ease-in-out;
 }
 
-/* Efecto al pasar el mouse sobre el botón de la tarjeta */
 .btn-outline-dark:hover {
   background-color: rgb(1, 225, 255);
   color: #fff;
