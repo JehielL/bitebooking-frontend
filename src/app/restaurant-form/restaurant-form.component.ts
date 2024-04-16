@@ -6,7 +6,6 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { __values } from 'tslib';
 import { DatePipe } from '@angular/common';
-import { appConfig } from '../app.config';
 
 
 
@@ -14,8 +13,8 @@ import { appConfig } from '../app.config';
   selector: 'app-restaurant-from',
   standalone: true,
   imports: [ReactiveFormsModule, HttpClientModule,RouterLink,DatePipe],
-  templateUrl: './restaurant-from.component.html',
-  styleUrl: './restaurant-from.component.css'
+  templateUrl: './restaurant-form.component.html',
+  styleUrl: './restaurant-form.component.css'
 })
 export class RestaurantFromComponent implements OnInit {
   restaurants: Restaurant |undefined;

@@ -7,7 +7,7 @@ import { LoginMainComponent } from './login-main/login-main.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { RestaurantFromComponent } from './restaurant-from/restaurant-from.component';
+import { RestaurantFromComponent } from './restaurant-form/restaurant-form.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
@@ -90,7 +90,7 @@ export const routes: Routes = [
    component: BookingFormComponent
 },
 {
-   path:'restaurant-from',
+   path:'restaurant-form',
    component: RestaurantFromComponent,
    canActivate: [userRoleGuard]
  },
