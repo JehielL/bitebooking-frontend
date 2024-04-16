@@ -12,35 +12,35 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-restaurant-from',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule,RouterLink,DatePipe],
+  imports: [ReactiveFormsModule,RouterLink,DatePipe],
   templateUrl: './restaurant-form.component.html',
   styleUrl: './restaurant-form.component.css'
 })
 export class RestaurantFromComponent implements OnInit {
-  restaurants: Restaurant |undefined;
-  isUpdate: boolean = false;
-  photoFile: File | undefined;
-  photoPreview: string | undefined;
-
+  
   restaurantFrom = new FormGroup({
     id: new FormControl(0),
     name: new FormControl(''),
     phone: new FormControl(''), 
     restaurantTypes:new FormControl(RestaurantType.BAR),
-    imageUrl: new FormControl(),
+    description: new FormControl(''),
     openingTime: new FormControl(new Date()),
     closingTime: new FormControl(new Date()),  
-    status: new FormControl(false),
+    status: new FormControl(true),
+    imageUrl: new FormControl(),
     city:new FormControl(''),
     address:new FormControl(''),
     number:new FormControl(''),
     postalCode:new FormControl(''),
+    averageRating: new FormControl(0)
   });
-
   
-   
+  restaurants: Restaurant |undefined;
+  isUpdate: boolean = false;
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
+
   constructor( private httpClient: HttpClient,
-               private fb: FormBuilder,
                private router: Router,
                private activatedRoute: ActivatedRoute){
 
@@ -76,7 +76,6 @@ export class RestaurantFromComponent implements OnInit {
     }
     this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()  
 
-    // OPCIONAL: PREVISUALIZAR LA IMAGEN POR PANTALLA
     let reader = new FileReader();
     reader.onload = event => this.photoPreview = reader.result as string;
     reader.readAsDataURL(this.photoFile); 
@@ -90,15 +89,16 @@ export class RestaurantFromComponent implements OnInit {
     formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
     formData.append('name', this.restaurantFrom.get('name')?.value?? '');
     formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
-    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
     formData.append('phone', this.restaurantFrom.get('phone')?.value?? '0');
-    //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
-    //formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString?? '');
+    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString() ?? '');
+    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString() ?? '');
     formData.append('status', this.restaurantFrom.get('status')?.value?.toString() ?? '');
+    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
     formData.append('city', this.restaurantFrom.get('city')?.value?? '');
     formData.append('address', this.restaurantFrom.get('address')?.value?? '');
     formData.append('number', this.restaurantFrom.get('number')?.value?? '');
     formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value?? '');
+    formData.append('averageRating', this.restaurantFrom.get('averageRating')?.value?.toString() ?? '');
     
     if(this.photoFile) {
       formData.append("photo", this.photoFile);
