@@ -1,5 +1,5 @@
 .footer-custom {
-  background-color: #1e1e1e;
+  background-color: #F48C06 ;
   color: #aaaaaa !important;
   text-align: center; /* Centra el contenido del footer */
   padding: 30px;
@@ -14,14 +14,21 @@
 }
 
 .footer-custom a {
-  background-color: #1e1e1e;
-  color: #aaaaaa !important;
+  background-color: #F48C06 ;
+  color: #03071E !important;
+  transition: all 0.5s;
+  font-weight: bold;
+}
+.footer-custom h5 {
+  background-color: #F48C06 ;
+  color: #6A040F !important;
   transition: all 0.5s;
 }
 
+
 .footer-custom a:hover {
-  background-color: #1e1e1e;
-  color: #06d3cc !important;
+ 
+  color: #b00000 !important;
 }
 
 /* Media query para dispositivos móviles */

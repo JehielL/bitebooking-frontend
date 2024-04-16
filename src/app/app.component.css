@@ -6,19 +6,28 @@ main{
     top: 120px;
     left: 20px;
     z-index: 1000;
-    background-color: #0fdceb;
+    background-color: #6A040F;
     border: none;
     cursor: pointer;
     padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 60px; /* Ancho igual al alto */
+    height: 60px; /* Alto del botón */
+    border-radius: 50%; /* Hacer el botón completamente redondo */
+    box-shadow: 0 2px 4px rgba(232, 160, 4, 0.5);
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin-top: 20px;
+    margin-left: 30px;
 }
 
 .btn-retroceder:hover {
-    background-color: #04686b;
+    background-color: #740303;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(232, 93, 4, 0.8);
 }
 
-.bi-chevron-bar-left {
+
+.bi-chevron-double-left {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
+    font-weight: bold;
 }

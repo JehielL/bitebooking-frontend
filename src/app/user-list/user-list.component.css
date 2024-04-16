@@ -2,7 +2,7 @@
     position: relative;
     max-width: 300px; 
     height: 260px;
-    background-color: #000;
+    background-color: #f9f5e9;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -28,7 +28,7 @@
   width: 104%; 
   height: 104%; 
   border-radius: 8px; 
-  background: linear-gradient(-45deg, #70A0AF 0%,#a663cc 50%, #0fdceb 100%);
+  background: linear-gradient(-45deg, #D00000 0%,#DC2F02 50%, #FAA307  100%);
   z-index: -10;
   pointer-events: none;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -39,7 +39,7 @@
   z-index: -1;
   position: absolute;
   inset: 0;
-  background: linear-gradient(-45deg, #ff5833b6 0%,#ffd900bb 50%rgba(255, 88, 51, 0.805)33 100%);
+  background: linear-gradient(-45deg, #D00000 0%,#DC2F02 50%, #FAA307  100%);
   transform: translate3d(0, 0, 0) scale(0.80);
   filter: blur(30px);
 }
@@ -66,10 +66,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%; 
+    border-radius: 999999999px; 
     transition: transform 0.2s, box-shadow 0.2s;
     max-width: 100%;
     max-height: 100%;
+    border: 2px solid #6A040F;
+  }
+  .custom-picture-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999999999px; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    max-width: 100%;
+    max-height: 100%;
+   
+    
+   
   }
   
   .custom-picture:hover {
@@ -83,7 +96,7 @@
     --font-color-dark: #323232;
     --font-color-light: #fff;
     --bg-color: #fff;
-    --main-color: #a663cc  ;
+    --main-color: #9D0208;
     --secondary-color: #505050;
     position: relative;
     width: 100% + 20px;
@@ -150,7 +163,7 @@
 }
   
   section {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
   }
   .custom-title{
     font-size: 30px;
@@ -285,4 +298,5 @@
   font-size: 20px; 
   text-align: center;
   font-weight: bold; 
+  color: #03071E;
 }

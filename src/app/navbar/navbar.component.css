@@ -1,10 +1,10 @@
 /* Estilos específicos para el botón primario */
 .btn-primary {
-  background: linear-gradient(to right, #007bff, #b30092);
+  background: linear-gradient(-45deg, #940000 0%,#f7af1d 50%, #D00000   100%);
   border: none;
   transition: background-position 0.3s ease;
   background-size: 200% auto;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .btn-login {
   background: linear-gradient(to right, #b30092, #009bb3);
@@ -12,6 +12,10 @@
   transition: background-position 0.3s ease, transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   background-size: 200% auto;
   color: white;
+}
+
+.nav-link{
+  color: #000000;
 }
 .btn-primary:hover {
   background-position: right center; 
@@ -99,13 +103,13 @@
 
 .glitch:before {
   animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-  color: #00ccff;
+  color: #FFD700;
   z-index: -1;
 }
 
 .glitch:after {
   animation: glitch 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
-  color: #9c00e5;
+  color: #020101;
   z-index: -2;
 }
 
@@ -136,4 +140,9 @@
 }
 
 
+.bg-custom{
+  background:  #F48C06;
+}
 
+
+  
