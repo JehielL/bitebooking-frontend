@@ -45,7 +45,7 @@
   <div class="row">
     @for (Menu of Menus; track Menu) {
     <div class="col-md-4 mb-3">
-      <div class="card h-100">
+      <div class="card h-100" [routerLink]="['/menus', Menu.id, 'detail']" style="cursor: pointer;">
         <img class="card-img-top" [src]="Menu.imgMenu" alt="Dish 1">
         <div class="card-body">
           <h5 class="card-title">{{Menu.title}}</h5>

@@ -29,10 +29,6 @@
 .card-text {
   flex-grow: 1; 
 }
-
-.card-price {
-  margin-top: auto;
-}
 .img-fluid{
   display: flex;
   flex-direction: column;
