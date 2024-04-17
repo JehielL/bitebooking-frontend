@@ -7,7 +7,6 @@ import { DecodedToken } from './decoded.token.dto';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  [x: string]: any;
   isLoggedin = new BehaviorSubject<boolean>(this.existsToken());
   userEmail = new BehaviorSubject<string>(this.getUserEmail());
   isAdmin = new BehaviorSubject<boolean>(this.getIsAdmin());

@@ -25,7 +25,7 @@ export class FooterComponent {
     this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
     this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-    this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
+    this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
   }
 
 

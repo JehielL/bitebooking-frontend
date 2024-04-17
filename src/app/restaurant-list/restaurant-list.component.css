@@ -66,8 +66,10 @@
   margin-bottom: 1rem; 
 }
 .search{
-  margin-left: 200px;
-  width: 60%;
+  width: 80%;
+  max-width: 760px;
+  margin: 0 auto;
+  
 }
 .search-container {
   position: absolute;
@@ -78,15 +80,13 @@
   max-height: 200px;
   overflow-y: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 42%;
-  margin-left: 390px;
+  margin-left: 25%;
+  width: 50%;
   border-bottom-left-radius: 20px; 
   border-bottom-right-radius: 20px; 
-  
- 
+
 }
 
-/* Estilo para los elementos de la lista de resultados */
 .search-container ul {
   list-style: none;
   padding: 0;
@@ -101,7 +101,7 @@
   border-bottom: none;
 }
 
-/* Estilo para el texto dentro del desplegable */
+
 .search-container li a {
   color: black;
   text-decoration: none;
@@ -123,7 +123,7 @@
   color: white;
 }
 .list-group-item a:visited {
-  color: #e78f0a;
+  color: #0ae71c;
 }
 ::ng-deep .search-container ::selection {
   background-color: transparent;
