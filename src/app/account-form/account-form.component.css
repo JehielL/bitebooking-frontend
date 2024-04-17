@@ -143,6 +143,10 @@ h6,
   margin-bottom: .5rem;
   color: #03071E;
 }
+.custom-h3{
+
+  color: white;
+}
 
 h1,
 .h1 {
@@ -509,6 +513,7 @@ textarea.form-control {
 
 .card-profile-image {
   position: relative;
+ 
 }
 
 .card-profile-image img {
@@ -518,6 +523,7 @@ textarea.form-control {
   transition: all .15s ease;
   transform: translate(-50%, -30%);
   border-radius: .375rem;
+  border: 2px solid #6A040F;
  
 }
 
@@ -564,7 +570,7 @@ textarea.form-control {
   font-size: .875rem;
   font-weight: 600;
   
-  color: #f6f8ff;
+  color: #370617;
 }
 
 .form-control {
