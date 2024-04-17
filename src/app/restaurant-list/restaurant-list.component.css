@@ -56,7 +56,7 @@
   }
 
   a {
-    color: white; 
+    color: rgb(255, 255, 255); 
     text-decoration: none; 
 }
 .horizontal-bars {
@@ -163,4 +163,11 @@
 
 .bi-telephone-fill, .bi-star-fill, .bi-fire {
   animation: fireAnimation 3s infinite;
+}
+.btn-primary {
+  background: linear-gradient(to right, #007bff, #b30092);
+  transition: background-position 0.3s ease;
+  color: white; 
+  padding: 0px 10px;
+  
 }

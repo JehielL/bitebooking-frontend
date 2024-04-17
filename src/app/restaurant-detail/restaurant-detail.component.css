@@ -46,12 +46,12 @@
   background-color: #ffffff;
  }
  .btn-primary {
-  background: linear-gradient(to right, #007bff, #b30092); /* Degradado de izquierda a derecha */
-  border: none; /* Eliminar borde */
-  transition: background-position 0.3s ease; /* Transición suave */
-  background-size: 200% auto; /* Tamaño del degradado */
-  color: white; /* Color del texto */
-  padding: 10px 20px; /* Ajusta el padding para controlar el tamaño */
+  background: linear-gradient(to right, #007bff, #b30092);
+  border: none;
+  transition: background-position 0.3s ease; 
+  background-size: 200% auto;
+  color: white; 
+  padding: 10px 20px; 
   min-width: 520px;
 }
 
