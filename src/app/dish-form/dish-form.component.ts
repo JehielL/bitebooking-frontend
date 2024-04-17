@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Dish } from '../Interfaces/dish.model';
 import { Menu } from '../Interfaces/menu.model';
 import AOS from 'aos';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -33,13 +34,27 @@ export class DishFormComponent implements OnInit {
   dish: Dish | undefined;
   isUpdate: boolean = false;
   selectedMenu: Menu | undefined;
+  authService: AuthenticationService | undefined;
+  isAdmin = false;
+  userId: string | null = null;
+  isLoggedin = false;
+  isRestaurant = false;
+
 
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
-  }
+    authService: AuthenticationService  ) {
+      this.authService = authService;
+      if (this.authService) {
+        this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+        this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+        this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
+        this.authService.userId.subscribe(userId => this.userId = userId);
+      }
+    }
 
   
 
@@ -54,17 +69,16 @@ export class DishFormComponent implements OnInit {
       const id = params['id'];
       if (!id) return;
 
-      const menuUrl = 'http://localhost:8080/menus/' + id;
-      this.httpClient.get<Menu>(menuUrl).subscribe(m => this.menu = m);
+      this.httpClient.get<Menu>('http://localhost:8080/menus/' + id)
+      .subscribe(menus => this.menu = menus);
 
       // EDICION
 
       this.httpClient.get<Dish>('http://localhost:8080/dishes/' + id).subscribe(dish => {
+        this.dishForm.reset({});  
         this.dish = dish;
-        this.dishForm.reset(dish);
-        this.dishForm.get('menu')?.setValue(dish.menu);
         this.isUpdate = true;
-        
+     
       });
 
     });
@@ -87,9 +101,11 @@ export class DishFormComponent implements OnInit {
 
   save() {
 
-    const dish: Dish = this.dishForm.value as Dish;
-    console.log(dish);
+    if (!this.menu)
+      return;
 
+    const dish: Dish = this.dishForm.value as Dish;
+    dish.menu = this.menu;
     // Crear FormData
     let formData = new FormData();
     formData.append('id', this.dishForm.get('id')?.value?.toString() ?? '0');
