@@ -21,10 +21,23 @@
     background-size: cover;
     transition: filter 1s ease;
   }
-  .card-cover:hover{
 
-    filter: grayscale(0%);
-  }
+  .card-img-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+    border-radius: .25rem; /* Mantén el borde redondeado de la tarjeta */
+}
+
+.card-img-overlay {
+    position: relative; /* Esto es importante para posicionar correctamente el contenido sobre la imagen */
+    z-index: 1; /* Asegúrate de que el contenido esté sobre la imagen */
+}
+
+
   .feature-icon-small {
     width: 3rem;
     height: 3rem;
