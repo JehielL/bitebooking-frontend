@@ -100,7 +100,8 @@ export const routes: Routes = [
  },
 {
    path:'restaurant/:id/detail',
-   component: RestaurantDetailComponent
+   component: RestaurantDetailComponent,
+   canActivate: [userRoleGuard]
  },
  {
    path:'restaurant/:id/update',
