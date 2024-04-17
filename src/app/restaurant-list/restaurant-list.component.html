@@ -78,17 +78,25 @@
                     <img class="card-img-cover" [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)" alt="{{restaurant.name}}">
                         <div class="card-img-overlay d-flex flex-column p-5 pb-3 text-shadow-1">
                           <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
+                          <ul> 
+                            <li>
+                              <a class="d-flex align-items-center">
+                                <small class="bi bi-fire"></small>
+                                {{getRestaurantType(restaurant.restaurantType)}}
+                              </a>
+                            </li>
+                          </ul>
+
                       <ul class="d-flex list-unstyled mt-auto">
-                        <li class="me-auto">
-                          <a [routerLink]="['/bookings',restaurant.id, 'reserve']"> 
-                            <small class="bi bi-calendar-check-fill fs-1"></small>
-                          </a>
+                        <li class="d-flex align-items-center">
+                          <a  [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-primary">RESERVA
+                              <i class="bi bi-box-arrow-right"></i>
+                        </a>
                       </li>
                         <li class="d-flex align-items-center">
                           <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill"></small>
                             {{restaurant.phone}}
                           </a>
-                          
                         </li>
                         <li class="d-flex align-items-center">
                           <a class="bi me-2" width="1em" height="1em">
