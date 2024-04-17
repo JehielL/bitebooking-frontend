@@ -16,7 +16,7 @@ import { User } from '../Interfaces/user.model';
   styleUrls: ['./restaurant-detail.component.css']
 })
 export class RestaurantDetailComponent implements OnInit {
-  Menus: Menu[] = [];
+  menus: Menu[] = [];
   menu: Menu | undefined;
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
@@ -56,7 +56,7 @@ export class RestaurantDetailComponent implements OnInit {
 
         const menusUrl = `http://localhost:8080/menus/byRestaurant/${id}`;
         this.httpClient.get<Menu[]>(menusUrl)
-          .subscribe(Menus => this.Menus = Menus);
+          .subscribe(Menus => this.menus = Menus);
 
         const apiUrl = 'http://localhost:8080/restaurant';
         this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {

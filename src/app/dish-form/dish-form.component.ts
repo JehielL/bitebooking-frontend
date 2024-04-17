@@ -64,7 +64,7 @@ export class DishFormComponent implements OnInit {
         this.dishForm.reset(dish);
         this.dishForm.get('menu')?.setValue(dish.menu);
         this.isUpdate = true;
-        this.menu = dish.menu;
+        
       });
 
     });

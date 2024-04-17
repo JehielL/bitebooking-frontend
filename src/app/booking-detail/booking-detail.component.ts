@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgbAccordionModule, NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
+import { Restaurant } from '../Interfaces/restaurant.model';
 
 @Component({
   selector: 'app-booking-detail',
@@ -16,6 +17,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class BookingDetailComponent implements OnInit {
 
   booking: Booking | undefined;
+  restaurant: Restaurant | undefined;
 
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
