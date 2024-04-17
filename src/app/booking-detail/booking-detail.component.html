@@ -108,7 +108,7 @@
           </div>
         </div>
       </div>
-      @if (isAdmin) {
+      @if (isAdmin || isRestaurant) {
         <div class="buttons">
 
           <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking.id, 'update']">Editar

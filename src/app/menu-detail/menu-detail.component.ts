@@ -24,6 +24,7 @@ export class MenuDetailComponent implements OnInit {
   menu: Menu | undefined;
   user: User | undefined;
   isAdmin = false;
+  isRestaurant = false;
 
 
   ratings: Rating[] = [];
@@ -41,7 +42,7 @@ export class MenuDetailComponent implements OnInit {
     private httpClient: HttpClient,
     private authService: AuthenticationService) {
       this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-      console.log(this.isAdmin);
+      this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
       }
 
   ngOnInit(): void {

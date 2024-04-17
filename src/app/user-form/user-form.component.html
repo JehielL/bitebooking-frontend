@@ -7,27 +7,23 @@
     <div class="col-lg-6">
       <form class="mt-5" [formGroup]="registerUserForm" (ngSubmit)="save()">
         <div class="text-center">
-          <h1 class="h3 mb-3 mt-1 fw-normal">Sign Up</h1>
+          <h1 class="h3 mb-3 mt-1 fw-normal">Registrate</h1>
         </div>
 
         <div class="coolinput form-floating mb-3">
           <input type="text" class="form-control" id="firstName" placeholder="" formControlName="firstName">
-          <label for="firstName">First Name *</label>
+          <label for="firstName">Nombres*</label>
           @if (registerUserForm.controls.firstName.touched && registerUserForm.controls.firstName.errors) {
           <div>
-            <small class="text-danger">Firts Name Required</small>
+            <small class="text-danger">Introduce un Nombre</small>
           </div>
           }
         </div>
 
         <div class="coolinput form-floating mb-3">
           <input type="text" class="form-control" id="lastName" placeholder="lastName" formControlName="lastName">
-          <label for="lastName">Last Name *</label>
-          @if (registerUserForm.controls.lastName.touched && registerUserForm.controls.lastName.errors) {
-          <div>
-            <small class="text-danger">Last Name Required</small>
-          </div>
-          }
+          <label for="lastName">Apellido</label>
+          
         </div>
 
         <div class="coolinput form-floating mb-3">
@@ -37,14 +33,14 @@
 
         <div class="coolinput form-floating mb-3">
           <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
-          <label for="phone">Mobile Phone*</label>
+          <label for="phone">Telefono*</label>
           @if (registerUserForm.controls.phone.touched && registerUserForm.controls.phone.errors) {
           <div>
             @if (registerUserForm.controls.phone.errors['required']) {
-            <small class="text-danger">Phone required</small>
+            <small class="text-danger">Introduce un Telefono</small>
             }
             @if (registerUserForm.controls.phone.errors['pattern']) {
-            <small class="text-danger">Incorrect Telephone Format. It must have 9 digits.</small>
+            <small class="text-danger">Formato de teléfono incorrecto. Debe tener 9 dígitos.</small>
             }
           </div>
           }
@@ -52,14 +48,14 @@
 
         <div class="coolinput form-floating mb-3">
           <input type="email" class="form-control" id="password" placeholder="name@example.com" formControlName="email">
-          <label for="email">Email address *</label>
+          <label for="email">Correo Electronico *</label>
           @if (registerUserForm.controls.email.touched && registerUserForm.controls.email.errors) {
           <div>
             @if (registerUserForm.controls.email.errors['required']) {
-            <small class="text-danger">Se Requiere un Email</small>
+            <small class="text-danger">Se Requiere un Correo</small>
             }
             @if (registerUserForm.controls.email.errors['email']) {
-            <small class="text-danger">The Email Format is Incorrect</small>
+            <small class="text-danger">El formato del correo electrónico es incorrecto</small>
             }
           </div>
           }
@@ -68,15 +64,15 @@
 
         <div class="coolinput form-floating mb-3">
           <input type="password" class="form-control" id="Password" placeholder="password" formControlName="password">
-          <label for="password">Password *</label>
+          <label for="password">Contraseña *</label>
 
 
         </div>
 
-        <div class="coolinput form-floating ">
+        <div class="coolinput form-floating mb-3">
           <input type="password" class="form-control" id="passwordConfirm" placeholder="password"
             formControlName="passwordConfirm">
-          <label for="passwordConfirm">Confirme Password *</label>
+          <label for="passwordConfirm">Confirme la Contraseña *</label>
           @if(
           registerUserForm.controls.passwordConfirm.touched &&
           (
@@ -85,34 +81,13 @@
           registerUserForm.getError('confirmError')
           )
           ) {
-          <small class="text-danger">
+          <small class="text-danger ">
             La contraseña y confirmación son obligatorias, deben coincidir y estar comprendidas entre 8 y 30 caracteres.
           </small>
           }
 
         </div>
 
-        <fieldset>
-          <legend class="col-form-label col-sm-2 pt-0 mb-3"></legend>
-          <div class="col-sm-10">
-            <div class="coolinput form-check ">
-              <input class="form-check-input" type="radio" name="role" id="role" formControlName="role"
-                value="{{ roles.USER }}">
-              <label class="form-check-label" for="gridRadios1">
-                Usuario
-              </label>
-            </div>
-            <div class="coolinput form-check mb-3">
-              <input class="form-check-input" type="radio" name="role" id="role" value="{{ roles.ADMIN }}"
-                formControlName="role">
-              <label class="form-check-label" for="gridRadios2">
-                Empresa restauración
-              </label>
-            </div>
-          </div>
-        </fieldset>
-
-        <!--<div class="text-end mb-3"><small class=" text-danger">Completa los Campos Obligatorios</small> </div>-->
         <div class="mb-3 text-end">
 
           <button class="custom-btn " type="submit" [disabled]="registerUserForm.invalid">Guardar</button>

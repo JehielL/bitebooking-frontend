@@ -109,7 +109,7 @@
 
         </div>
       </div>
-      @if (isAdmin) {
+      @if (isAdmin || isRestaurant) {
         <div class="buttons">
 
           <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
@@ -230,7 +230,7 @@
             <div class="horizontal-bars"></div>
           </div>
           <div class="row">
-            @if (isAdmin) {
+            @if (isAdmin || isRestaurant) {
               <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="custom-button">
                 <i class="bi bi-plus-circle"></i>
                 <span class="button-text">Agrega un nuevo elemento</span>

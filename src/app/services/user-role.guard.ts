@@ -8,7 +8,7 @@ export const userRoleGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthenticationService);
   const router = inject(Router);
 
-  if (authService.getIsAdmin()) {
+  if (authService.getIsAdmin() || authService.getIsRestaurant()){
     return true;
   } else {
     return router.navigate(['/home']);

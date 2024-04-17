@@ -19,6 +19,7 @@ export class BookingListComponent implements OnInit {
   bookings: Booking[] = [];
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
+  isRestaurant = false;
   users: User[] = [];
   booking: Booking | undefined;
   userId: string | null = null;
@@ -31,6 +32,7 @@ export class BookingListComponent implements OnInit {
   ) {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.authService.userId.subscribe(userId => this.userId = userId);
+    this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
 
     console.log(this.isAdmin);
     console.log(this.userId);

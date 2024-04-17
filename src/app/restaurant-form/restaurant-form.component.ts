@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { __values } from 'tslib';
 import { DatePipe } from '@angular/common';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 
@@ -37,12 +38,18 @@ export class RestaurantFromComponent implements OnInit {
   
   restaurants: Restaurant |undefined;
   isUpdate: boolean = false;
+  isAdmin = false;
+  isLoggedin = false;
   photoFile: File | undefined;
   photoPreview: string | undefined;
 
   constructor( private httpClient: HttpClient,
                private router: Router,
-               private activatedRoute: ActivatedRoute){
+               private activatedRoute: ActivatedRoute,
+                private authService: AuthenticationService){
+                this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+                this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+                
 
               }
 

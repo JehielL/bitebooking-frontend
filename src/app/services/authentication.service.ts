@@ -7,10 +7,12 @@ import { DecodedToken } from './decoded.token.dto';
   providedIn: 'root'
 })
 export class AuthenticationService {
+  [x: string]: any;
   isLoggedin = new BehaviorSubject<boolean>(this.existsToken());
   userEmail = new BehaviorSubject<string>(this.getUserEmail());
   isAdmin = new BehaviorSubject<boolean>(this.getIsAdmin());
   userId = new BehaviorSubject<string | null>(this.getUserId());
+  isRestaurant = new BehaviorSubject<boolean>(this.getIsRestaurant());
 
   constructor() { } 
 
@@ -20,6 +22,7 @@ export class AuthenticationService {
     this.userEmail.next(this.getUserEmail());
     this.isAdmin.next(this.getIsAdmin());
     this.userId.next(this.getUserId());
+    this.isRestaurant.next(this.getIsRestaurant());
   }
 
   existsToken() {
@@ -32,6 +35,7 @@ export class AuthenticationService {
     this.userEmail.next('');
     this.isAdmin.next(false);
     this.userId.next(null);
+    this.isRestaurant.next(false);
   }
 
   getUserEmail() {
@@ -52,6 +56,12 @@ export class AuthenticationService {
     const token = localStorage.getItem('jwt_token');
     if (!token) return null;
     const decodedToken = jwtDecode(token) as DecodedToken;
-    return decodedToken.sub; // Accediendo al ID del usuario a través de la propiedad 'sub'
+    return decodedToken.sub;
+  }
+  getIsRestaurant() {
+    const token = localStorage.getItem('jwt_token');
+    if(!token) return false;
+    const decodedToken = jwtDecode(token) as DecodedToken;
+    return decodedToken.role === 'RESTAURANT';
   }
 }

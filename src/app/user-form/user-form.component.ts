@@ -32,7 +32,6 @@ export class UserFormComponent{
   },
   {validators: this.passwordConfirmValidator}
   );
-  backendUser: any;
 
   constructor(private httpClient : HttpClient,
               private router: Router,  // esto es para navegar
@@ -56,9 +55,9 @@ export class UserFormComponent{
   save(){
     const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
-      const url = 'http://localhost:8080/users/';
+      const url = 'http://localhost:8080/users/register';
       this.httpClient.post<User>(url,user).subscribe(backendUser =>{
-        this.router.navigate(['/user',backendUser.id,'detail']); 
+        this.router.navigate(['/home']); 
       });    
   } 
 }
