@@ -1,18 +1,39 @@
 <ngb-carousel [interval]="carruselIntervalo" [showNavigationIndicators]="false">
     @for (restaurant of restaurants; track restaurant.id) {
     <ng-template ngbSlide>
-        <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
-            <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
-            <div class="card-body">
-                <h5 class="card-title">{{restaurant.name}}</h5>
-                <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
-                @if (isLoggedin) {
-                <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
-            }@else {
-                <a [routerLink]="['/user/login']" class="btn btn-outline-dark">Reservar</a>
-            }
+
+        @if (restaurant.imageUrl.startsWith('http')) {
+
+            <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
+                <img [src]="restaurant.imageUrl" class="card-img-top" [alt]="restaurant.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{restaurant.name}}</h5>
+                    <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
+                    @if (isLoggedin) {
+                    <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
+                }@else {
+                    <a [routerLink]="['/user/login']" class="btn btn-outline-dark">Reservar</a>
+                }
+                </div>
             </div>
-        </div>
+
+        }@else {
+            
+            <div class="card mx-auto mb-5" style="cursor: pointer;" [routerLink]="['/restaurant',restaurant.id,'detail']"> 
+                <img [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)" class="card-img-top" [alt]="restaurant.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{restaurant.name}}</h5>
+                    <p class="card-text">{{getRestaurantType(restaurant.restaurantType)}}</p>
+                    @if (isLoggedin) {
+                    <a [routerLink]="['/bookings', restaurant.id,'update']" class="btn btn-outline-dark">Reservar</a>
+                }@else {
+                    <a [routerLink]="['/user/login']" class="btn btn-outline-dark">Reservar</a>
+                }
+                </div>
+            </div>
+            
+        }
+        
     </ng-template>
 }
 </ngb-carousel>
