@@ -49,7 +49,7 @@
               <div class="buttons ms-2">
                 <button class="btn btn-outline-light ms-2" [routerLink]="['/bookings', booking.id, 'detail']">Ver
                   Reserva</button>
-                  @if (isAdmin) {
+                  @if (isAdmin || isRestaurant) {
                     <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking?.id, 'update']">
                       Editar Reserva
                     </button>

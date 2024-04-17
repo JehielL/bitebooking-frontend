@@ -58,7 +58,7 @@
   }
   </div>
 </div>
-@if (isLoggedin && isAdmin) {
+@if (isAdmin || isRestaurant) {
 <div>
   <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
   <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi restaurante</button>

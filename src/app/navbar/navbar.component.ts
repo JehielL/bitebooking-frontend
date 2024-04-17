@@ -19,6 +19,7 @@ export class NavbarComponent {
   collapsed = true;
   userEmail = '';
   isAdmin = false;
+  isRestaurant = false;
   user: User | undefined;
 
   constructor(private authService: AuthenticationService,
@@ -27,6 +28,7 @@ export class NavbarComponent {
     this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
     this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
     this.authService.userId.subscribe(userId => this.userId = userId);
   }
 

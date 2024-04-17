@@ -19,6 +19,7 @@ export class BookingDetailComponent implements OnInit {
 
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
+  isRestaurant = false;
 
 
   constructor(
@@ -26,7 +27,7 @@ export class BookingDetailComponent implements OnInit {
     private httpClient: HttpClient,
     private authService: AuthenticationService) {
       this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-      console.log(this.isAdmin);
+      this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
       }
 
   ngOnInit(): void {

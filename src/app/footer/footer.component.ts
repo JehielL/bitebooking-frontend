@@ -12,6 +12,7 @@ import { AuthenticationService } from '../services/authentication.service';
 export class FooterComponent {
 
   isAdmin = false;
+  isRestaurant = false;
   title = 'frontend'
   isLoggedin = false;
   collapsed = true;
@@ -24,6 +25,7 @@ export class FooterComponent {
     this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
     this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
   }
 
 

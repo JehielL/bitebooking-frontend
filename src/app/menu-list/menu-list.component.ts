@@ -18,7 +18,7 @@ export class MenuListComponent {
   searchTerm: string = '';
   maxResultados: number = 5;
   minResultados: number = 5;
-http: any;
+
 
   constructor(private httpClient: HttpClient) { }
   puedeMostrarMas: boolean = false;
