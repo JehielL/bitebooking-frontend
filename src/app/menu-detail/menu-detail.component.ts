@@ -25,7 +25,9 @@ export class MenuDetailComponent implements OnInit {
   user: User | undefined;
   isAdmin = false;
   isRestaurant = false;
-
+  authService: AuthenticationService | undefined;
+  userId: string | null = null;
+  isLoggedin = false;
 
   ratings: Rating[] = [];
   ratingForm = new FormGroup({
@@ -38,15 +40,18 @@ export class MenuDetailComponent implements OnInit {
   users: User[] = [];
 
   constructor(
-    private activedRoute: ActivatedRoute,
-    private httpClient: HttpClient,
-    private authService: AuthenticationService) {
-      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-      this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
+    private activatedRoute: ActivatedRoute,
+    private httpClient: HttpClient,authService: AuthenticationService  ) {
+      this.authService = authService;
+      if (this.authService) {
+        this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+        this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+        this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
+        this.authService.userId.subscribe(userId => this.userId = userId);
       }
-
+    }
   ngOnInit(): void {
-    this.activedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
       const menuUrl = 'http://localhost:8080/menus/' + id;
@@ -62,6 +67,8 @@ export class MenuDetailComponent implements OnInit {
       this.httpClient.get<Dish[]>('http://localhost:8080/dishes/filter-by-menu/' + id)
       .subscribe(dishes => this.dishes = dishes);
     });
+
+    console.log(this.isAdmin);
   }
 
   delete(menu: Menu) {
