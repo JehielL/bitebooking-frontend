@@ -19,9 +19,11 @@
 
                     </div>
                     <div class="buttons">
+                        @if (isAdmin) {
                         <div class="d-flex justify-content-center">
                             <a routerLink="/restaurant-form" class="btn btn-custom">Crear Restaurant</a>
                         </div>
+                    }
                         <div class="card-profile-stats d-flex justify-content-center">
                             <div>
                                 <span class="heading">22</span>

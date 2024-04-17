@@ -3,6 +3,7 @@ import { User } from '../Interfaces/user.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-account-form',
@@ -14,6 +15,8 @@ import { RouterLink } from '@angular/router';
 export class AccountFormComponent implements OnInit{
 
   user: User | undefined;
+  authService: AuthenticationService | undefined
+  isAdmin = false;
   userForm = new FormGroup({
     firstName: new FormControl(),
     lastName: new FormControl(),
@@ -21,8 +24,9 @@ export class AccountFormComponent implements OnInit{
     
   });
 
-  constructor(private httpClient: HttpClient){
-
+  constructor(private httpClient: HttpClient,
+              authService: AuthenticationService){
+                authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
   ngOnInit(): void {
