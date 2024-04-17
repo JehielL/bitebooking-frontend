@@ -22,6 +22,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { userRoleGuard } from './services/user-role.guard';
 import { AvatarFormComponent } from './avatar-form/avatar-form.component';
 import { AccountFormComponent } from './account-form/account-form.component';
+import { userLoggedInGuard } from './services/user-logged-in.guard';
 
 
 
@@ -39,13 +40,10 @@ export const routes: Routes = [
    path: 'home-logout',
    component: HomeSinLogComponent
  },
- {
-   path: 'bitebooking',
-   component: HomeSinLogComponent
-},
 {
    path:'user/:id/update',
-   component: DashboardUserComponent
+   component: DashboardUserComponent,
+   canActivate: [userLoggedInGuard]
 },
  {
    path:'user/login',
@@ -53,16 +51,19 @@ export const routes: Routes = [
  },
  {
   path:'user/list',
-  component: UserListComponent
+  component: UserListComponent,
+  canActivate: [userLoggedInGuard]
 },
 {
    path:'user/:id/detail',
-   component: UserDetailComponent
+   component: UserDetailComponent,
+   canActivate: [userLoggedInGuard]
  },
 
 {
    path: 'user/detail',
-   component: UserDetailComponent
+   component: UserDetailComponent,
+   canActivate: [userLoggedInGuard]
 },
  {
    path:'user/register',
@@ -70,24 +71,29 @@ export const routes: Routes = [
  },
  {
    path: 'bookings/user/:id',
-   component: BookingListComponent
+   component: BookingListComponent,
+   canActivate: [userLoggedInGuard]
  },
  {
     path: 'bookings',
-    component: BookingListComponent
+    component: BookingListComponent,
+    canActivate: [userLoggedInGuard]
  },
  {
    path: 'bookings/:id/detail',
-   component: BookingDetailComponent
+   component: BookingDetailComponent,
+   canActivate: [userLoggedInGuard]
 },
 
  {
    path: 'bookings/:id/update',
-   component: BookingFormComponent
+   component: BookingFormComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'bookings/create',
-   component: BookingFormComponent
+   component: BookingFormComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path:'restaurant-form',
@@ -96,11 +102,13 @@ export const routes: Routes = [
  },
 {
    path:'restaurant-list',
-   component: RestaurantListComponent
+   component: RestaurantListComponent,
+   canActivate: [userLoggedInGuard]
  },
 {
    path:'restaurant/:id/detail',
-   component: RestaurantDetailComponent
+   component: RestaurantDetailComponent,
+   canActivate: [userLoggedInGuard]
  },
  {
    path:'restaurant/:id/update',
@@ -109,7 +117,8 @@ export const routes: Routes = [
  },
  {
    path: 'menus',
-   component: MenuListComponent
+   component: MenuListComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'menus/:id/create',
@@ -125,7 +134,8 @@ export const routes: Routes = [
 },
 {
    path: 'menus/:id/detail',
-   component: MenuDetailComponent
+   component: MenuDetailComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'dishes/create',
@@ -144,7 +154,8 @@ export const routes: Routes = [
 },
 {
    path: 'bookings/:id/reserve',
-   component: BookingFormComponent
+   component: BookingFormComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
  path: 'menus/create',
@@ -153,11 +164,13 @@ export const routes: Routes = [
 },
 {
    path: 'kitchen',
-   component: KitchenComponent
+   component: KitchenComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'restaurant-list/:tipoCocina',
-   component: RestaurantListComponent
+   component: RestaurantListComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'about-us',
@@ -166,16 +179,13 @@ export const routes: Routes = [
 },
 {
    path: 'users/account',
-   component: AccountFormComponent
+   component: AccountFormComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
    path: 'users/account/avatar',
-   component: AvatarFormComponent
-},
-{
-   path: 'homesinlog',
-   component: HomeSinLogComponent
-
+   component: AvatarFormComponent,
+   canActivate: [userLoggedInGuard]
 },
 {
     path: '**',
