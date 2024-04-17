@@ -165,7 +165,7 @@
   animation: fireAnimation 3s infinite;
 }
 .btn-primary {
-  background: linear-gradient(to right, #007bff, #b30092);
+  background: linear-gradient(to right, #f7af1d , #000000);
   transition: background-position 0.3s ease;
   color: white; 
   padding: 0px 10px;
