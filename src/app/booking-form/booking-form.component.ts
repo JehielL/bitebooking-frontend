@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Menu } from '../Interfaces/menu.model';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { CurrencyPipe, DatePipe } from '@angular/common';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -26,6 +27,11 @@ export class BookingFormComponent implements OnInit {
   totalPrice: any;
   extraPrice: any;
   extraService: any;
+  isAdmin = false;
+  isRestaurant = false;
+  authService: AuthenticationService | undefined;
+  userId: string | null = null;
+  isLoggedin = false;
   
 
   bookingForm = new FormGroup({
@@ -45,14 +51,23 @@ export class BookingFormComponent implements OnInit {
   });
 
   
- 
-  
   constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) {
-  }
+    authService: AuthenticationService  ) {
+      this.authService = authService;
+      if (this.authService) {
+        this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+        this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+        this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
+        this.authService.userId.subscribe(userId => this.userId = userId);
+      }
+    }
+  
+
+
 
   showFinishMessage = false;
 
@@ -113,7 +128,6 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
   save() {
     if (!this.restaurant)
     return;
-  
     const booking: Booking = this.bookingForm.value as Booking;
     booking.restaurant = this.restaurant;
 
