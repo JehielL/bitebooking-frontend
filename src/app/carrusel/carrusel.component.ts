@@ -19,6 +19,7 @@ export class CarruselComponent implements OnInit {
   restaurants: Restaurant[] = [];
   restaurantType = RestaurantType;
   carruselIntervalo = 2000;
+  
 
   userId: string | null = null;
   isLoggedin = false;

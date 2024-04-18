@@ -1,0 +1,21 @@
+<div class="ranking-container">
+    <h2 class="ranking-title">Top Restaurantes</h2>
+    <ul class="ranking-list">
+        @for (restaurant of restaurantTop;  track restaurant; ) {
+      <li class="ranking-item">
+        <img class="ranking-image" [src]="restaurant.imageUrl" alt="{{ restaurant.name }}">
+        <div class="ranking-info">
+          <h3 class="restaurant-name">{{ restaurant.name }}</h3>
+          <p class="restaurant-description">{{ restaurant.description }}</p>
+          <div class="restaurant-meta">
+            <span class="restaurant-rating">
+              <i class="bi bi-star-fill"></i> {{ restaurant.averageRating }}
+            </span>
+            <span class="restaurant-cuisine">{{getRestaurantType(restaurant.restaurantType)}}</span>
+          </div>
+        </div>
+      </li>
+    }
+    </ul>
+  </div>
+  

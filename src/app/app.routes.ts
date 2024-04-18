@@ -23,6 +23,7 @@ import { userRoleGuard } from './services/user-role.guard';
 import { AvatarFormComponent } from './avatar-form/avatar-form.component';
 import { AccountFormComponent } from './account-form/account-form.component';
 import { userLoggedInGuard } from './services/user-logged-in.guard';
+import { RankingComponent } from './ranking/ranking.component';
 
 
 
@@ -188,8 +189,12 @@ export const routes: Routes = [
    canActivate: [userLoggedInGuard]
 },
 {
+   path: 'ranking',
+   component: RankingComponent,
+   canActivate: [userLoggedInGuard]
+},
+{
     path: '**',
     component:NotFoundComponent
-},
-
+}
 ];
