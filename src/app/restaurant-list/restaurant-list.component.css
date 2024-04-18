@@ -164,8 +164,8 @@
 .bi-telephone-fill, .bi-star-fill, .bi-fire {
   animation: fireAnimation 3s infinite;
 }
-.btn-primary {
-  background: linear-gradient(to right, #f7af1d , #000000);
+.btn-custom {
+  background: linear-gradient(to right, #E85D04 , #03071E);
   transition: background-position 0.3s ease;
   color: white; 
   padding: 0px 10px;
