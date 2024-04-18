@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './discounts.component.html',
   styleUrl: './discounts.component.css'
 })
-export class DescuentosComponent implements OnInit{
+export class DiscountsComponent implements OnInit{
   restaurants: Restaurant[] = [];
 
   constructor(private httpClient: HttpClient) { 
