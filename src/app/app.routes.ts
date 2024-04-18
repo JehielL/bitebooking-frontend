@@ -25,6 +25,7 @@ import { AccountFormComponent } from './account-form/account-form.component';
 import { userLoggedInGuard } from './services/user-logged-in.guard';
 import { RankingComponent } from './ranking/ranking.component';
 import { DescuentosComponent } from './descuentos/descuentos.component';
+import { ZoneComponent } from './zone/zone.component';
 
 
 
@@ -197,6 +198,11 @@ export const routes: Routes = [
 {
    path: 'descuentos',
    component: DescuentosComponent,
+   canActivate: [userLoggedInGuard]
+},
+{
+   path: 'zonas',
+   component: ZoneComponent,
    canActivate: [userLoggedInGuard]
 },
 {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route } from '@angular/router';
+import { Route, RouterLink } from '@angular/router';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { HttpClient } from '@angular/common/http';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
@@ -7,7 +7,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 @Component({
   selector: 'app-ranking',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.css'
 })

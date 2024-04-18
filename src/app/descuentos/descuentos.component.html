@@ -2,7 +2,7 @@
     <h2 class="discount-title">Descuentos Disponibles</h2>
     <div class="discount-cards-container">
         @for (restaurant of getDiscounts(); track restaurant.id) {
-      <div class="discount-card">
+      <div class="discount-card" [routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;">
         <div class="discount-card-offer">Descuento: {{ restaurant.discount}}%</div>
         <img class="discount-card-img" [src]="restaurant.imageUrl" alt="Imagen de {{ restaurant.name }}">
         <div class="discount-card-body">

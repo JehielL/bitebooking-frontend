@@ -2,7 +2,7 @@
     <h2 class="ranking-title">Top Restaurantes</h2>
     <ul class="ranking-list">
         @for (restaurant of restaurantTop;  track restaurant; ) {
-      <li class="ranking-item">
+      <li class="ranking-item" [routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;;">
         <img class="ranking-image" [src]="restaurant.imageUrl" alt="{{ restaurant.name }}">
         <div class="ranking-info">
           <h3 class="restaurant-name">{{ restaurant.name }}</h3>

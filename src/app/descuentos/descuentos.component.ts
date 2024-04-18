@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../Interfaces/restaurant.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-descuentos',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './descuentos.component.html',
   styleUrl: './descuentos.component.css'
 })
