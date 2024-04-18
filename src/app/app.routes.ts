@@ -55,7 +55,7 @@ export const routes: Routes = [
  {
   path:'user/list',
   component: UserListComponent,
-  canActivate: [userLoggedInGuard]
+  canActivate: [userRoleGuard]
 },
 {
    path:'user/:id/detail',
