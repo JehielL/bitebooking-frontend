@@ -6,6 +6,12 @@
   background-size: 200% auto;
   color: rgb(0, 0, 0);
 }
+
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 .btn-login {
   background: linear-gradient(to right, #b30092, #009bb3);
   border: none;
@@ -59,7 +65,17 @@
     padding-right: 15px;
     padding-left: 15px;
   }
+
+  
 }
+
+@media (max-width: 1000px) {
+  
+  .loader {
+    display: none; 
+  }
+}
+
 
 /* Animación para el icono bi-fire */
 @keyframes fireAnimation {
@@ -141,7 +157,7 @@
 
 
 .bg-custom{
-  background:  #F48C06;
+  background:  #f48d06;
 }
 
 
@@ -149,4 +165,5 @@
 
   border: 2px solid #ffffff;
   border-color: #ffffff;
+  
 }

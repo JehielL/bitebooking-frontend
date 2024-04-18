@@ -24,9 +24,8 @@
 
       @if (isUpdate) {
       <h1 class="mt-5 mb-5  custom-title">Actualizar reserva existente con id {{bookingForm.get('title')?.value}}</h1>
-      } @else {
-      <h1 class="mt-5 mb-5  custom-title">Crear una nueva reserva</h1>
       }
+      
       @if (restaurant ) {
         <h2 class="mt-5 mb-5  custom-title">Reserva de restaurant {{restaurant.name}}</h2>
       } @else {
