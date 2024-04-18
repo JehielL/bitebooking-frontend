@@ -10,13 +10,13 @@
             <img class="restaurant-card-img" [src]="restaurant.imageUrl" alt="Imagen del restaurante {{ restaurant.name }}">
             <div class="restaurant-card-body">
               <h4 class="restaurant-card-title">{{ restaurant.name }}</h4>
-              <span class="restaurant-card-location">{{ restaurant.address }}</span>
+              <span class="restaurant-card-location">Direccion: {{ restaurant.address }}</span>
               <p class="restaurant-card-description">{{ restaurant.description }}</p>
               <div class="restaurant-card-info">
                 <span class="restaurant-card-rating">
                   <i class="bi bi-star-fill"></i> {{ restaurant.averageRating }}
                 </span>
-                <span class="restaurant-card-location">{{getRestaurantType(restaurant.restaurantType)}}</span>
+                <span class="restaurant-card-location ms-3">Tipo de Cocina: {{getRestaurantType(restaurant.restaurantType)}}</span>
               </div>
             </div>
           </div>
