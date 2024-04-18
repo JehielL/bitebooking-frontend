@@ -106,21 +106,48 @@
 
         </div>
       </div>
-      @if (isAdmin || isRestaurant) {
+      @if (isAdmin) {
         <div class="buttons">
+
+       
 
           <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
             Menú</button>
   
           <button class="btn btn-outline-danger ms-2" (click)="delete(menu)">Borrar Menú</button>
+          <button class="btn btn-danger ms-2 btn-sm"
+                    (click)="openModal(modal, menu)">
+                    Borrar
+                  </button>
   
         </div>
-
-
       }
       
     </div>
   </div>
+
+  <ng-template #modal let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title">Despublicar Menú</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cancelar')"></button>
+    </div>
+    <div class="modal-body">
+    <p>
+    Esta acción va a despublicar el Menú, por lo que ya no será accesible ni se podrá comprar.
+    ¿Está de acuerdo?
+    </p>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="modal.close('Aceptar')">
+    <i class="bi bi-check-lg me-2"></i>
+    Aceptar
+    </button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Cancelar')">
+    <i class="bi bi-x-circle me-2"></i>
+    Cancelar
+    </button>
+    </div>
+    </ng-template>
 
   <hr class="featurette-divider horizontal-bars">
 
@@ -341,6 +368,11 @@
                       <i class="bi-star{{ fill === 100 ? '-fill' : '' }} fs-3" style="color: #ffc845;"></i>
                     </ng-template>
                   </ngb-rating>
+                    @if (isAdmin) {
+
+                    <i class="bi bi-x-circle-fill fs-3 ms-3 text-danger" style="cursor:pointer;"
+                    (click)="deleteRating(rating)"></i>
+                  }
 
                 </h6>
                 <p class="mb-0">{{user?.firstName}}</p>

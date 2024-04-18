@@ -9,7 +9,10 @@
 
 .navbar{
   position: sticky;
+  width: 100%;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 .btn-login {
@@ -157,7 +160,8 @@
 
 
 .bg-custom{
-  background:  #f48d06;
+  background-color: #FFA33C;
+  opacity: 0.9;
 }
 
 
@@ -166,4 +170,14 @@
   border: 2px solid #ffffff;
   border-color: #ffffff;
   
+}
+.custom-drop{
+  border: 1px solid #030303;
+  border-radius: 3px;
+}
+
+.user-photo{
+  border: 1px solid #000000;
+  border-radius: 50%;
+  max-width: 30px;
 }

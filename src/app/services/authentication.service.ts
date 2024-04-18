@@ -12,6 +12,7 @@ export class AuthenticationService {
   isAdmin = new BehaviorSubject<boolean>(this.getIsAdmin());
   userId = new BehaviorSubject<string | null>(this.getUserId());
   isRestaurant = new BehaviorSubject<boolean>(this.getIsRestaurant());
+  
 
   constructor() { } 
 
@@ -22,6 +23,7 @@ export class AuthenticationService {
     this.isAdmin.next(this.getIsAdmin());
     this.userId.next(this.getUserId());
     this.isRestaurant.next(this.getIsRestaurant());
+    
   }
 
   existsToken() {

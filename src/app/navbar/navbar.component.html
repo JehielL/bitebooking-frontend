@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md bg-custom">
   <div class="container-fluid">
     <a routerLink="/home">
-      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 100px;">
+      <img src="/assets/img/logo_bitebooking.png" alt="" style="max-width: 70px;">
     </a>
 
     <div class="loader">
@@ -15,19 +15,7 @@
     <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
       <ul class="navbar-nav ms-auto">
     
-        @if (isLoggedin) {
-          <li class="nav-item " ngbDropdown>
-            <a class="nav-link bi bi-person-circle  " tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-              Usuario</a>
-            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-              <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]" (click)="$event.preventDefault()">Mis Reservas</a>
-              @if (isAdmin) {<a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>}
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
-              <a ngbDropdownItem href="#" (click)="logout()">Cerrar sesión</a>
-            </div>
-          </li>
-        }
+       
         
         <!-- Otros elementos del menú de navegación aquí -->
        
@@ -57,17 +45,33 @@
           </div>
         </li>
 
+        
+        @if (isLoggedin) {
+          <li class="nav-item custom-drop" ngbDropdown>
+            @if (userEmail) {
+              <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
+                <img class="img-custom" [src]="user?.imgUser" alt="User Photo" class="user-photo">
+                {{user?.firstName}} {{user?.lastName}}
+              </a>
+            } 
+            <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
+              <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]" (click)="$event.preventDefault()">Mis Reservas</a>
+              @if (isAdmin) {<a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>}
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
+              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
+              <a ngbDropdownItem href="#" (click)="logout()" (click)="$event.preventDefault()">Cerrar sesión</a>
+            </div>
+          </li>
+        }
+        
+
       </ul>
 
       <!-- Botones de usuario aquí -->
-      @if (userEmail) {
-        <button class="btn btn-outline-light custom-btn" routerLink="users/account">   <i class="bi bi-person-circle me-2"></i>{{userEmail}}</button>
-      }
+      
 
       @if (isLoggedin) {
-        <button routerLink="" type="button" class="btn btn-primary ms-2" (click)="logout()"  >
-          <i class="bi bi-box-arrow-right" ></i>
-          Logout</button>
+        
       } @else {
         <button routerLink="user/login" type="button" class="btn btn-login"  >
           <i class="bi bi-box-arrow-left ms-2"></i>
