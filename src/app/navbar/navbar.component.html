@@ -26,7 +26,7 @@
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
               <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
+              <a ngbDropdownItem href="#" (click)="logout()">Cerrar sesión</a>
             </div>
           </li>
         }
@@ -43,7 +43,6 @@
               <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Cerrar sesión</a>
             </div>
           </li>
         }
