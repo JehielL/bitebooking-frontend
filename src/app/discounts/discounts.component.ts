@@ -4,11 +4,11 @@ import { Restaurant } from '../Interfaces/restaurant.model';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-descuentos',
+  selector: 'app-discounts',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './descuentos.component.html',
-  styleUrl: './descuentos.component.css'
+  templateUrl: './discounts.component.html',
+  styleUrl: './discounts.component.css'
 })
 export class DescuentosComponent implements OnInit{
   restaurants: Restaurant[] = [];
