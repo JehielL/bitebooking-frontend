@@ -22,12 +22,7 @@ export class HomeComponent implements OnInit {
   maxResultados: number = 5; 
   minResultados: number = 5;
 
-  userId: string | null = null;
   isLoggedin = false;
-  collapsed = true;
-  userEmail = '';
-  isAdmin = false;
-  isRestaurant = false;
   user: User | undefined;
   authService: AuthenticationService | undefined;
   
@@ -36,10 +31,6 @@ export class HomeComponent implements OnInit {
     this.authService = authService;
     if (this.authService) {
       this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
-      this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
-      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-      this.authService.userId.subscribe(userId => this.userId = userId);
-      this.authService.isRestaurant.subscribe(isRestaurant => this.isAdmin = isRestaurant);
     }
   }
   puedeMostrarMas: boolean = false;

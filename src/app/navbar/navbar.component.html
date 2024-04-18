@@ -21,7 +21,7 @@
               Usuario</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
               <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]" (click)="$event.preventDefault()">Mis Reservas</a>
-              <a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>
+              @if (isAdmin) {<a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>}
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Restaurant favoritos.</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
