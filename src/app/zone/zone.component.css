@@ -72,10 +72,8 @@
   }
   
   .restaurant-card-location {
-    background: #af8702;
+    
     color: #111111;
-    padding: 0.25rem 0.1rem;
-    border-radius: 2px;
     font-weight: bold;
   }
   
