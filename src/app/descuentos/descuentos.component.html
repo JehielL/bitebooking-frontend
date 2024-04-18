@@ -1,0 +1,21 @@
+<div class="discount-container">
+    <h2 class="discount-title">Descuentos Disponibles</h2>
+    <div class="discount-cards-container">
+        @for (restaurant of getDiscounts(); track restaurant.id) {
+      <div class="discount-card">
+        <div class="discount-card-offer">Descuento: {{ restaurant.discount}}%</div>
+        <img class="discount-card-img" [src]="restaurant.imageUrl" alt="Imagen de {{ restaurant.name }}">
+        <div class="discount-card-body">
+          <h3 class="discount-card-title">{{ restaurant.name }}</h3>
+          <p class="discount-card-description">{{ restaurant.description }}</p>
+          <div class="discount-card-bottom">
+            <div class="discount-card-rating">
+              <i class="bi bi-star-fill"></i> {{ restaurant.averageRating}}
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+    </div>
+  </div>
+  
