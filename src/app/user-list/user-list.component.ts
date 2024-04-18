@@ -25,7 +25,12 @@ export class UserListComponent implements OnInit{
   isAdmin = false;
   isRestaurant = false;
 
-  constructor(private httpClient: HttpClient){}
+  constructor(private httpClient: HttpClient, authService: AuthenticationService){
+    this.authService = authService;
+    if (this.authService) {
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    }
+  }
   puedeMostrarMas: boolean = false;
   
   ngOnInit(): void {
