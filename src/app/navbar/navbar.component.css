@@ -69,6 +69,22 @@
     padding-left: 15px;
   }
 
+  .custom-drop{
+    border: 0px  !important;
+    border-radius: 3px;
+    width: 55%;
+    padding: 10px;
+    margin-left:-1rem;
+  }
+  .navbar-nav .dropdown-menu {
+    position : absolute;
+    width: 100%;
+  }
+  .bg-custom{
+    background-color: #FFA33C ;
+    opacity: 1!important;
+  }
+
   
 }
 

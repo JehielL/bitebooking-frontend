@@ -1,12 +1,13 @@
 main{
     padding: 0px;
+    
 }
 .btn-retroceder {
     position: fixed;
     top: 120px;
     left: 20px;
     z-index: 1000;
-    background-color: #6A040F;
+    background-color: #000000;
     border: none;
     cursor: pointer;
     padding: 10px;
@@ -15,14 +16,16 @@ main{
     border-radius: 50%; /* Hacer el botón completamente redondo */
     box-shadow: 0 2px 4px rgba(232, 160, 4, 0.5);
     transition: box-shadow 0.3s, transform 0.3s;
-    margin-top: 20px;
+    
     margin-left: 30px;
+    opacity: 0.8;
 }
 
 .btn-retroceder:hover {
-    background-color: #740303;
+    background-color: #FFA33C;
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(232, 93, 4, 0.8);
+    opacity: 0.8;
 }
 
 

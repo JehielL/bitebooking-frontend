@@ -15,6 +15,13 @@
   margin-left: 15px;
   align-items: center; 
 }
+.custom-title .h1{
+  color: black !important;
+}
+
+.custom-section {
+  background-color: #f3f3f3;
+}
 
 .row {
   --bs-gutter-x: 0;
@@ -31,7 +38,7 @@
   width: 104%;
   height: 104%;
   border-radius: 8px;
-  background: linear-gradient(-45deg, #D00000 0%, #DC2F02 50%, #FAA307 100%);
+  background: linear-gradient(-45deg, #D00000 0%, #FFA33C 50%, #FAA307 100%);
   z-index: -10;
   pointer-events: none;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -42,9 +49,9 @@
   z-index: -1;
   position: absolute;
   inset: 0;
-  background: linear-gradient(-45deg, #D00000 0%, #DC2F02 50%, #FAA307 100%);
+  background: linear-gradient(-45deg, #D00000 0%, #FFA33C 50%, #FAA307 100%);
   transform: translate3d(0, 0, 0) scale(0.80);
-  filter: blur(30px);
+  
 }
 
 @keyframes fireAnimation {
@@ -66,12 +73,10 @@
   animation: fireAnimation 3s infinite;
 }
 
-.card:hover::after {
-  filter: blur(40px);
-}
+
 
 .card:hover::before {
-  transform: rotate(-90deg) scaleX(1.08) scaleY(1);
+  transform: rotate(-90deg) scaleX(1.05) scaleY(0.95);
   /* Ajustado para una apariencia más proporcionada */
 }
 
@@ -184,7 +189,7 @@ section {
 
 .custom-title {
   font-size: 30px;
-  color: rgb(255, 255, 255);
+  color: #03071E;
   text-align: center;
   margin-top: 30px;
 
@@ -373,13 +378,7 @@ section {
   }
 
   .search {
-
     margin-bottom: 20px;
-
-
-
-
-
   }
 
   .search-container {
