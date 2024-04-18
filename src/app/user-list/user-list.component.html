@@ -14,7 +14,7 @@
         <ul class="list-group">
           @for (user of resultadosBusqueda; track user ) {
           <li class="list-group-item">
-            <a [routerLink]="['/restaurant', user.id, 'detail']"
+            <a [routerLink]="['/user', user.id, 'detail']"
               [innerHTML]="highlightSearchTerm(user.firstName, searchTerm)">{{
               user.firstName }}</a>
           </li>
