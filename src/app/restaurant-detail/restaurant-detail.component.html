@@ -17,11 +17,6 @@
       <div class="mb-3">
         <p class="btn btn-outline-dark me-2">Tipo de Cocina: {{getRestaurantType(restaurant?.restaurantType)}}</p>
         <p href="tel:123456789" class="btn btn-outline-dark me-2">📞{{restaurant?.phone}}</p>
-          @if (restaurant?.status){
-              <p class="bi bi-bag-check-fill btn btn-outline-dark me-2">Abierto</p>
-          } @else {
-              <p class="bi bi-bag-x btn btn-outline-dark me-2">Cerrado</p>
-          }
         <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
         <p class="btn btn-outline-dark me-2">Desde: {{formatTime(restaurant?.openingTime)}}, Hasta: {{formatTime(restaurant?.closingTime)}}</p>
         <div>

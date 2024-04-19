@@ -27,7 +27,6 @@ export class RestaurantFromComponent implements OnInit {
     description: new FormControl(''),
     openingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]),
     closingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]), 
-    status: new FormControl(true),
     imageUrl: new FormControl(),
     city:new FormControl(''),
     address:new FormControl(''),
@@ -98,7 +97,6 @@ export class RestaurantFromComponent implements OnInit {
     formData.append('phone', this.restaurantFrom.get('phone')?.value ?? '0');
     formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value ?? '');
     formData.append('closingTime', this.restaurantFrom.get('closingTime')?.value ?? '');
-    formData.append('status', this.restaurantFrom.get('status')?.value?.toString() ?? '');
     formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value ?? '');
     formData.append('city', this.restaurantFrom.get('city')?.value ?? '');
     formData.append('address', this.restaurantFrom.get('address')?.value ?? '');
