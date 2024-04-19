@@ -7,7 +7,15 @@
         <div class="restaurant-cards-container">
             @for (restaurant of restaurantsByPostalCode[postalCode]; track restaurant) {
           <div class="restaurant-card"[routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;">
-            <img class="restaurant-card-img" [src]="restaurant.imageUrl" alt="Imagen del restaurante {{ restaurant.name }}">
+            @if (restaurant?.imageUrl?.startsWith('http')) {
+        
+              <img class="restaurant-card-img" [src]="restaurant?.imageUrl" alt="">
+            }
+            @else{
+              
+              <img class="restaurant-card-img" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" alt="" >
+        
+            }
             <div class="restaurant-card-body">
               <h4 class="restaurant-card-title">{{ restaurant.name }}</h4>
               <span class="restaurant-card-location">Direccion: {{ restaurant.address }}</span>
