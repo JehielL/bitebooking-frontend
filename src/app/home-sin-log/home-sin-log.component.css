@@ -29,10 +29,16 @@
 }
 
 .home-side-text h1 {
-  font-size: 50px;
-  margin-bottom: 0.5em;
-  text-align: center;
-}
+  font-size: 70px;
+    color: rgb(0, 0, 0);
+    margin: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.07;
+  }
+
 
 .home-side-text p {
   margin-bottom: 0.5em;
@@ -51,8 +57,8 @@
 
 
 .card {
-    width:100%;
-    margin:0;
+    width:80%;
+    margin-left:5rem;
     padding:0;
 }
 .video-background {
@@ -133,50 +139,39 @@
     padding:40px;   
 }
 
-.card {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 60px 60px 70px 0px;
-    border:none;
-    gap:55px;
- }
-
-.carousel-item button{
-    font-family: 'Satisfy';
-    font-size: 40px;
-    background-color:transparent;
-    color: black;
-    position: absolute;
-    width: 20%;
-    padding: 5px;
-    bottom: 50%;
-    left: 40%;
-    font-weight: bolder;
-    border: 5px solid black;
-    background: linear-gradient(0 0 0/.5);
-    transition: all 500ms ease;
-    z-index: 0;
-    cursor: pointer;
+.custom-card {
+  background-color: #f8f9fa; /* Color de fondo de la tarjeta */
+  border-radius: 10px; /* Bordes redondeados */
+  overflow: hidden; /* Evita que los elementos se desborden fuera de la tarjeta */
 }
 
-.carousel-item button:hover {
-    box-shadow: 0 0 10px #151515, 0 0 20px #050505, 0 0 20px #020202;
-    color: #f1eeee;
-    background-color: black;
-  }
 
-  .carousel-item p{
-    margin-top:6px;
-    text-align: center;
-  }
-  .our{
-    font-size:20px;
-  }
-  .our h5{
-    font-size:20px;
-  }
+
+.custom-card .card-title {
+  font-size: 24px; 
+  font-weight: bold; 
+  margin-bottom: 20px; 
+}
+
+.custom-card .card-text {
+  font-size: 16px; 
+  line-height: 1.6; 
+}
+
+.custom-card .logos-container {
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap; 
+  
+}
+
+.custom-card .logo {
+  width: 100px; 
+  height: 100px;
+  margin: 10px; 
+}
+
+
   @media (max-width: 768px) {
     .home-side-text {
       max-width: 100%;
@@ -207,14 +202,194 @@
     }
   }
 
-  .banner{
-   
-    
-  }
-
+ 
   .banner img{
   
     height: 200px;
     
   }
+
+
   
+  #custom-cards h2 {
+    margin-top: 1rem;
+  }
+  .custom-card {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    
+  }
+  .custom-card {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    
+  }
+  
+  .custom-card .container-fluid {
+    padding: 50px; /* Espaciado interno */
+  }
+  
+.container{
+  --bs-gutter-x: 0;
+}
+
+  
+  .custom-card .logos-container {
+    display: flex; /* Mostrar los logos en una fila */
+    justify-content: center; /* Centrar horizontalmente los logos */
+    flex-wrap: wrap; /* Envolver los logos si no caben en una sola fila */
+    margin-top: 20px; /* Espacio entre el texto y los logos */
+  }
+  
+  .custom-card .logo {
+    width: 100px; /* Tamaño de los logos */
+    height: 100px; /* Tamaño de los logos */
+    margin: 10px; /* Espaciado entre los logos */
+  }
+  
+  .custom-card .image-fluid {
+    width: 100%; 
+  }
+  
+  .custom-card .image-fluid img {
+    width: 100%; 
+    display: block; 
+    border-radius: 10px ;
+    margin-top: 8rem;
+    
+  }
+
+  .description-card {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  @media (min-width: 768px) {
+    .custom-card {
+      flex-direction: row; /* Cambia la dirección a fila en pantallas grandes */
+      align-items: flex-start; /* Alinea los elementos en la parte superior */
+      width: 100%;
+    }
+  
+    .custom-card .container-fluid {
+      flex: 1; /* Hace que el contenido ocupe el espacio disponible */
+      padding: 20px; /* Espaciado interno */
+    }
+  
+    .custom-card .image-fluid {
+      flex: 1; /* Hace que la imagen ocupe el mismo ancho que el contenido */
+      max-width: 300px; /* Limita el ancho máximo de la imagen */
+      margin-left: 4rem;
+
+    }
+
+    .content{
+
+      margin-top: 0px;
+    }
+  }
+  
+  
+  .custom-title {
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-left: 15%;
+    margin-bottom: 4rem;
+    margin-top: -2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    max-width: 70%;
+    word-wrap: anywhere;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.07;
+  }
+  
+  .featurette-divider {
+
+    background-color: black;
+  }
+  
+  .featurette-heading {
+    letter-spacing: -.05rem;
+    
+  }
+  
+
+
+
+  @keyframes rotate-clockwise {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(15deg); /* Rotación hacia un lado */
+    }
+    100% {
+      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+    }
+  }
+  
+  @keyframes rotate-counter-clockwise {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-15deg); /* Rotación hacia el otro lado */
+    }
+    100% {
+      transform: rotate(0deg); /* Revertir la rotación a 0 grados */
+    }
+  }
+  
+  .rotating-image {
+    transition: transform 1s ease;
+    animation: rotate-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+    border-radius: 50%;
+  }
+  
+  .rotating-image-counter {
+    transition: transform 1s ease;
+    animation: rotate-counter-clockwise 15s linear infinite alternate; /* Animación de rotación en sentido horario */
+    border-radius: 50%;
+  }
+  
+  .card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+  }
+    
+
+  .bd-placeholder-img2 {
+    width: 100px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .row{
+    border: none;
+    --bs-gutter-x: 0;
+    margin-left: 3rem;
+  }
+  
+  .custom-p{
+    font-size: 20px;
+  }
+
+  .custom-img{
+    margin-left: 5rem;
+  }
+  
+  .content{
+
+    margin-top: 5rem;
+  }
+

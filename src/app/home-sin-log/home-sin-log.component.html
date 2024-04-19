@@ -1,78 +1,160 @@
+<div class="img-welcome">
+  <div class="background-image" [ngStyle]="{'background-image': 'url(' + getCurrentImage() + ')'}"></div>
+  <div class="background-image upcoming" [ngStyle]="{'background-image': 'url(' + getUpcomingImage() + ')'}"></div>
 
-  <div class="img-welcome">
-      <div class="background-image" [ngStyle]="{'background-image': 'url(' + getCurrentImage() + ')'}"></div>
-      <div class="background-image upcoming" [ngStyle]="{'background-image': 'url(' + getUpcomingImage() + ')'}"></div>
-
-      <div class="home-container">
-          <div class="home-side-text">
-              <h1>BITE BOOKING</h1>
-              <p style="font-size: 20px">El Placer de todas las cosas</p>
-          </div>
-          <div class="home-carousel">
-              <app-carrusel></app-carrusel>
-          </div>
-      </div>
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-<div class="carousel-inner">
-  <div class="carousel-item active" data-bs-interval="10000">
-    <section class="card" >
-      <img src="https://i.ibb.co/R40fgJn/bm-Ff-MTguan-Bn.jpg" class="card-img-top ps-0 d-none d-md-block"
-        alt="Imagen de nuestro equipo">
-        <div class="d-none d-md-block">
-        <h5 class="card-title">Nuestro equipo</h5>
-        <p class="card-text our">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Illum fugiat ab rem obcaecati. Perspiciatis rem in fugit consequuntur? Possimus, veritatis rem ex aut tempora repellendus! Dolore optio accusantium blanditiis repellendus!</p>
-        </div>
-  </section>
-  </div>
-  <div class="carousel-item">
-    <section class="card" >
-      <img src="https://i.ibb.co/R40fgJn/bm-Ff-MTguan-Bn.jpg" class="card-img-top ps-0 d-none d-md-block"
-        alt="Imagen de nuestro equipo">
-        <div class="resumenChef d-none d-md-block">
-        <h5 class="card-title">Nuestra Vision</h5>
-        <p class="card-text our">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-          Illum fugiat ab rem obcaecati. Perspiciatis rem in fugit consequuntur? Possimus, veritatis rem ex aut tempora repellendus! Dolore optio accusantium blanditiis repellendus!</p>
-        </div>
-  </section>
+  <div class="home-container">
+    <div class="home-side-text">
+      <h1>Bite Booking</h1>
+      <p class="custom-p">El Placer de todas las cosas</p>
+    </div>
+    <div class="home-carousel">
+      <app-carrusel></app-carrusel>
+    </div>
   </div>
 </div>
-<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Previous</span>
-</button>
-<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="visually-hidden">Next</span>
-</button>
+
+
+
+<div class="custom-card banner-container container-fluid">
+
+
+  <div>
+
+    <h5 class="custom-title mt-5">Los mejores restaurants...un click! </h5>
+    <p class="description-card">Nuestro equipo, amante del buen diente, se encarga día a día de recopilar los mejores
+      sitios para tí. <br>
+      ¿Sabias que puedes dejar reseñas y ver las de otros? <br>
+      ¿Sabias que puedes reservar en los mejores restaurantes de la ciudad? <br>
+      ¿Sabias que puedes ver los platos de los restaurantes antes de ir? <br>
+      Registrate y disfruta de todas las ventajas de BiteBooking.
+    </p>
+
+    <div class="logos-container">
+      <img src="https://canaryfoodies.com/wp-content/uploads/2021/11/IMG_0833.png" alt="" class="logo">
+      <img src="https://elvalenciano.es/wp-content/uploads/2021/11/word-image.png" alt="" class="logo">
+      <img src="https://i.etsystatic.com/26674607/r/il/fab569/3656957743/il_794xN.3656957743_snou.jpg" alt=""
+        class="logo">
+      <img src="https://ohtororamen.com/wp-content/uploads/2020/03/1.png" alt="" class="logo">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/7e258863487275.5ab24bf96a93a.jpg" alt=""
+        class="logo">
+      <img src="https://i.ibb.co/7XWqGPr/santos.png" alt="" class="logo" style="border-radius: 50%;">
+      <img src="https://canaryfoodies.com/wp-content/uploads/2021/09/IMG_6631.png" alt="" class="logo">
+    </div>
+  </div>
+  <div class="image-fluid">
+    <img src="https://cdn.pixabay.com/photo/2017/08/07/11/14/people-2602736_640.jpg" class="card-img-top ps-0 "
+      alt="Imagen de nuestro equipo">
+  </div>
+
 </div>
+
+
+
+
+
+
 
 <div class="video-background">
-<div class="Video">
-  <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" class="myvideo">
-    <source src="http://localhost:4200/assets/video.mp4" type="video/mp4">
-  </video>
-</div>
-<button class="book-now-button" routerLink="/user/login">Reserva Ya</button>
+  <div class="Video">
+    <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" class="myvideo">
+      <source src="http://localhost:4200/assets/video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <button class="book-now-button" routerLink="/user/login">Reserva Ya</button>
+
 </div>
 
-         
-</div>
-<section>
-  
-  <div class="banner" style="width: 30rem;">
 
+
+
+<h1 class="custom-title mt-5">Simplifica</h1>
+<div class="row featurette">
+
+  <div class="col-md-7 content">
+    <h2 class="featurette-heading fw-normal lh-1">Nunca es tarde para una buena cena. <span
+        class="text-body-secondary">It’s Bitebooking, Its Easy.</span></h2>
+    <p class="lead">Sabemos lo cansado del día a día, sabemos que fue una ruda semana, sabemos de comida y sabemos de
+      tecnología, tambien sabemos lo mucho que te gusta salir, a solo un par de clicks, reserva en tu restaurant o bar favorito.
+    </p>
     
   </div>
-</section>
+  <div class="col-md-3 custom-img">
+    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image-counter"
+      width="300" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+      preserveAspectRatio="xMidYMid slice" focusable="false">
+      <image href="https://i.ibb.co/ScGMjc3/grey-2.jpg" height="100%" />
+    </svg>
+  </div>
   
+</div>
 
+<br>
+<br>
+<br>
+<div class="row featurette">
 
-
-
+  <div class="col-md-3 custom-img">
+    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image-counter"
+      width="300" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+      preserveAspectRatio="xMidYMid slice" focusable="false">
+      <image href="https://en.visit-hokkaido.jp/wp-content/uploads/2020/11/KUH01_photo1.jpg" height="100%" />
+    </svg>
+  </div>
+  <div class="col-md-7 content">
+    <h2 class="featurette-heading fw-normal lh-1">No solo se trata de comer. <span
+        class="text-body-secondary">It’s Bitebooking, Its about the experience.</span></h2>
+    <p class="lead">Sabemos lo cansado del día a día, sabemos que fue una ruda semana, sabemos de comida y sabemos de
+      tecnología, tambien sabemos lo mucho que te gusta salir, a solo un par de clicks, reserva en tu restaurant o bar favorito.
+    </p>
     
+  </div>
+ 
+  
+</div>
 
+<br>
+<br>
+<br>
 
+<div class="row featurette">
 
+  <div class="col-md-7 content">
+    <h2 class="featurette-heading fw-normal lh-1">Nunca es tarde para una buena cena. <span
+        class="text-body-secondary">It’s Bitebooking, Its Easy.</span></h2>
+    <p class="lead">Sabemos lo cansado del día a día, sabemos que fue una ruda semana, sabemos de comida y sabemos de
+      tecnología, tambien sabemos lo mucho que te gusta salir, a solo un par de clicks, reserva en tu restaurant o bar favorito.
+    </p>
     
+  </div>
+  <div class="col-md-3 custom-img">
+    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto rotating-image-counter"
+      width="300" height="300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Imagen giratoria"
+      preserveAspectRatio="xMidYMid slice" focusable="false">
+      <image href="https://i.ibb.co/ScGMjc3/grey-2.jpg" height="100%" />
+    </svg>
+  </div>
+  
+</div>
 
+
+<div class="custom-card " style="margin-left: 3rem;">
+
+
+  <div>
+
+    <h5 class="custom-title mt-5">Agradecimientos: </h5>
+    <p class="description-card">Agradecemos a certidevs por su incansable labor en la formacion. <br>
+      Agradecimientos a Fundacion Adecco por la altruista labor de llevar la formacion a todos. <br>
+      Agradecimientos a la Agencia para el empleo de la comunidad de Madrid.
+    </p>
+
+    <div class="logos-container">
+      <img src="https://empleo.fundacionadecco.org/img/logo.png" alt="" class="logo" style="width: 250px;">
+      <img src="https://certidevs.com/wp-content/uploads/2023/03/CertiDevs-logo.svg" alt="" class="logo">
+      <img
+        src="https://yt3.googleusercontent.com/ytc/AIdro_lYcQtadZjol_y37S3bP2E_rXD-a_3X9tcytcHD_TB4io8=s900-c-k-c0x00ffffff-no-rj"
+        alt="" class="logo">
+      <img src="https://www.fundacioncruzblanca.org/sites/default/files/logo.png" alt="" class="logo"
+        style="width: 300px;">
+    </div>
+</div>

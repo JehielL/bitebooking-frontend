@@ -680,7 +680,7 @@ h2 .custom-name {
   }
   
   .typewriter{
-    margin-left: 10px;
+    margin-left: 50%;
   }
   .custom-name{
     margin-left: auto;
@@ -707,4 +707,10 @@ h2 .custom-name {
   .count-box{
     margin-top: 15px;
   }
+}
+
+.col-typewriter{
+  margin-top: 5%;
+  padding: 20px;
+  margin-left: 30%;
 }
