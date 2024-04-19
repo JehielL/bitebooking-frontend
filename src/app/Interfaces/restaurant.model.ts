@@ -16,6 +16,7 @@ export interface Restaurant {
     number: string;
     postalCode: string;
     averageRating: number;
+    discount: number;
   }
 
 

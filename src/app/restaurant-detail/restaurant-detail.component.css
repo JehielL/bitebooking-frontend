@@ -32,9 +32,9 @@
 .img-fluid{
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 290px;
   object-fit: cover;
-  width: 200%;
+  width: 100%;
 }
 .custom-btn {
   

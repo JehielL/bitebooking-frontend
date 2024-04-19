@@ -1,0 +1,28 @@
+<div class="zone-container">
+    <h2 class="zone-title">Restaurantes por Código Postal</h2>
+    @for ( postalCode of uniquePostalCodes; track postalCode) {
+    <ng-container>
+      <div class="zone-section">
+        <h3 class="zone-code">Código Postal: {{ postalCode }}</h3>
+        <div class="restaurant-cards-container">
+            @for (restaurant of restaurantsByPostalCode[postalCode]; track restaurant) {
+          <div class="restaurant-card"[routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;">
+            <img class="restaurant-card-img" [src]="restaurant.imageUrl" alt="Imagen del restaurante {{ restaurant.name }}">
+            <div class="restaurant-card-body">
+              <h4 class="restaurant-card-title">{{ restaurant.name }}</h4>
+              <span class="restaurant-card-location">Direccion: {{ restaurant.address }}</span>
+              <p class="restaurant-card-description">{{ restaurant.description }}</p>
+              <div class="restaurant-card-info">
+                <span class="restaurant-card-rating">
+                  <i class="bi bi-star-fill"></i> {{ restaurant.averageRating }}
+                </span>
+                <span class="restaurant-card-location">Comida: {{getRestaurantType(restaurant.restaurantType)}}</span>
+              </div>
+            </div>
+          </div>
+        }
+        </div>
+      </div>
+    </ng-container>
+}
+  </div>

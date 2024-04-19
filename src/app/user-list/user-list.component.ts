@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {  RouterLink } from '@angular/router';
 import { User} from '../Interfaces/user.model';
-import { __param } from 'tslib';
 import AOS from 'aos';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-user-list',
@@ -18,17 +18,25 @@ export class UserListComponent implements OnInit{
   users: User[] = [];
   collapsed =true;
   resultadosBusqueda: User[] = [];
+  authService: AuthenticationService | undefined;
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
+  isAdmin = false;
+  isRestaurant = false;
 
-  constructor(private httpClient: HttpClient){}
+  constructor(private httpClient: HttpClient, authService: AuthenticationService){
+    this.authService = authService;
+    if (this.authService) {
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+    }
+  }
   puedeMostrarMas: boolean = false;
   
   ngOnInit(): void {
-    AOS.init();
 
     this.loadUsers();
+    AOS.init();
   }
   loadUsers(): void {
     const apiUrl = 'http://localhost:8080/user';

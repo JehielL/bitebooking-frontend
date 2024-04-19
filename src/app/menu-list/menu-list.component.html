@@ -1,95 +1,101 @@
-<div class="container px-4 py-5 custom-background" id="custom-cards">
-  <h2 class="pb-2 custom-title">Menús Favoritos.</h2>
-        
-  <div class="horizontal-bars"></div>
+<div class="menu-container">
 
+  <div class="container px-4 py-5 custom-background" id="custom-cards">
+    <h2 class="pb-2 custom-title">Menús Favoritos.</h2>
+          
+    <div class="horizontal-bars"></div>
   
-</div>
-
-<div class="search">
-  <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Encuentra tu menú favorito."
-      aria-label="Buscar" aria-describedby="search-addon" 
-      (input)="buscar($any($event.target).value)">
-      
-      @if (resultadosBusqueda.length > 0) {
-      <div class="search-container">
-        <ul class="list-group">
-          @for (menu of resultadosBusqueda; track menu) {
-          <li class="list-group-item">
-            <a [routerLink]="['/menus', menu.id, 'detail']" [innerHTML]="highlightSearchTerm(menu.title, searchTerm)">{{ menu.title }}</a>
-          </li>
-      }
-        </ul>
-      @if (puedeMostrarMas) {
-          <button class="btn " (click)="mostrarMas()">Mostrar Más ..</button>
+    
+  </div>
+  
+  <div class="search">
+    <input type="search" class="form-control form-control-sm rounded custom-input" placeholder="Encuentra tu menú favorito."
+        aria-label="Buscar" aria-describedby="search-addon" 
+        (input)="buscar($any($event.target).value)">
+        
+        @if (resultadosBusqueda.length > 0) {
+        <div class="search-container">
+          <ul class="list-group">
+            @for (menu of resultadosBusqueda; track menu) {
+            <li class="list-group-item">
+              <a [routerLink]="['/menus', menu.id, 'detail']" [innerHTML]="highlightSearchTerm(menu.title, searchTerm)">{{ menu.title }}</a>
+            </li>
         }
-        @if (maxResultados > minResultados) {
-          <button class="btn" (click)="mostrarMenos()">Mostrar Menos</button>
-        }
-      </div>
-  } 
-</div>
-
-<div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-  @for (menu of menus; track menu.id) {
-    <div class="col">
-      
-
-      <div class="container">
-        @if (menu.imgMenu.startsWith('http')) {
-            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'">
+          </ul>
+        @if (puedeMostrarMas) {
+            <button class="btn " (click)="mostrarMas()">Mostrar Más ..</button>
+          }
+          @if (maxResultados > minResultados) {
+            <button class="btn" (click)="mostrarMenos()">Mostrar Menos</button>
+          }
+        </div>
+    } 
+  </div>
+  
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 ">
+    @for (menu of menus; track menu.id) {
+      <div class="col">
+        
+  
+        <div class="container">
+          @if (menu.imgMenu.startsWith('http')) {
+              <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'">
+         
        
-     
-        
-        
-        
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto menu-badge">
-                    <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
-                      {{getRestaurantType(menu.restaurantType)}}
-                      
-                    </a>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
-                      <i class="bi bi-arrow-right ms-2"></i>
-                    </button>
-                  </li>
-                </ul>
+          
+          
+          
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto menu-badge">
+                      <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
+                        {{getRestaurantType(menu.restaurantType)}}
+                        
+                      </a>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
+                        <i class="bi bi-arrow-right ms-2"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
-            }
-            @else{
-                 <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image" [style.background-image]="'url(http://localhost:8080/files/' + menu.imgMenu + ')'" >
-       
+              }
+              @else{
+                   <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image" [style.background-image]="'url(http://localhost:8080/files/' + menu.imgMenu + ')'" >
+         
+                
+          
+          
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                  <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
+                  <ul class="d-flex list-unstyled mt-auto">
+                    <li class="me-auto menu-badge">
+                      <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
+                        {{getRestaurantType(menu.restaurantType)}}
+                        
+                      </a>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
+                        <i class="bi bi-arrow-right ms-2"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
               
-        
-        
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold text-with-shadow text-left">{{menu.title}}</h3>
-                <ul class="d-flex list-unstyled mt-auto">
-                  <li class="me-auto menu-badge">
-                    <a class="badge text-bg-secondary text-decoration-none" [routerLink]="['/menus', menu.id, 'detail']">
-                      {{getRestaurantType(menu.restaurantType)}}
-                      
-                    </a>
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <button class="btn " [routerLink]="['/menus', menu.id, 'detail']">
-                      <i class="bi bi-arrow-right ms-2"></i>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
-            
-            }
+              }
+        </div>
       </div>
-    </div>
-  }
+    }
+  </div>
+  
+
 </div>
+

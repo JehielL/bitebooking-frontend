@@ -125,9 +125,11 @@ z-index: -1;
 .search-container li:last-child {
   border-bottom: none;
 }
+ a {
+  text-decoration: none;
+}
 
-
-.search-container li a {
+.search-container li {
   color: black;
   text-decoration: none;
 }

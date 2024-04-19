@@ -6,6 +6,15 @@
   background-size: 200% auto;
   color: rgb(0, 0, 0);
 }
+
+.navbar{
+  position: sticky;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
 .btn-login {
   background: linear-gradient(to right, #b30092, #009bb3);
   border: none;
@@ -59,7 +68,33 @@
     padding-right: 15px;
     padding-left: 15px;
   }
+
+  .custom-drop{
+    border: 0px  !important;
+    border-radius: 3px;
+    width: 55%;
+    padding: 10px;
+    margin-left:-1rem;
+  }
+  .navbar-nav .dropdown-menu {
+    position : absolute;
+    width: 100%;
+  }
+  .bg-custom{
+    background-color: #FFA33C ;
+    opacity: 1!important;
+  }
+
+  
 }
+
+@media (max-width: 1000px) {
+  
+  .loader {
+    display: none; 
+  }
+}
+
 
 /* Animación para el icono bi-fire */
 @keyframes fireAnimation {
@@ -141,7 +176,8 @@
 
 
 .bg-custom{
-  background:  #F48C06;
+  background-color: #FFA33C;
+  opacity: 0.9;
 }
 
 
@@ -149,4 +185,15 @@
 
   border: 2px solid #ffffff;
   border-color: #ffffff;
+  
+}
+.custom-drop{
+  border: 1px solid #030303;
+  border-radius: 3px;
+}
+
+.user-photo{
+  border: 1px solid #000000;
+  border-radius: 50%;
+  max-width: 30px;
 }

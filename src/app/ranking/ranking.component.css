@@ -1,0 +1,62 @@
+.ranking-container {
+    width: 100%;
+    padding: 2rem;
+    background: #f5f5f5;
+  }
+  
+  .ranking-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .ranking-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .ranking-number {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: #666;
+    font-weight: bold;
+  }
+  
+  .ranking-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  
+  .ranking-info {
+    flex-grow: 1;
+  }
+  
+  .restaurant-name {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  
+  .restaurant-description {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .restaurant-meta {
+    display: flex;
+  }  

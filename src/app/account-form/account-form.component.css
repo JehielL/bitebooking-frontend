@@ -254,7 +254,7 @@ a>code {
   border: 1px solid #d7caca;
   border-radius: 4px;
   background-color: black;
-  background-color: #ffffff;
+  background-color: #f3f3f3;
   background-clip: padding-box;
   box-shadow: none;
 }
@@ -374,10 +374,10 @@ textarea.form-control {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  border: 4px solid rgb(0, 0, 0);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: .500rem;
-  background-color: #f9f5e9;
-  border-color: #370617;
+  background-color: #f3f3f3;
+  border-color: #8c7b81;
   background-clip: border-box;
   margin-bottom: 40px ;
 }
@@ -409,9 +409,8 @@ textarea.form-control {
   position: relative;
   display: flex;
   flex-direction: column;
- 
-  border: 3px solid transparent;
-  border-color: #650a0b ;
+  border: 1px solid transparent;
+  border-color: #8c7b81 ;
   padding: 32px 24px;
   font-size: 14px;
   font-family: inherit;
@@ -436,7 +435,7 @@ textarea.form-control {
   margin-bottom: 0;
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, .05);
-  background-color: #03071E;
+  background-color: #29345e;
   
 }
 
