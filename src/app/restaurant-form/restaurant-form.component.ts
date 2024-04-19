@@ -91,19 +91,19 @@ export class RestaurantFromComponent implements OnInit {
 
   save () {
   
-    let formData =new FormData();
+    let formData = new FormData();
     formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
-    formData.append('name', this.restaurantFrom.get('name')?.value?? '');
+    formData.append('name', this.restaurantFrom.get('name')?.value ?? '');
     formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
-    formData.append('phone', this.restaurantFrom.get('phone')?.value?? '0');
-    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString() ?? '');
-    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value?.toString() ?? '');
+    formData.append('phone', this.restaurantFrom.get('phone')?.value ?? '0');
+    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value ?? '');
+    formData.append('closingTime', this.restaurantFrom.get('closingTime')?.value ?? '');
     formData.append('status', this.restaurantFrom.get('status')?.value?.toString() ?? '');
-    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value?? '');
-    formData.append('city', this.restaurantFrom.get('city')?.value?? '');
-    formData.append('address', this.restaurantFrom.get('address')?.value?? '');
-    formData.append('number', this.restaurantFrom.get('number')?.value?? '');
-    formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value?? '');
+    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value ?? '');
+    formData.append('city', this.restaurantFrom.get('city')?.value ?? '');
+    formData.append('address', this.restaurantFrom.get('address')?.value ?? '');
+    formData.append('number', this.restaurantFrom.get('number')?.value ?? '');
+    formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value ?? '');
     formData.append('averageRating', this.restaurantFrom.get('averageRating')?.value?.toString() ?? '');
     
     if(this.photoFile) {
