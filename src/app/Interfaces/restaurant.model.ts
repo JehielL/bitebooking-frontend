@@ -7,8 +7,8 @@ export interface Restaurant {
     phone: string;
     restaurantType: RestaurantType;
     description: string;
-    openingTime: Date;
-    closingTime: Date;
+    openingTime: string;
+    closingTime: string;
     status: boolean;
     imageUrl: string;
     city: string;

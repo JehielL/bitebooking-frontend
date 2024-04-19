@@ -25,8 +25,8 @@ export class RestaurantFromComponent implements OnInit {
     phone: new FormControl(''), 
     restaurantTypes:new FormControl(RestaurantType.BAR),
     description: new FormControl(''),
-    openingTime: new FormControl(new Date()),
-    closingTime: new FormControl(new Date()),  
+    openingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]),
+    closingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]), 
     status: new FormControl(true),
     imageUrl: new FormControl(),
     city:new FormControl(''),
@@ -90,7 +90,6 @@ export class RestaurantFromComponent implements OnInit {
 
 
   save () {
-    const restaurantBacken: Restaurant= this.restaurantFrom.value as Restaurant;
   
     let formData =new FormData();
     formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');

@@ -11,7 +11,7 @@ import { User } from '../Interfaces/user.model';
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink],
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.css']
 })
@@ -81,5 +81,9 @@ export class RestaurantDetailComponent implements OnInit {
     const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
     return typeAsString;
   }
+  formatTime(time: string | undefined): string {
+    return time ? time.substring(0, 5) : '';
+  }
+  
 }
 
