@@ -140,7 +140,6 @@
 }
 
 .custom-card {
-  background-color: #ffffff; 
   border-radius: 10px; 
   overflow: hidden; 
   display: flex; 
@@ -228,23 +227,11 @@
     margin-top: 1rem;
   }
   .custom-card {
-    background-color: #ffffff; 
     border-radius: 10px; 
     overflow: hidden; 
-    display: flex; 
     flex-direction: column; 
     
   }
-  .custom-card {
-    background-color: #ffffff; 
-    border-radius: 10px; 
-    overflow: hidden; 
-    display: flex; 
-    flex-direction: column; 
-    
-    
-  }
-  
 
   
 .container{

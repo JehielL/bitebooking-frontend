@@ -77,8 +77,8 @@
   &:after {
     top: -1px;
     left: -1px;
-    border-top: 5px solid rgb(1, 255, 213);
-    border-left: 5px solid rgb(3, 225, 214);
+    border-top: 5px solid #FFA33C;
+    border-left: 5px solid #FFA33C;
   }
 
   &:before {
