@@ -277,6 +277,16 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+ 
+}
+.text-gradient2 {
+  background: linear-gradient(to right, #00ffdd, #cf74c0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 80px;
+  margin-top: 2rem;
+ 
 }
 
 @keyframes fireAnimation {
@@ -670,7 +680,7 @@ h2 .custom-name {
   }
   
   .typewriter{
-    margin-left: 10px;
+    margin-left: 50%;
   }
   .custom-name{
     margin-left: auto;
@@ -697,4 +707,10 @@ h2 .custom-name {
   .count-box{
     margin-top: 15px;
   }
+}
+
+.col-typewriter{
+  margin-top: 5%;
+  padding: 20px;
+  margin-left: 30%;
 }
