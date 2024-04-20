@@ -1,84 +1,131 @@
 @if (isLoggedin) {
-<div class="text-center container-fluid img-welcome">
-    <video loop muted autoplay class="myvideo">
+    <div class="text-center container-fluid img-welcome">
+      <video loop muted autoplay class="myvideo">
         <source src="http://localhost:4200/assets/videohome.mp4" type="video/mp4">
       </video>
       
-    <div class="overlay"></div>
-    <div class="content">
+      <div class="overlay"></div>
+      <div class="content">
         <div class="skills-container">
-            <div class="letters">
-                
-                <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
-            </div>
-            <div class="input-group custom-input-group justify-content-center">
-               <div class="search">
-                    <input type="search" class="form-control form-control-sm rounded custom-input"
-                        placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
-                        style="max-width: 760px;" (input)="buscar($any($event.target).value)">
-                    @if (resultadosBusqueda.length > 0) {
-                    <div class="search-container">
-                        <ul class="list-group">
-                            @for (restaurantes of resultadosBusqueda; track restaurantes ) {
-                            <li class="list-group-item">
-                                <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
-                                    [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{
-                                    restaurantes.name }}</a>
-                            </li>
-                            }
-                        </ul>
-                        @if (puedeMostrarMas) {
-                        <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
-                        }
-                        @if (maxResultados > minResultados) {
-                        <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
-                        }
-                    </div>
+          <div class="letters">
+            <h2>El placer de bitear - Descubre los mejores Restaurantes de tu zona.</h2>
+          </div>
+          <div class="input-group custom-input-group justify-content-center">
+            <div class="search">
+              <input type="search" class="form-control form-control-sm rounded custom-input"
+                placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
+                style="max-width: 760px;" (input)="buscar($any($event.target).value)">
+              @if (resultadosBusqueda.length > 0) {
+                <div class="search-container">
+                  <ul class="list-group">
+                    @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+                      <li class="list-group-item">
+                        <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
+                          [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">{{ restaurantes.name }}</a>
+                      </li>
                     }
-                    
-                    <button class="btn btn-like dropdown-toggle type-kitchen" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
-                    @if (showCocinasDropdown) { 
-           
-                    <app-kitchen></app-kitchen>
-                    }
-
+                  </ul>
+                  @if (puedeMostrarMas) {
+                    <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+                  }
+                  @if (maxResultados > minResultados) {
+                    <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+                  }
                 </div>
+              }
+              <button class="btn btn-like dropdown-toggle type-kitchen" (click)="toggleCocinasDropdown()">Buscar por tipos de Cocina</button>
+              @if (showCocinasDropdown) { 
+                <app-kitchen></app-kitchen>
+              }
             </div>
-            <a routerLink="/restaurant-list">
-                <div class="category">
-                    <i class="bi bi-shop icon"></i>
-                    <p>Restaurantes</p>
-                </div>
-            </a>
-            <a routerLink="/ranking">
-                <div class="category">
-                    <i class="fa-solid fa-ranking-star"></i>
-                    <i class="icon bi bi-star"></i>
-                    <p>Rankings</p>
-                </div>
-            </a>
-            <a routerLink="/discounts">
-                <div class="category">
-                    <i class="icon bi bi-percent"></i>
-                    <p>Descuentos</p>     
-                </div>
-            </a>
-            <a routerLink="/zonas">
+          </div>
+          <a routerLink="/restaurant-list">
             <div class="category">
-                    <i class="bi bi-geo-alt icon"></i>
-                    <p>Zonas</p>
+              <i class="bi bi-shop icon"></i>
+              <p>Restaurantes</p>
             </div>
-        </a>
+          </a>
+          <a routerLink="/ranking">
+            <div class="category">
+              <i class="fa-solid fa-ranking-star"></i>
+              <i class="icon bi bi-star"></i>
+              <p>Rankings</p>
+            </div>
+          </a>
+          <a routerLink="/discounts">
+            <div class="category">
+              <i class="icon bi bi-percent"></i>
+              <p>Descuentos</p>     
+            </div>
+          </a>
+          <a routerLink="/zonas">
+            <div class="category">
+              <i class="bi bi-geo-alt icon"></i>
+              <p>Zonas</p>
+            </div>
+          </a>
         </div>
         <div class="container-fluid">
-            <h1 class="letters">Hecha un vistazo a nuestros restaurantes.</h1>
-            <app-carrusel></app-carrusel>
+          <h1 class="letters">Hecha un vistazo a nuestros restaurantes.</h1>
+          <app-carrusel></app-carrusel>
         </div>
-
+      </div>
     </div>
-
-
-</div>
-}@else {
+  
+    <section id="hero" class="hero2 d-flex align-items-center">
+      <div class="container">
+        <h2 class="pb-2 custom-title ">¡Crece con nosotros!</h2>
+        <div class="row justify-content-between gy-5 mt-3">
+          <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-center ">
+            <h2 class="custom-title" data-aos="zoom-out">¡El marketing<br>importa!</h2>
+            <p data-aos="fade-up" data-aos-delay="200">En bitebooking, puedes llevar lo mejor de tu Gastronomía a tus
+              clientes, sabemos lo importante que es ofrecer tus productos, con nosotros cuentas con una sección dedicada
+              a promocionar lo mejor de tu cocina.</p>
+          </div>
+          <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start custom-photo">
+            <img src="https://www.getkobe.com/wp-content/uploads/2019/10/MarketPlace_our_focus_food_table-1880x882.jpg"
+              class="img-fluid custom-photo" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="hero2" class="hero2 d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-between gy-5">
+          <div class="col-lg-5 order-2 order-lg-1 text-center text-lg-start custom-photo">
+            <img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg" class="img-fluid custom-photo" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+          
+          <div class="col-lg-5 order-1 order-lg-2 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-center">
+            <h2 class="custom-title" data-aos="zoom-out">¡Rota,<br>cambia, decide!</h2>
+            <p data-aos="fade-up" data-aos-delay="200">Comprometidos con tu crecimiento, eres tu quien decide, donde, cuando, como y que mostrar de tu carta, te permitimos en tiempo real editar, crear, borrar y hacer lo que quieras con tu menú, tranquilo... no te cobraremos por ello.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section id="hero" class="hero2 d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-between gy-5">
+          <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-center ">
+            <h2 class="custom-title" data-aos="zoom-out">¿Ya estas aqui?<br>¡Contactanos!</h2>
+            <p data-aos="fade-up" data-aos-delay="200">Como nuestro partner, tendrás acceso a asesorías personalizadas. Nos preocupamos por cada detalle de tu imagen, porque tu éxito es nuestra prioridad. Te brindaremos herramientas como talleres y cursos personalizados para hacer crecer tu negocio en el sector de la hostelería. Contamos con más de 10 años de experiencia en la industria, lo que nos permite ofrecerte un servicio adaptado a tus necesidades y objetivos.</p>
+          </div>
+          <div class="col-lg-5 order-2 order-lg-1 text-center text-lg-start custom-photo">
+            <img src="https://www.bakusolutions.com/wp-content/uploads/2023/10/shutterstock_725353828-min-1024x683.jpg" class="img-fluid custom-photo" alt="" data-aos="zoom-out" data-aos-delay="300">
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <div class="d-flex justify-content-center mb-5" data-aos="fade-up" data-aos-delay="200">
+      <a href="">
+        <button class="btn custom-btn" type="submit">Ir a promociones</button>
+      </a>
+    </div>
+    
+  }@else {
     <app-home-sin-log></app-home-sin-log>
-}
+  }
+  

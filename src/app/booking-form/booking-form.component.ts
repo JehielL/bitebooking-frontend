@@ -8,6 +8,7 @@ import { Menu } from '../Interfaces/menu.model';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { CurrencyPipe, DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../Interfaces/user.model';
 
 
 @Component({
@@ -21,30 +22,23 @@ export class BookingFormComponent implements OnInit {
 
   booking: Booking | undefined;
   restaurant: Restaurant | undefined;
-   vipRoom = 0; // precio salon vip.
   isUpdate: boolean = false; // por defecto estamos en CREAR no en ACTUALIZAR
-  menus: Menu[] = []; // array de autores para asociar un autor al libro
-  totalPrice: any;
-  extraPrice: any;
-  extraService: any;
   isAdmin = false;
   isRestaurant = false;
   authService: AuthenticationService | undefined;
   userId: string | null = null;
   isLoggedin = false;
+  user: User | undefined;
   
 
   bookingForm = new FormGroup({
     id: new FormControl<number>(0),
     createDate: new FormControl<Date>(new Date()),
-    title: new FormControl<string>(''),
     numUsers: new FormControl<number>(0),
     observations: new FormControl<string>(''),
     status: new FormControl<boolean>(true),
-    discount: new FormControl<number>(0),
     interior: new FormControl<boolean>(true),
     numTable: new FormControl<number>(0),
-    menu: new FormControl(),
     restaurant: new FormControl(),
     isPremium: new FormControl<boolean>(false),
     extraService: new FormControl<string>(''),
@@ -75,7 +69,11 @@ export class BookingFormComponent implements OnInit {
 
   
    
+    this.httpClient.get<User>('http://localhost:8080/users/account')
+    .subscribe(user => {
+      this.user = user;
     
+    });
 
     this.activatedRoute.params.subscribe(params => {
       
@@ -92,14 +90,11 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
         this.bookingForm.reset({
           id: bookingFromBackend.id,
           createDate: bookingFromBackend.createDate,
-          title: bookingFromBackend.title,
           numUsers: bookingFromBackend.numUsers,
           observations: bookingFromBackend.observations,
           status: bookingFromBackend.status,
-          discount: bookingFromBackend.discount,
           interior: bookingFromBackend.interior,
           numTable: bookingFromBackend.numTable,
-          menu: bookingFromBackend.menu,
           restaurant: bookingFromBackend.restaurant,
           isPremium: bookingFromBackend.isPremium,
           extraService: bookingFromBackend.extraService,

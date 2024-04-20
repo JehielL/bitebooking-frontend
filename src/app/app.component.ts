@@ -22,6 +22,7 @@ import { Location } from '@angular/common';
 export class AppComponent {
 
   mostrarBotonRetroceso: boolean = false;
+  mostrarMenuDesplegable: boolean = false;
 
   constructor(private location: Location, private router: Router) {
     this.router.events.subscribe(() =>{
@@ -33,6 +34,13 @@ export class AppComponent {
     this.location.back();
   }
 
-  title = 'Bite booking app';   
+  toggleMenuDesplegable(): void {
+    this.mostrarMenuDesplegable = !this.mostrarMenuDesplegable;
+  }
 
+  onMouseLeave(): void {
+    this.mostrarMenuDesplegable = false;
+  }
+
+  title = 'Bite booking app';   
 }

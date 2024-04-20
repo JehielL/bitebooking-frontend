@@ -19,7 +19,6 @@
   color: rgb(0, 0, 0);
   text-align: center;
   margin: 20px;
-  margin-left: 20%;
   font-family: Noto Sans, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -27,7 +26,8 @@
 }
 .title-portada{
 
-  margin-left: 50%;
+  text-align: center;
+  
   
 }
 .horizontal-bars {

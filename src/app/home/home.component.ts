@@ -7,6 +7,7 @@ import { User } from '../Interfaces/user.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
 import { KitchenComponent } from '../kitchen/kitchen.component';
+import Aos from 'aos';
 
 @Component({
   selector: 'app-home',
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
   showCocinasDropdown: boolean = false;
   
   ngOnInit(): void {
+    Aos.init();
     this.loadRestaurants();
   }
 

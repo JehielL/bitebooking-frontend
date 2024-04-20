@@ -78,10 +78,10 @@
       background-color: rgba(180, 124, 124, 0.379);
   }
   50% {
-      background-color: rgba(0, 255, 255, 0.379);
+      background-color: #ffa43cad;
   }
   100% {
-      background-color: rgba(56, 171, 14, 0.379);
+      background-color: rgba(14, 171, 140, 0.379);
   }
 }
 .container-fluid {
@@ -223,19 +223,19 @@
     &:after{
       top:-1px;
       left:-1px;
-      border-top:5px solid rgb(1, 255, 213);
+      border-top:5px solid #FFA33C;
       border-left:5px solid rgb(3, 225, 214);
     }
     &:before{
       bottom:-1px;
       right:-1px;
-      border-bottom:5px solid black;
-      border-right:5px solid black;
+      border-bottom:5px solid #FFA33C;
+      border-right:5px solid rgb(3, 225, 214);
     }
     &:hover{
       border-top-right-radius:0px;
       border-bottom-left-radius:0px;
-      background:rgba(0, 0, 0, 0.5);
+      background:#FFA33C;
       color:rgb(255, 255, 255);
       &:before,&:after{
         

@@ -555,12 +555,7 @@ textarea.form-control {
   color: #03071E;
 }
 
-@media (min-width: 768px) {
-  .main-content .container-fluid {
-    padding-right: 39px !important;
-    padding-left: 39px !important;
-  }
-}
+
 .main-content{
   background: #f6f8ff;
   
@@ -686,7 +681,7 @@ textarea[resize='horizontal'] {
   transition: background-position 0.3s ease;
   background-size: 200% auto;
   color: white;
-  width: 40%;
+  width: 95%;
   margin-left: 5%;
   margin-top: 10px;
 
@@ -719,4 +714,13 @@ textarea[resize='horizontal'] {
 .custom-bg{
 
   background-color: #6A040F;
+}
+
+@media (min-width: 768px) {
+  .main-content .container-fluid {
+    padding-right: 39px !important;
+    padding-left: 39px !important;
+  }
+
+ 
 }

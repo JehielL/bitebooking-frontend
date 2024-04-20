@@ -7,3 +7,8 @@
     color: white; 
     background-color: black; 
 }
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #FFA33C;
+    opacity: 0.7;
+}

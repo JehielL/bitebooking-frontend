@@ -39,7 +39,7 @@ export class BookingDetailComponent implements OnInit {
       const url = 'http://localhost:8080/bookings/' + id;
       this.httpClient.get<Booking>(url).subscribe(b => this.booking = b);
     });
-    this.loadBookings(); // Carga las reservas al inicializar el componente
+     // Carga las reservas al inicializar el componente
   }
 
   delete(booking: Booking) {
@@ -50,10 +50,6 @@ export class BookingDetailComponent implements OnInit {
     });
   }
 
-  private loadBookings() {
-    const url = 'http://localhost:8080/bookings';
-    this.httpClient.get<Booking>(url).subscribe(bookings => this.booking = bookings);
-  }
 
   hideDeletedBookingMessage() {
     this.showDeleteBookingMessage = false;

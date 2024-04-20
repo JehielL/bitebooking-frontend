@@ -1,60 +1,30 @@
-
-<div class="container  ">
-  <div class="pb-3 mb-4 mt-2 border-bottom">
-
-    <svg xmlns="http://www.w3.org/2000/svg" style="cursor: pointer;" routerLink="/user/list" width="35" height="35" fill="currentColor" class=" bi bi-arrow-left-circle-fill"  viewBox="0 0 16 16">
-      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0  1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-    </svg>
+<div class="container">
+  <header class="bg-dark py-3  rounded-top text-center">
+    <h1 class="text-light">Detalles de Usuario</h1>
+  </header>
  
-  </div>
 
-  <div class="p-3 mb-2 bg-body-tertiary rounded-3">
-  @if (users) {
-      <div class="container-fluid" data-aos="fade-left" data-aos-delay="500">
-        <div class="raw">
-          
-        <div class=" img col-6 float-end  text-center "><img src="{{users.imgUser}}"  height="250" alt="" ></div>  
-             
-        <div class="col-6">
-          <ul class="list-group mb-4">
-            <h2>User Profile</h2>
-            <li class="list-group-item">{{users.firstName}}&nbsp;{{users.lastName}}</li>
-            <li class="list-group-item">{{users.phone}}</li>
-            <li class="list-group-item">{{users.email}}</li>
-            <li class="list-group-item">{{users.birthdayDate}}</li>    
-            <li class="list-group-item">{{users.role}}</li>          
-          </ul>
+  <section class="p-4 rounded-3 shadow user-profile">
+    
+    @if (users) {
+    <div  data-aos="fade-left" data-aos-delay="500">
+      <div class="row ">
+        <div class="col-lg-6 text-center">
+          <img src="{{users.imgUser}}" class="profile-img" height="250" alt="User Image">
+        </div>  
+        <div class="col-lg-6 d-flex align-items-center  ">
+          <div class="user-details">
+            <ul class="list-group">
+              <li class="list-group-item"><strong>Name:</strong> {{users.firstName}} {{users.lastName}}</li>
+              <li class="list-group-item"><strong>Phone:</strong> {{users.phone}}</li>
+              <li class="list-group-item"><strong>Email:</strong> {{users.email}}</li>
+              <li class="list-group-item"><strong>Birthday:</strong> {{users.birthdayDate}}</li>    
+              <li class="list-group-item"><strong>Role:</strong> {{users.role}}</li>          
+            </ul>
+          </div>
         </div>
-        </div>
-      </div>
-  }
-  </div>
- @if (users) { 
-  <div class="text-center">
-    <button  style="height: 55px; width: 150px;" class="btn btn-outline-secondary mb-2" [routerLink]="['/user', users.id, 'update']" type="button">Editar Usuario</button>
-  </div>
-}
-  <div data-aos="fade-up" data-aos-delay="500" class="row align-items-md-stretch">
-    <div class="col-md-6">
-      <div class="h-100 p-5 text-bg-dark rounded-3">
-        <h2>Crea tu Restaurante!</h2>
-        <p>Empieza a emprender con nosotros creando tu perfil de restaurante y da mayor facilidad a tus clientes a la hora de encontrar una reserva en tu local, empieza el booking!.</p>
-        <button style="height: 55px; width: 150px;" class="btn btn-outline-light" routerLink="/restaurant-from" type="button">Crear</button>
       </div>
     </div>
-
-    <div data-aos="fade-up" data-aos-delay="500" class="col-md-6">
-      <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-        <h2>Comienza el booking!</h2>
-        <p>date el gusto de reservar en los mejores restaurantes de la zona de forma facil y segura con nosotros, Comienza el booking!.</p>
-        <button  style="height: 55px; width: 150px;" class="btn btn-outline-secondary" routerLink="/bookings/create" type="button">Reservar</button>
-      </div>
-    </div>
-  </div>
-
+    }
+  </section>
 </div>
-
-
-
-  
-

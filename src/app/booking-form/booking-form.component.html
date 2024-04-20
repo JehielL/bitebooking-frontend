@@ -1,18 +1,19 @@
 <div class="container-fluid">
+  <h1 class="custom-title">¡ Reservar ahora !</h1>
   <div class="row">
     <div class="col mt-5 ">
       <div class="card card-cover rounded-4 shadow-lg bg-dark text-white">
         <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
           <h3 class="mt-2 mb-4 display-6 lh-1 fw-bold"></h3>
           <div class="reservation-info">
-            <p> Reserva a nombre de: {{ bookingForm.get('title')?.value }}</p>
+            <p> Reserva a nombre de: {{ user?.firstName }} {{ user?.lastName }}</p>
             <p> Fecha de reservación: {{ bookingForm.get('createDate')?.value  | date:'dd/MM/yy HH:mm'}}</p>
             <p> Numero de Clientes: {{ bookingForm.get('numUsers')?.value }}</p>
             <p>Observaciones: {{ bookingForm.get('observations')?.value }}</p>
             <p>Estado de reserva: {{ bookingForm.get('status')?.value }}</p>
-            <p>Descuento: {{ bookingForm.get('discount')?.value }}</p>
             <p>Numero de mesa: {{ bookingForm.get('numTable')?.value }}</p>
             <p>Interior: {{ bookingForm.get('interior')?.value }}</p>
+            <p>Servicios Extra: {{bookingForm.get('extraService')?.value}}</p>
           </div>
           <ul class="d-flex list-unstyled mt-3">
             
@@ -35,12 +36,7 @@
       <form [formGroup]="bookingForm" (ngSubmit)="save()">
 
         <input type="hidden" formControlName="id">
-
-        <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="title" formControlName="title">
-          <label for="title">Titulo Reserva</label>
-        </div>
-        
+      
         <div class="form-floating mb-3">
           <input type="datetime-local" class="form-control" id="createDate" formControlName="createDate">
           <label for="createDate">Fecha de Reservación.</label>
@@ -55,11 +51,6 @@
           <label for="observations" class="form-label">Observaciones de reserva</label>
           <input type="text" class="form-control" id="observations" formControlName="observations">
         </div>
-        <div class="mb-3">
-          <label for="discount" class="form-label">Descuento (%)</label>
-          <input type="number" class="form-control" id="discount" formControlName="discount" step="1">
-        </div>
-
         <div class="form-floating mb-3">
           <input type="number" class="form-control" id="numTable" formControlName="numTable" step="1">
           <label for="numTable">Numero de mesa</label>
@@ -80,19 +71,6 @@
           </select>
          
         </div>-->
-
-        <div class="form-floating mb-3">
-          <select class="form-select" id="menu" formControlName="menu" [compareWith]="compareObjects">
-
-
-            <!-- iterar sobre el array de authors mostrando cada uno -->
-            @for (menu of menus; track menu.id) {
-            <option [ngValue]="menu">{{menu.title}}</option>
-            }
-
-          </select>
-          <label for="menu">Menu asociado</label>
-        </div>
         <div class="form-check mb-3">
           <input class="form-check-input" type="checkbox" id="status" formControlName="status">
           <label class="form-check-label" for="status" style="cursor:pointer;">
@@ -105,26 +83,7 @@
             Interior
           </label>
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="isPremium" formControlName="isPremium"
-            >
-          <label class="form-check-label" for="isPremium">
-            Salon VIP
-          </label>
-        </div>
-
-
-        @if(vipRoom > 0) {
-        <li class="list-group-item mb-5 d-flex justify-content-between lh-sm mt-3 ">
-          <div>
-            <h6 class="my-0">Servicio de comedor / salon privado.</h6>
-            <small class="text-body-secondary">vip</small>
-          </div>
-          <span class="text-body-secondary" id="isPremium">{{vipRoom}} €</span>
-        </li>
-        }
-
-
+       
         <div class="form floating mb-3 mt-3">
           <label for="extraService">Servicios Adicionales</label>
           <select class="form-select" id="extraService" formControlName="extraService" >

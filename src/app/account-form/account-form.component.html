@@ -23,7 +23,7 @@
                         <div class="d-flex justify-content-center">
                             <a routerLink="/restaurant-form" class="btn btn-custom">Crear Restaurant</a>
                         </div>
-                    }
+                        }
                         <div class="card-profile-stats d-flex justify-content-center">
                             <div>
                                 <span class="heading">22</span>
@@ -111,10 +111,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-address">Dirección</label>
-                                            <input id="input-address" class="form-control form-control-alternative"
-                                                placeholder="Home Address"
-                                                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                            <label class="form-control-label" for="address">Dirección</label>
+                                            <input type="text" class="form-control" id="address"
+                                                formControlName="address">
+
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@
                                                 value="United States">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">  
+                                    <div class="col-lg-4">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-country">Codigo postal</label>
                                             <input type="number" id="input-postal-code"
@@ -146,7 +146,7 @@
                             </div>
                             <hr class="my-4">
                             <!-- Description -->
-                           
+
                             <div class="pl-lg-4">
                                 <div class="form-group focused">
                                     <label>Sobre mí</label>

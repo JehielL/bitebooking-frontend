@@ -23,6 +23,7 @@ export class BookingListComponent implements OnInit {
   users: User[] = [];
   booking: Booking | undefined;
   userId: string | null = null;
+  user: User | undefined;
 
 
   constructor(

@@ -19,9 +19,6 @@
   color: black !important;
 }
 
-.custom-section {
-  background-color: #f3f3f3;
-}
 
 .row {
   --bs-gutter-x: 0;
@@ -181,10 +178,6 @@
   font-weight: bold;
   overflow: hidden;
   max-height: 60px;
-}
-
-section {
-  background-color: rgb(255, 255, 255);
 }
 
 .custom-title {

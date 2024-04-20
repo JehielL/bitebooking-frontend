@@ -1,6 +1,78 @@
-img{
-    border-radius: 20px;
-    padding: 4px ;
-    margin: 4px ;
-    box-shadow: 5px 10px 15px rgba(3, 3, 3, 0.2);
-}
+.container {
+    padding: 0;
+    background-size: cover 100%; 
+    background-repeat: round; 
+    margin: 5rem;
+  }
+  
+  .p-4 {
+    background-color: rgba(255, 255, 255, 0); 
+  }
+  
+  .user-profile {
+    border-radius: 10px;
+    overflow: hidden;
+    background-image: url('https://i.ibb.co/km881q1/food22.jpg');
+
+  }
+  
+  .custom-text{
+    background-color: #343a40;
+  }
+  
+  .profile-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #343a40;
+  }
+  
+  .profile-img {
+    border-radius: 50%;
+    border:2px solid #6A040F;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.571);
+    margin-top: 1rem;
+  }
+  
+  .card-profile-stats {
+    padding: 1rem 0;
+  }
+  
+  .user-details {
+    opacity: 0.8;
+   
+  }
+  
+  .list-group-item {
+    border: none;
+    font-size: 18px;
+    color: #000000; 
+    font-weight: 600;
+    background-color: #FFA33C;
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      margin: 0 0 0;
+      background-size: contain;
+      padding: 3rem;
+    }
+  
+    .user-profile {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .profile-img {
+      margin: auto;
+      margin-bottom: 20px;
+    }
+    
+    .user-details {
+    
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+  }
+  

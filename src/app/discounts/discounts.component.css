@@ -1,7 +1,6 @@
 .discount-container {
     padding: 2rem;
     text-align: center;
-    background: #f9f9f9;
   }
   
   .discount-title {
@@ -61,7 +60,8 @@
   }
   
   .discount-card-offer {
-    background: #af8702;
+    background: #FFA33C;
+    opacity: 0.9;
     color: #020202;
     padding: 0.25rem 0.75rem;
     border-radius: 5px;
