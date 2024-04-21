@@ -5,15 +5,7 @@
         @for (restaurant of getDiscounts(); track restaurant.id) {
       <div class="discount-card" [routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;">
         <div class="discount-card-offer">Descuento: {{ restaurant.discount}}%</div>
-        @if (restaurant?.imageUrl?.startsWith('http')) {
-        
-          <img class="discount-card-img" [src]="restaurant?.imageUrl">
-        }
-        @else{
-          
-          <img class="discount-card-img" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" alt="" >
-    
-        }
+          <img class="discount-card-img"[src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)">
         <div class="discount-card-body">
           <h3 class="discount-card-title">{{ restaurant.name }}</h3>
           <p class="discount-card-description">{{ restaurant.description }}</p>

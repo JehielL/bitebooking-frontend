@@ -3,15 +3,7 @@
     <ul class="ranking-list">
         @for (restaurant of restaurantTop;  track restaurant; ) {
       <li class="ranking-item" [routerLink]="['/restaurant', restaurant.id,'detail']" style="cursor: pointer;;">
-        @if (restaurant?.imageUrl?.startsWith('http')) {
-        
-          <img class="ranking-image" [src]="restaurant?.imageUrl">
-        }
-        @else{
-          
-        <img class="ranking-image" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" >
-    
-        }
+        <img class="ranking-image" [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)" [alt]="restaurant.name">        
         <div class="ranking-info">
           <h3 class="restaurant-name">{{ restaurant.name }}</h3>
           <p class="restaurant-description">{{ restaurant.description }}</p>

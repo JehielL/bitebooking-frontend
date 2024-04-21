@@ -1,16 +1,7 @@
 <div class="container my-5 p-3 bg-white shadow-sm rounded">
   <div class="row">
     <div class="col-md-6 mb-3 mb-md-0">
-      
-       @if (restaurant?.imageUrl?.startsWith('http')) {
-        
-        <img class="" [src]="restaurant?.imageUrl" alt="" class="img-fluid rounded">
-      }
-      @else{
-        
-        <img class="" [src]="'http://localhost:8080/files/' +restaurant?.imageUrl" alt="" class="img-fluid rounded">
-  
-      }
+      <img [src]="restaurant?.imageUrl?.startsWith('http') ? restaurant?.imageUrl : ('http://localhost:8080/files/' + restaurant?.imageUrl)" [alt]="restaurant?.name" class="img-fluid rounded">
     </div>
     <div class="col-md-6">
       <h1 class="h2">{{restaurant?.name}}</h1>
@@ -39,13 +30,10 @@
   <h2 class="h5 mb-3">Menús</h2>
   <div class="row">
     @for (menu of menus; track menu) {
-      @if (menu?.imgMenu?.startsWith('http')) {
         <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
         <div class="col-md-4 mb-3">
           <div class="card h-100" [routerLink]="['/menus', menu?.id, 'detail']" style="cursor: pointer;">
-    
-           
-            <img class="card-img-top" [src]="menu?.imgMenu" alt="Dish 1">
+            <img class="card-img-top"[src]="menu.imgMenu.startsWith('http') ? menu.imgMenu : ('http://localhost:8080/files/' + menu.imgMenu)" class="card-img-top" [alt]="menu.title">
             <div class="card-body">
               <h5 class="card-title">{{menu?.title}}</h5>
               <p class="card-text">{{menu?.description}}</p>
@@ -54,27 +42,8 @@
             </div>
           </div>
         </div>  
-      }@else {
-
-        <div class="col-md-4 mb-3">
-          <div class="card h-100" [routerLink]="['/menus', menu?.id, 'detail']" style="cursor: pointer;">
-    
-           
-            <img class="card-img-top" [src]="'http://localhost:8080/files/' +menu?.imgMenu" alt="Dish 1">
-            <div class="card-body">
-              <h5 class="card-title">{{menu?.title}}</h5>
-              <p class="card-text">{{menu?.description}}</p>
-              <div class="card-footer">
-              </div>
-            </div>
-          </div>
-        </div> 
-        
-      }
+      
   }
-
-  
-  
 </div>
 @if (isAdmin || isRestaurant) {
 <div>
