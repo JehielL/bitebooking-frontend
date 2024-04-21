@@ -41,7 +41,7 @@ export class AccountFormComponent implements OnInit {
     this.httpClient.get<User>('http://localhost:8080/users/account')
       .subscribe(user => {
         this.user = user;
-      
+        this.userForm.patchValue(user); // Utilizamos patchValue para establecer los valores del formulario
       });
   }
 
