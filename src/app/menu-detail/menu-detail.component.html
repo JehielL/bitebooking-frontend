@@ -7,24 +7,24 @@
 {
 
 <div class="container">
-  
+
   <div class="row">
 
     <div class="col-md-4 col-sm-12 mt-5">
       <div class="container mt-5 mb-5">
         <div class="card overflow-hidden rounded-4">
 
-          
+
           @if (menu.imgMenu.startsWith('http')) {
-            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-            <img class="" [src]="menu.imgMenu" alt="">
+          <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+          <img class="" [src]="menu.imgMenu" alt="">
           }
           @else{
-            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
-            <img class="" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
-      
+          <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+          <img class="" [src]="'http://localhost:8080/files/' + menu.imgMenu" alt="">
+
           }
-          
+
         </div>
       </div>
     </div>
@@ -107,47 +107,46 @@
         </div>
       </div>
       @if (isAdmin) {
-        <div class="buttons">
+      <div class="buttons">
 
-       
 
-          <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
-            Menú</button>
-  
-        
-          <button class="btn btn-outline-danger ms-2"
-                    (click)="openModal(modal, menu)">
-                    Borrar
-                  </button>
-  
-        </div>
+
+        <button class="btn btn-outline-success ms-2" [routerLink]="['/menus', menu.id, 'update']">Editar
+          Menú</button>
+
+
+        <button class="btn btn-outline-danger ms-2" (click)="openModal(modal, menu)">
+          Borrar
+        </button>
+
+      </div>
       }
-      
+
     </div>
   </div>
 
   <ng-template #modal let-modal>
     <div class="modal-header">
-    <h4 class="modal-title">Despublicar Menú</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cancelar')"></button>
+      <h4 class="modal-title">Despublicar Menú</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cancelar')"></button>
     </div>
     <div class="modal-body">
-    <p>
-    Esta acción va a despublicar el Menú, por lo que ya no será accesible ni se podrá comprar.
-    ¿Está de acuerdo?
-    </p>
+      <p>
+        Esta acción va a despublicar el Menú, por lo que ya no será accesible ni se podrá comprar.
+        ¿Está de acuerdo?
+      </p>
     </div>
     <div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="modal.close('Aceptar')">
-    <i class="bi bi-check-lg me-2"></i>
-    Aceptar
-    </button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Cancelar')">
-    <i class="bi bi-x-circle me-2"></i>
-    Cancelar
-    </button>
+      <button type="button" class="btn btn-success" (click)="modal.close('Aceptar')">
+        <i class="bi bi-check-lg me-2"></i>
+        Aceptar
+      </button>
+      <button type="button" class="btn btn-danger" (click)="modal.close('Cancelar')">
+        <i class="bi bi-x-circle me-2"></i>
+        Cancelar
+      </button>
     </div>
-    </ng-template>
+  </ng-template>
 
 
   <div class="menu-section py-4">
@@ -159,22 +158,22 @@
         <div class="horizontal-bars"></div>
       </div>
 
-      
+
       @for (dish of dishes; track dish.id ) {
-     <div class="col-md-4 mb-3">
+      <div class="col-md-4 mb-3">
         <div class="card h-100">
 
           @if (dish.imgDish.startsWith('http')) {
-            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-            <img class="card-img-top" [src]="dish.imgDish" alt="">
+          <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+          <img class="card-img-top" [src]="dish.imgDish" alt="">
           }
           @else{
-            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
-            <img class="card-img-top" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
-    
+          <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+          <img class="card-img-top" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+
           }
 
-          
+
 
           <div class="card-body">
             <h5 class="card-title"> {{dish.title}}</h5>
@@ -195,72 +194,72 @@
           </div>
           <div class="row">
             @if (isAdmin || isRestaurant) {
-              <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="custom-button">
-                <i class="bi bi-plus-circle"></i>
-                <span class="button-text">Agrega un nuevo elemento</span>
-              </button>
+            <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="custom-button">
+              <i class="bi bi-plus-circle"></i>
+              <span class="button-text">Agrega un nuevo elemento</span>
+            </button>
 
             }
-           
-            
+
+
 
           </div>
         </div>
         <div class="row">
           @for (dish of dishes; track dish.id) {
           <div class="col-md-4">
-              <!-- Content -->
-              <div class="tab-content" id="menuContent">
-                  <div class="tab-pane fade show active" id="mains" role="tabpanel" aria-labelledby="mainsTab">
+            <!-- Content -->
+            <div class="tab-content" id="menuContent">
+              <div class="tab-pane fade show active" id="mains" role="tabpanel" aria-labelledby="mainsTab">
+                <div class="row">
+                  <div class="row-12">
+                    <div class="py-3 border-bottom">
                       <div class="row">
-                          <div class="row-12">
-                              <div class="py-3 border-bottom">
-                                  <div class="row">
-                                      <div class="col-2 align-self-center">
-                                          <!-- Image -->
-                                          <div class="ratio ratio-1x1">
-                                              @if (dish.imgDish.startsWith('http')) {
-                                                  <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-                                                  <img class="card-img" [src]="dish.imgDish" alt="">
-                                                  }
-                                                  @else{
-                                                  <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
-                                                  <img class="card-img" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
-                                                  }
-                                          </div>
-                                      </div>
-                                      <div class="col-7">
-                                          <!-- Heading -->
-                                          <h5 class="mb-2">{{dish.title}}</h5>
-                                          <!-- Text -->
-
-                                        
-
-                                          <p class="mb-0">{{dish.description}}</p>
-                                      </div>
-                                      <div class="col-2">
-                                          <!-- Price -->
-                                          <div class="fs-4 font-serif text-center text-body-emphasis">{{dish.price}}€</div>
-                                      </div>
-                                      <div class="col-3 align-self-center">
-                                          <!-- Other content -->
-                                      </div>
-                                  </div>
-                              </div>
+                        <div class="col-2 align-self-center">
+                          <!-- Image -->
+                          <div class="ratio ratio-1x1">
+                            @if (dish.imgDish.startsWith('http')) {
+                            <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+                            <img class="card-img" [src]="dish.imgDish" alt="">
+                            }
+                            @else{
+                            <!-- Si es url interna entonces hay que añadir delante del localhost:8080/files -->
+                            <img class="card-img" [src]="'http://localhost:8080/files/' + dish.imgDish" alt="">
+                            }
                           </div>
+                        </div>
+                        <div class="col-7">
+                          <!-- Heading -->
+                          <h5 class="mb-2">{{dish.title}}</h5>
+                          <!-- Text -->
+
+
+
+                          <p class="mb-0">{{dish.description}}</p>
+                        </div>
+                        <div class="col-2">
+                          <!-- Price -->
+                          <div class="fs-4 font-serif text-center text-body-emphasis">{{dish.price}}€</div>
+                        </div>
+                        <div class="col-3 align-self-center">
+                          <!-- Other content -->
+                        </div>
                       </div>
+                    </div>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
           }
-      </div>
-        
+        </div>
 
-        
+
+
       </section>
-   
-    
-    
+
+
+
 
 
 
@@ -288,18 +287,18 @@
 
           <li>
 
-            
-            <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top "
-              >
 
-             
-            @if (rating.user?.imgUser) {
+            <a
+              class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top ">
+
+
+              @if (rating.user?.imgUser) {
 
               <img [routerLink]="['/user/list']" class="bd-placeholder-img2" [src]="rating.user?.imgUser" alt="">
 
-            }
-        
-  
+              }
+
+
               <div class="col-lg-8">
                 <h6 class="mb-0">
 
@@ -308,9 +307,9 @@
                       <i class="bi-star{{ fill === 100 ? '-fill' : '' }} fs-3" style="color: #ffc845;"></i>
                     </ng-template>
                   </ngb-rating>
-                    @if (isAdmin) {
+                  @if (isAdmin) {
 
-                    <i class="bi bi-x-circle-fill fs-3 ms-3 text-danger" style="cursor:pointer;"
+                  <i class="bi bi-x-circle-fill fs-3 ms-3 text-danger" style="cursor:pointer;"
                     (click)="deleteRating(rating)"></i>
                   }
 
@@ -330,7 +329,7 @@
       </div>
 
     </div>
-   
+
   </div>
   <div class="row">
     <div class="col">

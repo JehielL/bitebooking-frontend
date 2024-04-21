@@ -10,4 +10,6 @@ export interface User {
     phone: string;
     role: Role;
     imgUser: string;
+    city: string;
+    aboutMe: string;
 }
