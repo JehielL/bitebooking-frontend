@@ -4,23 +4,12 @@
 
         <h1 class="my-5">Avatar de perfil</h1>
 
-        <form >
-
-          <input type="hidden" formControlName="id">
-
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control"
-            id="title" formControlName="title">
-            <label for="title">Titulo del menu</label>
-          </div>
-
+        <form (ngSubmit)="save()">
           <div class="input-group">
             <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
-            <button class="btn btn-outline-secondary" type="button" id="photoBtn">Button</button>
+            <button class="btn btn-outline-secondary" type="button" id="photoBtn">Seleccionar</button>
           </div>
-
-          <button class="w-100 btn btn-primary btn-lg mb-5 mt-5" type="button">Guardar</button>
-
+          <button class="w-100 btn btn-primary btn-lg mb-5 mt-5" type="submit">Guardar</button>
         </form>
 
       </div>

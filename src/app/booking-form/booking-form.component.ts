@@ -14,7 +14,7 @@ import { User } from '../Interfaces/user.model';
 @Component({
   selector: 'app-booking-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CurrencyPipe,DatePipe],
+  imports: [ReactiveFormsModule, CurrencyPipe, DatePipe],
   templateUrl: './booking-form.component.html',
   styleUrl: './booking-form.component.css'
 })
@@ -29,7 +29,7 @@ export class BookingFormComponent implements OnInit {
   userId: string | null = null;
   isLoggedin = false;
   user: User | undefined;
-  
+
 
   bookingForm = new FormGroup({
     id: new FormControl<number>(0),
@@ -44,22 +44,22 @@ export class BookingFormComponent implements OnInit {
     extraService: new FormControl<string>(''),
   });
 
-  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    authService: AuthenticationService  ) {
-      this.authService = authService;
-      if (this.authService) {
-        this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
-        this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-        this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
-        this.authService.userId.subscribe(userId => this.userId = userId);
-      }
+    authService: AuthenticationService) {
+    this.authService = authService;
+    if (this.authService) {
+      this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+      this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+      this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
+      this.authService.userId.subscribe(userId => this.userId = userId);
     }
-  
+  }
+
 
 
 
@@ -67,22 +67,22 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
-   
+
+
     this.httpClient.get<User>('http://localhost:8080/users/account')
-    .subscribe(user => {
-      this.user = user;
-    
-    });
+      .subscribe(user => {
+        this.user = user;
+
+      });
 
     this.activatedRoute.params.subscribe(params => {
-      
+
       const id = params['id'];
       if (!id) return;
 
-      
-this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
-      .subscribe(restaurants => this.restaurant = restaurants);
+
+      this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
+        .subscribe(restaurants => this.restaurant = restaurants);
 
 
       this.httpClient.get<Booking>('http://localhost:8080/bookings/' + id).subscribe(bookingFromBackend => {
@@ -98,8 +98,8 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
           restaurant: bookingFromBackend.restaurant,
           isPremium: bookingFromBackend.isPremium,
           extraService: bookingFromBackend.extraService,
-         
-      
+
+
         });
 
         // marcar boolean true isUpdate
@@ -107,22 +107,22 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
 
       });
     });
-    
+
   }
 
-  compareObjects(o1: any, o2: any): boolean{
+  compareObjects(o1: any, o2: any): boolean {
 
-    if (o1 && o2){
+    if (o1 && o2) {
       return o1.id == o2.id;
     }
 
     return o1 == o2;
   }
- 
+
 
   save() {
     if (!this.restaurant)
-    return;
+      return;
     const booking: Booking = this.bookingForm.value as Booking;
     booking.restaurant = this.restaurant;
 
@@ -139,7 +139,7 @@ this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
       });
     }
 
-    
-      
-  }; 
+
+
+  };
 }

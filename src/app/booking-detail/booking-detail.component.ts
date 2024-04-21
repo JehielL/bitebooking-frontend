@@ -38,6 +38,8 @@ export class BookingDetailComponent implements OnInit {
       if (!id) return;
       const url = 'http://localhost:8080/bookings/' + id;
       this.httpClient.get<Booking>(url).subscribe(b => this.booking = b);
+      const resturl = 'http://localhost:8080/restaurants/' + id;
+      this.httpClient.get<Booking>(resturl).subscribe(b => this.booking = b);
     });
      // Carga las reservas al inicializar el componente
   }

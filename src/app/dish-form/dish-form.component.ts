@@ -70,12 +70,19 @@ export class DishFormComponent implements OnInit {
       if (!id) return;
 
       this.httpClient.get<Menu>('http://localhost:8080/menus/' + id)
-      .subscribe(menus => this.menu = menus);
+      .subscribe(menus => {
+        this.menu = menus;
+        this.dishForm.patchValue({
+          menu: this.menu
+        });
+      });
 
       // EDICION
 
       this.httpClient.get<Dish>('http://localhost:8080/dishes/' + id).subscribe(dish => {
-        this.dishForm.reset({});  
+        this.dishForm.reset({
+          menu: dish.menu,
+        });  
         this.dish = dish;
         this.isUpdate = true;
      

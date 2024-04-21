@@ -14,7 +14,9 @@
                     <div class="row justify-content-center">
 
                         <div class="card-profile-image mt-5 text-center">
-                            <img [src]="user.imgUser" class="rounded-circle">
+
+                            <img class="rounded-circle" [src]="user.imgUser.startsWith('http') ? user.imgUser : 'http://localhost:8080/files/' + user.imgUser" alt="Restaurant 1">
+
                         </div>
 
                     </div>
@@ -68,7 +70,7 @@
                             </div>
                             <div class="col-4 text-right">
                                 
-                                <button type="button " class="btn btn-sm btn-custom rounded" (click)="openModal(modal, user)">Configuracíon.</button>
+                                <button type="button " class="btn btn-sm btn-custom rounded" >Configuracíon.</button>
 
                                 <ng-template #modal let-modal>
                                     <div class="modal-header">
@@ -135,6 +137,11 @@
 
                                         </div>
                                     </div>
+
+                                    <div class="input-group">
+                                        <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
+                                        <button class="btn btn-outline-secondary" type="button" id="photoBtn">Seleccionar</button>
+                                      </div>
 
                                    
                                     

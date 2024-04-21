@@ -25,15 +25,15 @@ export class AccountFormComponent implements OnInit {
     phone: new FormControl(),
     city: new FormControl(),
     aboutMe: new FormControl(),
-
+    photo: new FormControl()
   });
-  update: any;
-
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
 
   constructor(private httpClient: HttpClient,
-    private authService: AuthenticationService,
-    private modalService: NgbModal,
-    private router: Router) {
+              private authService: AuthenticationService,
+              private modalService: NgbModal,
+              private router: Router) {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
   }
 
@@ -41,7 +41,7 @@ export class AccountFormComponent implements OnInit {
     this.httpClient.get<User>('http://localhost:8080/users/account')
       .subscribe(user => {
         this.user = user;
-        this.userForm.reset(user);
+      
       });
   }
 
@@ -56,13 +56,33 @@ export class AccountFormComponent implements OnInit {
     this.user.phone = this.userForm.get('phone')?.value ?? '';
     this.user.city = this.userForm.get('city')?.value ?? '';
     this.user.aboutMe = this.userForm.get('aboutMe')?.value ?? '';
-    this.httpClient.put<User>('http://localhost:8080/users/account', this.user)
-    .subscribe(user => {
-      this.user = user;
-      this.router.navigateByUrl('/home');
-    });
+
+    // Si hay un archivo seleccionado, se guarda la nueva foto
+    if (this.photoFile) {
+      this.updateProfile();
+    } else {
+      this.httpClient.put<User>('http://localhost:8080/users/account', this.user)
+        .subscribe(updatedUser => {
+          this.user = updatedUser;
+          this.router.navigateByUrl('/home');
+        });
+    }
   }
 
+  onFileChange(event: Event) {
+    const target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
+
+    if (target.files === null || target.files.length === 0) {
+      return; // no se procesa ningún archivo
+    }
+
+    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()
+
+    // OPCIONAL: PREVISUALIZAR LA IMAGEN POR PANTALLA
+    const reader = new FileReader();
+    reader.onload = event => this.photoPreview = reader.result as string;
+    reader.readAsDataURL(this.photoFile);
+  }
 
   openModal(modal: TemplateRef<any>, user: User) {
     this.user = user; // Asignar el usuario recibido al usuario local
@@ -77,8 +97,23 @@ export class AccountFormComponent implements OnInit {
       console.log(`Modal cerrado: ${reason}`);
     });
   }
-  updateProfile() {
-    throw new Error('Method not implemented.');
-  }
 
+  updateProfile() {
+    if (!this.photoFile) {
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('photo', this.photoFile);
+
+    const url = 'http://localhost:8080/users/account/avatar';
+    this.httpClient.post<User>(url, formData)
+      .subscribe(updatedUser => {
+        this.user = updatedUser;
+        this.httpClient.put<User>('http://localhost:8080/users/account', this.user)
+          .subscribe(() => {
+            this.router.navigateByUrl('/home');
+          });
+      });
+  }
 }
