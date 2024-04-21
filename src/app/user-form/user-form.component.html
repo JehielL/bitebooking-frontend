@@ -1,8 +1,9 @@
 <div class="container ">
   <div class="row">
-    <div class="col-lg-6 d-md-block img-fluid  text-center">
-      <img style="opacity: 0.5; " src="./assets/img/logo_bitebooking.png" alt="login">
+    <div class="col-lg-6 d-md-block img-fluid text-center d-none d-lg-block">
+      <img style="opacity: 0.5;" src="./assets/img/logo_bitebooking.png" alt="login">
     </div>
+    
 
     <div class="col-lg-6">
       <form class="mt-5" [formGroup]="registerUserForm" (ngSubmit)="save()">
@@ -88,11 +89,11 @@
 
         </div>
 
-        <div class="mb-3 text-end">
-
-          <button class="custom-btn " type="submit" [disabled]="registerUserForm.invalid">Guardar</button>
-          <button class="custom-btn " routerLink="/home" type="submit">Cancelar</button>
+        <div class="button-container">
+          <button class="custom-btn" type="submit" [disabled]="registerUserForm.invalid">Guardar</button>
+          <button class="custom-btn" routerLink="/home" type="submit">Cancelar</button>
         </div>
+        
       </form>
 
     </div>
