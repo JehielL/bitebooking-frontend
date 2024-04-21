@@ -94,6 +94,7 @@ export class RestaurantFromComponent implements OnInit {
     formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
     formData.append('name', this.restaurantFrom.get('name')?.value ?? '');
     formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
+    formData.append('description', this.restaurantFrom.get('description')?.value ?? '');
     formData.append('phone', this.restaurantFrom.get('phone')?.value ?? '0');
     formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value ?? '');
     formData.append('closingTime', this.restaurantFrom.get('closingTime')?.value ?? '');
