@@ -58,6 +58,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-8 order-xl-1">
                 <div class="card bg-custom shadow mt-5">
                     <div class="card-header border-0">
@@ -66,8 +67,23 @@
                                 <h3 class="mb-0 custom-h3">Mi cuenta </h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="#!" class="btn btn-sm btn-custom">Configuración</a>
+                                
+                                <button type="button " class="btn btn-sm btn-custom rounded" (click)="openModal(modal, user)">Configuracíon.</button>
+
+                                <ng-template #modal let-modal>
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Actualizar Perfil</h4>
+                                        <button type="button" class="btn-close" aria-label="Close"
+                                            (click)="modal.dismiss()"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                       <app-avatar-form></app-avatar-form>
+                                    </div>
+                                </ng-template>
+
+
                             </div>
+
                         </div>
                     </div>
                     <div class="card-body ">
@@ -101,57 +117,36 @@
 
                                         </div>
                                     </div>
-                                </div>
-
-                            </div>
-                            <hr class="my-4">
-                            <!-- Address -->
-                            <h3 class="heading-small mb-4">Información de contacto.</h3>
-                            <div class="pl-lg-4">
-                                <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="address">Dirección</label>
-                                            <input type="text" class="form-control" id="address"
-                                                formControlName="address">
+                                            <label class="form-control-label" for="phonel">Telefono.</label>
+                                            <input type="phone" class="form-control" id="phone" formControlName="phone">
 
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4">
+
+                                    <div class="col-lg-6">
                                         <div class="form-group focused">
-                                            <label class="form-control-label" for="input-city">Ciudad</label>
-                                            <input type="text" id="input-city"
-                                                class="form-control form-control-alternative" placeholder="City"
-                                                value="New York">
+                                            <label class="form-control-label" for="city">Ciudad.</label>
+                                            <input type="city" class="form-control" id="city" formControlName="city">
+
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="input-country">País</label>
-                                            <input type="text" id="input-country"
-                                                class="form-control form-control-alternative" placeholder="Country"
-                                                value="United States">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="input-country">Codigo postal</label>
-                                            <input type="number" id="input-postal-code"
-                                                class="form-control form-control-alternative" placeholder="Postal code">
-                                        </div>
-                                    </div>
+
+                                   
+                                    
                                 </div>
+
                             </div>
-                            <hr class="my-4">
-                            <!-- Description -->
 
                             <div class="pl-lg-4">
                                 <div class="form-group focused">
                                     <label>Sobre mí</label>
                                     <textarea rows="4" class="form-control form-control-alternative"
-                                        placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                                        placeholder="A few words about you ..." formControlName="aboutMe">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
                                 </div>
                             </div>
 
