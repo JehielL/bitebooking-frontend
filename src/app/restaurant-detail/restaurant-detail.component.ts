@@ -32,6 +32,7 @@ export class RestaurantDetailComponent implements OnInit {
   isRestaurant = false;
   user: User | undefined;
   authService: AuthenticationService | undefined;
+  canEdit = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -53,6 +54,11 @@ export class RestaurantDetailComponent implements OnInit {
       const restaurantUrl = `http://localhost:8080/restaurant/${id}`;
       this.httpClient.get<Restaurant>(restaurantUrl).subscribe(restaurant => {
         this.restaurant = restaurant;
+
+        this.httpClient.get<boolean>('http://localhost:8080/restaurants/can-edit/' + id)
+        .subscribe(canEdit => {
+          this.canEdit = canEdit;
+        });
 
         const menusUrl = `http://localhost:8080/menus/byRestaurant/${id}`;
         this.httpClient.get<Menu[]>(menusUrl)
