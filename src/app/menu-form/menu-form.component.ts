@@ -56,7 +56,13 @@ export class MenuFormComponent implements OnInit {
       if (!id) return;
       const restaurantUrl = 'http://localhost:8080/restaurant/' + id;
 
-      this.httpClient.get<Restaurant>(restaurantUrl).subscribe(r => this.restaurant = r);
+      this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
+      .subscribe(restaurants => {
+        this.restaurant = restaurants;
+        this.menuForm.patchValue({
+          restaurant: this.restaurant
+        });
+      });
 
       
       this.httpClient.get<Menu>('http://localhost:8080/menus/' + id).subscribe(menu => {
