@@ -23,7 +23,7 @@ export class RestaurantFormComponent implements OnInit {
     name: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required), 
     restaurantType: new FormControl('', Validators.required),
-    description: new FormControl(''),
+    description: new FormControl('', [Validators.required, Validators.maxLength(200)]),
     openingTime: new FormControl('', Validators.required),
     closingTime: new FormControl('', Validators.required), 
     imageUrl: new FormControl(''),

@@ -1,7 +1,7 @@
 export enum RestaurantType {
   JAPANESE_FOOD = "Japanesa",
   THAI_FOOD = "Tailandesa",
-  SPAIN_FOOD = "Spañola",
+  SPAIN_FOOD = "Española",
   CHINESE_FOOD = "China",
   BRUNCH = "Desayuno",
   COFFEE_STORE = "Cafetería",

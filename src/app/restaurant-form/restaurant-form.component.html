@@ -55,6 +55,11 @@
      <div class="coolinput form-floating mb-3">
       <textarea class="form-control" id="description" placeholder="Descripción" formControlName="description"></textarea>
       <label for="description">Descripción</label>
+      @if (restaurantForm.get('description')?.errors?.['maxlength']) {
+      <div>
+        <small class="text-danger">La descripción no puede superar los 200 caracteres.</small>
+      </div>
+    }
     </div>
     
      
