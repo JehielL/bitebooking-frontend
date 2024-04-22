@@ -47,7 +47,7 @@
             </button>
           </div>
           <div class="custom-picture-div" style="text-align: center;">
-            <img [src]="user.imgUser" class="custom-picture" [routerLink]="['/user', user.id, 'detail']"
+            <img [src]="user.imgUser.startsWith('http') ? user.imgUser : ('http://localhost:8080/files/' + user.imgUser)"  class="custom-picture" [routerLink]="['/user', user.id, 'detail']"
               alt="logo" height="80" width="80">
           </div>
           <div style="font-size: 20px; text-align: center;">
