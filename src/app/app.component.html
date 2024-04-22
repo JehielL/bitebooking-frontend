@@ -1,51 +1,38 @@
 <app-navbar></app-navbar>
 
-
 <main>
-
-    
-    
-<router-outlet></router-outlet>
-    
+    <router-outlet></router-outlet>
 </main>
 
 @if (mostrarBotonRetroceso) {
-    <button (click)="retroceder()" class="btn-retroceder">
-        <i class="bi bi-arrow-left"></i>
-    </button>
+<button (click)="retroceder()" class="btn-retroceder">
+    <i class="bi bi-arrow-left"></i>
+</button>
 
-    <div class="card-body">
-    
-    
-        <div class="d-lg-none">
-            <div class="wrapper mt-3 d-flex justify-content-center">
-                <div class="option">
-                    <div  class="btn" (click)="retroceder()">
-                        <i class="bi bi-arrow-left"></i>
-                    </div>
+<div class="card-body">
+
+
+    <div class="d-lg-none">
+        <div class="wrapper mt-3 d-flex justify-content-center">
+            <div class="option">
+                <div class="btn" (click)="retroceder()">
+                    <i class="bi bi-arrow-left"></i>
                 </div>
-                <div class="option">
-                    <div class="btn">
-                        <i class="bi bi-chat-square-dots"></i>
-                    </div>
+            </div>
+            <div class="option">
+                <div class="btn">
+                    <i class="fa-solid fa-house" routerLink="/home"></i>
                 </div>
-                <div class="option">
-                    <div class="btn">
-                        <i class="bi bi-heart"></i>
-                    </div>
+            </div>
+            <div class="option">
+                <div class="btn">
+                    <i class="fa-solid fa-utensils" routerLink="/restaurant-list"></i>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    
+
 }
-
-
-
-
-
-
-
-
-<app-footer ></app-footer>
+<app-footer></app-footer>
