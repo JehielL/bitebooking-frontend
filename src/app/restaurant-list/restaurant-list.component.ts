@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -25,13 +26,27 @@ export class RestaurantListComponent implements OnInit {
   puedeMostrarMas: boolean = false;
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
+    combineLatest([
+      this.activatedRoute.params,
+      this.activatedRoute.queryParams
+    ]).subscribe(([params, queryParams]) => {
       const tipoCocina = params['tipoCocina'];
-      if (tipoCocina) {
+      const view = queryParams['view'];
+  
+      if(view === 'mine') {
+        this.loadMyRestaurants();
+      } else if (tipoCocina) {
         this.filtrarRestaurantesPorTipoCocina(tipoCocina);
       } else {
         this.loadRestaurantsDirectly();
       }
+    });
+  }
+
+  loadMyRestaurants(): void {
+    const myRestaurantsUrl = 'http://localhost:8080/my-restaurants';
+    this.httpClient.get<Restaurant[]>(myRestaurantsUrl).subscribe(restaurants => {
+      this.restaurants = restaurants;
     });
   }
 

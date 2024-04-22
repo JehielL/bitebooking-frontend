@@ -55,11 +55,13 @@
               </a>
             } 
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-              <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]" (click)="$event.preventDefault()">Mis Reservas</a>
-              @if (isAdmin) {<a ngbDropdownItem routerLink="user/list" (click)="$event.preventDefault()">Lista de usuarios</a>}
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
-              <a ngbDropdownItem href="#" routerLink="users/account" (click)="$event.preventDefault()">Ajustes de usuario.</a>
-              <a ngbDropdownItem href="#" (click)="logout()" (click)="$event.preventDefault()">Cerrar sesión</a>
+              <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]">Mis Reservas</a>
+              <a ngbDropdownItem [routerLink]="['/restaurant-list']" [queryParams]="{ view: 'mine' }">Mis Restaurantes</a>
+
+              @if (isAdmin) {<a ngbDropdownItem routerLink="user/list">Lista de usuarios</a>}
+              <a ngbDropdownItem href="#"  routerLink="/menus">Gastronomia Favorita</a>
+              <a ngbDropdownItem href="#" routerLink="users/account" >Ajustes de usuario.</a>
+              <a ngbDropdownItem href="#" (click)="logout()">Cerrar sesión</a>
             </div>
           </li>
         }

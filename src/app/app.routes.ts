@@ -205,6 +205,10 @@ export const routes: Routes = [
    component: DiscountsComponent,
    canActivate: [userLoggedInGuard]
 },
+{ 
+   path: 'restaurants/mine', 
+  component:RestaurantListComponent 
+},
 {
     path: '**',
     component:NotFoundComponent
