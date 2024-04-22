@@ -20,9 +20,9 @@
  
    <div class="col-6 mb-3 ">
     
-     <form [formGroup]="restaurantFrom" (ngSubmit)="save()">
+     <form [formGroup]="restaurantForm" (ngSubmit)="save()">
        @if (isUpdate) {
-         <h1 class="mt-3 mb-3">Update existing Restaurant with id{{restaurantFrom.get('id')?.value}}</h1>
+         <h1 class="mt-3 mb-3">Update existing Restaurant with id{{restaurantForm.get('id')?.value}}</h1>
        } @else {
          <h1 class="mt-3 mb-3">Create Restaurant</h1>
        } 
@@ -33,55 +33,25 @@
      <div class="coolinput form-floating mb-3">
          <input type="number" class="form-control" id="phone" placeholder="640365012" formControlName="phone">
          <label for="phone">Phone *</label>
-         @if (restaurantFrom.controls.phone.touched && restaurantFrom.controls.phone.errors) {
+         @if (restaurantForm.controls.phone.touched && restaurantForm.controls.phone.errors) {
          <div>
-             @if (restaurantFrom.controls.phone.errors['required']) {
+             @if (restaurantForm.controls.phone.errors['required']) {
              <small class="text-danger">It requires a Phone</small>
              }
-             @if (restaurantFrom.controls.phone.errors['pattern']) {
+             @if (restaurantForm.controls.phone.errors['pattern']) {
              <small class="text-danger">Incorrect Telephone Format. Must be 9 digits.</small>
              }
          </div>
          }
      </div>
  
-     <div class="form-floating mb-3" style="border: 3px #4b0f4a solid;border-radius: 20px;">
-       
-         <select class="form-select" id="restaurantTypes" formControlName="restaurantTypes">
-          <option value="JAPANESE_FOOD">Japones</option>
-          <option value="THAI_FOOD">Thai Food</option>
-          <option value="SPAIN_FOOD">Gastronomía Española</option>
-          <option value="CHINESE_FOOD">Comida China</option>
-          <option value="BRUNCH">Brunch</option>
-          <option value="COFFEE_STORE">Cafetería</option>
-          <option value="BAR">Bar & Mixology</option>
-          <option value="VIETNAM_FOOD">Vietnamita</option>
-          <option value="FRENCH_FOOD">Gastronomía Francesa</option>
-          <option value="TEX_MEX_FOOD">Tex Mex Food</option>
-          <option value="KOREAN_FOOD">Koreana</option>
-          <option value="VEGAN_FOOD">Vegan</option>
-          <option value="AMERICAN_FOOD">Americana</option>
-          <option value="GERMAN_FOOD">Bavarian Food</option>
-          <option value="PORTUGUESE_FOOD">Gastronomía Portugues</option>
-          <option value="FUSION_FOOD">Fusion & Molecular</option>
-          <option value="GREEK_FOOD">Griega</option>
-          <option value="INDIAN_FOOD">Comida Hindí</option>
-          <option value="PERUVIAN_FOOD">Gastronomía Peruana</option>
-          <option value="CANADIAN_FOOD">Canadiense</option>
-          <option value="DOMINICAN_FOOD">Dominicana</option>
-          <option value="BALKAN_FOOD">Europea</option>
-          <option value="GEORGIAN_FOOD">Gergian Food</option>
-          <option value="ARABIAN_FOOD">Gastronomía Arabe</option>
-          <option value="MARRAKECH_FOOD">Marrakech</option>
-          <option value="ASIAN_FOOD">Asiatica</option>
-          <option value="AFRICAN_FOOD">Gastronomía Africana</option>
-          <option value="MAGHREB_FOOD"></option>
-          <option value="CARIBBEAN_FOOD">Caribeña</option>
-
-         </select>
-         <label for="RestaurantType">Restaurant Type</label>
-     </div>
-     
+     <div class="form-group">
+      <label for="restaurantType">Tipo de Restaurante</label>
+      <select class="form-control" id="restaurantType" formControlName="restaurantType">
+        @for (type of restaurantTypes; track type.value) {<option  [ngValue]="type.key">{{type.value}}</option>}
+      </select>
+    </div>
+    
      <div class="coolinput form-floating mb-3">
       <textarea class="form-control" id="description" placeholder="Descripción" formControlName="description"></textarea>
       <label for="description">Descripción</label>
@@ -120,7 +90,7 @@
       <input type="file" class="form-control mb-3" id="imageUrl" (change)="onFileChange($event)">
      </div>
     
-       @if (restaurantFrom.invalid) {
+       @if (restaurantForm.invalid) {
          <small class="text-danger mb-3">Complete the Required Fields</small>
          }
        <div class="mb-3 text-end">
@@ -128,7 +98,7 @@
          @if (isUpdate) {
            <button class="custom-btn" type="submit" >Update</button>
          }@else { 
-           <button class="custom-btn" type="submit" [disabled]="restaurantFrom.invalid" >save</button>   
+           <button class="custom-btn" type="submit" [disabled]="restaurantForm.invalid" >save</button>   
          }  
          <button class="custom-btn  "  type="submit"  routerLink="/home">Cancelar</button>
        </div>

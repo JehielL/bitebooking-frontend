@@ -17,24 +17,24 @@ import { AuthenticationService } from '../services/authentication.service';
   templateUrl: './restaurant-form.component.html',
   styleUrl: './restaurant-form.component.css'
 })
-export class RestaurantFromComponent implements OnInit {
-  
-  restaurantFrom = new FormGroup({
+export class RestaurantFormComponent implements OnInit {
+  restaurantForm = new FormGroup({
     id: new FormControl(0),
-    name: new FormControl(''),
-    phone: new FormControl(''), 
-    restaurantTypes:new FormControl(RestaurantType.BAR),
+    name: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required), 
+    restaurantType: new FormControl('', Validators.required),
     description: new FormControl(''),
-    openingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]),
-    closingTime: new FormControl('', [Validators.required, Validators.pattern(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/)]), 
-    imageUrl: new FormControl(),
-    city:new FormControl(''),
-    address:new FormControl(''),
-    number:new FormControl(''),
-    postalCode:new FormControl(''),
+    openingTime: new FormControl('', Validators.required),
+    closingTime: new FormControl('', Validators.required), 
+    imageUrl: new FormControl(''),
+    city: new FormControl(''),
+    address: new FormControl(''),
+    number: new FormControl(''),
+    postalCode: new FormControl(''),
     averageRating: new FormControl(0)
   });
-  
+
+  restaurantTypes: { key: string, value: string }[] = [];
   restaurants: Restaurant |undefined;
   isUpdate: boolean = false;
   isAdmin = false;
@@ -43,32 +43,33 @@ export class RestaurantFromComponent implements OnInit {
   photoPreview: string | undefined;
 
   constructor( private httpClient: HttpClient,
-               private router: Router,
-               private activatedRoute: ActivatedRoute,
-                private authService: AuthenticationService){
-                this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
-                this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
-                
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+     private authService: AuthenticationService){
+     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
+     this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+     
 
-              }
+   }
 
   ngOnInit(): void {
-   
-    this.httpClient.get<Restaurant[]>('http://localhost:8080/restaurant')
-    .subscribe(restaurantBacken => restaurantBacken = restaurantBacken );
+    this.restaurantTypes = Object.keys(RestaurantType).map(key => ({
+      key: key,
+      value: RestaurantType[key as keyof typeof RestaurantType]
+    }));
 
-    this.activatedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
-      if(!id) return;
+      if (id) {
+        this.loadRestaurant(id);
+      }
+    });
+  }
 
-
-
-      this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id).subscribe(restaurantBacken =>{
-        this.restaurantFrom.reset(restaurantBacken);
-        this.isUpdate = true;
-        this.restaurants = restaurantBacken;
-        
-      });
+  loadRestaurant(id: string): void {
+    // Aquí asumo que la API devuelve la clave del tipo de restaurante en restaurantType
+    this.httpClient.get<Restaurant>(`http://localhost:8080/restaurant/${id}`).subscribe(restaurant => {
+      this.restaurantForm.patchValue(restaurant);
     });
   }
 
@@ -91,19 +92,19 @@ export class RestaurantFromComponent implements OnInit {
   save () {
   
     let formData = new FormData();
-    formData.append('id', this.restaurantFrom.get('id')?.value?.toString() ?? '0');
-    formData.append('name', this.restaurantFrom.get('name')?.value ?? '');
-    formData.append('restaurantTypes', this.restaurantFrom.get('restaurantTypes')?.value?.toString() ?? '');
-    formData.append('description', this.restaurantFrom.get('description')?.value ?? '');
-    formData.append('phone', this.restaurantFrom.get('phone')?.value ?? '0');
-    formData.append('openingTime', this.restaurantFrom.get('openingTime')?.value ?? '');
-    formData.append('closingTime', this.restaurantFrom.get('closingTime')?.value ?? '');
-    formData.append('imageUrl', this.restaurantFrom.get('imageUrl')?.value ?? '');
-    formData.append('city', this.restaurantFrom.get('city')?.value ?? '');
-    formData.append('address', this.restaurantFrom.get('address')?.value ?? '');
-    formData.append('number', this.restaurantFrom.get('number')?.value ?? '');
-    formData.append('postalCode', this.restaurantFrom.get('postalCode')?.value ?? '');
-    formData.append('averageRating', this.restaurantFrom.get('averageRating')?.value?.toString() ?? '');
+    formData.append('id', this.restaurantForm.get('id')?.value?.toString() ?? '0');
+    formData.append('name', this.restaurantForm.get('name')?.value ?? '');
+    formData.append('restaurantType', this.restaurantForm.get('restaurantType')?.value?.toString() ?? '');
+    formData.append('description', this.restaurantForm.get('description')?.value ?? '');
+    formData.append('phone', this.restaurantForm.get('phone')?.value ?? '0');
+    formData.append('openingTime', this.restaurantForm.get('openingTime')?.value ?? '');
+    formData.append('closingTime', this.restaurantForm.get('closingTime')?.value ?? '');
+    formData.append('imageUrl', this.restaurantForm.get('imageUrl')?.value ?? '');
+    formData.append('city', this.restaurantForm.get('city')?.value ?? '');
+    formData.append('address', this.restaurantForm.get('address')?.value ?? '');
+    formData.append('number', this.restaurantForm.get('number')?.value ?? '');
+    formData.append('postalCode', this.restaurantForm.get('postalCode')?.value ?? '');
+    formData.append('averageRating', this.restaurantForm.get('averageRating')?.value?.toString() ?? '');
     
     if(this.photoFile) {
       formData.append("photo", this.photoFile);
@@ -133,5 +134,8 @@ export class RestaurantFromComponent implements OnInit {
 
     return o1 == o2;
   }
-
+  getRestaurantType(type?: string): string {
+    if (!type) return 'No especificado';
+    return RestaurantType[type as keyof typeof RestaurantType];
+  }
 }
