@@ -50,7 +50,7 @@
           <li class="nav-item custom-drop" ngbDropdown>
             @if (userEmail) {
               <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
-                <img class="user-photo" [src]="user?.imgUser?.startsWith('http') ? user?.imgUser : 'http://localhost:8080/files/' + user?.imgUser" alt="Restaurant 1">
+                <img class="user-photo" [src]="avatarUrl" alt="Restaurant 1">
                 {{user?.firstName}} {{user?.lastName}}
               </a>
             } 

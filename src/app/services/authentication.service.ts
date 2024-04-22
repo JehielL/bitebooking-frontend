@@ -13,6 +13,7 @@ export class AuthenticationService {
   userId = new BehaviorSubject<string | null>(this.getUserId());
   isRestaurant = new BehaviorSubject<boolean>(this.getIsRestaurant());
   
+  avatarUrl = new BehaviorSubject<string>('');
 
   constructor() { } 
 
@@ -65,4 +66,9 @@ export class AuthenticationService {
     const decodedToken = jwtDecode(token) as DecodedToken;
     return decodedToken.role === 'RESTAURANT';
   }
+
+  setUserAvatar(avatar: string) {
+    this.avatarUrl.next(avatar);
+  }
+
 }

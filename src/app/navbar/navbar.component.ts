@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NavbarComponent implements OnInit{
 
+
   title = 'frontend'
   userId: string | null = null;
   isLoggedin = false;
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit{
   isAdmin = false;
   isRestaurant = false;
   user: User | undefined;
+  avatarUrl = '';
 
   constructor(
     private authService: AuthenticationService,
@@ -29,19 +31,45 @@ export class NavbarComponent implements OnInit{
     private httpClient: HttpClient,
     ){
 
-    this.authService.isLoggedin.subscribe(isLoggedin => this.isLoggedin = isLoggedin);
+    this.authService.isLoggedin.subscribe(isLoggedin => {
+      this.isLoggedin = isLoggedin;
+      if(this.isLoggedin) {
+        this.httpClient.get<User>('http://localhost:8080/users/account')
+          .subscribe(user => {
+            this.user = user;
+            if (this.user.imgUser.startsWith('http')) {
+              this.avatarUrl = user.imgUser;
+            } else {
+              this.avatarUrl = 'http://localhost:8080/files/' + user.imgUser;
+            }
+          });
+      }
+    } );
     this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
     this.authService.userId.subscribe(userId => this.userId = userId);
-  }
-  ngOnInit(): void {
-
-    this.httpClient.get<User>('http://localhost:8080/users/account')
-    .subscribe(user => {
-      this.user = user;
+    this.authService.avatarUrl.subscribe(avatarUrl => {
+      if (avatarUrl.startsWith('http')) {
+        this.avatarUrl = avatarUrl;
+      } else {
+        this.avatarUrl = 'http://localhost:8080/files/' + avatarUrl;
+      }
     
     });
+  }
+
+  getUserAvatar() {
+    if(this.user) {
+      return this.user.imgUser;
+    } else {
+      return '';
+    }
+  }
+
+  ngOnInit(): void {
+
+    
     
   }
 

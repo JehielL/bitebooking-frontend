@@ -113,6 +113,10 @@ export class AccountFormComponent implements OnInit {
         this.httpClient.put<User>('http://localhost:8080/users/account', this.user)
           .subscribe(() => {
             this.router.navigateByUrl('/home');
+            if(this.user?.imgUser)
+              this.authService.avatarUrl.next(this.user?.imgUser);
+            // TODO actualiar el avatrar en el authentication service 
+            // authenticationService.updateAvatar(this.user?.avatar);
           });
       });
   }
