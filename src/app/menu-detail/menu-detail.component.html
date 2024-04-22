@@ -106,7 +106,7 @@
 
         </div>
       </div>
-      @if (isAdmin) {
+      @if (canEdit) {
       <div class="buttons">
 
 
@@ -193,7 +193,7 @@
             <div class="horizontal-bars"></div>
           </div>
           <div class="row">
-            @if (isAdmin || isRestaurant) {
+            @if (canEdit) {
             <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="custom-button">
               <i class="bi bi-plus-circle"></i>
               <span class="button-text">Agrega un nuevo elemento</span>
