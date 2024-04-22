@@ -64,12 +64,13 @@ form{
     opacity: 0;
    }
 /*estoe s de los bordes de formulario*/
-  .coolinput input {
+  .coolinput input, textarea, select {
     border: 3px #4b0f4a solid;
     border-radius: 20px;
     
   }
-
+  
+  
   
 
 
