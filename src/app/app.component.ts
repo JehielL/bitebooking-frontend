@@ -8,6 +8,7 @@ import { BookingDetailComponent } from './booking-detail/booking-detail.componen
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { RestaurantListComponent } from './restaurant-list/restaurant-list.component';
 import { Location } from '@angular/common';
+import { NgbDropdown, NgbDropdownConfig, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -15,7 +16,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent, ],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent, NgbDropdownModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -23,6 +24,7 @@ export class AppComponent {
 
   mostrarBotonRetroceso: boolean = false;
   mostrarMenuDesplegable: boolean = false;
+  mostrarBotonesExtras: boolean = false;
 
   constructor(private location: Location, private router: Router) {
     this.router.events.subscribe(() =>{
@@ -42,5 +44,14 @@ export class AppComponent {
     this.mostrarMenuDesplegable = false;
   }
 
+  showExtraButtons() {
+    this.mostrarBotonesExtras = true;
+  }
+
+  hideExtraButtons() {
+    this.mostrarBotonesExtras = false;
+  }
+
   title = 'Bite booking app';   
+  
 }

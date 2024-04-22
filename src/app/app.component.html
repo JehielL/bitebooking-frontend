@@ -11,10 +11,41 @@
 
 @if (mostrarBotonRetroceso) {
     <button (click)="retroceder()" class="btn-retroceder">
-        <i class="bi bi-chevron-double-left"></i>
+        <i class="bi bi-arrow-left"></i>
     </button>
+
+    <div class="card-body">
+    
+    
+        <div class="d-lg-none">
+            <div class="wrapper mt-3 d-flex justify-content-center">
+                <div class="option">
+                    <div  class="btn" (click)="retroceder()">
+                        <i class="bi bi-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="btn">
+                        <i class="bi bi-chat-square-dots"></i>
+                    </div>
+                </div>
+                <div class="option">
+                    <div class="btn">
+                        <i class="bi bi-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     
 }
+
+
+
+
+
+
+
 
 <app-footer ></app-footer>

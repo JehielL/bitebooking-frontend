@@ -244,7 +244,7 @@
 
 
   .wrapper {
-    width: 100%;
+    width: 50%;
     /* Ocupa el ancho completo */
   }
 
@@ -344,30 +344,30 @@
 @media only screen and (max-width: 200px) {
   .card {
     .card {
-      max-width: calc(700% - 30px); /* Ajustar el ancho */
+      max-width: calc(700% - 30px); 
       margin-right: 15px;
       margin-left: 15px;
-      margin-bottom: 0; /* Eliminar margen inferior */
+      margin-bottom: 0; 
     }
     height: auto;
-    /* Ajusta la altura automáticamente */
+   
     margin: 0 auto 20px;
-    /* Centra y agrega margen inferior */
+   
     max-width: calc(100% - 30px);
-    /* Ajuste para mostrar dos tarjetas por fila */
+   
     margin-right: 15px;
-    /* Restablecer el margen derecho */
+    
     margin-left: 15px;
-    /* Restablecer el margen izquierdo */
+    
   }
   .card:hover::before {
     transform: rotate(90deg) scaleX(0.60 ) scaleY(1.80);
-    /* Ajustado para una apariencia más proporcionada */
+    
   }
 
   .custom-picture {
     max-width: 100%;
-    /* Imagen más pequeña */
+   
   }
 
   .search {
@@ -393,12 +393,12 @@
 
   .wrapper {
     width: 100%;
-    /* Ocupa el ancho completo */
+    
   }
 
   .option {
     width: calc(50% - 5px);
-    /* Opciones en dos columnas */
+
   }
 
   .row {
@@ -414,30 +414,25 @@
 @media only screen and (max-width: 478px) {
   .card {
     .card {
-      max-width: calc(700% - 30px); /* Ajustar el ancho */
-      margin-right: 15px;
+      max-width: calc(700% - 30px); 
       margin-left: 15px;
-      margin-bottom: 0; /* Eliminar margen inferior */
+      margin-bottom: 0; 
     }
     height: auto;
-    /* Ajusta la altura automáticamente */
     margin: 0 auto 20px;
-    /* Centra y agrega margen inferior */
     max-width: calc(100% - 30px);
-    /* Ajuste para mostrar dos tarjetas por fila */
     margin-right: 15px;
-    /* Restablecer el margen derecho */
     margin-left: 15px;
-    /* Restablecer el margen izquierdo */
+   
   }
   .card:hover::before {
     transform: rotate(90deg) scaleX(0.60 ) scaleY(1.80);
-    /* Ajustado para una apariencia más proporcionada */
+   
   }
 
   .custom-picture {
     max-width: 100%;
-    /* Imagen más pequeña */
+    
   }
 
   .search {
@@ -469,12 +464,12 @@
 
   .wrapper {
     width: 100%;
-    /* Ocupa el ancho completo */
+   
   }
 
   .option {
     width: calc(50% - 5px);
-    /* Opciones en dos columnas */
+    
   }
 
   .row {

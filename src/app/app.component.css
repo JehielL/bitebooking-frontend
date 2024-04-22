@@ -1,24 +1,23 @@
-main{
-    padding: 0px;
-    
+main {
+    padding: 0;
 }
+
 .btn-retroceder {
     position: fixed;
     top: 120px;
     left: 20px;
     z-index: 1000;
+    color: #FFA33C;
     background-color: #000000;
     border: none;
     cursor: pointer;
-    padding: 10px;
     width: 60px; /* Ancho igual al alto */
     height: 60px; /* Alto del botón */
     border-radius: 50%; /* Hacer el botón completamente redondo */
     box-shadow: 0 2px 4px rgba(232, 160, 4, 0.5);
     transition: box-shadow 0.3s, transform 0.3s;
-    
     margin-left: 30px;
-    opacity: 0.8;
+  
 }
 
 .btn-retroceder:hover {
@@ -26,11 +25,115 @@ main{
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(232, 93, 4, 0.8);
     opacity: 0.8;
+    color: #000000;
 }
 
-
-.bi-chevron-double-left {
-    font-size: 24px;
-    color: #ffffff;
+.bi-arrow-left{
+    font-size: 35px;
+    color: #FFA33C;
     font-weight: bold;
+    
+}
+.bi-arrow-left:hover {
+    font-size: 35px;
+    color: #000000;
+    font-weight: bold;
+}
+.wrapper {
+    position: fixed; /* Hacer que el contenedor sea fijo */
+    bottom: 20px; /* Posición desde la parte inferior */
+    right: 20px; /* Posición desde la derecha */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25%;
+    --font-color-dark: #323232;
+    --font-color-light: #fff;
+    --bg-color: #fff;
+    --main-color: #FFA33C ;
+    --secondary-color: #505050;
+    width: calc(70% - 40px); 
+    height: 36px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--main-color);
+    border-radius: 34px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 4px 4px var(--main-color);
+    visibility: hidden;
+}
+
+.wrapper .option {
+    margin-right: 5px;
+    width: calc(33.33% - 5px); 
+    height: 28px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    border-radius: 34px;
+    transition: 0.25s cubic-bezier(0, 0, 0, 1);
+}
+
+.wrapper .option:last-child {
+    margin-right: 0; /* Cambiado para que no haya margen a la derecha del último elemento */
+}
+
+.wrapper .option:hover {
+    background-color: var(--secondary-color);
+}
+
+.wrapper .option:hover .span {
+    color: var(--font-color-light);
+}
+
+.wrapper .input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    appearance: none;
+    cursor: pointer;
+}
+
+.wrapper .btn {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .option .bi {
+    font-size: 20px;
+    color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+    .btn-retroceder {
+        visibility: hidden;
+        
+    }
+
+    .wrapper {
+        position: fixed; /* Hacer que el contenedor sea fijo */
+        bottom: 20px; /* Posición desde la parte inferior */
+        right: 20px; /* Posición desde la derecha */
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(70% - 40px); /* Se reduce el ancho del wrapper para considerar el margen */
+        height: 36px;
+        background-color: var(--bg-color);
+        border: 2px solid var(--main-color);
+        border-radius: 34px;
+        display: flex;
+        flex-direction: row;
+        box-shadow: 4px 4px var(--main-color);
+        margin-right: 10%;
+        visibility: visible;
+    }
 }
