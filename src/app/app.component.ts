@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
@@ -16,7 +16,7 @@ import { NgbDropdown, NgbDropdownConfig, NgbDropdownModule } from '@ng-bootstrap
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent, NgbDropdownModule, RouterLink],
+  imports: [CommonModule, RouterOutlet, DatePipe, NavbarComponent, FooterComponent, BookingDetailComponent,NotFoundComponent, BookingListComponent,RestaurantListComponent, NgbDropdownModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

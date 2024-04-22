@@ -52,7 +52,7 @@ main {
     --font-color-light: #fff;
     --bg-color: #fff;
     --main-color: #FFA33C ;
-    --secondary-color: #FFA33C;
+    --secondary-color: #505050;
     width: calc(70% - 40px); 
     height: 36px;
     background-color: var(--bg-color);
@@ -133,9 +133,7 @@ main {
         display: flex;
         flex-direction: row;
         box-shadow: 4px 4px var(--main-color);
-        margin-right: 12%;
+        margin-right: 10%;
         visibility: visible;
-        padding: 20px;
     }
-    
 }
