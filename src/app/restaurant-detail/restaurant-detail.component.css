@@ -58,3 +58,104 @@
 .btn-primary:hover {
   background-position: right center; 
 }
+
+/* Estilos para la tarjeta principal */
+.card-cover {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-bottom: 20px; /* Reducir el margen inferior */
+  margin-top: 30px; /* Reducir el margen superior */
+}
+
+.card-cover:hover {
+  transform: scale(1.05); 
+  z-index: 2; 
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.474); 
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(40%) contrast(110%);
+}
+
+/* Contenedor de contenido personalizado */
+.container-fluid.custom {
+  position: relative;
+  z-index: 1;
+  margin-top: 25px; /* Reducir el margen superior */
+  margin-bottom: 25px; /* Reducir el margen inferior */
+  padding: 10px;
+}
+
+/* Estilos para las filas y celdas de la tabla */
+th, td {
+  padding-left: 0.75rem; /* Reducir el espaciado a la izquierda */
+  padding-right: 0.75rem; /* Reducir el espaciado a la derecha */
+}
+
+/* Estilos para los botones */
+.buttons {
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start;
+}
+
+.buttons button {
+  font-size: 0.8rem;
+  margin-right: 0.5rem; /* Reducir el espacio entre los botones */
+}
+
+/* Estilos para el título personalizado */
+.custom-title {
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin: 15px 0; /* Reducir el margen vertical */
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Estilos para las barras horizontales */
+.horizontal-bars {
+  width: 100%;
+  height: 3px; 
+  background-color: black; 
+  margin-bottom: 0.5rem; /* Reducir el margen inferior */
+}
+
+/* Estilos para los títulos de las tarjetas */
+#custom-cards h2 {
+  margin-top: 0.5rem; /* Reducir el margen superior */
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px */
+@media (max-width: 768px) {
+  /* Ajustes para el contenedor personalizado */
+  .container-fluid.custom {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  /* Ajustes para los botones en dispositivos móviles */
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Ajustes para los botones en dispositivos móviles */
+  .buttons button {
+    margin-right: 0; /* Eliminar el margen derecho para ajustar los botones al borde */
+    margin-bottom: 10px; /* Agregar un espacio entre los botones */
+  }
+}
+  

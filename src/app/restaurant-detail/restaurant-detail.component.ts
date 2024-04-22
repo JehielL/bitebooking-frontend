@@ -7,16 +7,18 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { Menu } from '../Interfaces/menu.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../Interfaces/user.model';
+import { Booking } from '../Interfaces/booking.model';
 
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.css']
 })
 export class RestaurantDetailComponent implements OnInit {
   menus: Menu[] = [];
+  bookings: Booking[] = [];
   menu: Menu | undefined;
   restaurant: Restaurant | undefined;
   openingTime: Date | undefined;
@@ -70,7 +72,11 @@ export class RestaurantDetailComponent implements OnInit {
           
           this.recommendedRestaurants = this.shuffleAndSelectRestaurants(this.restaurants, 3);
         });
+
+        
       });
+      this.httpClient.get<Booking[]>('http://localhost:8080/bookings/filter-by-restaurant/' + id)
+    .subscribe(bookings => this.bookings = bookings);
     });
   }
   private shuffleAndSelectRestaurants(restaurants: Restaurant[], count: number): Restaurant[] {

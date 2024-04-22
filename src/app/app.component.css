@@ -52,7 +52,7 @@ main {
     --font-color-light: #fff;
     --bg-color: #fff;
     --main-color: #FFA33C ;
-    --secondary-color: #505050;
+    --secondary-color: #FFA33C ;
     width: calc(70% - 40px); 
     height: 36px;
     background-color: var(--bg-color);
@@ -119,8 +119,7 @@ main {
 
     .wrapper {
         position: fixed; /* Hacer que el contenedor sea fijo */
-        bottom: 20px; /* Posición desde la parte inferior */
-        right: 20px; /* Posición desde la derecha */
+        /* Posición desde la derecha */
         z-index: 1000;
         display: flex;
         justify-content: center;
@@ -135,5 +134,7 @@ main {
         box-shadow: 4px 4px var(--main-color);
         margin-right: 10%;
         visibility: visible;
+        padding:25px;
+        margin-right: 15%;
     }
 }
