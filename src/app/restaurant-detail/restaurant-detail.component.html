@@ -32,8 +32,15 @@
   <div class="menu-section py-4">
 
     <div class="horizontal-bars mt-5"></div>
+    @if (canEdit) {
+      <div>
+        <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
+        <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi
+          restaurante</button>
+      </div>
+      }
 
-    <h2 class="mb-3">Menús</h2>
+    <h2 class="mt-3">Menús</h2>
     <div class="row">
       @for (menu of menus; track menu) {
       <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
@@ -53,13 +60,7 @@
 
       }
     </div>
-    @if (canEdit) {
-    <div>
-      <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
-      <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi
-        restaurante</button>
-    </div>
-    }
+    
     <div class="horizontal-bars mt-5"></div>
 
     <div class="row recommendation-section py-4">

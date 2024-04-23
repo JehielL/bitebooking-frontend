@@ -40,7 +40,7 @@
         <div class="container">
           @if (menu.imgMenu.startsWith('http')) {
               <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'">
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image"  [style.background-image]="'url(' + menu.imgMenu + ')'" style="background-size: cover;background-position:center;">
          
        
           
@@ -66,7 +66,7 @@
               }
               @else{
                    <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image" [style.background-image]="'url(http://localhost:8080/files/' + menu.imgMenu + ')'" >
+              <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg background-image" [style.background-image]="'url(http://localhost:8080/files/' + menu.imgMenu + ')'" style="background-size: cover;background-position:center;">
          
                 
           
