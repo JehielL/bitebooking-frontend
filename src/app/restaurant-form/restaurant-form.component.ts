@@ -61,13 +61,16 @@ export class RestaurantFormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.loadRestaurant(id);
+          this.isUpdate = true;
+          this.loadRestaurant(id);
+      } else {
+          this.isUpdate = false;
       }
-    });
+  });
+  
   }
 
   loadRestaurant(id: string): void {
-    // Aquí asumo que la API devuelve la clave del tipo de restaurante en restaurantType
     this.httpClient.get<Restaurant>(`http://localhost:8080/restaurant/${id}`).subscribe(restaurant => {
       this.restaurantForm.patchValue(restaurant);
     });
@@ -76,12 +79,12 @@ export class RestaurantFormComponent implements OnInit {
 
   onFileChange(event: Event) {
   console.log(event);
-    let target = event.target as HTMLInputElement; // este target es el input de tipo file donde se carga el archivo
+    let target = event.target as HTMLInputElement; 
 
     if(target.files === null || target.files.length == 0){
-      return; // no se procesa ningún archivo
+      return;
     }
-    this.photoFile = target.files[0]; // guardar el archivo para enviarlo luego en el save()  
+    this.photoFile = target.files[0]; 
 
     let reader = new FileReader();
     reader.onload = event => this.photoPreview = reader.result as string;
@@ -89,40 +92,42 @@ export class RestaurantFormComponent implements OnInit {
   }
 
 
-  save () {
-  
-    let formData = new FormData();
-    formData.append('id', this.restaurantForm.get('id')?.value?.toString() ?? '0');
+  save() {
+    const formData = new FormData();
     formData.append('name', this.restaurantForm.get('name')?.value ?? '');
-    formData.append('restaurantType', this.restaurantForm.get('restaurantType')?.value?.toString() ?? '');
+    formData.append('restaurantType', this.restaurantForm.get('restaurantType')?.value ?? '');
     formData.append('description', this.restaurantForm.get('description')?.value ?? '');
-    formData.append('phone', this.restaurantForm.get('phone')?.value ?? '0');
+    formData.append('phone', this.restaurantForm.get('phone')?.value ?? '');
     formData.append('openingTime', this.restaurantForm.get('openingTime')?.value ?? '');
     formData.append('closingTime', this.restaurantForm.get('closingTime')?.value ?? '');
-    formData.append('imageUrl', this.restaurantForm.get('imageUrl')?.value ?? '');
     formData.append('city', this.restaurantForm.get('city')?.value ?? '');
     formData.append('address', this.restaurantForm.get('address')?.value ?? '');
     formData.append('number', this.restaurantForm.get('number')?.value ?? '');
     formData.append('postalCode', this.restaurantForm.get('postalCode')?.value ?? '');
-    formData.append('averageRating', this.restaurantForm.get('averageRating')?.value?.toString() ?? '');
-    
-    if(this.photoFile) {
-      formData.append("photo", this.photoFile);
+    formData.append('imageUrl', this.restaurantForm.get('imageUrl')?.value ?? '');
+
+    if (this.photoFile) {
+        formData.append("photo", this.photoFile);
     }
 
-    
-    
-    if (this.isUpdate) {
-    
-    this.httpClient.put<Restaurant>('http://localhost:8080/restaurant/'+ this.restaurants?.id, formData).subscribe(restaurantBacken =>
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']));
-    
-    }else {
-    
-    this.httpClient.post<Restaurant>('http://localhost:8080/restaurant', formData).subscribe(restaurantBacken =>
-    this.router.navigate(['/restaurant', restaurantBacken.id, 'detail']));
+    const id = this.restaurantForm.get('id')?.value;
+    if (id && this.isUpdate) {
+        this.httpClient.put<Restaurant>(`http://localhost:8080/restaurant/${id}`, formData)
+            .subscribe(response => {
+                console.log('Update success', response);
+                this.router.navigate(['/restaurant', response.id, 'detail']);
+            }, error => {
+                console.error('Update failed', error);
+            });
+    } else {
+        this.httpClient.post<Restaurant>('http://localhost:8080/restaurant', formData)
+            .subscribe(response => {
+                this.router.navigate(['/restaurant', response.id, 'detail']);
+            });
     }
-  }
+}
+
+  
 
   
 
