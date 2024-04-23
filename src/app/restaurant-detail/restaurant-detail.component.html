@@ -1,7 +1,9 @@
-<div class="container my-5 p-3 bg-white shadow-sm rounded">
+<div class="container my-5 p-3 shadow-sm rounded" style="background-color: #f9f9f9;">
   <div class="row">
     <div class="col-md-6 mb-3 mb-md-0">
-      <img [src]="restaurant?.imageUrl?.startsWith('http') ? restaurant?.imageUrl : ('http://localhost:8080/files/' + restaurant?.imageUrl)" [alt]="restaurant?.name" class="img-fluid rounded">
+      <img
+        [src]="restaurant?.imageUrl?.startsWith('http') ? restaurant?.imageUrl : ('http://localhost:8080/files/' + restaurant?.imageUrl)"
+        [alt]="restaurant?.name" class="img-fluid rounded">
     </div>
     <div class="col-md-6">
       <h1 class="h2">{{restaurant?.name}}</h1>
@@ -9,56 +11,66 @@
         <p class="btn btn-outline-dark me-2">Tipo de Cocina: {{getRestaurantType(restaurant?.restaurantType)}}</p>
         <p href="tel:123456789" class="btn btn-outline-dark me-2">📞{{restaurant?.phone}}</p>
         <p class="btn btn-outline-dark me-2">🌟{{restaurant?.averageRating}}</p>
-        <p class="btn btn-outline-dark me-2">Desde: {{formatTime(restaurant?.openingTime)}}, Hasta: {{formatTime(restaurant?.closingTime)}}</p>
+        <p class="btn btn-outline-dark me-2">Desde: {{formatTime(restaurant?.openingTime)}}, Hasta:
+          {{formatTime(restaurant?.closingTime)}}</p>
         <div>
-          <button [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-primary">
+          <button [routerLink]="['/bookings', restaurant?.id, 'reserve']" type="button" class="btn btn-primary">
             <i class="bi bi-box-arrow-right" style="padding: 5%; min-width: 200px;"></i>Reservar</button>
         </div>
       </div>
-      
-      
 
-      
+
+
+
       <div class="fw-bold fs-4">Descripción</div>
       {{restaurant?.description}}
     </div>
-    
-  
+
+
   </div>
-  
-<div class="menu-section py-4">
-  <h2 class="h5 mb-3">Menús</h2>
-  <div class="row">
-    @for (menu of menus; track menu) {
-        <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
-        <div class="col-md-4 mb-3">
-          <div class="card h-100" [routerLink]="['/menus', menu?.id, 'detail']" style="cursor: pointer;">
-            <img class="card-img-top"[src]="menu.imgMenu.startsWith('http') ? menu.imgMenu : ('http://localhost:8080/files/' + menu.imgMenu)" class="card-img-top" [alt]="menu.title">
-            <div class="card-body">
-              <h5 class="card-title">{{menu?.title}}</h5>
-              <p class="card-text">{{menu?.description}}</p>
-              <div class="card-footer">
-              </div>
+
+  <div class="menu-section py-4">
+
+    <div class="horizontal-bars mt-5"></div>
+
+    <h2 class="mb-3">Menús</h2>
+    <div class="row">
+      @for (menu of menus; track menu) {
+      <!-- Si es url externa entonces ya trae la ruta completa absoluta-->
+      <div class="col-md-4 mb-3">
+        <div class="card h-100" [routerLink]="['/menus', menu?.id, 'detail']" style="cursor: pointer;">
+          <img class="card-img-top"
+            [src]="menu.imgMenu.startsWith('http') ? menu.imgMenu : ('http://localhost:8080/files/' + menu.imgMenu)"
+            class="card-img-top" [alt]="menu.title">
+          <div class="card-body">
+            <h5 class="card-title">{{menu?.title}}</h5>
+            <p class="card-text">{{menu?.description}}</p>
+            <div class="card-footer">
             </div>
           </div>
-        </div>  
-      
-  }
-</div>
-@if (canEdit) {
-<div>
-  <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
-  <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi restaurante</button>
-</div>
-}
+        </div>
+      </div>
 
-  <div class="recommendation-section py-4">
-    <h2 class="h5 mb-3">Recomendaciones de Restaurantes</h2>
-    <div class="row">
-      @for (restaurant of recommendedRestaurants; track restaurant) {
+      }
+    </div>
+    @if (canEdit) {
+    <div>
+      <button class="btn btn-outline-dark me-2" [routerLink]="['/menus',restaurant?.id, 'create']">Crear Menu</button>
+      <button class="btn btn-outline-dark me-2" [routerLink]="['/restaurant',restaurant?.id,'update']">Actualizar mi
+        restaurante</button>
+    </div>
+    }
+    <div class="horizontal-bars mt-5"></div>
+
+    <div class="row recommendation-section py-4">
+      <h2 class=" mb-3">Recomendaciones de Restaurantes</h2>
+      <div class="row">
+        @for (restaurant of recommendedRestaurants; track restaurant) {
         <div class="col-md-4 mb-3">
           <div class="card h-100" [routerLink]="['/restaurant',restaurant.id,'detail']" style="cursor: pointer;">
-            <img class="card-img-top" [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : 'http://localhost:8080/files/' + restaurant.imageUrl" alt="Restaurant 1">
+            <img class="card-img-top"
+              [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : 'http://localhost:8080/files/' + restaurant.imageUrl"
+              alt="Restaurant 1">
             <div class="card-body">
               <h5 class="card-title">{{restaurant.name}}</h5>
               <p class="card-text">{{restaurant.description}}</p>
@@ -67,155 +79,159 @@
             </div>
           </div>
         </div>
-      }
+        }
       </div>
-</div>
-
-@if (canEdit) {
-
-  <div class="container">
-    <div class="col">
-      <h2 class="title text-center mt-5">Mis reservas activas</h2>
-  
-    
-  
-      @if (bookings){
-      @for (booking of bookings; track booking.id) {
-  
-      @if(booking.restaurant.imageUrl.startsWith('http')) {
-      <div class="card-container p-3 ">
-        <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg">
-          <div class="background-image" [style.background-image]="'url(' + booking?.restaurant?.imageUrl + ')'"></div>
-          <div class="container-fluid custom">
-            <div class="row mt-3 ms-2">
-              <div class="col-md-4">
-                <a [routerLink]="['/user', booking.user.id, 'detail']"
-                  style="cursor: pointer; color:white;   text-decoration: none;">
-                  <h3>{{booking?.user?.firstName }} {{booking?.user?.lastName}}</h3>
-                </a>
-  
-                <h6>Fecha de reserva:</h6>
-                <p>{{booking?.createDate | date: 'dd/MM/yy' }}</p>
-  
-              </div>
-              <div class="col-md-4">
-                <h6>Confirmado:</h6>
-                @if (booking?.status) {
-                <span class="badge text-bg-success">Sí</span>
-                } @else{
-                <span class="badge text-bg-danger">No</span>
-                }
-  
-  
-                <h6>Cantidad de comensales:</h6>
-                <p>{{booking?.numUsers}}</p>
-  
-              </div>
-              <div class="col-md-4">
-                <h6>Restaurant:</h6>
-                <a class="badge text-bg-warning text-decoration-none"
-                  [routerLink]="['/restaurants', booking?.restaurant?.id, 'detail']">
-                  {{booking?.restaurant?.name}}
-                </a>
-  
-  
-  
-              </div>
-            </div>
-            <br>
-            <div class="buttons ms-2">
-              <button class="btn btn-outline-light ms-2" [routerLink]="['/bookings', booking.id, 'detail']">Ver
-                Reserva</button>
-              @if (isAdmin || isRestaurant) {
-              <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking?.id, 'update']">
-                Editar Reserva
-              </button>
-              <button class="btn btn-outline-danger ms-2">
-                Borrar Reserva
-              </button>
-              }
-  
-            </div>
-  
-  
-          </div>
-  
-        </div>
-  
-      </div>
-      }@else {
-      <div class="card-container p-3 ">
-        <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg">
-          <div class="background-image"
-            [style.background-image]="'url(http://localhost:8080/files/' + booking.restaurant.imageUrl + ')'"></div>
-          <div class="container-fluid custom">
-            <div class="row mt-3 ms-2">
-              <div class="col-md-4">
-                <h3>{{booking?.user?.firstName}} {{booking?.user?.lastName}}</h3>
-                <h6>Fecha de reserva:</h6>
-                <p>{{booking?.createDate | date: 'dd/MM/yy' }}</p>
-  
-              </div>
-              <div class="col-md-4">
-                <h6>Confirmado:</h6>
-                @if (booking?.status) {
-                <span class="badge text-bg-success">Sí</span>
-                } @else{
-                <span class="badge text-bg-danger">No</span>
-                }
-  
-  
-                <h6>Cantidad de comensales:</h6>
-                <p>{{booking?.numUsers}}</p>
-  
-              </div>
-              <div class="col-md-4">
-                <h6>Restaurant:</h6>
-                <a class="badge text-bg-warning text-decoration-none"
-                  [routerLink]="['/restaurants', booking?.restaurant?.id, 'detail']">
-                  {{booking?.restaurant?.name}}
-                </a>
-  
-  
-  
-              </div>
-            </div>
-            <br>
-            <div class="buttons ms-2">
-              <button class="btn btn-outline-light ms-2" [routerLink]="['/bookings', booking.id, 'detail']">Ver
-                Reserva</button>
-              @if (isAdmin || isRestaurant) {
-              <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking?.id, 'update']">
-                Editar Reserva
-              </button>
-              <button class="btn btn-outline-danger ms-2">
-                Borrar Reserva
-              </button>
-              }
-  
-            </div>
-  
-  
-          </div>
-  
-        </div>
-  
-      </div>
-      }
-  
-      }
-  
-      }
-  
-  
-  
-  
-  
-  
     </div>
-  
-    <!-- Reservas inactivas -->
-  
-  
+
+    @if (canEdit) {
+
+    <div class="container">
+      <div class="col">
+        <h2 class="title text-center mt-5">Mis reservas activas</h2>
+
+
+
+        @if (bookings){
+        @for (booking of bookings; track booking.id) {
+
+        @if(booking.restaurant.imageUrl.startsWith('http')) {
+        <div class="card-container p-3 ">
+          <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <div class="background-image" [style.background-image]="'url(' + booking?.restaurant?.imageUrl + ')'"></div>
+            <div class="container-fluid custom">
+              <div class="row mt-3 ms-2">
+                <div class="col-md-4">
+                  <a [routerLink]="['/user', booking.user.id, 'detail']"
+                    style="cursor: pointer; color:white;   text-decoration: none;">
+                    <h3>{{booking?.user?.firstName }} {{booking?.user?.lastName}}</h3>
+                  </a>
+
+                  <h6>Fecha de reserva:</h6>
+                  <p>{{booking?.createDate | date: 'dd/MM/yy' }}</p>
+
+                </div>
+                <div class="col-md-4">
+                  <h6>Confirmado:</h6>
+                  @if (booking?.status) {
+                  <span class="badge text-bg-success">Sí</span>
+                  } @else{
+                  <span class="badge text-bg-danger">No</span>
+                  }
+
+
+                  <h6>Cantidad de comensales:</h6>
+                  <p>{{booking?.numUsers}}</p>
+
+                </div>
+                <div class="col-md-4">
+                  <h6>Restaurant:</h6>
+                  <a class="badge text-bg-warning text-decoration-none"
+                    [routerLink]="['/restaurants', booking?.restaurant?.id, 'detail']">
+                    {{booking?.restaurant?.name}}
+                  </a>
+
+
+
+                </div>
+              </div>
+              <br>
+              <div class="buttons ms-2">
+                <button class="btn btn-outline-light ms-2" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                  Reserva</button>
+                @if (isAdmin || isRestaurant) {
+                <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking?.id, 'update']">
+                  Editar Reserva
+                </button>
+                <button class="btn btn-outline-danger ms-2">
+                  Borrar Reserva
+                </button>
+                }
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+        }@else {
+        <div class="card-container p-3 ">
+          <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg">
+            <div class="background-image"
+              [style.background-image]="'url(http://localhost:8080/files/' + booking.restaurant.imageUrl + ')'"></div>
+            <div class="container-fluid custom">
+              <div class="row mt-3 ms-2">
+                <div class="col-md-4">
+                  <h3>{{booking?.user?.firstName}} {{booking?.user?.lastName}}</h3>
+                  <h6>Fecha de reserva:</h6>
+                  <p>{{booking?.createDate | date: 'dd/MM/yy' }}</p>
+
+                </div>
+                <div class="col-md-4">
+                  <h6>Confirmado:</h6>
+                  @if (booking?.status) {
+                  <span class="badge text-bg-success">Sí</span>
+                  } @else{
+                  <span class="badge text-bg-danger">No</span>
+                  }
+
+
+                  <h6>Cantidad de comensales:</h6>
+                  <p>{{booking?.numUsers}}</p>
+
+                </div>
+                <div class="col-md-4">
+                  <h6>Restaurant:</h6>
+                  <a class="badge text-bg-warning text-decoration-none"
+                    [routerLink]="['/restaurants', booking?.restaurant?.id, 'detail']">
+                    {{booking?.restaurant?.name}}
+                  </a>
+
+
+
+                </div>
+              </div>
+              <br>
+              <div class="buttons ms-2">
+                <button class="btn btn-outline-light ms-2" [routerLink]="['/bookings', booking.id, 'detail']">Ver
+                  Reserva</button>
+                @if (isAdmin || isRestaurant) {
+                <button class="btn btn-outline-success ms-2" [routerLink]="['/bookings', booking?.id, 'update']">
+                  Editar Reserva
+                </button>
+                <button class="btn btn-outline-danger ms-2">
+                  Borrar Reserva
+                </button>
+                }
+
+              </div>
+
+
+            </div>
+
+          </div>
+
+        </div>
+        }
+
+        }
+
+        }
+
+
+
+
+
+
+      </div>
+
+    
+
+
+    </div>
+    }
   </div>
-}
+
+ 
+</div>

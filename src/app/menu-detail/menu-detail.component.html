@@ -12,8 +12,8 @@
 
     <div class="col-md-4 col-sm-12 mt-5">
       <div class="container mt-5 mb-5">
-        <div class="card overflow-hidden rounded-4">
-
+        <div class="card overflow-hidden rounded-4" [routerLink]="['/restaurant', menu.restaurant.id, 'detail']" >
+          
 
           @if (menu.imgMenu.startsWith('http')) {
           <!-- Si es url externa entonces ya trae la ruta completa absoluta-->

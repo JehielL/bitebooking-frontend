@@ -76,13 +76,14 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 200%;
   z-index: -1; 
 }
 
 .myvideo {
+  z-index: -1;
   width: 100%;
-  height: 100%;
+  height: 200%;
   object-fit: cover;
 }
 

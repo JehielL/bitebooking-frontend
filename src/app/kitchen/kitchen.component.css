@@ -2,7 +2,6 @@
 .btn-toggle {
   display: block;
   width: 100%;
-  padding: 10px;
   background-color: #007bff; 
   color: white; 
   text-align: center;
@@ -21,6 +20,7 @@
   position: absolute;
   max-width: 200px;
   width: 100%;
+  margin-left: 40px;
 }
 
 ul {
