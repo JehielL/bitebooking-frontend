@@ -192,18 +192,17 @@
             <h2 class="pb-2 custom-title">Toda nuestra carta.</h2>
             <div class="horizontal-bars"></div>
           </div>
-          <div class="row">
-            @if (canEdit) {
-            <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="custom-button">
-              <i class="bi bi-plus-circle"></i>
-              <span class="button-text">Agrega un nuevo elemento</span>
-            </button>
 
-            }
+          @if (canEdit) {
+          <button type="button" [routerLink]="['/dishes',menu.id, 'create']" class="cssbuttons-io-button">
+            <i class="fa-solid fa-plus"></i> <span class="button-text">   Nuevo elemento </span>
+          </button>
 
+          }
 
 
-          </div>
+
+
         </div>
         <div class="row">
           @for (dish of dishes; track dish.id) {
@@ -288,33 +287,33 @@
           <li>
 
             @if (rating.user?.imgUser) {
-              
 
-             
+
+
             <a
-            
               class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top ">
 
 
-              
-                
 
-               
 
-                <img [src]="rating.user?.imgUser?.startsWith('http') ? rating.user?.imgUser : ('http://localhost:8080/files/' + rating.user?.imgUser)"  class="custom-picture" [routerLink]="['/user', user?.id, 'detail']"
-                alt="logo" height="80" width="80">
 
-              
+
+
+              <img
+                [src]="rating.user?.imgUser?.startsWith('http') ? rating.user?.imgUser : ('http://localhost:8080/files/' + rating.user?.imgUser)"
+                class="custom-picture" [routerLink]="['/user', user?.id, 'detail']" alt="logo" height="80" width="80">
+
+
 
 
               <div class="col-lg-8">
                 <h6 class="mb-0">
-                 
+
 
                   <h5>{{rating.user?.firstName}} {{rating.user?.lastName}}</h5>
                   <ngb-rating [(rate)]="rating.score" [max]="5" [readonly]="true">
                     <ng-template let-fill="fill" let-index="index">
-                      
+
                       <i class="bi-star{{ fill === 100 ? '-fill' : '' }} fs-3" style="color: #ffc845;"></i>
                     </ng-template>
                   </ngb-rating>
@@ -329,7 +328,7 @@
                 <small class="text-body-secondary">{{rating.comment}}</small>
               </div>
             </a>
-          }
+            }
           </li>
 
 

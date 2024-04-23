@@ -136,10 +136,12 @@
 
                                         </div>
                                     </div>
-
+                                  
+                                    <label class="form-control-label" for="photo">Seleccione su foto de perfil.</label>
                                     <div class="input-group">
-                                        <input type="file" class="form-control" id="photo" (change)="onFileChange($event)">
-                                        <button class="btn btn-outline-secondary" type="button" id="photoBtn">Seleccionar</button>
+                                        
+                                        <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" placeholder="Seleccione su foto de perfil.">
+                                        
                                       </div>
 
                                    
@@ -148,9 +150,9 @@
 
                             </div>
 
-                            <div class="pl-lg-4">
+                            <div class="pl-lg-4 mt-3">
                                 <div class="form-group focused">
-                                    <label>Sobre mí</label>
+                                    <label class="form-control-label" for="aboutMe">Sobre mí.</label>
                                     <textarea rows="4" class="form-control form-control-alternative"
                                         placeholder="A few words about you ..." formControlName="aboutMe">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
                                 </div>
