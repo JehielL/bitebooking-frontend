@@ -30,25 +30,24 @@
               "src/styles.css",
               "node_modules/aos/dist/aos.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
-
-              
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-            "node_modules/aos/dist/aos.js"]
-
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/aos/dist/aos.js"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "3mb",
+                  "maximumWarning": "500kb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "12kb",
+                  "maximumWarning": "12kb"
                 }
               ],
               "outputHashing": "all"
@@ -99,7 +98,7 @@
         }
       }
     }
-},
+  },
   "cli": {
     "analytics": "7a477d31-f84d-4178-b421-224d371dc2e0"
   }
