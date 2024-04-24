@@ -16,7 +16,7 @@ import { FooterComponent } from '../footer/footer.component';
     imports: [RouterLink, FooterComponent, ReactiveFormsModule]
 })
 export class LoginMainComponent {
-
+  errorMessage: string = '';
 
     loginForm = this.fb.group({
         email: [''],
@@ -27,22 +27,26 @@ export class LoginMainComponent {
         private httpClient: HttpClient,
         private authService: AuthenticationService,
         private router: Router) {}
-    
-      save() {
-        const login: Login = {
-          email: this.loginForm.get('email')?.value ?? '',
-          password: this.loginForm.get('password')?.value ?? '',
+        save() {
+          const login: Login = {
+            email: this.loginForm.get('email')?.value ?? '',
+            password: this.loginForm.get('password')?.value ?? '',
+          };
+        
+          this.httpClient.post<Token>('http://localhost:8080/users/login', login).subscribe({
+            next: (response) => {
+              console.log(response.token);
+              this.authService.saveToken(response.token);
+              this.router.navigate(['/home']);
+            },
+            error: (err) => {
+              if (err.status === 403) {
+                this.errorMessage = 'El usuario o la contraseña son incorrectos';
+              }
+            }
+          });
         }
-        console.log(login);
-    
-        const url = 'http://localhost:8080/users/login';
-        this.httpClient.post<Token>(url, login).subscribe(response => {
-          console.log(response.token);
-          this.authService.saveToken(response.token);
-          this.router.navigate(['/home']);
-        });
-    
-    
-      }
+        
+        
     }
     

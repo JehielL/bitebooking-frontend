@@ -25,7 +25,7 @@
           <div class="password">
             <div><label for="input" class="password">contraseña</label></div>
             <input type="password" name="password" formControlName="password" class="input">
-
+            @if (errorMessage) {<div class="error-message">{{ errorMessage }}</div>}
 
             <div><label for="input" class="text">haz olvidado tu <a style="color:black;" class="contr"
                   href="#">contraseña?</a></label></div>

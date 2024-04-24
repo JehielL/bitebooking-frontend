@@ -160,3 +160,7 @@ a {
   border-radius: 4px;
   background: white;
 }
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
