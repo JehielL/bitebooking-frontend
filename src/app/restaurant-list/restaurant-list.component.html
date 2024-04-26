@@ -1,108 +1,123 @@
-<div class="container">
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
+  <div class="container">
 
 
-  <div class="row">
-    <div class="col">
-      <div class="container-fluid"> 
-        <h2 class="pb-2 custom-title">Restaurantes</h2>
-        <div class="search">
-
-          <input type="search" class="form-control form-control-sm rounded custom-input"
-          placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
-          style="max-width: 760px;" (input)="buscar($any($event.target).value)">
-          @if (resultadosBusqueda.length > 0) {
-          <div class="search-container">
-              <ul class="list-group">
-                  @for (restaurantes of resultadosBusqueda; track restaurantes ) {
-                  <li class="list-group-item">
-                      <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
-                          [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">
-                          {{restaurantes.name }}</a>
-                  </li>
-                  }
-              </ul>
-              @if (puedeMostrarMas) {
-              <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
-              }
-              @if (maxResultados > minResultados) {
-              <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
-              }
+    <div class="row">
+      <div class="col">
+        <div class="container-fluid"> 
+          <h2 class="pb-2 custom-title">Restaurantes</h2>
+          <div class="search">
+  
+            <input type="search" class="form-control form-control-sm rounded custom-input"
+            placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
+            style="max-width: 760px;" (input)="buscar($any($event.target).value)">
+            @if (resultadosBusqueda.length > 0) {
+            <div class="search-container">
+                <ul class="list-group">
+                    @for (restaurantes of resultadosBusqueda; track restaurantes ) {
+                    <li class="list-group-item">
+                        <a [routerLink]="['/restaurant', restaurantes.id, 'detail']"
+                            [innerHTML]="highlightSearchTerm(restaurantes.name, searchTerm)">
+                            {{restaurantes.name }}</a>
+                    </li>
+                    }
+                </ul>
+                @if (puedeMostrarMas) {
+                <button class="btn btn-outline-primary" (click)="mostrarMas()">Mostrar más</button>
+                }
+                @if (maxResultados > minResultados) {
+                <button class="btn btn-outline-primary" (click)="mostrarMenos()">Mostrar menos</button>
+                }
+            </div>
+            }
+  
+        </div>
+       
+          <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+              @for ( restaurant of restaurants; track restaurant){
+  
+                @if (restaurant.imageUrl.startsWith('http')) {
+                  <div class="col">
+                    <div class="card h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"  
+                     [style.background-image]="'url('+ restaurant.imageUrl +')'" [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
+                      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
+                          <a class="d-flex align-items-center">
+                            <small class="bi bi-fire"></small>
+                            {{getRestaurantType(restaurant.restaurantType)}}
+                          </a>
+                        <ul class="d-flex list-unstyled mt-2">
+                          <li class="d-flex align-items-center">
+                            <a  [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-custom">Reservar
+                                <i class="bi bi-box-arrow-right"></i>
+                          </a>
+                        </li>
+                          <li class="d-flex align-items-center">
+                            <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill"></small>
+                              {{restaurant.phone}}
+                            </a>
+                            
+                          </li>
+                          <li class="d-flex align-items-center">
+                            <a class="bi me-2" width="1em" height="1em">
+                              <small class="bi bi-star-fill"></small>
+                              {{restaurant.averageRating}}
+                          </a>
+                          </li>
+                        </ul>
+                      </div>  
+                    </div>
+                  </div>
+                } @else {
+                  <div class="col">
+                    <div class="card h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
+                       [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
+                      <img class="card-img-cover" [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)" alt="{{restaurant.name}}">
+                          <div class="card-img-overlay d-flex flex-column p-5 pb-3 text-shadow-1">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
+                                <a class="d-flex align-items-center">
+                                  <small class="bi bi-fire"></small>
+                                  {{getRestaurantType(restaurant.restaurantType)}}
+                                </a>                 
+                        <ul class="d-flex list-unstyled mt-2">
+                          <li class="d-flex align-items-center">
+                            <a  [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-custom">Reservar
+                                <i class="bi bi-box-arrow-right"></i>
+                          </a>
+                        </li>
+                          <li class="d-flex align-items-center">
+                            <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill"></small>
+                              {{restaurant.phone}}
+                            </a>
+                          </li>
+                          <li class="d-flex align-items-center">
+                            <a class="bi me-2" width="1em" height="1em">
+                              <small class="bi bi-star-fill"></small>
+                              {{restaurant.averageRating}}
+                          </a>
+                          </li>
+                        </ul>
+                      </div>  
+                    </div>
+                  </div>
+                }   
+            }
           </div>
-          }
-
-      </div>
-     
-        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
-            @for ( restaurant of restaurants; track restaurant){
-
-              @if (restaurant.imageUrl.startsWith('http')) {
-                <div class="col">
-                  <div class="card h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"  
-                   [style.background-image]="'url('+ restaurant.imageUrl +')'" [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
-                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
-                      <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
-                        <a class="d-flex align-items-center">
-                          <small class="bi bi-fire"></small>
-                          {{getRestaurantType(restaurant.restaurantType)}}
-                        </a>
-                      <ul class="d-flex list-unstyled mt-2">
-                        <li class="d-flex align-items-center">
-                          <a  [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-custom">Reservar
-                              <i class="bi bi-box-arrow-right"></i>
-                        </a>
-                      </li>
-                        <li class="d-flex align-items-center">
-                          <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill"></small>
-                            {{restaurant.phone}}
-                          </a>
-                          
-                        </li>
-                        <li class="d-flex align-items-center">
-                          <a class="bi me-2" width="1em" height="1em">
-                            <small class="bi bi-star-fill"></small>
-                            {{restaurant.averageRating}}
-                        </a>
-                        </li>
-                      </ul>
-                    </div>  
-                  </div>
-                </div>
-              } @else {
-                <div class="col">
-                  <div class="card h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" 
-                     [routerLink]="['/restaurant',restaurant.id, 'detail']" style="cursor: pointer;">
-                    <img class="card-img-cover" [src]="restaurant.imageUrl.startsWith('http') ? restaurant.imageUrl : ('http://localhost:8080/files/' + restaurant.imageUrl)" alt="{{restaurant.name}}">
-                        <div class="card-img-overlay d-flex flex-column p-5 pb-3 text-shadow-1">
-                          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{restaurant.name}}</h3>
-                              <a class="d-flex align-items-center">
-                                <small class="bi bi-fire"></small>
-                                {{getRestaurantType(restaurant.restaurantType)}}
-                              </a>                 
-                      <ul class="d-flex list-unstyled mt-2">
-                        <li class="d-flex align-items-center">
-                          <a  [routerLink]="['/bookings', restaurant?.id, 'reserve']"type="button" class="btn btn-custom">Reservar
-                              <i class="bi bi-box-arrow-right"></i>
-                        </a>
-                      </li>
-                        <li class="d-flex align-items-center">
-                          <a class="bi me-2" width="1em" height="1em"><small class="bi bi-telephone-fill"></small>
-                            {{restaurant.phone}}
-                          </a>
-                        </li>
-                        <li class="d-flex align-items-center">
-                          <a class="bi me-2" width="1em" height="1em">
-                            <small class="bi bi-star-fill"></small>
-                            {{restaurant.averageRating}}
-                        </a>
-                        </li>
-                      </ul>
-                    </div>  
-                  </div>
-                </div>
-              }   
-          }
         </div>
       </div>
     </div>
   </div>
-</div>
+}
+

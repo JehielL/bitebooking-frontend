@@ -8,6 +8,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { HomeSinLogComponent } from '../home-sin-log/home-sin-log.component';
 import { KitchenComponent } from '../kitchen/kitchen.component';
 import Aos from 'aos';
+import { delay, switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
-
+  showSpinner = true;
   isLoggedin = false;
   user: User | undefined;
   authService: AuthenticationService | undefined;
@@ -44,8 +45,13 @@ export class HomeComponent implements OnInit {
 
   loadRestaurants() {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+    timer(500).pipe(
+      switchMap(() => this.httpClient.get<Restaurant[]>(apiUrl)),
+      delay(500)
+    )
+    .subscribe(restaurants => {
       this.restaurants = restaurants;
+      this.showSpinner = false;
     });
   }
 

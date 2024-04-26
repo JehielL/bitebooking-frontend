@@ -6,6 +6,8 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../Interfaces/user.model';
+import { time } from 'console';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-booking-list',
@@ -24,6 +26,8 @@ export class BookingListComponent implements OnInit {
   booking: Booking | undefined;
   userId: string | null = null;
   user: User | undefined;
+  showSpinner = true;
+
 
 
   constructor(
@@ -45,8 +49,9 @@ export class BookingListComponent implements OnInit {
       const id = params['id'];
       if (!id) return;
       const userUrl = 'http://localhost:8080/user/' + id;
-      console.log(id);
-
+      timer(400).pipe(
+        switchMap(() => this.httpClient.get<User[]>(userUrl))
+      ).subscribe(users => this.users = users);
       this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
 
       const url = 'http://localhost:8080/bookings/filter-by-user/' + id;

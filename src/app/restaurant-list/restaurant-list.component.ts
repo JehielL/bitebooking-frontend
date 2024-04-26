@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
-import { combineLatest } from 'rxjs';
+import { combineLatest, delay, switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-list',
@@ -20,6 +20,8 @@ export class RestaurantListComponent implements OnInit {
   searchTerm: string = '';
   maxResultados: number = 5; 
   minResultados: number = 5;
+  showSpinner = true;
+
 
   constructor(private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute) {}
@@ -45,8 +47,12 @@ export class RestaurantListComponent implements OnInit {
 
   loadMyRestaurants(): void {
     const myRestaurantsUrl = 'http://localhost:8080/my-restaurants';
-    this.httpClient.get<Restaurant[]>(myRestaurantsUrl).subscribe(restaurants => {
-      this.restaurants = restaurants;
+    timer(500).pipe(
+      switchMap(() => this.httpClient.get<Restaurant[]>(myRestaurantsUrl)),
+      delay(500)
+    ).subscribe(restaurants => {
+     this.restaurants = restaurants;
+     this.showSpinner = false;
     });
   }
 
@@ -59,12 +65,16 @@ export class RestaurantListComponent implements OnInit {
 
   loadRestaurantsDirectly() {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
-      this.restaurants = restaurants;
 
+    timer(600).pipe(
+      switchMap(() => this.httpClient.get<Restaurant[]>(apiUrl))
+    ).subscribe(restaurants => {
+      this.restaurants = restaurants;
+      this.showSpinner = false;
       this.restaurants.filter(restaurants =>
         restaurants.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
+    
   }
   buscar(termino: string): void {
     this.searchTerm = termino;

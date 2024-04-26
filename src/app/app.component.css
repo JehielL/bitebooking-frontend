@@ -1,6 +1,14 @@
 main {
     padding: 0;
+    flex: 1; 
 }
+.page-container {
+    min-height: 100vh; 
+    position: relative; 
+  }
+  
+  
+  
 
 .btn-retroceder {
     position: fixed;
