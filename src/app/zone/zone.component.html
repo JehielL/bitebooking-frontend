@@ -1,3 +1,16 @@
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
 <div class="zone-container">
     <h2 class="zone-title">Restaurantes por Código Postal</h2>
     @for ( postalCode of uniquePostalCodes; track postalCode) {
@@ -26,3 +39,4 @@
     </ng-container>
 }
   </div>
+}

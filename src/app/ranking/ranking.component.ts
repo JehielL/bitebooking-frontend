@@ -3,6 +3,7 @@ import { Route, RouterLink } from '@angular/router';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { HttpClient } from '@angular/common/http';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-ranking',
@@ -14,6 +15,7 @@ import { RestaurantType } from '../Interfaces/restaurantType.model';
 export class RankingComponent implements OnInit{
   restaurantTop: Restaurant[] = [];
   restaurantType = RestaurantType;
+  showSpinner = true;
   
   constructor(private httpClient: HttpClient) { }
   ngOnInit() {
@@ -21,11 +23,11 @@ export class RankingComponent implements OnInit{
   }
   loadTopRestaurants() {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+    timer(500).pipe(
+      switchMap(() =>  this.httpClient.get<Restaurant[]>(apiUrl)),
+    ).subscribe(restaurants => {
       this.restaurantTop = restaurants;
-      },
-      error => {
-        console.log(error);
+      this.showSpinner = false;
       }
     );
   }

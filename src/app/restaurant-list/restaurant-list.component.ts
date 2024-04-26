@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
-import { combineLatest, delay, switchMap, timer } from 'rxjs';
+import { combineLatest, switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-list',
