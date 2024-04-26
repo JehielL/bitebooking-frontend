@@ -81,11 +81,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 999999999px;
+  border-radius: 50%;
   transition: transform 0.2s, box-shadow 0.2s;
   max-width: 100%;
   max-height: 100%;
-  border: 2px solid #6A040F;
 }
 
 .custom-picture-div {
