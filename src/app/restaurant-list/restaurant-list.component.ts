@@ -49,7 +49,6 @@ export class RestaurantListComponent implements OnInit {
     const myRestaurantsUrl = 'http://localhost:8080/my-restaurants';
     timer(500).pipe(
       switchMap(() => this.httpClient.get<Restaurant[]>(myRestaurantsUrl)),
-      delay(500)
     ).subscribe(restaurants => {
      this.restaurants = restaurants;
      this.showSpinner = false;
@@ -58,8 +57,11 @@ export class RestaurantListComponent implements OnInit {
 
   filtrarRestaurantesPorTipoCocina(tipoCocina: string): void {
     const url = `http://localhost:8080/restaurant-list/${tipoCocina}`;
-    this.httpClient.get<Restaurant[]>(url).subscribe(restaurants => {
+    timer(500).pipe(
+      switchMap( () => this.httpClient.get<Restaurant[]>(url))
+    ).subscribe(restaurants => {
       this.restaurants = restaurants;
+      this.showSpinner = false;
     }); 
   }
 
