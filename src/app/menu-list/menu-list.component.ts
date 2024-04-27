@@ -18,12 +18,16 @@ export class MenuListComponent {
   searchTerm: string = '';
   maxResultados: number = 5;
   minResultados: number = 5;
+  showSpinner = true;
 
 
   constructor(private httpClient: HttpClient) { }
   puedeMostrarMas: boolean = false;
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
 
     this.httpClient.get<Menu[]>('http://localhost:8080/menus')
       .subscribe(menus => this.menus = menus);

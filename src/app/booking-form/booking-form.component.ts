@@ -29,6 +29,7 @@ export class BookingFormComponent implements OnInit {
   userId: string | null = null;
   isLoggedin = false;
   user: User | undefined;
+  showSpinner = true;
 
 
   bookingForm = new FormGroup({
@@ -67,7 +68,9 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
 
     this.httpClient.get<User>('http://localhost:8080/users/account')
       .subscribe(user => {

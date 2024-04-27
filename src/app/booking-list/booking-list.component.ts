@@ -6,6 +6,7 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../Interfaces/user.model';
+import { delay,switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-booking-list',
@@ -24,7 +25,7 @@ export class BookingListComponent implements OnInit {
   booking: Booking | undefined;
   userId: string | null = null;
   user: User | undefined;
-
+  showSpinner = true;
 
   constructor(
     private httpClient: HttpClient,
@@ -34,44 +35,33 @@ export class BookingListComponent implements OnInit {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.authService.userId.subscribe(userId => this.userId = userId);
     this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
-
-    console.log(this.isAdmin);
-    console.log(this.userId);
   }
 
   ngOnInit(): void {
-
     this.activedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
-      const userUrl = 'http://localhost:8080/user/' + id;
-      console.log(id);
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 1000);
 
+      const userUrl = 'http://localhost:8080/user/' + id;
       this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
 
       const url = 'http://localhost:8080/bookings/filter-by-user/' + id;
       this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
-
-
     });
-
-    this.loadBookings();
   }
+
 
   delete(booking: Booking) {
 
     const url = 'http://localhost:8080/bookings/' + booking.id;
-    this.httpClient.delete(url).subscribe(response => {
-
-      this.loadBookings();
+    this.httpClient.delete(url).subscribe(() => {
       this.showDeleteBookingMessage = true;
     })
   }
 
-  private loadBookings() {
-
-
-  }
 
   hideDeletedBookingMessage() {
 

@@ -39,6 +39,7 @@ export class DishFormComponent implements OnInit {
   userId: string | null = null;
   isLoggedin = false;
   isRestaurant = false;
+  showSpinner = true;
 
 
   constructor(
@@ -60,6 +61,9 @@ export class DishFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
     AOS.init();
 
 
@@ -68,7 +72,9 @@ export class DishFormComponent implements OnInit {
       // CREACION
       const id = params['id'];
       if (!id) return;
-
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 1000);
       this.httpClient.get<Menu>('http://localhost:8080/menus/' + id)
       .subscribe(menus => {
         this.menu = menus;

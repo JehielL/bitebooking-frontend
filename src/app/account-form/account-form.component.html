@@ -1,175 +1,189 @@
-@if (user) {
+@if (showSpinner) {
+    <div class="loader-wrapper">
+        <div class="packman"></div>
+        <div class="dots">
+            <div class="dot bi-fire"></div>
+            <div class="dot bi-fire "></div>
+            <div class="dot bi-fire"></div>
+            <div class="dot bi-fire"></div>
+        </div>
+    </div>
+}@else {
 
-<div class="main-content ">
+    @if (user) {
 
-    <!-- Page content -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 mt-5">
-                <div class="form-container">
-
-                    <div class="rank">
-                        <h3 class="bi ms-2"> Rango: {{user.role}} <i class="bi bi-star"></i></h3>
-                    </div>
-                    <div class="row justify-content-center">
-
-                        <div class="card-profile-image mt-5 text-center">
-
-                            <img class="rounded-circle" [src]="user.imgUser.startsWith('http') ? user.imgUser : 'http://localhost:8080/files/' + user.imgUser" alt="Restaurant 1">
-
-                        </div>
-
-                    </div>
-                    <div class="buttons">
-                        @if (isAdmin) {
-                        <div class="d-flex justify-content-center">
-                            <a routerLink="/restaurant-form" class="btn btn-custom">Crear Restaurant</a>
-                        </div>
-                        }
-                        <div class="card-profile-stats d-flex justify-content-center">
-                            <div>
-                                <span class="heading">22</span>
-                                <span class="description">Favs </span>
+        <div class="main-content ">
+        
+            <!-- Page content -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 mt-5">
+                        <div class="form-container">
+        
+                            <div class="rank">
+                                <h3 class="bi ms-2"> Rango: {{user.role}} <i class="bi bi-star"></i></h3>
                             </div>
-                            <div>
-                                <span class="heading">10</span>
-                                <span class="description">Fotos</span>
+                            <div class="row justify-content-center">
+        
+                                <div class="card-profile-image mt-5 text-center">
+        
+                                    <img class="rounded-circle" [src]="user.imgUser.startsWith('http') ? user.imgUser : 'http://localhost:8080/files/' + user.imgUser" alt="Restaurant 1">
+        
+                                </div>
+        
                             </div>
-                            <div>
-                                <span class="heading">89</span>
-                                <span class="description">Comentarios</span>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <h3 class="custom-name">
-                                {{user.firstName}} {{user.lastName}}<span class="font-weight-light">, 27</span>
-                            </h3>
-                            <i class="ni location_pin mr-2"></i>{{user.city}}, España
-
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>Software Developer.
-                            </div>
-                            <div>
-                                <i class="ni education_hat mr-2"></i>Fundación Adecco.
-                            </div>
-                            <hr class="my-4">
-                            <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
-                                and records all of his own music.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-8 order-xl-1">
-                <div class="card bg-custom shadow mt-5">
-                    <div class="card-header border-0">
-                        <div class="row align-items-center ">
-                            <div class="col-8">
-                                <h3 class="mb-0 custom-h3">Mi cuenta </h3>
-                            </div>
-                            <div class="col-4 text-right">
-                                
-                                <button type="button " class="btn btn-sm btn-custom rounded" >Configuracíon.</button>
-
-                                <ng-template #modal let-modal>
-                                    <div class="modal-header">
-                                        <h4 class="modal-title">Actualizar Perfil</h4>
-                                        <button type="button" class="btn-close" aria-label="Close"
-                                            (click)="modal.dismiss()"></button>
+                            <div class="buttons">
+                                @if (isAdmin) {
+                                <div class="d-flex justify-content-center">
+                                    <a routerLink="/restaurant-form" class="btn btn-custom">Crear Restaurant</a>
+                                </div>
+                                }
+                                <div class="card-profile-stats d-flex justify-content-center">
+                                    <div>
+                                        <span class="heading">22</span>
+                                        <span class="description">Favs </span>
                                     </div>
-                                    <div class="modal-body">
-                                       <app-avatar-form></app-avatar-form>
+                                    <div>
+                                        <span class="heading">10</span>
+                                        <span class="description">Fotos</span>
                                     </div>
-                                </ng-template>
-
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="card-body ">
-                        <form [formGroup]="userForm" (ngSubmit)="save()">
-                            <h3 class=" mb-4">Información de usuario.</h3>
-                            <div class="pl-lg-4">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="firstName">Nombre</label>
-                                            <input type="text" class="form-control" id="firstName"
-                                                formControlName="firstName">
-
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="lastName">Apellido</label>
-                                            <input type="text" class="form-control" id="lastName"
-                                                formControlName="lastName">
-
-                                        </div>
+                                    <div>
+                                        <span class="heading">89</span>
+                                        <span class="description">Comentarios</span>
                                     </div>
                                 </div>
-                                <div class="row">
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" formControlName="email">
-
-                                        </div>
+                                <div class="text-center">
+                                    <h3 class="custom-name">
+                                        {{user.firstName}} {{user.lastName}}<span class="font-weight-light">, 27</span>
+                                    </h3>
+                                    <i class="ni location_pin mr-2"></i>{{user.city}}, España
+        
+                                    <div class="h5 mt-4">
+                                        <i class="ni business_briefcase-24 mr-2"></i>Software Developer.
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="phonel">Telefono.</label>
-                                            <input type="phone" class="form-control" id="phone" formControlName="phone">
-
-                                        </div>
+                                    <div>
+                                        <i class="ni education_hat mr-2"></i>Fundación Adecco.
                                     </div>
-                                    
+                                    <hr class="my-4">
+                                    <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs
+                                        and records all of his own music.</p>
                                 </div>
-                                <div class="row">
-
-                                    <div class="col-lg-6">
-                                        <div class="form-group focused">
-                                            <label class="form-control-label" for="city">Ciudad.</label>
-                                            <input type="city" class="form-control" id="city" formControlName="city">
-
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-xl-8 order-xl-1">
+                        <div class="card bg-custom shadow mt-5">
+                            <div class="card-header border-0">
+                                <div class="row align-items-center ">
+                                    <div class="col-8">
+                                        <h3 class="mb-0 custom-h3">Mi cuenta </h3>
                                     </div>
-                                  
-                                    <label class="form-control-label" for="photo">Seleccione su foto de perfil.</label>
-                                    <div class="input-group">
+                                    <div class="col-4 text-right">
                                         
-                                        <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" placeholder="Seleccione su foto de perfil.">
-                                        
-                                      </div>
-
-                                   
-                                    
+                                        <button type="button " class="btn btn-sm btn-custom rounded" >Configuracíon.</button>
+        
+                                        <ng-template #modal let-modal>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Actualizar Perfil</h4>
+                                                <button type="button" class="btn-close" aria-label="Close"
+                                                    (click)="modal.dismiss()"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                               <app-avatar-form></app-avatar-form>
+                                            </div>
+                                        </ng-template>
+        
+        
+                                    </div>
+        
                                 </div>
-
                             </div>
-
-                            <div class="pl-lg-4 mt-3">
-                                <div class="form-group focused">
-                                    <label class="form-control-label" for="aboutMe">Sobre mí.</label>
-                                    <textarea rows="4" class="form-control form-control-alternative"
-                                        placeholder="A few words about you ..." formControlName="aboutMe">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
-                                </div>
+                            <div class="card-body ">
+                                <form [formGroup]="userForm" (ngSubmit)="save()">
+                                    <h3 class=" mb-4">Información de usuario.</h3>
+                                    <div class="pl-lg-4">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="firstName">Nombre</label>
+                                                    <input type="text" class="form-control" id="firstName"
+                                                        formControlName="firstName">
+        
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="lastName">Apellido</label>
+                                                    <input type="text" class="form-control" id="lastName"
+                                                        formControlName="lastName">
+        
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+        
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="email">Email</label>
+                                                    <input type="email" class="form-control" id="email" formControlName="email">
+        
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="phonel">Telefono.</label>
+                                                    <input type="phone" class="form-control" id="phone" formControlName="phone">
+        
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+        
+                                            <div class="col-lg-6">
+                                                <div class="form-group focused">
+                                                    <label class="form-control-label" for="city">Ciudad.</label>
+                                                    <input type="city" class="form-control" id="city" formControlName="city">
+        
+                                                </div>
+                                            </div>
+                                          
+                                            <label class="form-control-label" for="photo">Seleccione su foto de perfil.</label>
+                                            <div class="input-group">
+                                                
+                                                <input type="file" class="form-control" id="photo" (change)="onFileChange($event)" placeholder="Seleccione su foto de perfil.">
+                                                
+                                              </div>
+        
+                                           
+                                            
+                                        </div>
+        
+                                    </div>
+        
+                                    <div class="pl-lg-4 mt-3">
+                                        <div class="form-group focused">
+                                            <label class="form-control-label" for="aboutMe">Sobre mí.</label>
+                                            <textarea rows="4" class="form-control form-control-alternative"
+                                                placeholder="A few words about you ..." formControlName="aboutMe">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+                                        </div>
+                                    </div>
+        
+                                    <div class="button">
+                                        <button class="btn btn-custom-act rounded" type="submit">Actualizar</button>
+        
+                                    </div>
+        
+                                </form>
                             </div>
-
-                            <div class="button">
-                                <button class="btn btn-custom-act rounded" type="submit">Actualizar</button>
-
-                            </div>
-
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
+        
+        
+        }
 }
+

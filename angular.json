@@ -31,6 +31,7 @@
               "node_modules/aos/dist/aos.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
+            
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/aos/dist/aos.js"
@@ -42,7 +43,7 @@
                 {
                   "type": "initial",
                   "maximumError": "3mb",
-                  "maximumWarning": "500kb"
+                  "maximumWarning": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",

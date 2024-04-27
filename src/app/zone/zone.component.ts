@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Restaurant } from '../Interfaces/restaurant.model';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { RouterLink } from '@angular/router';
+import { combineLatest, delay, switchMap, timer } from 'rxjs';
+
 
 @Component({
   selector: 'app-zone',
@@ -16,6 +18,7 @@ export class ZoneComponent implements OnInit {
   restaurantsByPostalCode: { [postalCode: string]: Restaurant[] } = {};
   uniquePostalCodes: string[] = [];
   restaurantType = RestaurantType;
+  showSpinner = true;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -25,8 +28,10 @@ export class ZoneComponent implements OnInit {
 
   loadRestaurants(): void {
     const apiUrl = 'http://localhost:8080/restaurant';
-    this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+    timer(500).pipe(
+      switchMap(() => this.httpClient.get<Restaurant[]>(apiUrl))).subscribe(restaurants => {
       this.restaurants = restaurants;
+      this.showSpinner = false;
       this.groupRestaurantsByPostalCode();
     });
   }

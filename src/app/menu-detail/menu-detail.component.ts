@@ -41,6 +41,7 @@ export class MenuDetailComponent implements OnInit {
 
   dishes: Dish[] = [];
   users: User[] = [];
+  showSpinner = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -59,6 +60,10 @@ export class MenuDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 1000);
+
       const ratingsUrl = 'http://localhost:8080/menus/filter-by-menu/' + id;
       const userUrl = 'http://localhost:8080/user/' + id;
       

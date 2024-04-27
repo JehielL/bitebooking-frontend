@@ -1,3 +1,16 @@
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
 <h1 class="mt-5 mb-5"></h1>
 @if (showDeleteBookingMessage) {
 
@@ -211,3 +224,4 @@
     </div>
   </div>
 </div>
+}

@@ -1,3 +1,16 @@
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
 @if (showDeleteMenuMessage) {
 
 <ngb-alert class="mt-5" type="success" [dismissible]="false">Menú eliminada correctamente</ngb-alert>
@@ -473,3 +486,4 @@
     </div>
   </div>
 </div>
+}

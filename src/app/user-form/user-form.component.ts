@@ -4,6 +4,7 @@ import { User } from '../Interfaces/user.model';
 import { ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Role } from '../Interfaces/role.model';
+import { combineLatest, delay, switchMap, timer } from 'rxjs';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class UserFormComponent{
   
   users: User[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
+  showSpinner = true;
 
   registerUserForm = new FormGroup({
     id: new FormControl (0),
@@ -56,8 +58,11 @@ export class UserFormComponent{
     const user: User = this.registerUserForm.value as unknown as User;
     console.log(user)
       const url = 'http://localhost:8080/users/register';
-      this.httpClient.post<User>(url,user).subscribe(backendUser =>{
+      timer(500).pipe(
+        switchMap(() => this.httpClient.post<User>(url,user))
+      ).subscribe(backendUser =>{
         this.router.navigate(['/home']); 
+        this.showSpinner = false;
       });    
   } 
 }

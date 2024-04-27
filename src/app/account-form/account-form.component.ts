@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { AvatarFormComponent } from '../avatar-form/avatar-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-account-form',
@@ -29,6 +30,7 @@ export class AccountFormComponent implements OnInit {
   });
   photoFile: File | undefined;
   photoPreview: string | undefined;
+  showSpinner = true;
 
   constructor(private httpClient: HttpClient,
               private authService: AuthenticationService,
@@ -38,11 +40,16 @@ export class AccountFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpClient.get<User>('http://localhost:8080/users/account')
-      .subscribe(user => {
-        this.user = user;
-        this.userForm.patchValue(user); // Utilizamos patchValue para establecer los valores del formulario
-      });
+
+
+    timer(500).pipe(
+      switchMap(() => this.httpClient.get<User>('http://localhost:8080/users/account'))
+    ).subscribe(user => {
+      this.user = user;
+      this.userForm.patchValue(user); 
+      this.showSpinner = false;
+    });
+      
   }
 
   save() {

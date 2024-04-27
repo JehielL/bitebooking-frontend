@@ -8,6 +8,7 @@ import { Menu } from '../Interfaces/menu.model';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../Interfaces/user.model';
 import { Booking } from '../Interfaces/booking.model';
+import { switchMap, timer } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -25,6 +26,7 @@ export class RestaurantDetailComponent implements OnInit {
   restaurantType = RestaurantType;
   restaurants: Restaurant[] = [];
   recommendedRestaurants: Restaurant[] = [];
+  showSpinner = true;
 
   userId: string | null = null;
   isLoggedin = false;
@@ -54,23 +56,30 @@ export class RestaurantDetailComponent implements OnInit {
       if (!id) return;
 
       const restaurantUrl = `http://localhost:8080/restaurant/${id}`;
-      this.httpClient.get<Restaurant>(restaurantUrl).subscribe(restaurant => {
+      timer(500).pipe(
+        switchMap(() => this.httpClient.get<Restaurant>(restaurantUrl))).subscribe(restaurant => {
         this.restaurant = restaurant;
+        this.showSpinner = false;
 
-        this.httpClient.get<boolean>('http://localhost:8080/restaurants/can-edit/' + id)
-        .subscribe(canEdit => {
+        timer(500).pipe(
+          switchMap(() => this.httpClient.get<boolean>('http://localhost:8080/restaurants/can-edit/' + id)
+        )).subscribe(canEdit => {
           this.canEdit = canEdit;
+          this.showSpinner = false;
         });
 
         const menusUrl = `http://localhost:8080/menus/byRestaurant/${id}`;
-        this.httpClient.get<Menu[]>(menusUrl)
+        timer(500).pipe(
+          switchMap(() =>this.httpClient.get<Menu[]>(menusUrl)))
           .subscribe(Menus => this.menus = Menus);
+          this.showSpinner = false;
 
         const apiUrl = 'http://localhost:8080/restaurant';
-        this.httpClient.get<Restaurant[]>(apiUrl).subscribe(restaurants => {
+        timer(500).pipe(
+          switchMap(() => this.httpClient.get<Restaurant[]>(apiUrl))).subscribe(restaurants => {
           this.restaurants = restaurants;
-          
           this.recommendedRestaurants = this.shuffleAndSelectRestaurants(this.restaurants, 3);
+          this.showSpinner = false;
         });
 
         
