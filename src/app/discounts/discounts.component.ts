@@ -12,11 +12,15 @@ import { RouterLink } from '@angular/router';
 })
 export class DiscountsComponent implements OnInit{
   restaurants: Restaurant[] = [];
+  showSpinner = true;
 
   constructor(private httpClient: HttpClient) { 
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
     this.loadRestaurants();
   }
   loadRestaurants(){

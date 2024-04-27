@@ -61,6 +61,9 @@ export class DishFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
     AOS.init();
 
 

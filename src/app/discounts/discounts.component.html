@@ -1,4 +1,16 @@
- 
+@if (showSpinner) {
+
+  <div class="loader-wrapper">
+    <div class="packman"></div>
+    <div class="dots">
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire "></div>
+        <div class="dot bi-fire"></div>
+        <div class="dot bi-fire"></div>
+    </div>
+</div>
+
+}@else {
  <div class="discount-container">
     <h2 class="discount-title">Descuentos Disponibles</h2>
     <div class="discount-cards-container">
@@ -19,4 +31,4 @@
     }
     </div>
   </div>
-  
+}

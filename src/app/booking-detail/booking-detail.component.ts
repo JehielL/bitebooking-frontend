@@ -22,6 +22,7 @@ export class BookingDetailComponent implements OnInit {
   showDeleteBookingMessage: boolean = false;
   isAdmin = false;
   isRestaurant = false;
+  showSpinner = true;
 
 
   constructor(
@@ -36,6 +37,9 @@ export class BookingDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
+      setTimeout(() => {
+        this.showSpinner = false;
+      }, 1000);
       const url = 'http://localhost:8080/bookings/' + id;
       this.httpClient.get<Booking>(url).subscribe(b => this.booking = b);
       const resturl = 'http://localhost:8080/restaurants/' + id;

@@ -24,9 +24,8 @@
             <a class="nav-link bi bi-chat-right-quote" tabindex="0" ngbDropdownToggle id="navbarDropdown2" role="button">
               Administración</a>
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus">Gastronomia Favorita</a>
-              <a ngbDropdownItem href="#" (click)="$event.preventDefault()">Mensajes</a>
-              <a ngbDropdownItem routerLink="dashboard" (click)="$event.preventDefault()">Configuración</a>
+              @if (isAdmin) {<a ngbDropdownItem routerLink="/restaurant-form">Crear Restaurantes</a>}
+              <a ngbDropdownItem [routerLink]="['/restaurant-list']" [queryParams]="{ view: 'mine' }">Mis Restaurantes</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/menus/create">Crear Menu</a>
               <a ngbDropdownItem href="#" (click)="$event.preventDefault()" routerLink="/dishes/create">Crear Plato</a>
             </div>
@@ -56,7 +55,7 @@
             } 
             <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-end">
               <a ngbDropdownItem [routerLink]="['/bookings', 'user', userId]">Mis Reservas</a>
-              <a ngbDropdownItem [routerLink]="['/restaurant-list']" [queryParams]="{ view: 'mine' }">Mis Restaurantes</a>
+              
 
               @if (isAdmin) {<a ngbDropdownItem routerLink="user/list">Lista de usuarios</a>}
               <a ngbDropdownItem href="#"  routerLink="/menus">Gastronomia Favorita</a>

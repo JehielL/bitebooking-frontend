@@ -55,6 +55,10 @@ export class RestaurantFormComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
     this.restaurantTypes = Object.keys(RestaurantType).map(key => ({
       key: key,
       value: RestaurantType[key as keyof typeof RestaurantType]
@@ -73,10 +77,9 @@ export class RestaurantFormComponent implements OnInit {
   }
 
   loadRestaurant(id: string): void {
-    timer(500).pipe(
-      switchMap(() => this.httpClient.get<Restaurant>(`http://localhost:8080/restaurant/${id}`))).subscribe(restaurant => {
+   
+       this.httpClient.get<Restaurant>(`http://localhost:8080/restaurant/${id}`).subscribe(restaurant => {
       this.restaurantForm.patchValue(restaurant);
-      this.showSpinner = false;
     });
   }
 

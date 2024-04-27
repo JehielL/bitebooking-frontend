@@ -20,6 +20,7 @@ export class MenuFormComponent implements OnInit {
   menu: Menu | undefined;
   restaurant: Restaurant | undefined;
   isUpdate: boolean = false;
+  showSpinner = true;
  
 
 
@@ -46,6 +47,9 @@ export class MenuFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 1000);
 
     AOS.init();
 
@@ -54,6 +58,7 @@ export class MenuFormComponent implements OnInit {
       
       const id = params['id'];
       if (!id) return;
+
       const restaurantUrl = 'http://localhost:8080/restaurant/' + id;
 
       this.httpClient.get<Restaurant>('http://localhost:8080/restaurant/' + id)
@@ -70,7 +75,6 @@ export class MenuFormComponent implements OnInit {
         this.menuForm.get('restaurant')?.setValue(menu.restaurant);
         this.menu = menu;
         this.isUpdate = true;  
-          console.log(this.isUpdate);
       });
 
 
