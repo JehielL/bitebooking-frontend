@@ -169,7 +169,7 @@
   justify-content: center;
 }
 
-.custom-card .logo {
+.logo {
   width: 100px; 
   height: 100px;
   margin: 10px; 
@@ -237,9 +237,9 @@
 }
 
 .custom-card .logo {
-  width: 100px; 
-  height: 100px; 
-  margin: 10px; 
+  width: 130px; 
+  height: 130px; 
+  margin: 13px; 
 }
 
 .banner-img {
@@ -369,4 +369,11 @@
 
 .content {
   margin-top: 5rem;
+}
+
+
+.logo	{
+  width: 200px;
+  height: 200px;
+  margin: 10px;
 }
