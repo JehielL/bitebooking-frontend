@@ -16,23 +16,23 @@ Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente
 
 Este proyecto utiliza las siguientes librerías y framework en el Frontend:
 
-- **Este proyecto fue generado con ![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white)
+- Bitebooking fue generado con ![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat-square&logo=angular&logoColor=white)
  versión 17.0.6.
-- **![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
-**: Para el diseño de botones, carruseles, y la personalización de tarjetas (cartas).
-- **![Material Design](https://img.shields.io/badge/Material--UI-0081CB?style=flat-square&logo=material-ui&logoColor=white)
-**: Proporciona componentes de diseño siguiendo los principios de Material Design.
-- **![AOS](https://img.shields.io/badge/AOS-animate-0769AD?style=flat-square)
-**: Animate on Scroll, una biblioteca pequeña para animar elementos mientras desplazas la página.
+- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white)
+  : Para el diseño de botones, carruseles, y la personalización de tarjetas (cartas).
+- ![Material Design](https://img.shields.io/badge/Material--UI-0081CB?style=flat-square&logo=material-ui&logoColor=white)
+  : Proporciona componentes de diseño siguiendo los principios de Material Design.
+- ![AOS](https://img.shields.io/badge/AOS-animate-0769AD?style=flat-square)
+  : Animate on Scroll, una biblioteca pequeña para animar elementos mientras desplazas la página.
 - **![Font Awesome](https://img.shields.io/badge/Font_Awesome-528DD7?style=flat-square&logo=font-awesome&logoColor=white)**: Algunos iconos y detalles. 
 
 
 ## Backend
-- **![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white) Es El Framework Principal.
-- **![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white) Es el Lenguaje de programacion En el que se emplea
-- **![JWT](https://img.shields.io/badge/JWT-black?style=flat-square&logo=json-web-tokens&logoColor=white) Para el Ambito de seguridad tanto en el backend como en el frontend
-- ** ![maven-feather](https://github.com/JehielL/bitebooking-frontend/assets/95054371/5de7f6f8-8247-4c41-a72d-cdff868d9a6b) Como Gestor de Dependencia: 
-- *Otras Tambien utilizadas
+- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=spring-boot&logoColor=white) Es El Framework Principal.
+- ![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white) Es el Lenguaje de programacion En el que se emplea
+- ![JWT](https://img.shields.io/badge/JWT-black?style=flat-square&logo=json-web-tokens&logoColor=white) Para el Ambito de seguridad tanto en el backend como en el frontend
+-  ![maven-feather](https://github.com/JehielL/bitebooking-frontend/assets/95054371/5de7f6f8-8247-4c41-a72d-cdff868d9a6b) Como Gestor de Dependencia: 
+- Otras tecnologías utilizadas:
 - Lombok![Lombok](https://github.com/JehielL/bitebooking-frontend/assets/95054371/743e36b8-2174-40f0-8c7e-c8051d963fa1)
 
 ## Menciones especiales de webs y IDEs, que Fueron utiles
@@ -42,5 +42,5 @@ Este proyecto utiliza las siguientes librerías y framework en el Frontend:
 
 ### Ejecución de pruebas unitarias
 
-- **![JUnit](https://img.shields.io/badge/JUnit-25A162?style=flat-square&logo=junit5&logoColor=white) **: Procesos de pruebas ejecutados
+- ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=flat-square&logo=junit5&logoColor=white) : Procesos de pruebas ejecutados
 
