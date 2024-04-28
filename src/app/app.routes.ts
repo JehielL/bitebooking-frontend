@@ -32,7 +32,7 @@ import { DiscountsComponent } from './discounts/discounts.component';
 export const routes: Routes = [
    {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/home-logout',
     pathMatch: 'full'
    }, 
  {
