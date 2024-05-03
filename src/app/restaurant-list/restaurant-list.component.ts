@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { combineLatest, switchMap, timer } from 'rxjs';
 
@@ -21,12 +21,15 @@ export class RestaurantListComponent implements OnInit {
   maxResultados: number = 5; 
   minResultados: number = 5;
   showSpinner = true;
+  
 
 
   constructor(private httpClient: HttpClient,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {}
   puedeMostrarMas: boolean = false;
-
+  noResultados: boolean = false ;
+  
   ngOnInit(): void {
     combineLatest([
       this.activatedRoute.params,
@@ -42,6 +45,8 @@ export class RestaurantListComponent implements OnInit {
       } else {
         this.loadRestaurantsDirectly();
       }
+
+    
     });
   }
 
@@ -52,6 +57,10 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
      this.restaurants = restaurants;
      this.showSpinner = false;
+     if (this.restaurants.length === 0) {
+      this.noResultados = true;
+        } else {
+        this.noResultados = false;}; 
     });
   }
 
@@ -62,6 +71,7 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
+      
     }); 
   }
 
@@ -73,6 +83,7 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
+      
       this.restaurants.filter(restaurants =>
         restaurants.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
@@ -90,6 +101,7 @@ export class RestaurantListComponent implements OnInit {
       : [];
     this.puedeMostrarMas = resultadosFiltrados.length > this.maxResultados;
     this.resultadosBusqueda = resultadosFiltrados.slice(0, this.maxResultados);
+   
   }
 
   mostrarMas(): void {
