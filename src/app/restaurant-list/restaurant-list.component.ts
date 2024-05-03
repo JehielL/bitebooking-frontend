@@ -28,7 +28,7 @@ export class RestaurantListComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router) {}
   puedeMostrarMas: boolean = false;
-  noResultados: boolean = false ;
+ ;
   
   ngOnInit(): void {
     combineLatest([
@@ -37,7 +37,7 @@ export class RestaurantListComponent implements OnInit {
     ]).subscribe(([params, queryParams]) => {
       const tipoCocina = params['tipoCocina'];
       const view = queryParams['view'];
-  
+      
       if(view === 'mine') {
         this.loadMyRestaurants();
       } else if (tipoCocina) {
@@ -48,6 +48,7 @@ export class RestaurantListComponent implements OnInit {
 
     
     });
+    
   }
 
   loadMyRestaurants(): void {
@@ -57,11 +58,9 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
      this.restaurants = restaurants;
      this.showSpinner = false;
-     if (this.restaurants.length === 0) {
-      this.noResultados = true;
-        } else {
-        this.noResultados = false;}; 
+     
     });
+
   }
 
   filtrarRestaurantesPorTipoCocina(tipoCocina: string): void {
@@ -89,6 +88,8 @@ export class RestaurantListComponent implements OnInit {
     });
     
   }
+  
+
   buscar(termino: string): void {
     this.searchTerm = termino;
     this.filtrarResultados();
@@ -125,4 +126,6 @@ export class RestaurantListComponent implements OnInit {
     const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
     return typeAsString;
   }
+
+  
 }

@@ -23,6 +23,9 @@
             <input type="search" class="form-control form-control-sm rounded custom-input"
             placeholder="Buscar Restaurantes ..." aria-label="Buscar" aria-describedby="search-addon"
             style="max-width: 760px;" (input)="buscar($any($event.target).value)">
+            @if (resultadosBusqueda.length === 0) {
+              
+            }
             @if (resultadosBusqueda.length > 0) {
             <div class="search-container">
                 <ul class="list-group">
