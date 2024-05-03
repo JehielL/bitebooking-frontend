@@ -30,6 +30,9 @@ export class RestaurantListComponent implements OnInit {
   puedeMostrarMas: boolean = false;
  ;
   
+
+ //if (this.resultadosBusqueda.length === 0) {
+ // this.router.navigate(['/not']); // Navega al componente NotElementsComponent}
   ngOnInit(): void {
     combineLatest([
       this.activatedRoute.params,
@@ -37,7 +40,7 @@ export class RestaurantListComponent implements OnInit {
     ]).subscribe(([params, queryParams]) => {
       const tipoCocina = params['tipoCocina'];
       const view = queryParams['view'];
-      
+  
       if(view === 'mine') {
         this.loadMyRestaurants();
       } else if (tipoCocina) {
@@ -48,7 +51,6 @@ export class RestaurantListComponent implements OnInit {
 
     
     });
-    
   }
 
   loadMyRestaurants(): void {
@@ -126,6 +128,4 @@ export class RestaurantListComponent implements OnInit {
     const typeAsString: string = RestaurantType[type as unknown as keyof typeof RestaurantType];
     return typeAsString;
   }
-
-  
 }
