@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-not-elements',
@@ -9,9 +10,14 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './not-elements.component.css'
 })
 export class NotElementsComponent {
-  constructor(private router: Router) {}
+  showSpinner= true;
+constructor(){}
+ngOnInit(): void{
+  setTimeout(()=>{
+    this.showSpinner=false;
+  },1000)
+}
   
-  notResultados() {
-    this.router.navigate(['/not']);
-  }
+
+
 }
