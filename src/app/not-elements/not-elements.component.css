@@ -1,0 +1,51 @@
+
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    background-image: url(https://i.ibb.co/nRrLzSq/404.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh; 
+  }
+  .not-found {
+    animation: fadeIn 2s ease-out;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-200px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+    
+  h1 {
+    font-size: 6em;
+    color: #7ef5e7;
+  }
+  
+  p {
+    font-size: 2.5em;
+    color: #ffffff;
+  }
+  .home-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #17c5b1;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .home-link:hover {
+    background-color: #8400ef;
+  }
+  

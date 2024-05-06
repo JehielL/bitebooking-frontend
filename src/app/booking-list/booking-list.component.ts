@@ -6,12 +6,13 @@ import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../Interfaces/user.model';
-import { delay,switchMap, timer } from 'rxjs';
+import { delay,isEmpty,switchMap, timer } from 'rxjs';
+import { NotElementsComponent } from '../not-elements/not-elements.component';
 
 @Component({
   selector: 'app-booking-list',
   standalone: true,
-  imports: [ RouterLink, NgbAlertModule, DatePipe],
+  imports: [ RouterLink, NgbAlertModule, DatePipe, NotElementsComponent],
   templateUrl: './booking-list.component.html',
   styleUrl: './booking-list.component.css'
 })
@@ -26,6 +27,7 @@ export class BookingListComponent implements OnInit {
   userId: string | null = null;
   user: User | undefined;
   showSpinner = true;
+  isEmpty = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -35,6 +37,7 @@ export class BookingListComponent implements OnInit {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.authService.userId.subscribe(userId => this.userId = userId);
     this.authService.isRestaurant.subscribe(isRestaurant => this.isRestaurant = isRestaurant);
+    
   }
 
   ngOnInit(): void {
@@ -44,14 +47,18 @@ export class BookingListComponent implements OnInit {
       setTimeout(() => {
         this.showSpinner = false;
       }, 1000);
-
+      
       const userUrl = 'http://localhost:8080/user/' + id;
       this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);
 
       const url = 'http://localhost:8080/bookings/filter-by-user/' + id;
       this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
+      !this.isEmpty == true;
+      
+      
     });
   }
+
 
 
   delete(booking: Booking) {
@@ -70,4 +77,8 @@ export class BookingListComponent implements OnInit {
 
 
 
+}
+
+function comprobar() {
+  throw new Error('Function not implemented.');
 }
