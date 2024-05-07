@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-not-restaurant',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './not-restaurant.component.html',
   styleUrl: './not-restaurant.component.css'
 })

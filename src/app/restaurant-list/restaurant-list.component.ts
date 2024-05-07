@@ -62,7 +62,7 @@ export class RestaurantListComponent implements OnInit {
      this.showSpinner = false;
      if(this.restaurants.length== 0){
       this.isEmpty= true;
-      this.router.navigate(['/not-reserva']);
+      this.router.navigate(['/not-restaurant']);
      }else{
       this.isEmpty=false;
      }
@@ -79,7 +79,7 @@ export class RestaurantListComponent implements OnInit {
       this.showSpinner = false;
       if(this.restaurants.length== 0){
         this.isEmpty= true;
-        this.router.navigate(['/not-reserva']);
+        this.router.navigate(['/not-restaurant']);
        }else{
         this.isEmpty=false;
        }
@@ -96,7 +96,7 @@ export class RestaurantListComponent implements OnInit {
       this.showSpinner = false;
       if(this.restaurants.length== 0){
         this.isEmpty= true;
-        this.router.navigate(['/not-reserva']);
+        this.router.navigate(['/not-restaurant']);
        }else{
         this.isEmpty=false;
        }

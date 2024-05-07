@@ -27,6 +27,7 @@ import { RankingComponent } from './ranking/ranking.component';
 import { ZoneComponent } from './zone/zone.component';
 import { DiscountsComponent } from './discounts/discounts.component';
 import { NotElementsComponent } from './not-elements/not-elements.component';
+import { NotRestaurantComponent } from './not-restaurant/not-restaurant.component';
 
 
 
@@ -216,7 +217,7 @@ export const routes: Routes = [
 },
 {
    path:'not-restaurant',
-   component:NotElementsComponent
+   component: NotRestaurantComponent,
 },
 {
     path: '**',
