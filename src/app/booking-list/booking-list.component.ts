@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Booking } from '../Interfaces/booking.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service';
@@ -33,6 +33,7 @@ export class BookingListComponent implements OnInit {
     private httpClient: HttpClient,
     private authService: AuthenticationService,
     private activedRoute: ActivatedRoute,
+    private router: Router,
   ) {
     this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
     this.authService.userId.subscribe(userId => this.userId = userId);
@@ -43,9 +44,15 @@ export class BookingListComponent implements OnInit {
   ngOnInit(): void {
     this.activedRoute.params.subscribe(params => {
       const id = params['id'];
+      this.showSpinner = false;
       if (!id) return;
       setTimeout(() => {
-        this.showSpinner = false;
+        if(this.bookings.length == 0){
+          this.isEmpty= true;
+          this.router.navigate(['/not']);
+        }else{
+          this.isEmpty=false;
+        }
       }, 1000);
       
       const userUrl = 'http://localhost:8080/user/' + id;
@@ -53,7 +60,7 @@ export class BookingListComponent implements OnInit {
 
       const url = 'http://localhost:8080/bookings/filter-by-user/' + id;
       this.httpClient.get<Booking[]>(url).subscribe(bookings => this.bookings = bookings);
-      !this.isEmpty == true;
+      
       
       
     });
