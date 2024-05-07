@@ -21,7 +21,7 @@ export class RestaurantListComponent implements OnInit {
   maxResultados: number = 5; 
   minResultados: number = 5;
   showSpinner = true;
-  
+  isEmpty = false;
 
 
   constructor(private httpClient: HttpClient,
@@ -31,13 +31,13 @@ export class RestaurantListComponent implements OnInit {
  ;
   
 
- //if (this.resultadosBusqueda.length === 0) {
- // this.router.navigate(['/not']); // Navega al componente NotElementsComponent}
+ 
   ngOnInit(): void {
     combineLatest([
       this.activatedRoute.params,
       this.activatedRoute.queryParams
     ]).subscribe(([params, queryParams]) => {
+      
       const tipoCocina = params['tipoCocina'];
       const view = queryParams['view'];
   
@@ -60,7 +60,12 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
      this.restaurants = restaurants;
      this.showSpinner = false;
-     
+     if(this.restaurants.length== 0){
+      this.isEmpty= true;
+      this.router.navigate(['/not-reserva']);
+     }else{
+      this.isEmpty=false;
+     }
     });
 
   }
@@ -72,7 +77,12 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
-      
+      if(this.restaurants.length== 0){
+        this.isEmpty= true;
+        this.router.navigate(['/not-reserva']);
+       }else{
+        this.isEmpty=false;
+       }
     }); 
   }
 
@@ -84,7 +94,12 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
-      
+      if(this.restaurants.length== 0){
+        this.isEmpty= true;
+        this.router.navigate(['/not-reserva']);
+       }else{
+        this.isEmpty=false;
+       }
       this.restaurants.filter(restaurants =>
         restaurants.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });

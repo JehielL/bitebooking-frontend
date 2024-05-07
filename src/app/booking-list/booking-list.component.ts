@@ -49,7 +49,7 @@ export class BookingListComponent implements OnInit {
       setTimeout(() => {
         if(this.bookings.length == 0){
           this.isEmpty= true;
-          this.router.navigate(['/not']);
+          this.router.navigate(['/not-reserva']);
         }else{
           this.isEmpty=false;
         }

@@ -211,7 +211,11 @@ export const routes: Routes = [
   component:RestaurantListComponent 
 },
 {
-   path:'not',
+   path:'not-reserva',
+   component:NotElementsComponent
+},
+{
+   path:'not-restaurant',
    component:NotElementsComponent
 },
 {
