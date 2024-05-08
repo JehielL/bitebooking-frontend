@@ -9,17 +9,17 @@
         <div class="dot bi-fire"></div>
     </div>
 </div>
-}@else {
+}
+@if(!showSpinner) {
   <div class="container">
     <div class="col">
       <h2 class="title text-center mt-5">Mis reservas activas</h2>
-  
       @if (showDeleteBookingMessage) {
       <ngb-alert type="success" [dismissible]="false">Reserva eliminada correctamente</ngb-alert>
       }
   
   
-      @if (bookings){
+      
       @for (booking of bookings; track booking.id) {
   
       @if(booking.restaurant.imageUrl.startsWith('http')) {
@@ -145,7 +145,7 @@
   
       }
   
-      }
+      
   
   
   

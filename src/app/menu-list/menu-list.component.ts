@@ -28,6 +28,7 @@ export class MenuListComponent {
     setTimeout(() => {
       this.showSpinner = false;
     }, 1000);
+    window.scrollTo(0, 0); 
 
     this.httpClient.get<Menu[]>('http://localhost:8080/menus')
       .subscribe(menus => this.menus = menus);

@@ -47,6 +47,8 @@ export class DashboardUserComponent implements OnInit {
       imgUser: ['']
     });
 
+    window.scrollTo(0, 0); 
+
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;

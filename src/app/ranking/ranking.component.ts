@@ -19,6 +19,8 @@ export class RankingComponent implements OnInit{
   
   constructor(private httpClient: HttpClient) { }
   ngOnInit() {
+
+    window.scrollTo(0, 0); 
     this.loadTopRestaurants();
   }
   loadTopRestaurants() {

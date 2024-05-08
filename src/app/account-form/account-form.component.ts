@@ -41,6 +41,8 @@ export class AccountFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    window.scrollTo(0, 0); 
+
 
     timer(500).pipe(
       switchMap(() => this.httpClient.get<User>('http://localhost:8080/users/account'))

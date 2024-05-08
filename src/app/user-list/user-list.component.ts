@@ -34,7 +34,7 @@ export class UserListComponent implements OnInit{
   puedeMostrarMas: boolean = false;
   
   ngOnInit(): void {
-
+    window.scrollTo(0, 0); 
     this.loadUsers();
     AOS.init();
   }

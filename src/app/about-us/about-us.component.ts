@@ -19,6 +19,8 @@ export class AboutUsComponent implements OnInit {
   ngOnInit(): void {
     Aos.init();
     this.animateProgressBars();
+
+    window.scrollTo(0, 0); 
   }
 
   animateProgressBars() {

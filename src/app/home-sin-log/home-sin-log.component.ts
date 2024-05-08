@@ -34,6 +34,7 @@ export class HomeSinLogComponent {
   
   ngOnInit(): void {
     this.startBackgroundSequence();
+    window.scrollTo(0, 0); 
   }
   constructor(private httpClient: HttpClient, authService: AuthenticationService, router: Router) {
     this.authService = authService;

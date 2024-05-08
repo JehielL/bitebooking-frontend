@@ -1,0 +1,21 @@
+@if (showSpinner) {
+    <div class="loader-wrapper">
+      <div class="packman"></div>
+      <div class="dots">
+          <div class="dot bi-fire"></div>
+          <div class="dot bi-fire "></div>
+          <div class="dot bi-fire"></div>
+          <div class="dot bi-fire"></div>
+      </div>
+  </div>
+  }@else{
+  <div class="not-found-container">
+      <div class="not-found">
+        <h1 display-1>Bite Booking</h1>
+        <p fs-3>No Dispones de un Restaurant</p>
+        <a><button routerLink="/users/account" class="btn-btn-primary home-link" type="button">Crear Restaurant</button></a>
+        
+        
+      </div>
+    </div>
+  }

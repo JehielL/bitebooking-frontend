@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Restaurant } from '../Interfaces/restaurant.model';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { RestaurantType } from '../Interfaces/restaurantType.model';
 import { combineLatest, switchMap, timer } from 'rxjs';
 
@@ -21,17 +21,24 @@ export class RestaurantListComponent implements OnInit {
   maxResultados: number = 5; 
   minResultados: number = 5;
   showSpinner = true;
+  isEmpty = false;
 
 
   constructor(private httpClient: HttpClient,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {}
   puedeMostrarMas: boolean = false;
+ ;
+  
 
+ 
   ngOnInit(): void {
+    window.scrollTo(0, 0); 
     combineLatest([
       this.activatedRoute.params,
       this.activatedRoute.queryParams
     ]).subscribe(([params, queryParams]) => {
+      
       const tipoCocina = params['tipoCocina'];
       const view = queryParams['view'];
   
@@ -42,6 +49,8 @@ export class RestaurantListComponent implements OnInit {
       } else {
         this.loadRestaurantsDirectly();
       }
+
+    
     });
   }
 
@@ -52,7 +61,14 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
      this.restaurants = restaurants;
      this.showSpinner = false;
+     if(this.restaurants.length== 0){
+      this.isEmpty= true;
+      this.router.navigate(['/not-restaurant']);
+     }else{
+      this.isEmpty=false;
+     }
     });
+
   }
 
   filtrarRestaurantesPorTipoCocina(tipoCocina: string): void {
@@ -62,6 +78,12 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
+      if(this.restaurants.length== 0){
+        this.isEmpty= true;
+        this.router.navigate(['/not-restaurant']);
+       }else{
+        this.isEmpty=false;
+       }
     }); 
   }
 
@@ -73,11 +95,19 @@ export class RestaurantListComponent implements OnInit {
     ).subscribe(restaurants => {
       this.restaurants = restaurants;
       this.showSpinner = false;
+      if(this.restaurants.length== 0){
+        this.isEmpty= true;
+        this.router.navigate(['/not-restaurant']);
+       }else{
+        this.isEmpty=false;
+       }
       this.restaurants.filter(restaurants =>
         restaurants.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
     
   }
+  
+
   buscar(termino: string): void {
     this.searchTerm = termino;
     this.filtrarResultados();
@@ -90,6 +120,7 @@ export class RestaurantListComponent implements OnInit {
       : [];
     this.puedeMostrarMas = resultadosFiltrados.length > this.maxResultados;
     this.resultadosBusqueda = resultadosFiltrados.slice(0, this.maxResultados);
+   
   }
 
   mostrarMas(): void {

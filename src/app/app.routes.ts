@@ -26,6 +26,8 @@ import { userLoggedInGuard } from './services/user-logged-in.guard';
 import { RankingComponent } from './ranking/ranking.component';
 import { ZoneComponent } from './zone/zone.component';
 import { DiscountsComponent } from './discounts/discounts.component';
+import { NotElementsComponent } from './not-elements/not-elements.component';
+import { NotRestaurantComponent } from './not-restaurant/not-restaurant.component';
 
 
 
@@ -208,6 +210,14 @@ export const routes: Routes = [
 { 
    path: 'restaurants/mine', 
   component:RestaurantListComponent 
+},
+{
+   path:'not-reserva',
+   component:NotElementsComponent
+},
+{
+   path:'not-restaurant',
+   component: NotRestaurantComponent,
 },
 {
     path: '**',

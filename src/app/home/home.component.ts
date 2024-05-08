@@ -39,6 +39,8 @@ export class HomeComponent implements OnInit {
   showCocinasDropdown: boolean = false;
   
   ngOnInit(): void {
+
+    window.scrollTo(0, 0); 
     Aos.init();
     this.loadRestaurants();
   }

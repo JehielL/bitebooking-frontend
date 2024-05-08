@@ -54,6 +54,7 @@ export class RestaurantDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;
+      window.scrollTo(0, 0); 
 
       const restaurantUrl = `http://localhost:8080/restaurant/${id}`;
       timer(500).pipe(

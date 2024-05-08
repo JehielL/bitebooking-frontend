@@ -22,6 +22,8 @@ export class DiscountsComponent implements OnInit{
       this.showSpinner = false;
     }, 1000);
     this.loadRestaurants();
+
+    window.scrollTo(0, 0); 
   }
   loadRestaurants(){
     const apiURL = 'http://localhost:8080/restaurant';
