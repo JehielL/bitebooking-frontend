@@ -46,6 +46,14 @@
     transform: scale(1.05);
     transition: transform 0.3s ease-in;
   }
+  .card {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    transition: filter 1s ease;
+    max-width: 400px;
+    max-height: 300px;
+}
   
   .custom-title{
     font-size: 30px;

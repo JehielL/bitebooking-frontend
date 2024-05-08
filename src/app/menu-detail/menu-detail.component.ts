@@ -60,13 +60,15 @@ export class MenuDetailComponent implements OnInit {
     }
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
+
+      window.scrollTo(0, 0); 
+
       const id = params['id'];
       if (!id) return;
       setTimeout(() => {
         this.showSpinner = false;
       }, 1000);
-      window.scrollTo(0, 0); 
-
+     
       const ratingsUrl = 'http://localhost:8080/menus/filter-by-menu/' + id;
       const userUrl = 'http://localhost:8080/user/' + id;
       
