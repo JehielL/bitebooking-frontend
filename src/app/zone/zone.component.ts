@@ -23,6 +23,7 @@ export class ZoneComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0); 
     this.loadRestaurants();
   }
 

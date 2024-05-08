@@ -13,6 +13,8 @@ export class NotElementsComponent {
   showSpinner= true;
 constructor(){}
 ngOnInit(): void{
+
+  window.scrollTo(0, 0); 
   setTimeout(()=>{
     this.showSpinner=false;
   },1000)

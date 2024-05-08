@@ -15,7 +15,7 @@ import { combineLatest, delay, switchMap, timer } from 'rxjs';
   styleUrl: './user-form.component.css'
 })
 
-export class UserFormComponent{
+export class UserFormComponent implements OnInit{
   
   users: User[] = [];
   roles = Role; // Esto hará que los valores de la enum estén disponibles en el HTML
@@ -40,6 +40,9 @@ export class UserFormComponent{
               private activatedRoute: ActivatedRoute,
               private fb: FormBuilder
   ){}
+  ngOnInit(): void {
+    window.scrollTo(0, 0); 
+  }
  
   passwordConfirmValidator(control: AbstractControl){
 

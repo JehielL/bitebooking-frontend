@@ -35,6 +35,8 @@ export class AvatarFormComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
 
+    window.scrollTo(0, 0); 
+
     this.activatedRoute.params.subscribe(params => {
 
       const id = params['id'];

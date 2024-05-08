@@ -64,10 +64,14 @@
           <label for="observations" class="form-label">Observaciones de reserva</label>
           <input type="text" class="form-control" id="observations" formControlName="observations">
         </div>
-        <div class="form-floating mb-3">
-          <input type="number" class="form-control" id="numTable" formControlName="numTable" step="1">
-          <label for="numTable">Numero de mesa</label>
-        </div>
+
+        @if (isAdmin) {
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="numTable" formControlName="numTable" step="1">
+            <label for="numTable">Numero de mesa</label>
+          </div>
+        }
+        
 
 
  <!--

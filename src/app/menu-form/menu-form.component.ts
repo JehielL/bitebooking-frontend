@@ -50,7 +50,7 @@ export class MenuFormComponent implements OnInit {
     setTimeout(() => {
       this.showSpinner = false;
     }, 1000);
-
+    window.scrollTo(0, 0); 
     AOS.init();
 
     this.activatedRoute.params.subscribe(params => {

@@ -63,6 +63,7 @@ export class RestaurantFormComponent implements OnInit {
       key: key,
       value: RestaurantType[key as keyof typeof RestaurantType]
     }));
+    window.scrollTo(0, 0); 
 
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];

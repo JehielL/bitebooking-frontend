@@ -43,6 +43,8 @@ export class MenuDetailComponent implements OnInit {
   users: User[] = [];
   showSpinner = true;
 
+  
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private httpClient: HttpClient,
@@ -63,6 +65,7 @@ export class MenuDetailComponent implements OnInit {
       setTimeout(() => {
         this.showSpinner = false;
       }, 1000);
+      window.scrollTo(0, 0); 
 
       const ratingsUrl = 'http://localhost:8080/menus/filter-by-menu/' + id;
       const userUrl = 'http://localhost:8080/user/' + id;

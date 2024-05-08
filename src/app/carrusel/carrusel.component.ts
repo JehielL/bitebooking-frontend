@@ -41,6 +41,8 @@ export class CarruselComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadRestaurantsDirectly1();
+
+    window.scrollTo(0, 0); 
   }
   loadRestaurantsDirectly1() {
     const Url = 'http://localhost:8080/restaurant';

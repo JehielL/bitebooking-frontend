@@ -54,6 +54,8 @@ export class BookingListComponent implements OnInit {
           this.isEmpty=false;
         }
       }, 1000);
+
+      window.scrollTo(0, 0); 
       
       const userUrl = 'http://localhost:8080/user/' + id;
       this.httpClient.get<User[]>(userUrl).subscribe(users => this.users = users);

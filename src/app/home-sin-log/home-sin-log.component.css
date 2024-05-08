@@ -305,6 +305,9 @@
 .featurette-heading {
   letter-spacing: -.05rem;
 }
+.featurette{
+  margin-left: 20%;
+}
 
 @keyframes rotate-clockwise {
   0% {

@@ -34,6 +34,8 @@ export class BookingDetailComponent implements OnInit {
       }
 
   ngOnInit(): void {
+
+    window.scrollTo(0, 0); 
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
       if (!id) return;

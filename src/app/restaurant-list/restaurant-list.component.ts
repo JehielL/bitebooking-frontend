@@ -33,6 +33,7 @@ export class RestaurantListComponent implements OnInit {
 
  
   ngOnInit(): void {
+    window.scrollTo(0, 0); 
     combineLatest([
       this.activatedRoute.params,
       this.activatedRoute.queryParams

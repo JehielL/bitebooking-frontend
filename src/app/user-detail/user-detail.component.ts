@@ -25,6 +25,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit(): void {
     AOS.init();
+    window.scrollTo(0, 0); 
 
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];

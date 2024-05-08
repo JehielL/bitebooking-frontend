@@ -66,6 +66,8 @@ export class DishFormComponent implements OnInit {
     }, 1000);
     AOS.init();
 
+    window.scrollTo(0, 0); 
+
 
     this.activatedRoute.params.subscribe(params => {
 

@@ -68,6 +68,9 @@ export class BookingFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    window.scrollTo(0, 0); 
+
+
     setTimeout(() => {
       this.showSpinner = false;
     }, 1000);
