@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@popperjs/core": "^2.11.8",
     "aos": "^3.0.0-beta.6",
+    "bitebooking-frontend": "file:",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "express": "^4.19.2",

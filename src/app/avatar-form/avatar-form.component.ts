@@ -7,7 +7,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-avatar-form',
   standalone: true,
-  imports: [RouterLink],
   templateUrl: './avatar-form.component.html',
   styleUrl: './avatar-form.component.css'
 })

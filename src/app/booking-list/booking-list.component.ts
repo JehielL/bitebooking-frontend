@@ -12,7 +12,7 @@ import { NotElementsComponent } from '../not-elements/not-elements.component';
 @Component({
   selector: 'app-booking-list',
   standalone: true,
-  imports: [ RouterLink, NgbAlertModule, DatePipe, NotElementsComponent],
+  imports: [ RouterLink, NgbAlertModule, DatePipe],
   templateUrl: './booking-list.component.html',
   styleUrl: './booking-list.component.css'
 })
